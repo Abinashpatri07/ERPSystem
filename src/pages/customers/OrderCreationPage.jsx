@@ -10,7 +10,8 @@ import {
   ChevronDown,
   Bookmark,
   ArrowRight,
-  Package
+  Package,
+  Layers
 } from 'lucide-react';
 
 const OrderCreationPage = () => {
@@ -130,6 +131,59 @@ const OrderCreationPage = () => {
                     <option>Medium</option>
                     <option>Small</option>
                     <option>Large</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Measurement <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <span className="absolute left-3 top-3 text-gray-400">
+                    <Package className="w-4 h-4" />
+                  </span>
+                  <input type="text" defaultValue="998 * 654 * 663" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Number of Orders <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <span className="absolute left-3 top-3 text-gray-400">
+                    <Layers className="w-4 h-4" />
+                  </span>
+                  <input type="text" defaultValue="5000" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Joint Type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                    <option>Clean</option>
+                    <option>Standard</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                    <option>5 Ply</option>
+                    <option>3 Ply</option>
+                    <option>7 Ply</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Print Type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                    <option>Black</option>
+                    <option>CMYK</option>
+                    <option>Pantone</option>
                   </select>
                   <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>

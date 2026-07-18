@@ -7,6 +7,11 @@ import OrderCreationPage from './pages/customers/OrderCreationPage';
 import SalesPage from './pages/sales/SalesPage';
 import CreateSalesOrderPage from './pages/sales/CreateSalesOrderPage';
 import SalesOrderDetailPage from './pages/sales/SalesOrderDetailPage';
+import CreateQuotePage from './pages/sales/CreateQuotePage';
+import QuotesPage from './pages/sales/QuotesPage';
+import InvoicesPage from './pages/sales/InvoicesPage';
+import CreateInvoicePage from './pages/sales/CreateInvoicePage';
+import InvoiceDetailPage from './pages/sales/InvoiceDetailPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -31,6 +36,11 @@ function App() {
           <Route path="sales" element={<SalesPage />} />
           <Route path="sales/new" element={<CreateSalesOrderPage />} />
           <Route path="sales/order/:id" element={<SalesOrderDetailPage />} />
+          <Route path="sales/quotes" element={<QuotesPage />} />
+          <Route path="sales/quotes/new" element={<CreateQuotePage />} />
+          <Route path="sales/invoices" element={<InvoicesPage />} />
+          <Route path="sales/invoices/new" element={<CreateInvoicePage />} />
+          <Route path="sales/invoices/:id" element={<InvoiceDetailPage />} />
           <Route path="vendors" element={<PlaceholderPage title="Vendors" />} />
           <Route path="purchase" element={<PlaceholderPage title="Purchase" />} />
           <Route path="inventory" element={<PlaceholderPage title="Inventory" />} />
