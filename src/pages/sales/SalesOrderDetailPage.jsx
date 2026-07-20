@@ -10,16 +10,35 @@ import {
   Printer, 
   ArrowRightLeft,
   MoreVertical,
-  ChevronDown
+  ChevronDown,
+  FileText,
+  ShoppingCart,
+  Factory,
+  Package,
+  Truck,
+  Receipt,
+  CheckCircle,
+  CreditCard
 } from 'lucide-react';
 
 const SalesOrderDetailPage = () => {
   const navigate = useNavigate();
   const tabs = [
     { name: 'Quotes', path: '/sales/quotes' },
-    { name: 'Sales Orders', path: '/sales' },
+    { name: 'Sales Orders', path: '/sales/orders' },
     { name: 'Invoices', path: '/sales/invoices' },
     { name: 'Payments', path: '/sales/payments' }
+  ];
+
+  const steps = [
+    { name: 'Quote', icon: Check, status: 'completed' },
+    { name: 'Sales order', icon: FileText, status: 'active' },
+    { name: 'Production', icon: Factory, status: 'inactive' },
+    { name: 'Package', icon: Package, status: 'inactive' },
+    { name: 'Ship', icon: Truck, status: 'inactive' },
+    { name: 'Invoice', icon: Receipt, status: 'inactive' },
+    { name: 'Delivered', icon: CheckCircle, status: 'inactive' },
+    { name: 'Payment', icon: CreditCard, status: 'inactive' },
   ];
 
   return (
@@ -48,38 +67,50 @@ const SalesOrderDetailPage = () => {
         
         {/* Top Banner with Stepper */}
         <div className="bg-[#244f5d] text-white p-6 mb-4 rounded-xl shadow-sm flex-shrink-0">
-          <div className="inline-block px-3 py-1 mb-3 rounded-full border border-white/30 text-xs font-medium bg-white/5">
-            Module: Core Sales
-          </div>
+          <h2 className="text-2xl font-bold tracking-wide leading-tight mb-6">
+            Sale Orders
+          </h2>
           
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold tracking-wide leading-tight">
-              Sale Orders
-            </h2>
-            
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center bg-[#e0f5e9] text-[#22c55e] px-4 py-2 rounded-full font-medium text-sm shadow-sm">
-                <span className="w-5 h-5 rounded-full bg-[#22c55e] text-white flex items-center justify-center text-xs mr-2">
-                  <Check className="w-3 h-3" strokeWidth={3} />
-                </span>
-                Quote
-              </div>
-              <div className="w-6 h-[1px] bg-white/30"></div>
-              <div className="flex items-center bg-[#e5f0fe] text-[#244f5d] px-4 py-2 rounded-full font-medium text-sm shadow-sm">
-                <span className="w-5 h-5 rounded-full bg-[#244f5d] text-white flex items-center justify-center text-xs mr-2">2</span>
-                Sales order
-              </div>
-              <div className="w-6 h-[1px] bg-white/30"></div>
-              <div className="flex items-center bg-[#5c8a99] px-4 py-2 rounded-full font-medium text-sm text-white">
-                <span className="w-5 h-5 rounded-full bg-white text-[#244f5d] flex items-center justify-center text-xs mr-2">3</span>
-                Invoices
-              </div>
-              <div className="w-6 h-[1px] bg-white/30"></div>
-              <div className="flex items-center bg-[#5c8a99] px-4 py-2 rounded-full font-medium text-sm text-white">
-                <span className="w-5 h-5 rounded-full bg-white text-[#244f5d] flex items-center justify-center text-xs mr-2">4</span>
-                Payment
-              </div>
-            </div>
+          <div className="flex items-center w-full justify-between pb-1 overflow-x-auto hide-scrollbar">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              
+              let bgClass = "";
+              let textClass = "";
+              let iconBgClass = "";
+              let iconTextClass = "";
+
+              if (step.status === 'completed') {
+                bgClass = "bg-[#e0f5e9]";
+                textClass = "text-[#22c55e]";
+                iconBgClass = "bg-[#22c55e]";
+                iconTextClass = "text-white";
+              } else if (step.status === 'active') {
+                bgClass = "bg-[#e5f0fe]";
+                textClass = "text-[#244f5d]";
+                iconBgClass = "bg-[#244f5d]";
+                iconTextClass = "text-white";
+              } else {
+                bgClass = "bg-[#5c8a99]";
+                textClass = "text-white";
+                iconBgClass = "bg-white";
+                iconTextClass = "text-[#5c8a99]";
+              }
+
+              return (
+                <React.Fragment key={step.name}>
+                  <div className={`flex items-center px-3 py-1.5 rounded-full font-medium text-xs flex-shrink-0 shadow-sm ${bgClass} ${textClass}`}>
+                    <span className={`w-5 h-5 rounded-full flex items-center justify-center mr-1.5 ${iconBgClass} ${iconTextClass}`}>
+                      <Icon className="w-3 h-3" strokeWidth={2.5} />
+                    </span>
+                    {step.name}
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="flex-1 h-[1px] bg-white/30 mx-2 min-w-[8px]"></div>
+                  )}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
 

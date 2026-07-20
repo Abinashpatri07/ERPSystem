@@ -38,13 +38,15 @@ const QuotesTable = () => {
               <td className="py-4 px-4 text-center">
                 <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-4 h-4" />
               </td>
-              <td 
-                className="py-4 px-4 text-blue-500 font-medium cursor-pointer hover:underline"
-                onClick={() => navigate(`/sales/quotes/new`)} // Example route, wait, this should maybe go to quote detail? The image doesn't specify. I'll just keep it a clickable link.
-              >
+              <td className="py-4 px-4 text-[#1a233a]">
                 {quote.date}
               </td>
-              <td className="py-4 px-4 text-[#1a233a]">{quote.quoteNo}</td>
+              <td 
+                className="py-4 px-4 text-blue-500 font-medium cursor-pointer hover:underline"
+                onClick={() => navigate(`/sales/quotes/${quote.quoteNo}`)}
+              >
+                {quote.quoteNo}
+              </td>
               <td className="py-4 px-4 text-[#1a233a]">{quote.referenceNo}</td>
               <td className="py-4 px-4 text-[#1a233a]">{quote.customerName}</td>
               <td className="py-4 px-4 text-green-500 font-medium">{quote.status}</td>

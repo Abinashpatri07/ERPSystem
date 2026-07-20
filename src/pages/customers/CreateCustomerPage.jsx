@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Mail, ChevronDown, Bookmark, Globe } from 'lucide-react';
+import { Mail, ChevronDown, Bookmark, Globe, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const CreateCustomerPage = () => {
   const navigate = useNavigate();
   const [customerType, setCustomerType] = useState('Business');
   const [activeTab, setActiveTab] = useState('Other Details');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const tabs = ['Other Details', 'Billing & Delivery Address', 'Contact Person', 'Remark & Audit Log'];
 
@@ -22,11 +23,6 @@ const CreateCustomerPage = () => {
           <div className="flex items-center bg-[#e5f0fe] text-[#244f5d] px-4 py-2 rounded-full font-medium text-sm shadow-sm">
             <span className="w-6 h-6 rounded-full bg-[#244f5d] text-white flex items-center justify-center text-xs mr-2">1</span>
             Customer Creation
-          </div>
-          <div className="w-8 h-[1px] bg-white/30"></div>
-          <div className="flex items-center bg-[#5c8a99] px-4 py-2 rounded-full font-medium text-sm text-white">
-            <span className="w-6 h-6 rounded-full bg-white text-[#244f5d] flex items-center justify-center text-xs mr-2">2</span>
-            Order Creation
           </div>
         </div>
       </div>
@@ -194,12 +190,56 @@ const CreateCustomerPage = () => {
           Cancel
         </button>
         <button 
-          onClick={() => navigate('/customers/new/order')}
+          onClick={() => setShowSuccessModal(true)}
           className="px-6 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
         >
           Save Customer
         </button>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl shadow-2xl w-[450px] min-h-[400px] flex flex-col items-center relative overflow-hidden animate-in fade-in zoom-in duration-300">
+            
+            {/* Green Curved Header */}
+            <div className="absolute top-0 left-0 w-full h-40 overflow-hidden pointer-events-none">
+              <div className="absolute top-[-160px] left-1/2 -translate-x-1/2 w-[150%] h-[280px] bg-[#22c55e] rounded-b-[50%]"></div>
+            </div>
+
+            {/* Content Container */}
+            <div className="relative z-10 flex flex-col items-center w-full px-8 pt-[85px] pb-8">
+              
+              {/* Checkmark Circle */}
+              <div className="w-[72px] h-[72px] bg-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.1)] mb-6">
+                <div className="w-12 h-12 bg-[#22c55e] rounded-full flex items-center justify-center">
+                  <Check className="w-6 h-6 text-white" strokeWidth={4} />
+                </div>
+              </div>
+              
+              {/* Text Content */}
+              <h3 className="text-[22px] font-bold text-[#22c55e] text-center mb-4 leading-snug">
+                Customer Profile<br/>Successfully Created.
+              </h3>
+              
+              <p className="text-[10px] font-bold text-gray-400 mb-6 tracking-wide">
+                *Redirect in 3 Sec*
+              </p>
+              
+              <button 
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  navigate('/customers');
+                }}
+                className="px-10 py-1.5 border-2 border-[#22c55e] text-[#22c55e] rounded-[10px] font-bold text-sm hover:bg-green-50 transition-colors bg-white shadow-sm"
+              >
+                Okay
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      )}
 
     </main>
   );

@@ -20,7 +20,7 @@ const InvoiceDetailPage = () => {
 
   const tabs = [
     { name: 'Quotes', path: '/sales/quotes' },
-    { name: 'Sales Orders', path: '/sales' },
+    { name: 'Sales Orders', path: '/sales/orders' },
     { name: 'Invoices', path: '/sales/invoices' },
     { name: 'Payments', path: '/sales/payments' }
   ];
