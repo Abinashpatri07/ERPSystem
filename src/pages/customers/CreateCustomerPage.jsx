@@ -113,7 +113,7 @@ const CreateCustomerPage = () => {
                   <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-[#c4d6eb] bg-gray-50 rounded-l-md px-3 text-sm text-gray-500">
                     +91
                   </div>
-                  <input type="text" placeholder="Work Number" className="w-full pl-[52px] border border-[#c4d6eb] rounded-md pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" />
+                  <input type="text" placeholder="Work Number" className="w-full pl-13 border border-[#c4d6eb] rounded-md pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" />
                 </div>
 
                 <div className="flex items-center flex-1">
@@ -122,7 +122,7 @@ const CreateCustomerPage = () => {
                     <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-[#c4d6eb] bg-gray-50 rounded-l-md px-3 text-sm text-gray-500">
                       +91
                     </div>
-                    <input type="text" placeholder="Mobile" className="w-full pl-[52px] border border-[#c4d6eb] rounded-md pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" />
+                    <input type="text" placeholder="Mobile" className="w-full pl-13 border border-[#c4d6eb] rounded-md pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" />
                   </div>
                 </div>
 
@@ -200,18 +200,18 @@ const CreateCustomerPage = () => {
       {/* Success Modal */}
       {showSuccessModal && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl shadow-2xl w-[450px] min-h-[400px] flex flex-col items-center relative overflow-hidden animate-in fade-in zoom-in duration-300">
+          <div className="bg-white rounded-3xl shadow-2xl w-112.5 min-h-100 flex flex-col items-center relative overflow-hidden animate-in fade-in zoom-in duration-300">
             
             {/* Green Curved Header */}
             <div className="absolute top-0 left-0 w-full h-40 overflow-hidden pointer-events-none">
-              <div className="absolute top-[-160px] left-1/2 -translate-x-1/2 w-[150%] h-[280px] bg-[#22c55e] rounded-b-[50%]"></div>
+              <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[150%] h-70 bg-[#22c55e] rounded-b-[50%]"></div>
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 flex flex-col items-center w-full px-8 pt-[85px] pb-8">
+            <div className="relative z-10 flex flex-col items-center w-full px-8 pt-21.25 pb-8">
               
               {/* Checkmark Circle */}
-              <div className="w-[72px] h-[72px] bg-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.1)] mb-6">
+              <div className="w-18 h-18 bg-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.1)] mb-6">
                 <div className="w-12 h-12 bg-[#22c55e] rounded-full flex items-center justify-center">
                   <Check className="w-6 h-6 text-white" strokeWidth={4} />
                 </div>
