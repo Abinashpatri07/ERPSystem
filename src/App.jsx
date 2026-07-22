@@ -18,6 +18,12 @@ import VendorDetailsPage from './pages/vendors/VendorDetailsPage';
 import PurchasePage from './pages/purchase/PurchasePage';
 import CreatePurchaseOrderPage from './pages/purchase/CreatePurchaseOrderPage';
 import PurchaseOrderDetailPage from './pages/purchase/PurchaseOrderDetailPage';
+import CreateExpensePage from './pages/purchase/CreateExpensePage';
+import ExpenseDetailPage from './pages/purchase/ExpenseDetailPage';
+import CreateBillPage from './pages/purchase/CreateBillPage';
+import BillDetailPage from './pages/purchase/BillDetailPage';
+import ProductionPage from './pages/production/ProductionPage';
+import CreateManufacturingPage from './pages/production/CreateManufacturingPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -54,8 +60,13 @@ function App() {
           <Route path="purchase" element={<PurchasePage />} />
           <Route path="purchase/new" element={<CreatePurchaseOrderPage />} />
           <Route path="purchase/order/:id" element={<PurchaseOrderDetailPage />} />
+          <Route path="purchase/expense/new" element={<CreateExpensePage />} />
+          <Route path="purchase/expense/:id" element={<ExpenseDetailPage />} />
+          <Route path="purchase/bill/new" element={<CreateBillPage />} />
+          <Route path="purchase/bill/:id" element={<BillDetailPage />} />
           <Route path="inventory" element={<PlaceholderPage title="Inventory" />} />
-          <Route path="production" element={<PlaceholderPage title="Production" />} />
+          <Route path="production" element={<ProductionPage />} />
+          <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />
           <Route path="supply-chain" element={<PlaceholderPage title="Supply Chain" />} />
           <Route path="accounting" element={<PlaceholderPage title="Accounting" />} />
           <Route path="hrms" element={<PlaceholderPage title="HRMS" />} />

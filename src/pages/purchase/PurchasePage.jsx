@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Plus, Filter, MoreHorizontal, ChevronDown } from 'lucide-react';
 
 const tabs = ['Expenses', 'Procurement', 'Purchase Order', 'Bills', 'Payment'];
@@ -8,13 +8,41 @@ const orders = [
   {
     id: 'PO-00001',
     date: '30/06/2026',
-    purchaseOrder: 'Job Costing',
+    purchaseOrder: 'PO-00001',
     reference: '',
     vendorName: 'CLIMAMAX',
     status: 'DRAFT',
     received: '---',
     billed: '---',
+    amount: '₹53,900.00',
+  },
+];
+
+const expenses = [
+  {
+    id: 'EXP-00001',
+    date: '30/06/2026',
+    expensesAccount: 'Job Costing',
+    reference: '',
+    vendorName: 'CLIMAMAX',
+    paidThrough: 'Undeposited Funds',
+    customerName: 'CLIMAMAX CONTROLS PRIVATE LIMITED',
+    status: 'Non-Billable',
     amount: '₹4,67,254.00',
+  },
+];
+
+const bills = [
+  {
+    id: 'BILL-00001',
+    date: '30/06/2026',
+    billNo: '8645',
+    reference: '8688322738',
+    vendorName: 'CLIMAMAX',
+    status: 'Undeposited Funds',
+    dueDate: '10/06/2026',
+    amount: '₹5,999.00',
+    balanceDue: '1,000.00',
   },
 ];
 
@@ -28,7 +56,8 @@ const statusColors = {
 
 const PurchasePage = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('Purchase Order');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.activeTab || 'Purchase Order');
   const [selectedRows, setSelectedRows] = useState([]);
 
   const toggleRow = (id) => {
@@ -66,10 +95,16 @@ const PurchasePage = () => {
 
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-[20px] font-bold text-[#1a233a]">All Purchase Order</h1>
+            <h1 className="text-[20px] font-bold text-[#1a233a]">
+              {activeTab === 'Expenses' ? 'All Expenses' : `All ${activeTab}`}
+            </h1>
             <div className="flex items-center gap-2">
               <button
-                onClick={() => navigate('/purchase/new')}
+                onClick={() => {
+                  if (activeTab === 'Expenses') navigate('/purchase/expense/new');
+                  else if (activeTab === 'Bills') navigate('/purchase/bill/new');
+                  else navigate('/purchase/new');
+                }}
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-semibold px-4 py-2 rounded-md transition-colors"
               >
                 <Plus className="w-4 h-4" />
@@ -96,50 +131,140 @@ const PurchasePage = () => {
                       onChange={() => {}}
                     />
                   </th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Date</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Purchase Order</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Reference#</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Vendor Name</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Status</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Received</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 whitespace-nowrap">Billed</th>
-                  <th className="px-4 py-3 text-right text-[12px] font-semibold text-gray-500 whitespace-nowrap">Amount</th>
+                  {activeTab === 'Expenses' && (
+                    <>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Date</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Expenses Account</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Reference#</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Vendor Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Paid Through</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Customer Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Status</th>
+                      <th className="px-4 py-3 text-right text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Amount</th>
+                    </>
+                  )}
+                  {activeTab === 'Bills' && (
+                    <>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Date</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Bill#</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Reference Number</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Vendor Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Status</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Due Date</th>
+                      <th className="px-4 py-3 text-right text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Amount</th>
+                      <th className="px-4 py-3 text-right text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Balance Due</th>
+                    </>
+                  )}
+                  {activeTab !== 'Expenses' && activeTab !== 'Bills' && (
+                    <>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Date</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Purchase Order</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Reference#</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Vendor Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Status</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Received</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Billed</th>
+                      <th className="px-4 py-3 text-right text-[12px] font-bold text-[#1a233a] whitespace-nowrap bg-[#f8f9fa]">Amount</th>
+                    </>
+                  )}
                 </tr>
               </thead>
               <tbody>
-                {orders.map((order, idx) => (
-                  <tr
-                    key={order.id}
-                    onClick={() => navigate(`/purchase/order/${order.id}`)}
-                    className={`border-b border-gray-100 hover:bg-blue-50 transition-colors cursor-pointer
-                      ${selectedRows.includes(order.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-white' : 'bg-white'}`}
-                  >
-                    <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
-                      <input
-                        type="checkbox"
-                        checked={selectedRows.includes(order.id)}
-                        onChange={() => toggleRow(order.id)}
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                      />
-                    </td>
-                    <td className="px-4 py-3 text-[13px] text-gray-600 whitespace-nowrap">{order.date}</td>
-                    <td className="px-4 py-3">
-                      <span className="text-[13px] text-blue-600 hover:underline cursor-pointer font-medium">
-                        {order.purchaseOrder}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-[13px] text-gray-500">{order.reference || ''}</td>
-                    <td className="px-4 py-3 text-[13px] font-medium text-[#1a233a]">{order.vendorName}</td>
-                    <td className="px-4 py-3">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide ${statusColors[order.status] || 'bg-gray-100 text-gray-600'}`}>
-                        {order.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-[13px] text-gray-400">{order.received}</td>
-                    <td className="px-4 py-3 text-[13px] text-gray-400">{order.billed}</td>
-                    <td className="px-4 py-3 text-[13px] font-semibold text-[#1a233a] text-right whitespace-nowrap">{order.amount}</td>
-                  </tr>
-                ))}
+                {activeTab === 'Expenses' ? (
+                  expenses.map((expense, idx) => (
+                    <tr
+                      key={expense.id}
+                      onClick={() => expense.expensesAccount === 'Job Costing' ? navigate('/purchase/expense/1') : null}
+                      className={`border-b border-gray-100 transition-colors cursor-pointer
+                        ${selectedRows.includes(expense.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-white' : 'bg-white'}`}
+                    >
+                      <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
+                        <input
+                          type="checkbox"
+                          checked={selectedRows.includes(expense.id)}
+                          onChange={() => toggleRow(expense.id)}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        />
+                      </td>
+                      <td className="px-4 py-3 text-[13px] text-gray-600 whitespace-nowrap">{expense.date}</td>
+                      <td className="px-4 py-3">
+                        <span className="text-[13px] text-blue-600 hover:underline cursor-pointer font-medium">
+                          {expense.expensesAccount}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-[13px] text-gray-500">{expense.reference || ''}</td>
+                      <td className="px-4 py-3 text-[13px] font-medium text-[#1a233a]">{expense.vendorName}</td>
+                      <td className="px-4 py-3 text-[13px] text-gray-600">{expense.paidThrough}</td>
+                      <td className="px-4 py-3 text-[13px] text-gray-600">{expense.customerName}</td>
+                      <td className="px-4 py-3 text-[13px] text-gray-600">{expense.status}</td>
+                      <td className="px-4 py-3 text-[13px] font-semibold text-[#1a233a] text-right whitespace-nowrap">{expense.amount}</td>
+                    </tr>
+                  ))
+                ) : activeTab === 'Bills' ? (
+                  bills.map((bill, idx) => (
+                    <tr
+                      key={bill.id}
+                      onClick={() => navigate('/purchase/bill/1')}
+                      className={`border-b border-gray-100 transition-colors cursor-pointer
+                        ${selectedRows.includes(bill.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-[#fcfcfc]' : 'bg-white'}`}
+                    >
+                      <td className="px-4 py-4" onClick={e => e.stopPropagation()}>
+                        <input
+                          type="checkbox"
+                          checked={selectedRows.includes(bill.id)}
+                          onChange={() => toggleRow(bill.id)}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        />
+                      </td>
+                      <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{bill.date}</td>
+                      <td className="px-4 py-4">
+                        <span className="text-[13px] text-blue-500 hover:underline cursor-pointer font-medium">
+                          {bill.billNo}
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 text-[13px] text-gray-700">{bill.reference}</td>
+                      <td className="px-4 py-4 text-[13px] text-gray-700 uppercase">{bill.vendorName}</td>
+                      <td className="px-4 py-4 text-[13px] text-gray-700">{bill.status}</td>
+                      <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{bill.dueDate}</td>
+                      <td className="px-4 py-4 text-right text-[13px] text-gray-700 font-medium">{bill.amount}</td>
+                      <td className="px-4 py-4 text-right text-[13px] text-gray-700">{bill.balanceDue}</td>
+                    </tr>
+                  ))
+                ) : (
+                  orders.map((order, idx) => (
+                    <tr
+                      key={order.id}
+                      onClick={() => navigate(`/purchase/order/${order.id}`)}
+                      className={`border-b border-gray-100 hover:bg-blue-50 transition-colors cursor-pointer
+                        ${selectedRows.includes(order.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-white' : 'bg-white'}`}
+                    >
+                      <td className="px-4 py-3" onClick={e => e.stopPropagation()}>
+                        <input
+                          type="checkbox"
+                          checked={selectedRows.includes(order.id)}
+                          onChange={() => toggleRow(order.id)}
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        />
+                      </td>
+                      <td className="px-4 py-3 text-[13px] text-gray-600 whitespace-nowrap">{order.date}</td>
+                      <td className="px-4 py-3">
+                        <span className="text-[13px] text-blue-600 hover:underline cursor-pointer font-medium">
+                          {order.purchaseOrder}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-[13px] text-gray-500">{order.reference || ''}</td>
+                      <td className="px-4 py-3 text-[13px] font-medium text-[#1a233a]">{order.vendorName}</td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide ${statusColors[order.status] || 'bg-gray-100 text-gray-600'}`}>
+                          {order.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-[13px] text-gray-400">{order.received}</td>
+                      <td className="px-4 py-3 text-[13px] text-gray-400">{order.billed}</td>
+                      <td className="px-4 py-3 text-[13px] font-semibold text-[#1a233a] text-right whitespace-nowrap">{order.amount}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
 

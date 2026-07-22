@@ -19,12 +19,12 @@ const CreatePurchaseOrderPage = () => {
     <div className="flex flex-col h-full overflow-hidden bg-[#f4f7f9]">
 
       {/* ── Scrollable Form Body ── */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="px-8 py-6 space-y-6 pb-24">
-
-          {/* ── Dark Rounded Header ── */}
+      <div className="flex-1 overflow-y-auto relative bg-[#f8fafc]">
+        
+        {/* ── Sticky Header Wrapper ── */}
+        <div className="sticky top-0 z-50 px-8 pt-6 pb-2 bg-[#f8fafc]">
           <div className="bg-[#254754] text-white px-8 py-5 rounded-2xl flex items-center justify-between shadow-sm">
-            <h1 className="text-[22px] font-bold">Create purchase order</h1>
+            <h1 className="text-[22px] font-bold">Create Purchase Order</h1>
 
             {/* Workflow steps */}
             <div className="flex items-center">
@@ -78,9 +78,12 @@ const CreatePurchaseOrderPage = () => {
               </div>
             </div>
           </div>
+        </div>
 
+        {/* ── Main Form Layout ── */}
+        <div className="px-8 pb-24 pt-4 space-y-6">
           {/* ── Section 1: Main Fields ── */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm relative overflow-hidden p-6">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm relative overflow-hidden p-6 pt-6">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#3b82f6]" />
             <div className="grid grid-cols-2 gap-x-10 gap-y-5">
 

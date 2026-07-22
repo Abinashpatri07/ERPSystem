@@ -102,11 +102,11 @@ const PurchaseOrderDetailPage = () => {
             </div>
           </div>
 
-          {/* ── Split Layout ── */}
-          <div className="flex gap-6 items-start">
-            
-            {/* Left Column: List */}
-            <div className="w-[320px] flex-shrink-0 flex flex-col gap-4">
+          {/* ── Main Layout (Split View) ── */}
+          <div className="px-6 lg:px-8 pb-24 pt-4 flex flex-col lg:flex-row gap-6 relative">
+          
+            {/* Left Sidebar: List of Orders (Sticky & Independently Scrollable) */}
+            <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 lg:sticky lg:top-[110px] lg:h-[calc(100vh-220px)] lg:overflow-y-auto hide-scrollbar">
               <div className="flex items-center justify-between">
                 <h2 className="text-[18px] font-bold text-[#1e293b]">Purchase Orders</h2>
                 <div className="flex items-center gap-2">
