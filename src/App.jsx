@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
 import CustomerPage from './pages/customers/CustomerPage';
 import CreateCustomerPage from './pages/customers/CreateCustomerPage';
+import CustomerDetailsPage from './pages/customers/CustomerDetailsPage';
 import SalesPage from './pages/sales/SalesPage';
 import CreateSalesOrderPage from './pages/sales/CreateSalesOrderPage';
 import SalesOrderDetailPage from './pages/sales/SalesOrderDetailPage';
@@ -24,6 +25,8 @@ import CreateBillPage from './pages/purchase/CreateBillPage';
 import BillDetailPage from './pages/purchase/BillDetailPage';
 import ProductionPage from './pages/production/ProductionPage';
 import CreateManufacturingPage from './pages/production/CreateManufacturingPage';
+import CreateMachinePage from './pages/production/CreateMachinePage';
+import MachineDetailsPage from './pages/production/MachineDetailsPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -37,11 +40,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          {/* Default redirect to customers since that's our main view currently */}
-          <Route index element={<Navigate to="/customers" replace />} />
+          {/* Dashboard Route */}
+          <Route index element={<PlaceholderPage title="Dashboard" />} />
           
           <Route path="customers" element={<CustomerPage />} />
           <Route path="customers/new" element={<CreateCustomerPage />} />
+          <Route path="customers/:id" element={<CustomerDetailsPage />} />
           
           {/* Other routes from sidebar */}
           <Route path="sales" element={<Navigate to="/sales/quotes" replace />} />
@@ -67,6 +71,8 @@ function App() {
           <Route path="inventory" element={<PlaceholderPage title="Inventory" />} />
           <Route path="production" element={<ProductionPage />} />
           <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />
+          <Route path="production/machine/new" element={<CreateMachinePage />} />
+          <Route path="production/machine/:id" element={<MachineDetailsPage />} />
           <Route path="supply-chain" element={<PlaceholderPage title="Supply Chain" />} />
           <Route path="accounting" element={<PlaceholderPage title="Accounting" />} />
           <Route path="hrms" element={<PlaceholderPage title="HRMS" />} />

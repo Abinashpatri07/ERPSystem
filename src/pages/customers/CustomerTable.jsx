@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSelect, searchQuery }) => {
+  const navigate = useNavigate();
+
   // If there are customers, check if all are selected
   const allSelected = customers.length > 0 && selectedIds.length === customers.length;
 
@@ -29,9 +32,10 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
             customers.map(customer => (
               <tr 
                 key={customer.id} 
-                className={`hover:bg-gray-50/80 transition-colors group ${selectedIds.includes(customer.id) ? 'bg-blue-50/50' : ''}`}
+                onClick={() => navigate('/customers/1')}
+                className={`hover:bg-gray-50/80 transition-colors group cursor-pointer ${selectedIds.includes(customer.id) ? 'bg-blue-50/50' : ''}`}
               >
-                <td className="px-6 py-4">
+                <td className="px-6 py-4" onClick={e => e.stopPropagation()}>
                   <input 
                     type="checkbox" 
                     className="rounded border-gray-300 text-blue-500 focus:ring-blue-500 w-4 h-4 cursor-pointer"

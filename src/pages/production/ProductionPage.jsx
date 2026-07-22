@@ -18,6 +18,20 @@ const manufacturingData = [
   },
 ];
 
+const machineData = [
+  {
+    id: 1,
+    code: '61/01',
+    name: 'AD 1228_5C',
+    toTDay: '11',
+    weeklyOff: '02',
+    working: '09',
+    possHR: '216',
+    reportedHRS: '108.93',
+    utilization: '50.43'
+  }
+];
+
 const ProductionPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Manufacturing');
@@ -56,84 +70,160 @@ const ProductionPage = () => {
       <div className="flex-1 overflow-y-auto bg-[#f4f7f9] p-6 lg:p-8">
         <div className="flex flex-col h-full space-y-6">
 
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <h1 className="text-[22px] font-bold text-[#1a233a]">
-              All Manufacturing
-            </h1>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => {
-                  if (activeTab === 'Manufacturing') navigate('/production/manufacturing/new');
-                }}
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-semibold px-4 py-2 rounded-md transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-                New
-              </button>
-              <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
-                <Filter className="w-4 h-4" />
-              </button>
-              <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
-                <MoreHorizontal className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Table */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200 bg-[#f8f9fa]">
-                  <th className="w-10 px-4 py-3">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                      onChange={() => {}}
-                    />
-                  </th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Date</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Bill#</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Reference Number</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Vendor Name</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Status</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Due Date</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Amount</th>
-                  <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Balance Due</th>
-                </tr>
-              </thead>
-              <tbody>
-                {manufacturingData.map((item, idx) => (
-                  <tr
-                    key={item.id}
-                    className={`border-b border-gray-100 transition-colors cursor-pointer
-                      ${selectedRows.includes(item.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-white' : 'bg-[#fcfcfc]'}`}
+          {activeTab === 'Shop Floor' ? (
+            <>
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <h1 className="text-[22px] font-bold text-[#1a233a]">
+                  All Machine
+                </h1>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => navigate('/production/machine/new')}
+                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-semibold px-4 py-2 rounded-md transition-colors"
                   >
-                    <td className="px-4 py-4" onClick={e => e.stopPropagation()}>
-                      <input
-                        type="checkbox"
-                        checked={selectedRows.includes(item.id)}
-                        onChange={() => toggleRow(item.id)}
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                      />
-                    </td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{item.date}</td>
-                    <td className="px-4 py-4">
-                      <span className="text-[13px] text-blue-500 hover:underline cursor-pointer font-medium">
-                        {item.billNo}
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700">{item.reference}</td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700 uppercase">{item.vendorName}</td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700">{item.status}</td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{item.dueDate}</td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700 font-medium">{item.amount}</td>
-                    <td className="px-4 py-4 text-[13px] text-gray-700">{item.balanceDue}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                    <Plus className="w-4 h-4" />
+                    New
+                  </button>
+                  <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
+                    <Filter className="w-4 h-4" />
+                  </button>
+                  <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
+                    <MoreHorizontal className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Table */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-[#f8f9fa]">
+                      <th className="w-10 px-4 py-3 text-left">
+                        <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" />
+                      </th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Machine Code</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Machine Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">To T Day</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Weekly Off</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Working</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Poss HR</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Reported HRS</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Utilization</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {machineData.map((machine) => (
+                      <tr key={machine.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer bg-white">
+                        <td className="px-4 py-4 text-left">
+                          <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" />
+                        </td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.code}</td>
+                        <td className="px-4 py-4">
+                          <span 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/production/machine/${machine.id}`);
+                            }}
+                            className="text-[13px] text-blue-500 hover:underline cursor-pointer"
+                          >
+                            {machine.name}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.toTDay}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.weeklyOff}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.working}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.possHR}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.reportedHRS}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{machine.utilization}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <h1 className="text-[22px] font-bold text-[#1a233a]">
+                  All Manufacturing
+                </h1>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      if (activeTab === 'Manufacturing') navigate('/production/manufacturing/new');
+                    }}
+                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-semibold px-4 py-2 rounded-md transition-colors"
+                  >
+                    <Plus className="w-4 h-4" />
+                    New
+                  </button>
+                  <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
+                    <Filter className="w-4 h-4" />
+                  </button>
+                  <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
+                    <MoreHorizontal className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Table */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-[#f8f9fa]">
+                      <th className="w-10 px-4 py-3">
+                        <input
+                          type="checkbox"
+                          className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                          onChange={() => {}}
+                        />
+                      </th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Date</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Bill#</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Reference Number</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Vendor Name</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Status</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Due Date</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Amount</th>
+                      <th className="px-4 py-3 text-left text-[12px] font-bold text-[#1a233a] whitespace-nowrap">Balance Due</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {manufacturingData.map((item, idx) => (
+                      <tr
+                        key={item.id}
+                        className={`border-b border-gray-100 transition-colors cursor-pointer
+                          ${selectedRows.includes(item.id) ? 'bg-blue-50' : idx % 2 === 0 ? 'bg-white' : 'bg-[#fcfcfc]'}`}
+                      >
+                        <td className="px-4 py-4" onClick={e => e.stopPropagation()}>
+                          <input
+                            type="checkbox"
+                            checked={selectedRows.includes(item.id)}
+                            onChange={() => toggleRow(item.id)}
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                          />
+                        </td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{item.date}</td>
+                        <td className="px-4 py-4">
+                          <span className="text-[13px] text-blue-500 hover:underline cursor-pointer font-medium">
+                            {item.billNo}
+                          </span>
+                        </td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{item.reference}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700 uppercase">{item.vendorName}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{item.status}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700 whitespace-nowrap">{item.dueDate}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700 font-medium">{item.amount}</td>
+                        <td className="px-4 py-4 text-[13px] text-gray-700">{item.balanceDue}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
 
         </div>
       </div>

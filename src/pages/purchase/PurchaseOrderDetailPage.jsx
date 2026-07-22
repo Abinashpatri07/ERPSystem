@@ -42,10 +42,10 @@ const PurchaseOrderDetailPage = () => {
       </div>
 
       {/* ── Scrollable Body ── */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="p-6 space-y-6">
-          
-          {/* ── Dark Rounded Header ── */}
+      <div className="flex-1 overflow-y-auto relative">
+        
+        {/* ── Sticky Dark Rounded Header ── */}
+        <div className="sticky top-0 z-50 bg-[#f8fafc] px-6 pt-6 pb-2">
           <div className="bg-[#254754] text-white px-8 py-5 rounded-2xl flex items-center justify-between shadow-sm">
             <h1 className="text-[22px] font-bold">Purchase order</h1>
 
@@ -101,8 +101,9 @@ const PurchaseOrderDetailPage = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* ── Main Layout (Split View) ── */}
+        {/* ── Main Layout (Split View) ── */}
           <div className="px-6 lg:px-8 pb-24 pt-4 flex flex-col lg:flex-row gap-6 relative">
           
             {/* Left Sidebar: List of Orders (Sticky & Independently Scrollable) */}
@@ -279,7 +280,6 @@ const PurchaseOrderDetailPage = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
