@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
+import DashboardPage from './pages/dashboard/DashboardPage';
 import CustomerPage from './pages/customers/CustomerPage';
 import CreateCustomerPage from './pages/customers/CreateCustomerPage';
 import CustomerDetailsPage from './pages/customers/CustomerDetailsPage';
@@ -41,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {/* Dashboard Route */}
-          <Route index element={<PlaceholderPage title="Dashboard" />} />
+          <Route index element={<DashboardPage />} />
           
           <Route path="customers" element={<CustomerPage />} />
           <Route path="customers/new" element={<CreateCustomerPage />} />
