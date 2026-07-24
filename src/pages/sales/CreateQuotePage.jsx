@@ -339,6 +339,75 @@ const CreateQuotePage = () => {
             </div>
           </div>
 
+          {/* Section 3.5: Material Availability */}
+          <div className="bg-[#fcf8fa] rounded-xl p-8 relative">
+            <div className="flex items-start justify-between mb-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#c6a3d6] rounded-xl flex items-center justify-center shadow-sm">
+                  <Layers className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1a233a]">Material Availability</h3>
+                  <p className="text-xs text-gray-400 mt-1">Configure paper combination for production</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#dcfce7] text-[#16a34a] rounded-full text-xs font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
+                Available
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+              {/* Row 1 */}
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">GSM</label>
+                <div className="relative">
+                  <input 
+                    type="number" 
+                    defaultValue="180"
+                    className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" 
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Color</label>
+                <input 
+                  type="text" 
+                  defaultValue="Brown"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" 
+                />
+              </div>
+
+              {/* Row 2 */}
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Available Weight</label>
+                <div className="flex rounded-md shadow-sm">
+                  <input 
+                    type="text" 
+                    defaultValue="4,500"
+                    className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white"
+                  />
+                  <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    Kg
+                  </span>
+                </div>
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Required Weight</label>
+                <div className="flex rounded-md shadow-sm">
+                  <input 
+                    type="text" 
+                    defaultValue="3,550"
+                    className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white"
+                  />
+                  <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    Kg
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Section 4: Print Specifications */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-white p-8 relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-100 to-blue-200"></div>
@@ -728,8 +797,14 @@ const CreateQuotePage = () => {
                     <span className="text-sm text-gray-500 font-medium">Board Size</span>
                     <span className="text-sm text-gray-800 font-bold">18 * 12 * 10 in</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Paper</span>
+                  <div className="flex justify-between border-b border-gray-100 pb-3 items-center">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-500 font-medium">Paper</span>
+                      <span className="flex items-center gap-1.5 px-2 py-0.5 bg-[#dcfce7] text-[#16a34a] rounded-full text-[10px] font-bold tracking-wide">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
+                        AVAILABLE
+                      </span>
+                    </div>
                     <span className="text-sm text-gray-800 font-bold">5 Ply (180 GSM + 150 GSM + 180 GSM)</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">

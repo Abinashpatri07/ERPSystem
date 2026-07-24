@@ -260,6 +260,58 @@ const VendorDetailsPage = () => {
             </div>
           </div>
 
+          {/* Items Table */}
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-5">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b border-gray-100 bg-gray-50/50">
+                  <th className="py-3 px-4 text-[12px] font-medium text-gray-500 w-1/2">Items & Description</th>
+                  <th className="py-3 px-4 text-[12px] font-medium text-gray-500 text-center">Ordered Quantity</th>
+                  <th className="py-3 px-4 text-[12px] font-medium text-gray-500 text-right">Unit Rate (INR)</th>
+                  <th className="py-3 px-4 text-[12px] font-medium text-gray-500 text-right">Amount Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-100">
+                  <td className="py-4 px-4">
+                    <div className="text-[13px] font-bold text-[#1a233a]">Calibrated Glass Pipette</div>
+                    <div className="text-[11px] text-gray-500 mt-1">Standard High Resolution Glass Testing Pipettes</div>
+                  </td>
+                  <td className="py-4 px-4 text-[13px] font-bold text-[#1a233a] text-center">1,000 Box</td>
+                  <td className="py-4 px-4 text-[13px] font-bold text-[#1a233a] text-right">30.00</td>
+                  <td className="py-4 px-4 text-[13px] font-bold text-[#1a233a] text-right">50,645</td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* Totals Section */}
+            <div className="flex justify-end mt-8 mb-4">
+              <div className="w-80 pr-4">
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-[13px] font-bold text-[#1a233a]">Sub Total</span>
+                  <span className="text-[13px] font-bold text-[#1a233a]">50,645</span>
+                </div>
+                <div className="flex justify-between items-center py-1.5">
+                  <span className="text-[11px] text-gray-500">Total Quantity :</span>
+                  <span className="text-[11px] text-gray-500">04 PCS</span>
+                </div>
+                <div className="flex justify-between items-center py-1.5">
+                  <span className="text-[11px] text-gray-500">GST :</span>
+                  <span className="text-[11px] text-gray-500">600.96</span>
+                </div>
+                <div className="flex justify-between items-center py-1.5 mb-2">
+                  <span className="text-[11px] text-gray-500">Discount Rate</span>
+                  <span className="text-[11px] text-gray-500">400.97</span>
+                </div>
+                
+                <div className="flex justify-between items-center py-3 border-t border-gray-200">
+                  <span className="text-[14px] font-bold text-[#1a233a]">Total Payable</span>
+                  <span className="text-[15px] font-bold text-[#1a233a]">₹53,900.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
