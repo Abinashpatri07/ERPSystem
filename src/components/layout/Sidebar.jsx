@@ -31,8 +31,8 @@ const Sidebar = () => {
   return (
     <aside className="w-64 bg-[#3a6878] text-white flex flex-col h-full flex-shrink-0">
       <div className="p-6 pb-4">
-        <h1 className="text-xl font-semibold tracking-wide">NexERP</h1>
-        <p className="text-xs text-[#a2c2ce] mt-0.5">Cardboard Manufacturing</p>
+        <h1 className="text-xl font-semibold tracking-wide">CORRNEX</h1>
+        <p className="text-xs text-[#a2c2ce] mt-0.5">Corrugation ERP</p>
       </div>
       
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 custom-scrollbar">

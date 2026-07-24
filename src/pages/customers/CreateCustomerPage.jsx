@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ChevronDown, Bookmark, Globe, Check } from 'lucide-react';
+import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const CreateCustomerPage = () => {
@@ -167,9 +167,272 @@ const CreateCustomerPage = () => {
               
               {/* Tab content placeholder */}
               <div className="py-6">
-                <div className="border-2 border-dashed border-[#c4d6eb] rounded-lg h-32 flex items-center justify-center text-gray-400 text-sm">
-                  {activeTab} content will go here
-                </div>
+                
+                {/* === OTHER DETAILS TAB === */}
+                {activeTab === 'Other Details' && (
+                  <div className="grid grid-cols-2 gap-x-16 gap-y-6">
+
+                    {/* Left Column */}
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        PAN <span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 relative">
+                        <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <option></option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        TDS <span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 relative">
+                        <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <option></option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        MSME Registered? <span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 flex items-center">
+                        <label className="flex items-center cursor-pointer group">
+                          <div className="relative flex items-center justify-center">
+                            <input type="radio" name="msme" className="peer sr-only" />
+                            <div className="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-blue-600 group-hover:border-blue-400 flex items-center justify-center transition-colors">
+                              <div className="w-2 h-2 rounded-full bg-blue-600 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                          </div>
+                          <span className="ml-2.5 text-[13px] text-[#1a233a]">This Customer Is MSME Registered</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        Enable Portal?
+                      </label>
+                      <div className="flex-1 flex items-center">
+                        <label className="flex items-center cursor-pointer group">
+                          <div className="relative flex items-center justify-center">
+                            <input type="radio" name="portal" className="peer sr-only" />
+                            <div className="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-blue-600 group-hover:border-blue-400 flex items-center justify-center transition-colors">
+                              <div className="w-2 h-2 rounded-full bg-blue-600 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                          </div>
+                          <span className="ml-2.5 text-[13px] text-[#1a233a]">Allow Portal Access For This Customer</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        Currency<span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 relative">
+                        <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <option>INR - Indian Rupees</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0 pt-2">
+                        Documents<span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1">
+                        <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center bg-white cursor-pointer hover:bg-gray-50 transition-colors">
+                          <UploadCloud className="w-6 h-6 text-gray-500 mb-2" strokeWidth={2} />
+                          <p className="text-[13px] font-bold text-[#1a233a]">Click To Upload File</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        Accounts Receivable
+                      </label>
+                      <div className="flex-1">
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500" />
+                      </div>
+                    </div>
+
+                    <div></div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        Opening Balance <span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 relative">
+                        <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <option>INR  0.00</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+
+                    <div></div>
+
+                    <div className="flex flex-col md:flex-row md:items-center">
+                      <label className="text-[13px] font-bold text-[#1a233a] w-40 mb-2 md:mb-0 shrink-0">
+                        Payment Terms<span className="text-gray-600">*</span>
+                      </label>
+                      <div className="flex-1 relative">
+                        <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <option></option>
+                          <option>Net 15</option>
+                          <option>Net 30</option>
+                          <option>Net 45</option>
+                          <option>Net 60</option>
+                          <option>Due On Receipt</option>
+                        </select>
+                        <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* === BILLING & DELIVERY ADDRESS TAB === */}
+                {activeTab === 'Billing & Delivery Address' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    
+                    {/* Billing Address */}
+                    <div>
+                      <h3 className="text-[15px] font-bold text-[#1a233a] mb-6">Billing Address</h3>
+                      <div className="space-y-5">
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Attention</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Country / Region</label>
+                          <div className="relative">
+                            <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
+                              <option>India</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Address</label>
+                          <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none" placeholder="Street 1"></textarea>
+                          <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none mt-3" placeholder="Street 2"></textarea>
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">City</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">State</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Zip Code</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Phone</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Fax</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Shipping Address */}
+                    <div>
+                      <div className="flex justify-between items-center mb-6">
+                        <h3 className="text-[15px] font-bold text-[#1a233a]">Shipping Address</h3>
+                        <button className="text-[12px] font-semibold text-blue-600 flex items-center hover:underline">
+                          <Copy className="w-3.5 h-3.5 mr-1" />
+                          Copy billing address
+                        </button>
+                      </div>
+                      <div className="space-y-5">
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Attention</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Country / Region</label>
+                          <div className="relative">
+                            <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
+                              <option>India</option>
+                            </select>
+                            <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Address</label>
+                          <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none" placeholder="Street 1"></textarea>
+                          <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none mt-3" placeholder="Street 2"></textarea>
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">City</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">State</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Zip Code</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Phone</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                        <div className="flex flex-col">
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Fax</label>
+                          <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                )}
+
+                {/* === CONTACT PERSON TAB === */}
+                {activeTab === 'Contact Person' && (
+                  <div className="max-w-4xl space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Name</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Contact Person Name" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Email Address</label>
+                        <input type="email" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Email Address" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Mobile Number</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Mobile Number" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Designation</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Designation" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* === OTHER TABS PLACEHOLDER === */}
+                {activeTab !== 'Other Details' && activeTab !== 'Billing & Delivery Address' && activeTab !== 'Contact Person' && (
+                  <div className="h-64 flex items-center justify-center text-gray-400 italic">
+                    {activeTab} content will go here.
+                  </div>
+                )}
               </div>
             </div>
 

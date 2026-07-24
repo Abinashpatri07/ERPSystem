@@ -413,12 +413,36 @@ const CreateVendorPage = () => {
                 </div>
               )}
 
-              {/* === OTHER TABS PLACEHOLDER === */}
-              {activeTab !== 'Other Details' && activeTab !== 'Billing & Delivery Address' && (
-                <div className="h-64 flex items-center justify-center text-gray-400 italic">
-                  {activeTab} content will go here.
-                </div>
-              )}
+                {/* === CONTACT PERSON TAB === */}
+                {activeTab === 'Contact Person' && (
+                  <div className="max-w-4xl space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Name</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Contact Person Name" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Email Address</label>
+                        <input type="email" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Email Address" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Mobile Number</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Mobile Number" />
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Designation</label>
+                        <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Designation" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* === OTHER TABS PLACEHOLDER === */}
+                {activeTab !== 'Other Details' && activeTab !== 'Billing & Delivery Address' && activeTab !== 'Contact Person' && (
+                  <div className="h-64 flex items-center justify-center text-gray-400 italic">
+                    {activeTab} content will go here.
+                  </div>
+                )}
 
             </div>
           </div>

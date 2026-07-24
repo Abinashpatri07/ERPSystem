@@ -173,21 +173,6 @@ const ProductionPage = () => {
 
           {activeTab === 'Manufacturing' && (
             <>
-              {/* Manufacturing Sub-Tabs */}
-              <div className="flex items-center gap-6 border-b border-gray-200 pb-3 -mt-2">
-                {['Manufacturing Order', 'Job Cards'].map(tab => (
-                  <button
-                    key={tab}
-                    onClick={() => setMfgActiveTab(tab)}
-                    className={`flex items-center gap-1.5 text-[13px] font-semibold transition-colors ${
-                      mfgActiveTab === tab ? 'text-blue-600' : 'text-gray-500 hover:text-gray-700'
-                    }`}
-                  >
-                    {tab}
-                    <ChevronDown className="w-3.5 h-3.5 opacity-60" />
-                  </button>
-                ))}
-              </div>
 
               {mfgActiveTab === 'Manufacturing Order' && (
                 <>
@@ -197,13 +182,7 @@ const ProductionPage = () => {
                       All Manufacturing Order
                     </h1>
                     <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => navigate('/production/manufacturing/new')}
-                        className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-semibold px-4 py-2 rounded-md transition-colors"
-                      >
-                        <Plus className="w-4 h-4" />
-                        New
-                      </button>
+
                       <button className="p-2 border border-gray-200 rounded-md text-gray-600 hover:bg-gray-50 bg-gray-50">
                         <Filter className="w-4 h-4" />
                       </button>
