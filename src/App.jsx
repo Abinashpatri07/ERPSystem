@@ -26,8 +26,10 @@ import CreateBillPage from './pages/purchase/CreateBillPage';
 import BillDetailPage from './pages/purchase/BillDetailPage';
 import ProductionPage from './pages/production/ProductionPage';
 import CreateManufacturingPage from './pages/production/CreateManufacturingPage';
+import ManufacturingOrderDetailsPage from './pages/production/ManufacturingOrderDetailsPage';
 import CreateMachinePage from './pages/production/CreateMachinePage';
 import MachineDetailsPage from './pages/production/MachineDetailsPage';
+import CorrugatorJobDetailsPage from './pages/production/CorrugatorJobDetailsPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -72,6 +74,8 @@ function App() {
           <Route path="inventory" element={<PlaceholderPage title="Inventory" />} />
           <Route path="production" element={<ProductionPage />} />
           <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />
+          <Route path="production/manufacturing/:id" element={<ManufacturingOrderDetailsPage />} />
+          <Route path="production/job-card/:id" element={<CorrugatorJobDetailsPage />} />
           <Route path="production/machine/new" element={<CreateMachinePage />} />
           <Route path="production/machine/:id" element={<MachineDetailsPage />} />
           <Route path="supply-chain" element={<PlaceholderPage title="Supply Chain" />} />
