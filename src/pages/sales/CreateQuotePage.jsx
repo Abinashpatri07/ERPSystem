@@ -30,6 +30,7 @@ const CreateQuotePage = () => {
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
+  const [showMaterial, setShowMaterial] = useState(false);
 
   const tabs = [
     { name: 'Quotes', path: '/sales/quotes' },
@@ -282,12 +283,14 @@ const CreateQuotePage = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Number of Orders <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Product Type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
-                    <Layers className="w-4 h-4" />
-                  </span>
-                  <input type="text" defaultValue="5000" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                    <option>Standard</option>
+                    <option>Butterfly</option>
+                    <option>Custom</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
 
@@ -326,91 +329,67 @@ const CreateQuotePage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Product Type <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-[#1a233a] mb-2">Number of Orders <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Standard</option>
-                    <option>Butterfly</option>
-                    <option>Custom</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3.5: Material Availability */}
-          <div className="bg-[#fcf8fa] rounded-xl p-8 relative">
-            <div className="flex items-start justify-between mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#c6a3d6] rounded-xl flex items-center justify-center shadow-sm">
-                  <Layers className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#1a233a]">Material Availability</h3>
-                  <p className="text-xs text-gray-400 mt-1">Configure paper combination for production</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#dcfce7] text-[#16a34a] rounded-full text-xs font-semibold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
-                Available
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-              {/* Row 1 */}
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">GSM</label>
-                <div className="relative">
-                  <input 
-                    type="number" 
-                    defaultValue="180"
-                    className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" 
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Color</label>
-                <input 
-                  type="text" 
-                  defaultValue="Brown"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" 
-                />
-              </div>
-
-              {/* Row 2 */}
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Available Weight</label>
-                <div className="flex rounded-md shadow-sm">
-                  <input 
-                    type="text" 
-                    defaultValue="4,500"
-                    className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white"
-                  />
-                  <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    Kg
+                  <span className="absolute left-3 top-3 text-gray-400">
+                    <Layers className="w-4 h-4" />
                   </span>
+                  <input type="text" defaultValue="5000" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
                 </div>
               </div>
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Required Weight</label>
-                <div className="flex rounded-md shadow-sm">
-                  <input 
-                    type="text" 
-                    defaultValue="3,550"
-                    className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white"
-                  />
-                  <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    Kg
-                  </span>
-                </div>
+
+              {/* Material Availability Dropdown */}
+              <div className="md:col-span-2 pt-2">
+                <button 
+                  type="button" 
+                  onClick={() => setShowMaterial(!showMaterial)}
+                  className="flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <Layers className="w-4 h-4 mr-2" />
+                  Material Availability
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${showMaterial ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {showMaterial && (
+                  <div className="mt-4 p-6 bg-[#fcf8fa] rounded-xl border border-gray-100 shadow-sm relative">
+                    <div className="absolute top-6 right-6">
+                      <div className="flex items-center gap-1.5 px-3 py-1 bg-[#dcfce7] text-[#16a34a] rounded-full text-xs font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
+                        Available
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-2">
+                      <div>
+                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">GSM</label>
+                        <input type="number" defaultValue="180" className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" />
+                      </div>
+                      <div>
+                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Color</label>
+                        <input type="text" defaultValue="Brown" className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" />
+                      </div>
+                      <div>
+                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Available Weight</label>
+                        <div className="flex rounded-md shadow-sm">
+                          <input type="text" defaultValue="4,500" className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white" />
+                          <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">Kg</span>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Required Weight</label>
+                        <div className="flex rounded-md shadow-sm">
+                          <input type="text" defaultValue="3,550" className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white" />
+                          <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">Kg</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
           {/* Section 4: Print Specifications */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-white p-8 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-100 to-blue-200"></div>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-[#8cb6c4] p-8">
             <div className="flex items-start mb-6">
               <div className="w-10 h-10 bg-[#8cb6c4] rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
                 <Palette className="w-5 h-5" />
