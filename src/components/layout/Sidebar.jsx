@@ -10,7 +10,8 @@ import {
   Truck, 
   FileText, 
   UserCheck, 
-  FileBarChart
+  FileBarChart,
+  UserCog
 } from 'lucide-react';
 
 const sidebarItems = [
@@ -24,15 +25,23 @@ const sidebarItems = [
   { name: 'Supply Chain', icon: Truck, path: '/supply-chain' },
   { name: 'Accounting', icon: FileText, path: '/accounting' },
   { name: 'HRMS', icon: UserCheck, path: '/hrms' },
+  { name: 'User Management', icon: UserCog, path: '/user-management' },
   { name: 'Report', icon: FileBarChart, path: '/report' },
 ];
 
 const Sidebar = () => {
   return (
     <aside className="w-64 bg-[#3a6878] text-white flex flex-col h-full flex-shrink-0">
-      <div className="p-6 pb-4">
-        <h1 className="text-xl font-semibold tracking-wide">CORRNEX</h1>
-        <p className="text-xs text-[#a2c2ce] mt-0.5">Corrugation ERP</p>
+      <div className="p-6 pb-6 flex items-center gap-3 border-b border-white/5">
+        <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm shadow-sm border border-white/10">
+          <Box className="w-6 h-6 text-white" strokeWidth={2} />
+        </div>
+        <div>
+          <h1 className="text-[22px] font-bold tracking-wider text-white leading-none mb-1 flex items-center">
+            CORR<span className="text-[#fbb65c]">NEX</span>
+          </h1>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[#a2c2ce] font-semibold opacity-80 leading-none">Corrugation ERP</p>
+        </div>
       </div>
       
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1 custom-scrollbar">

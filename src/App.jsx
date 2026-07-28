@@ -30,6 +30,7 @@ import ManufacturingOrderDetailsPage from './pages/production/ManufacturingOrder
 import CreateMachinePage from './pages/production/CreateMachinePage';
 import MachineDetailsPage from './pages/production/MachineDetailsPage';
 import CorrugatorJobDetailsPage from './pages/production/CorrugatorJobDetailsPage';
+import UserManagementPage from './pages/user-management/UserManagementPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -81,6 +82,7 @@ function App() {
           <Route path="supply-chain" element={<PlaceholderPage title="Supply Chain" />} />
           <Route path="accounting" element={<PlaceholderPage title="Accounting" />} />
           <Route path="hrms" element={<PlaceholderPage title="HRMS" />} />
+          <Route path="user-management" element={<UserManagementPage />} />
           <Route path="report" element={<PlaceholderPage title="Report" />} />
         </Route>
       </Routes>

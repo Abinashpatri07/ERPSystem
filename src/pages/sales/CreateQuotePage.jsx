@@ -279,7 +279,7 @@ const CreateQuotePage = () => {
                   <span className="absolute left-3 top-3 text-gray-400">
                     <Package className="w-4 h-4" />
                   </span>
-                  <input type="text" defaultValue="998 * 654 * 663" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                  <input type="text" defaultValue="38 * 32 * 54" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
                 </div>
               </div>
               <div>
@@ -614,7 +614,7 @@ const CreateQuotePage = () => {
                   <div className="grid grid-cols-3 gap-4 text-sm">
                     <div><span className="text-gray-500">Type:</span> <span className="font-medium text-gray-800">Printed</span></div>
                     <div><span className="text-gray-500">Size:</span> <span className="font-medium text-gray-800">Medium</span></div>
-                    <div><span className="text-gray-500">Measurement:</span> <span className="font-medium text-gray-800">998 x 654 x 663</span></div>
+                    <div><span className="text-gray-500">Measurement:</span> <span className="font-medium text-gray-800">38 * 32 * 54</span></div>
                     <div><span className="text-gray-500">Joint:</span> <span className="font-medium text-gray-800">Clean</span></div>
                     <div><span className="text-gray-500">Ply:</span> <span className="font-medium text-gray-800">5 Ply</span></div>
                     <div><span className="text-gray-500">Print:</span> <span className="font-medium text-gray-800">CMYK (4 Colors)</span></div>
@@ -743,11 +743,11 @@ const CreateQuotePage = () => {
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Measurement</span>
-                    <span className="text-sm text-gray-800 font-bold">998 * 654 * 663</span>
+                    <span className="text-sm text-gray-800 font-bold">38 * 32 * 54</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Ply Type</span>
-                    <span className="text-sm text-gray-800 font-bold">3 Ply</span>
+                    <span className="text-sm text-gray-800 font-bold">5 Ply</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Joint Type</span>
@@ -774,7 +774,7 @@ const CreateQuotePage = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Board Size</span>
-                    <span className="text-sm text-gray-800 font-bold">18 * 12 * 10 in</span>
+                    <span className="text-sm text-gray-800 font-bold">88 * 145</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3 items-center">
                     <div className="flex items-center gap-2">
@@ -784,7 +784,7 @@ const CreateQuotePage = () => {
                         AVAILABLE
                       </span>
                     </div>
-                    <span className="text-sm text-gray-800 font-bold">5 Ply (180 GSM + 150 GSM + 180 GSM)</span>
+                    <span className="text-sm text-gray-800 font-bold">1300</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Top</span>
@@ -796,7 +796,7 @@ const CreateQuotePage = () => {
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Box Width</span>
-                    <span className="text-sm text-gray-800 font-bold">420 g</span>
+                    <span className="text-sm text-gray-800 font-bold">32</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Total Width</span>
@@ -808,7 +808,7 @@ const CreateQuotePage = () => {
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
                     <span className="text-sm text-gray-500 font-medium">Box Value</span>
-                    <span className="text-sm text-gray-800 font-bold">₹625.00</span>
+                    <span className="text-sm text-gray-800 font-bold">142.00</span>
                   </div>
                 </div>
               </div>

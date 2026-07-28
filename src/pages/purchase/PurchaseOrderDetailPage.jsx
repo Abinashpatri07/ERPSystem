@@ -22,7 +22,7 @@ const PurchaseOrderDetailPage = () => {
   return (
     <div className="flex flex-col h-full overflow-hidden bg-[#f8fafc]">
       {/* ── Sub Navigation ── */}
-      <div className="flex-shrink-0 border-b border-gray-200 bg-white px-6">
+      <div className="shrink-0 border-b border-gray-200 bg-white px-6">
         <nav className="flex space-x-1">
           {tabs.map(tab => (
             <button
@@ -62,7 +62,7 @@ const PurchaseOrderDetailPage = () => {
               </div>
 
               {/* Line */}
-              <div className="w-6 h-[1px] bg-gray-400"></div>
+              <div className="w-6 h-px bg-gray-400"></div>
 
               {/* Step 2: Purchase Orders */}
               <div className="flex items-center gap-2 bg-[#eff6ff] text-[#1e3a8a] rounded-full px-4 py-1.5 shadow-sm">
@@ -75,7 +75,7 @@ const PurchaseOrderDetailPage = () => {
               </div>
 
               {/* Line */}
-              <div className="w-6 h-[1px] bg-gray-400"></div>
+              <div className="w-6 h-px bg-gray-400"></div>
 
               {/* Step 3: Bills */}
               <div className="flex items-center gap-2 bg-[#5b8a9e] text-white rounded-full px-4 py-1.5 shadow-sm">
@@ -88,7 +88,7 @@ const PurchaseOrderDetailPage = () => {
               </div>
 
               {/* Line */}
-              <div className="w-6 h-[1px] bg-gray-400"></div>
+              <div className="w-6 h-px bg-gray-400"></div>
 
               {/* Step 4: Payment */}
               <div className="flex items-center gap-2 bg-[#5b8a9e] text-white rounded-full px-4 py-1.5 shadow-sm">
@@ -107,7 +107,7 @@ const PurchaseOrderDetailPage = () => {
           <div className="px-6 lg:px-8 pb-24 pt-4 flex flex-col lg:flex-row gap-6 relative">
           
             {/* Left Sidebar: List of Orders (Sticky & Independently Scrollable) */}
-            <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 lg:sticky lg:top-[110px] lg:h-[calc(100vh-220px)] lg:overflow-y-auto hide-scrollbar">
+            <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 lg:sticky lg:top-27.5 lg:h-[calc(100vh-220px)] lg:overflow-y-auto hide-scrollbar">
               <div className="flex items-center justify-between">
                 <h2 className="text-[18px] font-bold text-[#1e293b]">Purchase Orders</h2>
                 <div className="flex items-center gap-2">
