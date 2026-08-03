@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Sidebar nav item hover */
+.sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+.sidebar-nav-item:hover svg {
+  color: #ffffff !important;
+}
+
 /* Custom Scrollbar for modern look */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;

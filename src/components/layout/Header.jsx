@@ -11,49 +11,170 @@ const Header = ({ searchQuery, setSearchQuery }) => {
   }, []);
 
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
-      
-      <div className="flex items-center flex-1">
-        <div className="relative w-96">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search className="w-5 h-5 text-gray-400" strokeWidth={1.5} />
-          </span>
-          <input 
-            type="text" 
+    <header
+      style={{
+        height: '72px',
+        background: '#ffffff',
+        borderBottom: '1px solid #e8ecef',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 32px',
+        flexShrink: 0,
+        gap: '24px',
+      }}
+    >
+      {/* Left Side (Search & Date/Time) */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '32px', flex: 1 }}>
+        
+        {/* Search Bar */}
+        <div style={{ position: 'relative', width: '340px' }}>
+          <Search
+            style={{
+              position: 'absolute',
+              left: '14px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '18px',
+              height: '18px',
+              color: '#adb5bd',
+            }}
+            strokeWidth={1.8}
+          />
+          <input
+            type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery && setSearchQuery(e.target.value)}
-            placeholder="Search customer, product or item..." 
-            className="w-full bg-[#f3f4f6] text-sm text-gray-700 rounded-full pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#3a6878]/30 transition-shadow"
+            placeholder="Search customer, product or item..."
+            style={{
+              width: '100%',
+              background: '#f4f6f8',
+              border: '1px solid #e8ecef',
+              borderRadius: '24px',
+              padding: '10px 16px 10px 42px',
+              fontSize: '14px',
+              color: '#495057',
+              outline: 'none',
+            }}
+            onFocus={e => {
+              e.target.style.borderColor = '#3a6878';
+              e.target.style.boxShadow = '0 0 0 3px rgba(58,104,120,0.1)';
+            }}
+            onBlur={e => {
+              e.target.style.borderColor = '#e8ecef';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
+
+        {/* Date & Time */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            background: '#f4f6f8',
+            border: '1px solid #e8ecef',
+            borderRadius: '10px',
+            padding: '8px 16px',
+          }}
+        >
+          <Calendar style={{ width: '18px', height: '18px', color: '#3a6878' }} strokeWidth={2} />
+          <div>
+            <div style={{ fontSize: '14px', fontWeight: 600, color: '#343a40', lineHeight: 1.2 }}>
+              {formatDate(currentTime)}
+            </div>
+            <div style={{ fontSize: '12px', color: '#868e96', lineHeight: 1.2, marginTop: '2px' }}>
+              {formatTime(currentTime)}
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div className="flex items-center space-x-6">
-        <div className="flex items-center bg-[#f3f4f6] rounded-lg px-3 py-1.5 text-xs text-gray-600">
-          <Calendar className="w-4 h-4 text-blue-500 mr-2" strokeWidth={2} />
-          <div>
-            <div className="font-medium text-gray-800">{formatDate(currentTime)}</div>
-            <div className="text-gray-500">{formatTime(currentTime)}</div>
-          </div>
-        </div>
+      {/* Right Side */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
 
-        <div className="flex items-center space-x-4 text-gray-500">
-          <button className="hover:text-gray-700 transition-colors">
-            <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
-          </button>
-          <button className="hover:text-gray-700 transition-colors relative">
-            <Bell className="w-5 h-5" strokeWidth={1.5} />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-          </button>
-        </div>
+        {/* Help Icon */}
+        <button
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#868e96',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '8px',
+            borderRadius: '8px',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.color = '#343a40'}
+          onMouseLeave={e => e.currentTarget.style.color = '#868e96'}
+        >
+          <HelpCircle style={{ width: '22px', height: '22px' }} strokeWidth={1.6} />
+        </button>
 
-        <div className="flex items-center border-l pl-6 border-gray-200">
-          <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold text-gray-600 mr-3">
+        {/* Bell Icon */}
+        <button
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#868e96',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '8px',
+            borderRadius: '8px',
+            position: 'relative',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.color = '#343a40'}
+          onMouseLeave={e => e.currentTarget.style.color = '#868e96'}
+        >
+          <Bell style={{ width: '22px', height: '22px' }} strokeWidth={1.6} />
+          <span
+            style={{
+              position: 'absolute',
+              top: '6px',
+              right: '6px',
+              width: '9px',
+              height: '9px',
+              background: '#e74c3c',
+              borderRadius: '50%',
+              border: '2px solid #fff',
+            }}
+          />
+        </button>
+
+        {/* Divider */}
+        <div style={{ width: '1px', height: '36px', background: '#e8ecef' }} />
+
+        {/* User Profile */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', cursor: 'pointer' }}>
+          <div
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '50%',
+              background: '#3a6878',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '15px',
+              fontWeight: 700,
+              color: '#fff',
+              flexShrink: 0,
+            }}
+          >
             MT
           </div>
-          <div className="flex flex-col text-sm">
-            <span className="font-medium text-gray-800">Maruty Tandon</span>
-            <span className="text-xs text-gray-500">marutyon43@gmail.com</span>
+          <div>
+            <div style={{ fontSize: '15px', fontWeight: 600, color: '#343a40', lineHeight: 1.2 }}>
+              Maruty Tandon
+            </div>
+            <div style={{ fontSize: '13px', color: '#868e96', lineHeight: 1.2, marginTop: '2px' }}>
+              marutyon43@gmail.com
+            </div>
           </div>
         </div>
       </div>

@@ -704,111 +704,145 @@ const CreateQuotePage = () => {
             </div>
             
             {/* Body */}
-            <div className="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-8">
+            <div className="flex-1 overflow-y-auto p-6 bg-[#f8fafc] custom-scrollbar space-y-4">
               
               {/* Customer */}
-              <div>
-                <h4 className="text-sm font-bold text-gray-800 mb-4">Customer</h4>
+              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+                    <UserPlus className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-[16px] font-bold text-[#1a233a]">Customer</h4>
+                </div>
                 <div className="space-y-3">
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Name</span>
-                    <span className="text-sm text-gray-800 font-bold">ZAP Private Limited</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Name</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">ZAP Private Limited</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">POC Name</span>
-                    <span className="text-sm text-gray-800 font-bold">Rahul Mehta</span>
+                    <span className="text-[12px] text-gray-500 font-medium">GST Number</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">22AAAAA0000A1Z5</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">GST Number</span>
-                    <span className="text-sm text-gray-800 font-bold">22AAAAA0000A1Z5</span>
-                  </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Phone</span>
-                    <span className="text-sm text-gray-800 font-bold">+91 98765 43210</span>
+                  <div className="flex justify-between">
+                    <span className="text-[12px] text-gray-500 font-medium">Phone</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">+91 98765 43210</span>
                   </div>
                 </div>
               </div>
 
-              {/* Specifications */}
-              <div>
-                <h4 className="text-sm font-bold text-gray-800 mb-4">Specifications</h4>
+              {/* Product Specifications */}
+              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+                    <Package className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-[16px] font-bold text-[#1a233a]">Product Specifications</h4>
+                </div>
                 <div className="space-y-3">
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Box Type</span>
-                    <span className="text-sm text-gray-800 font-bold">Printed</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Box Type</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">Printed</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Size</span>
-                    <span className="text-sm text-gray-800 font-bold">Medium</span>
+                    <span className="text-[12px] text-gray-500 font-medium">BoxSize</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">Medium</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Measurement</span>
-                    <span className="text-sm text-gray-800 font-bold">38 * 32 * 54</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Box Measurement</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">998 × 654 × 663</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Ply Type</span>
-                    <span className="text-sm text-gray-800 font-bold">5 Ply</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Paper</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">NS</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Joint Type</span>
-                    <span className="text-sm text-gray-800 font-bold">Pin</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Ply Type</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">5 Ply</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Print Type</span>
-                    <span className="text-sm text-gray-800 font-bold">No Print</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Top Paper</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">GSM</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Number of Orders</span>
-                    <span className="text-sm text-gray-800 font-bold">500</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Liner</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">145</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">HSN/SAC</span>
-                    <span className="text-sm text-gray-800 font-bold">#4819</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Fluter</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">120</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                    <span className="text-[12px] text-gray-500 font-medium">Print Type</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">Plain</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                    <span className="text-[12px] text-gray-500 font-medium">Joint Type</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">Clean</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                    <span className="text-[12px] text-gray-500 font-medium">Dispatch Date</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">20.8.2026</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[12px] text-gray-500 font-medium">Quantity</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">5000</span>
                   </div>
                 </div>
               </div>
 
-              {/* Calculation */}
-              <div>
-                <h4 className="text-sm font-bold text-gray-800 mb-4">Calculation</h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Board Size</span>
-                    <span className="text-sm text-gray-800 font-bold">88 * 145</span>
+              {/* Board Calculation */}
+              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+                    <ClipboardList className="w-4 h-4" />
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3 items-center">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-500 font-medium">Paper</span>
-                      <span className="flex items-center gap-1.5 px-2 py-0.5 bg-[#dcfce7] text-[#16a34a] rounded-full text-[10px] font-bold tracking-wide">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
-                        AVAILABLE
-                      </span>
-                    </div>
-                    <span className="text-sm text-gray-800 font-bold">1300</span>
+                  <h4 className="text-[16px] font-bold text-[#1a233a]">Board Calculation</h4>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                    <span className="text-[12px] text-gray-500 font-medium">Board</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">88 × 145</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Top</span>
-                    <span className="text-sm text-gray-800 font-bold">5 Ply (180 GSM + 150 GSM + 180 GSM)</span>
+                    <span className="text-[12px] text-gray-500 font-medium">BF</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">18</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Inside</span>
-                    <span className="text-sm text-gray-800 font-bold">Test Liner 150 GSM</span>
+                    <span className="text-[12px] text-gray-500 font-medium">TOP Paper</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">1300</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Box Width</span>
-                    <span className="text-sm text-gray-800 font-bold">32</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Two-Ply</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">2600</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Total Width</span>
-                    <span className="text-sm text-gray-800 font-bold">4.20 kg (10 Boxes)</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Box Weight</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">1.153 Kg</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Rate</span>
-                    <span className="text-sm text-gray-800 font-bold">₹62.50 / Box</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Total Weight</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">1 Ton</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-sm text-gray-500 font-medium">Box Value</span>
-                    <span className="text-sm text-gray-800 font-bold">142.00</span>
+                    <span className="text-[12px] text-gray-500 font-medium">Box Value</span>
+                    <span className="text-[12px] text-[#1a233a] font-bold">62 × 1300</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+                    <Layers className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-[16px] font-bold text-[#1a233a]">Material Available</h4>
+                </div>
+                <div className="flex justify-between items-center py-2 px-1">
+                  <span className="text-[12px] text-gray-500 font-medium">Material</span>
+                  <div className="flex gap-4 text-[12px] text-[#1a233a] font-bold">
+                    <span>Reel 125</span>
+                    <span>100 × 150</span>
+                    <span>230 GSM</span>
+                    <span>NS</span>
+                    <span>1500 Kg</span>
                   </div>
                 </div>
               </div>
@@ -816,18 +850,18 @@ const CreateQuotePage = () => {
               {/* Estimated Total Block */}
               <div className="bg-[#eaf4fd] rounded-xl p-6 flex justify-between items-center">
                 <div>
-                  <p className="text-xs font-bold text-[#4491e0] uppercase tracking-wider mb-2">Estimated Total</p>
-                  <h2 className="text-4xl font-bold text-[#1a233a]">4,45,596</h2>
+                  <p className="text-[11px] font-bold text-[#4491e0] uppercase tracking-wider mb-2">Estimated Total</p>
+                  <h2 className="text-[28px] leading-none font-bold text-[#1a233a]">₹ 80,600</h2>
                 </div>
-                <div className="text-xl font-medium text-[#4491e0]">
-                  @ ₹142/BOX
+                <div className="text-[14px] font-bold text-[#4491e0]">
+                  @ ₹62 /BOX
                 </div>
               </div>
 
               {/* Production Status */}
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-500 font-medium">Production Status</span>
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full border border-green-200">
+              <div className="flex justify-between items-center pb-2">
+                <span className="text-[13px] text-gray-500 font-medium">Production Status</span>
+                <span className="px-3 py-1 bg-[#e0f5e7] text-[#16a34a] text-[11px] font-bold rounded-full border border-green-200">
                   Ready for Production
                 </span>
               </div>
