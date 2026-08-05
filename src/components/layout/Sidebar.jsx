@@ -37,73 +37,62 @@ const Sidebar = () => {
 
   return (
     <aside
+      className="bg-white border-r border-gray-200 flex flex-col h-full flex-shrink-0"
       style={{
         width: collapsed ? '68px' : '220px',
         transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        overflow: 'hidden',
-        background: '#3a6878',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        flexShrink: 0,
+        overflow: 'hidden'
       }}
     >
       {/* Logo / Brand */}
       <div
+        className="flex items-center flex-shrink-0 border-b border-[#e8ecef] h-[52px]"
         style={{
-          padding: collapsed ? '18px 14px' : '18px 20px',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          flexShrink: 0,
-          minHeight: '64px',
-          transition: 'padding 0.3s ease',
+          padding: collapsed ? '0' : '0 20px',
+          justifyContent: collapsed ? 'center' : 'flex-start',
+          transition: 'all 0.3s ease',
         }}
       >
         {/* Logo icon box */}
         <div
+          className="flex items-center justify-center flex-shrink-0"
           style={{
             width: '32px',
             height: '32px',
             borderRadius: '8px',
-            background: 'rgba(255,255,255,0.12)',
-            border: '1px solid rgba(255,255,255,0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
+            background: 'linear-gradient(135deg, #fbb65c 0%, #f97316 100%)',
+            boxShadow: '0 2px 4px rgba(249,115,22,0.2)',
           }}
         >
-          <span style={{ color: '#fbb65c', fontWeight: 800, fontSize: '14px' }}>N</span>
+          <span className="text-white font-extrabold text-[15px]">N</span>
         </div>
 
         {/* Brand text */}
         <div
+          className="whitespace-nowrap flex flex-col justify-center"
           style={{
+            marginLeft: collapsed ? '0px' : '12px',
             opacity: collapsed ? 0 : 1,
-            transform: collapsed ? 'translateX(-6px)' : 'translateX(0)',
-            transition: 'opacity 0.2s ease, transform 0.2s ease',
-            whiteSpace: 'nowrap',
+            width: collapsed ? '0px' : 'auto',
+            overflow: 'hidden',
+            transition: 'opacity 0.2s ease, width 0.3s ease, margin-left 0.3s ease',
             pointerEvents: collapsed ? 'none' : 'auto',
           }}
         >
-          <div style={{ color: '#fff', fontWeight: 700, fontSize: '15px', lineHeight: 1, letterSpacing: '0.5px' }}>
-            CORR<span style={{ color: '#fbb65c' }}>NEX</span>
+          <div className="text-[17px] font-extrabold leading-tight tracking-wide">
+            <span className="text-[#1f2937]">CORR</span><span className="text-[#f97316]">NEX</span>
           </div>
-          <div style={{ color: '#7aaab8', fontSize: '10px', marginTop: '3px', letterSpacing: '0.3px' }}>
-            Corrugation ERP
+          <div className="text-gray-500 text-[10px] tracking-wide font-medium mt-0.5 uppercase">
+            Cardboard Manufacturing
           </div>
         </div>
       </div>
+
       {/* Nav Items */}
       <nav
-        className="custom-scrollbar"
+        className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar"
         style={{
-          flex: 1,
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          padding: collapsed ? '12px 8px' : '12px 10px',
+          padding: collapsed ? '16px 8px' : '16px 12px',
           transition: 'padding 0.3s ease',
         }}
       >
@@ -114,39 +103,26 @@ const Sidebar = () => {
               key={index}
               to={item.path}
               title={collapsed ? item.name : ''}
+              className={({ isActive }) => `
+                flex items-center rounded-[8px] mb-2 text-[14px] font-semibold whitespace-nowrap transition-all duration-200
+                ${isActive 
+                  ? 'bg-black text-white shadow-sm' 
+                  : 'bg-transparent text-[#374151] hover:bg-gray-50 hover:text-black'}
+              `}
               style={({ isActive }) => ({
-                display: 'flex',
-                alignItems: 'center',
-                padding: collapsed ? '9px 10px' : '10px 16px',
-                borderRadius: '7px',
-                marginBottom: '4px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: 500,
-                whiteSpace: 'nowrap',
+                padding: collapsed ? '10px' : '10px 14px',
                 justifyContent: collapsed ? 'center' : 'flex-start',
-                transition: 'all 0.2s ease',
-                background: isActive ? 'rgba(255,255,255,0.12)' : 'transparent',
-                color: isActive ? '#ffffff' : '#94b8c8',
               })}
-              className={({ isActive }) =>
-                isActive ? '' : 'sidebar-nav-item'
-              }
             >
               {({ isActive }) => (
                 <>
                   <Icon
-                    style={{
-                      width: '20px',
-                      height: '20px',
-                      minWidth: '20px',
-                      color: isActive ? '#ffffff' : '#94b8c8',
-                    }}
-                    strokeWidth={1.6}
+                    className={`w-[18px] h-[18px] min-w-[18px] ${isActive ? 'text-white' : 'text-gray-700'}`}
+                    strokeWidth={isActive ? 2 : 1.8}
                   />
                   <span
                     style={{
-                      marginLeft: collapsed ? '0px' : '12px',
+                      marginLeft: collapsed ? '0px' : '14px',
                       opacity: collapsed ? 0 : 1,
                       maxWidth: collapsed ? '0px' : '160px',
                       overflow: 'hidden',
@@ -165,46 +141,25 @@ const Sidebar = () => {
 
       {/* Collapse Toggle */}
       <div
+        className="flex-shrink-0 border-t border-gray-100"
         style={{
-          borderTop: '1px solid rgba(255,255,255,0.08)',
-          padding: collapsed ? '10px 8px' : '10px 14px',
-          flexShrink: 0,
+          padding: collapsed ? '12px 8px' : '12px 14px',
           transition: 'padding 0.3s ease',
         }}
       >
         <button
           onClick={() => setCollapsed(!collapsed)}
           title={collapsed ? 'Expand' : 'Collapse'}
+          className="w-full flex items-center gap-2 px-[10px] py-[8px] rounded-lg border-none bg-transparent text-gray-600 cursor-pointer text-[13px] font-semibold hover:bg-gray-100 hover:text-black transition-colors"
           style={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '7px 10px',
-            borderRadius: '7px',
-            border: 'none',
-            background: 'transparent',
-            color: '#7aaab8',
-            cursor: 'pointer',
-            fontSize: '13px',
-            fontWeight: 500,
             justifyContent: collapsed ? 'center' : 'flex-start',
-            transition: 'background 0.2s ease, color 0.2s ease',
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.color = '#7aaab8';
           }}
         >
           {collapsed
-            ? <ChevronRight style={{ width: '17px', height: '17px' }} strokeWidth={2} />
+            ? <ChevronRight className="w-[18px] h-[18px]" strokeWidth={2} />
             : <>
-                <ChevronLeft style={{ width: '17px', height: '17px' }} strokeWidth={2} />
-                <span style={{ whiteSpace: 'nowrap' }}>Collapse</span>
+                <ChevronLeft className="w-[18px] h-[18px]" strokeWidth={2} />
+                <span className="whitespace-nowrap">Collapse</span>
               </>
           }
         </button>

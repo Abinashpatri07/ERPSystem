@@ -295,9 +295,9 @@ const InvoiceDetailPage = () => {
                           <p className="text-[10px] text-gray-500 font-medium">HSN: 7320 20 90</p>
                         </div>
                       </td>
-                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">20 PCS</td>
-                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 520.00</td>
-                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹10,400.00</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium whitespace-nowrap">20 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700 whitespace-nowrap">₹ 520.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b] whitespace-nowrap">₹10,400.00</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="py-5 px-4 flex items-center">
@@ -309,9 +309,9 @@ const InvoiceDetailPage = () => {
                           <p className="text-[10px] text-gray-500 font-medium">HSN: 8481 80 20</p>
                         </div>
                       </td>
-                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">2 PCS</td>
-                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 8,900.00</td>
-                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹17,800.00</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium whitespace-nowrap">2 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700 whitespace-nowrap">₹ 8,900.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b] whitespace-nowrap">₹17,800.00</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="py-5 px-4 flex items-center">
@@ -323,9 +323,9 @@ const InvoiceDetailPage = () => {
                           <p className="text-[10px] text-gray-500 font-medium">HSN: 9026 10 00</p>
                         </div>
                       </td>
-                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">10 PCS</td>
-                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 450.00</td>
-                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹4,500.00</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium whitespace-nowrap">10 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700 whitespace-nowrap">₹ 450.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b] whitespace-nowrap">₹4,500.00</td>
                     </tr>
                   </tbody>
                 </table>
