@@ -52,10 +52,10 @@ const QuotesPage = () => {
             <Plus className="w-3 h-3 mr-1" strokeWidth={2.5} />
             New
           </button>
-          <button className="w-7 h-7 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors">
+          <button className="w-7 h-7 bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300/50 rounded-full flex items-center justify-center transition-colors">
             <Filter className="w-3 h-3" strokeWidth={1.5} />
           </button>
-          <button className="w-7 h-7 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors">
+          <button className="w-7 h-7 bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300/50 rounded-full flex items-center justify-center transition-colors">
             <MoreHorizontal className="w-3.5 h-3.5" strokeWidth={1.5} />
           </button>
         </div>

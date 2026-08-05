@@ -12,7 +12,24 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize,
-  ChevronDown
+  ChevronDown,
+  FileText,
+  PackagePlus,
+  ShoppingCart,
+  Factory,
+  Package,
+  Truck,
+  Receipt,
+  CheckCircle,
+  CreditCard,
+  PackageCheck,
+  HandCoins,
+  ArrowRightLeft,
+  Hexagon,
+  Box,
+  Beaker,
+  Gauge,
+  Activity
 } from 'lucide-react';
 
 const InvoiceDetailPage = () => {
@@ -25,6 +42,17 @@ const InvoiceDetailPage = () => {
     { name: 'Payments', path: '/sales/payments' }
   ];
 
+  const steps = [
+    { name: 'Quote', icon: PackagePlus, status: 'completed' },
+    { name: 'Sales Order', icon: FileText, status: 'completed' },
+    { name: 'Production', icon: Factory, status: 'completed' },
+    { name: 'Package', icon: Package, status: 'completed' },
+    { name: 'Ship', icon: Truck, status: 'completed' },
+    { name: 'Invoice', icon: Receipt, status: 'active' },
+    { name: 'Delivered', icon: PackageCheck, status: 'upcoming' },
+    { name: 'Payment', icon: HandCoins, status: 'upcoming' },
+  ];
+
   return (
     <main className="flex-1 overflow-hidden bg-[#f8f9fb] flex flex-col relative">
       {/* Sub Navigation */}
@@ -34,10 +62,10 @@ const InvoiceDetailPage = () => {
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`py-2 text-sm font-medium border-b-2 transition-colors ${
                 tab.name === 'Invoices'
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-gray-900 text-gray-900 font-bold'
+                  : 'border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-600'
               }`}
             >
               {tab.name}
@@ -46,84 +74,145 @@ const InvoiceDetailPage = () => {
         </nav>
       </div>
 
-      {/* Split View Content */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 overflow-y-auto custom-scrollbar p-4 flex flex-col">
         
-        {/* Left Sidebar (Invoice List) */}
-        <div className="w-[380px] bg-white border-r border-gray-200 flex flex-col flex-shrink-0">
-          <div className="p-4 flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-[#1a233a]">All Invoices</h2>
-            <div className="flex space-x-2">
-              <button 
-                onClick={() => navigate('/sales/invoices/new')}
-                className="w-8 h-8 bg-blue-500 text-white rounded flex items-center justify-center hover:bg-blue-600 transition-colors"
-              >
-                <Plus className="w-5 h-5" />
-              </button>
-              <button className="w-8 h-8 bg-gray-100 text-gray-600 rounded flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <MoreHorizontal className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+        {/* Top Banner with Stepper */}
+        <div className="bg-white px-6 py-2 mb-4 rounded-xl shadow-sm flex-shrink-0">
+          <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit mb-1">
+            Invoice
+          </h2>
           
-          <div className="px-4 pb-4 border-b border-gray-100">
-            <div className="relative">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search customer, product or item..." 
-                className="w-full bg-[#f4f7fb] border-none rounded-md pl-9 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-[#1a233a]"
-              />
-            </div>
-          </div>
+          <div className="flex items-start w-full min-w-[700px] overflow-x-auto hide-scrollbar pb-0 px-2">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              
+              let textClass = "";
+              let iconBgClass = "";
+              let iconTextClass = "";
+              let lineClass = "bg-gray-200";
 
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
-            {/* Selected Invoice Card */}
-            <div className="border border-blue-200 bg-blue-50/30 rounded-xl p-4 cursor-pointer hover:border-blue-300 transition-colors shadow-sm">
-              <div className="flex justify-between items-start mb-2">
-                <span className="text-blue-500 font-medium text-sm">INV-00001</span>
-                <span className="text-[10px] text-gray-400">25/06/2026</span>
-              </div>
-              <p className="text-sm font-bold text-[#1a233a] mb-3 truncate">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-gray-400">SO-00001</span>
-                <span className="font-bold text-[#1a233a]">₹100.00</span>
-              </div>
-            </div>
+              if (step.status === 'completed') {
+                textClass = "text-green-600 font-bold";
+                iconBgClass = "bg-green-400 ring-4 ring-green-100";
+                iconTextClass = "text-white";
+                if (index < steps.length - 1 && steps[index+1].status === 'active') {
+                   lineClass = "bg-gradient-to-r from-green-400 to-[#d54a88]";
+                } else {
+                   lineClass = "bg-green-400";
+                }
+              } else if (step.status === 'active') {
+                textClass = "text-gray-900 font-bold";
+                iconBgClass = "bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] ring-4 ring-pink-50";
+                iconTextClass = "text-white";
+                lineClass = "bg-gray-200";
+              } else {
+                textClass = "text-gray-500 font-medium";
+                iconBgClass = "bg-white border-2 border-gray-200";
+                iconTextClass = "text-gray-400";
+                lineClass = "bg-gray-200";
+              }
+
+              return (
+                <React.Fragment key={step.name}>
+                  <div className="flex flex-col items-center shrink-0 w-[90px]">
+                    <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center shadow-sm ${iconBgClass} ${iconTextClass}`}>
+                      <Icon className="w-4 h-4" strokeWidth={2} />
+                    </div>
+                    <span className={`mt-2 text-[11px] font-medium text-center ${textClass}`}>
+                      {step.name}
+                    </span>
+                  </div>
+
+                  {/* Connecting Line */}
+                  {index < steps.length - 1 && (
+                    <div className="flex-1 flex items-start pt-[15px] -mx-[25px]">
+                      <div className={`h-[2px] w-full ${lineClass}`}></div>
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
 
+        {/* Master Detail View Area */}
+        <div className="flex-1 flex space-x-4 overflow-hidden min-h-0">
+          
+          {/* Left Sidebar (Invoice List) */}
+          <div className="w-[270px] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col flex-shrink-0 overflow-hidden">
+            <div className="p-4 border-b border-gray-100">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">All Invoices</h2>
+                <div className="flex items-center space-x-2">
+                  <button 
+                    onClick={() => navigate('/sales/invoices/new')}
+                    className="w-7 h-7 bg-gray-900 hover:bg-black text-white rounded-full flex items-center justify-center shadow-sm transition-colors"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                  <button className="w-7 h-7 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full flex items-center justify-center transition-colors">
+                    <MoreHorizontal className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <Search className="w-3.5 h-3.5 text-gray-400" />
+                </span>
+                <input 
+                  type="text" 
+                  placeholder="Search customer, product or item..." 
+                  className="w-full bg-[#f4f6f8] border-none rounded-md pl-9 pr-3 py-2.5 text-[12px] font-medium text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-200 placeholder-gray-400"
+                />
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
+              {/* Selected Invoice Card */}
+              <div className="border border-gray-100 bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:border-gray-200 transition-colors">
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-[13px] font-bold text-gray-900">INV-00001</span>
+                  <span className="text-[10px] text-gray-400 font-medium">25/06/2026</span>
+                </div>
+                <div className="text-[11px] font-bold text-gray-800 leading-tight mb-4">CLIMAMAX CONTROLS PRIVATE LIMITED</div>
+                <div className="flex justify-end">
+                  <span className="text-[11px] font-semibold text-gray-500">₹100.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         {/* Right Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-[#f4f7fb]">
-          {/* Header */}
-          <div className="px-8 py-4 flex items-center justify-between bg-white border-b border-gray-200 flex-shrink-0">
-            <h2 className="text-2xl font-semibold text-[#1a233a]">INV-00001</h2>
+        <div className="flex-1 flex flex-col overflow-hidden min-h-0">
+          
+          {/* Detail Header */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-2.5 flex items-center justify-between flex-shrink-0 mb-0">
             <div className="flex items-center space-x-3">
-              <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                <Edit className="w-4 h-4 mr-2" />
-                Edit
+              <h2 className="text-[17px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">INV-00001</h2>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                <Edit className="w-3.5 h-3.5" />
               </button>
-              <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                <Send className="w-4 h-4 mr-2" />
-                Send
-                <ChevronDown className="w-4 h-4 ml-2 text-gray-500" />
+              <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                <Send className="w-3.5 h-3.5" />
               </button>
-              <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                <Printer className="w-4 h-4 mr-2" />
-                PDF/ Print
+              <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                <Printer className="w-3.5 h-3.5" />
               </button>
-              <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md text-sm font-medium hover:bg-blue-600 transition-colors shadow-sm">
-                <Download className="w-4 h-4 mr-2" />
+              <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-full text-[12px] font-medium hover:opacity-90 transition-opacity shadow-sm">
                 Record Payment
               </button>
-              <button className="px-2 py-2 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200 transition-colors">
-                <MoreHorizontal className="w-5 h-5" />
+              <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                <MoreHorizontal className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
           {/* Document Area */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-8 flex flex-col items-center">
+          <div className="flex-1 overflow-y-auto custom-scrollbar pt-4 pb-8 px-8 flex flex-col items-center">
             
             {/* Toolbar */}
             <div className="w-full max-w-[850px] flex justify-end mb-4 sticky top-0 z-10">
@@ -135,133 +224,150 @@ const InvoiceDetailPage = () => {
                 <button className="p-2 text-gray-600 hover:text-[#1a233a] hover:bg-white rounded-full transition-colors"><Maximize className="w-4 h-4" /></button>
               </div>
             </div>
-
             {/* A4 Document */}
-            <div className="w-full max-w-[850px] bg-white rounded-lg shadow-sm border border-gray-200 min-h-[1100px] p-12 relative overflow-hidden mb-8">
+            <div className="w-full max-w-[850px] bg-white rounded-xl shadow-sm border border-[#cbd5e1] min-h-[1100px] p-12 relative mb-8">
               
-              {/* Watermark */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
-                <span className="text-[200px] font-black transform -rotate-45 tracking-widest text-[#1a233a]">COPY</span>
-              </div>
-
               {/* Document Header */}
               <div className="flex justify-between items-start border-b border-gray-100 pb-8 mb-8 relative z-10">
-                <div>
-                  <h1 className="text-xl font-bold text-[#0f172a] mb-1 tracking-tight">GLOBEX ADVANCED LTD</h1>
-                  <p className="text-[#3b82f6] text-sm font-medium mb-3">Standard Dispatch Settle Unit</p>
-                  <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
-                    MIDC Industrial Area, Mahape, Navi Mumbai,<br/>
-                    MH - 400710
-                  </p>
+                <div className="flex items-start">
+                  <div className="w-14 h-14 rounded-2xl bg-[#3b82f6] text-white flex items-center justify-center mr-4 shadow-sm flex-shrink-0">
+                    <Hexagon className="w-8 h-8" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h1 className="text-xl font-bold text-[#1e293b] mb-1 tracking-tight">GLOBEX AIRWORLD LTD</h1>
+                    <p className="text-gray-500 text-xs mb-3">Global Innovation. Delivered.</p>
+                    <p className="text-gray-500 text-xs leading-relaxed max-w-[200px] mb-2">
+                      4500 Hammock Oaks, Michigan,<br/>
+                      San Antonio 78247, USA
+                    </p>
+                    <p className="text-xs font-bold text-[#1e293b]">GSTIN: <span className="text-gray-500 font-medium">27AACC1234A1Z5</span></p>
+                  </div>
                 </div>
                 <div className="text-right">
-                  <h2 className="text-xl font-bold text-[#0f172a] mb-1 tracking-tight">INVOICE STATEMENT</h2>
-                  <p className="text-[#3b82f6] text-sm font-medium mb-2">#INV-2026-001</p>
-                  <p className="text-gray-500 text-xs font-medium">15 Jul 2026 • Net 30</p>
+                  <h2 className="text-[11px] font-bold text-[#1e293b] mb-2 tracking-wider">INVOICE & PAYMENT</h2>
+                  <p className="text-2xl font-bold text-[#3b82f6] mb-3">INV-2026-0458</p>
+                  <p className="text-gray-500 text-xs font-medium">15 Jun 2026 • Ref: SO-000123</p>
                 </div>
               </div>
 
               {/* Info section */}
-              <div className="flex justify-between items-start border-b border-gray-100 pb-8 mb-8 relative z-10">
+              <div className="flex justify-between items-start pb-8 mb-4 relative z-10">
                 <div className="w-1/2 pr-8">
-                  <h3 className="text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">CLIENT INFORMATION</h3>
-                  <p className="text-sm font-bold text-[#0f172a] mb-1">Globex Advanced Logistics</p>
-                  <p className="text-xs text-gray-500 mb-2">Sarah Jenkins</p>
-                  <p className="text-xs text-gray-500 leading-relaxed max-w-[250px]">
-                    5th Floor, Tower C, Tech Park, Sector V,<br/>
-                    Kolkata, WB - 700091
+                  <h3 className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">BILL TO</h3>
+                  <p className="text-sm font-bold text-[#1e293b] mb-1">Globex Advanced Logistics</p>
+                  <p className="text-xs text-gray-600 mb-2">Supply Chain Division</p>
+                  <p className="text-xs text-gray-600 leading-relaxed max-w-[250px] mb-3">
+                    22 Park Street, Suite 5C,<br/>
+                    New York, NY 10001, USA
                   </p>
+                  <p className="text-xs font-bold text-[#1e293b]">GSTIN: <span className="text-gray-500 font-medium">12AABG1234B1Z6</span></p>
                 </div>
                 <div className="w-1/2 pl-4">
-                  <h3 className="text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">SHIPPING DESTINATION</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed max-w-[250px] mb-4">
-                    Warehouse 4B, Port Logistics Zone, Haldia,<br/>
-                    WB - 721607
+                  <h3 className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">SHIP TO</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed max-w-[250px] mb-4">
+                    Warehouse 42, Port Logistics Zone,<br/>
+                    Nhava Sheva, Mumbai,<br/>
+                    Maharashtra 400707, India
                   </p>
-                  <p className="text-xs font-bold text-[#0f172a]">GSTIN: <span className="text-gray-600 font-medium">19BGBBB2222B2Z2</span></p>
+                  <p className="text-xs font-bold text-[#1e293b]">GSTIN: <span className="text-gray-500 font-medium">27AABFG1234C1Z7</span></p>
                 </div>
               </div>
 
               {/* Items Table */}
-              <div className="relative z-10 mb-12">
+              <div className="relative z-10 mb-8">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="border-b border-gray-200">
-                      <th className="py-3 text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider w-1/2">ITEM DESCRIPTION</th>
-                      <th className="py-3 text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider text-center">QUANTITY</th>
-                      <th className="py-3 text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider text-right">RATE</th>
-                      <th className="py-3 text-[10px] font-bold text-[#3b82f6] uppercase tracking-wider text-right">NET SUM</th>
+                    <tr className="bg-[#f8fafc]">
+                      <th className="py-4 px-4 text-[11px] font-bold text-[#1e293b] uppercase tracking-wider w-[55%] rounded-l-md">ITEM DESCRIPTION</th>
+                      <th className="py-4 px-4 text-[11px] font-bold text-[#1e293b] uppercase tracking-wider text-center">QUANTITY</th>
+                      <th className="py-4 px-4 text-[11px] font-bold text-[#1e293b] uppercase tracking-wider text-right">RATE</th>
+                      <th className="py-4 px-4 text-[11px] font-bold text-[#1e293b] uppercase tracking-wider text-right rounded-r-md">AMOUNT</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-gray-100">
-                      <td className="py-5">
-                        <p className="text-xs font-bold text-[#0f172a] mb-1">Heavy Duty Industrial Ball Bearings</p>
-                        <p className="text-[10px] text-gray-400 font-medium tracking-wide">SKU: BRG-HD-309</p>
+                      <td className="py-5 px-4 flex items-center">
+                        <div className="w-10 h-10 rounded-xl bg-[#eff6ff] text-[#3b82f6] flex items-center justify-center mr-4 flex-shrink-0">
+                           <Box className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#1e293b] mb-1">Heavy Duty Industrial Coil Springs</p>
+                          <p className="text-[10px] text-gray-500 font-medium">HSN: 7320 20 90</p>
+                        </div>
                       </td>
-                      <td className="py-5 text-center text-xs text-gray-600 font-medium">20 PCS</td>
-                      <td className="py-5 text-right text-xs text-gray-600">₹1250</td>
-                      <td className="py-5 text-right text-xs font-bold text-[#0f172a]">₹23,750</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">20 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 520.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹10,400.00</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-5">
-                        <p className="text-xs font-bold text-[#0f172a] mb-1">High-Temp Pressure Control Valve</p>
-                        <p className="text-[10px] text-gray-400 font-medium tracking-wide">SKU: VLV-HT-892</p>
+                      <td className="py-5 px-4 flex items-center">
+                        <div className="w-10 h-10 rounded-xl bg-[#f5f3ff] text-[#8b5cf6] flex items-center justify-center mr-4 flex-shrink-0">
+                           <Beaker className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#1e293b] mb-1">High-Temp Pressure Control Valve</p>
+                          <p className="text-[10px] text-gray-500 font-medium">HSN: 8481 80 20</p>
+                        </div>
                       </td>
-                      <td className="py-5 text-center text-xs text-gray-600 font-medium">2 PCS</td>
-                      <td className="py-5 text-right text-xs text-gray-600">₹8900</td>
-                      <td className="py-5 text-right text-xs font-bold text-[#0f172a]">₹18,020</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">2 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 8,900.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹17,800.00</td>
                     </tr>
                     <tr className="border-b border-gray-100">
-                      <td className="py-5">
-                        <p className="text-xs font-bold text-[#0f172a] mb-1">Flexible Copper Coaxial Wire Reel (50m)</p>
-                        <p className="text-[10px] text-gray-400 font-medium tracking-wide">SKU: COP-W50</p>
+                      <td className="py-5 px-4 flex items-center">
+                        <div className="w-10 h-10 rounded-xl bg-[#f0fdf4] text-[#22c55e] flex items-center justify-center mr-4 flex-shrink-0">
+                           <Gauge className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#1e293b] mb-1">Stainless Steel Pressure Gauge (0-160 Bar)</p>
+                          <p className="text-[10px] text-gray-500 font-medium">HSN: 9026 10 00</p>
+                        </div>
                       </td>
-                      <td className="py-5 text-center text-xs text-gray-600 font-medium">1 REEL</td>
-                      <td className="py-5 text-right text-xs text-gray-600">₹4150</td>
-                      <td className="py-5 text-right text-xs font-bold text-[#0f172a]">₹4,150</td>
+                      <td className="py-5 px-4 text-center text-xs text-gray-700 font-medium">10 PCS</td>
+                      <td className="py-5 px-4 text-right text-xs text-gray-700">₹ 450.00</td>
+                      <td className="py-5 px-4 text-right text-xs font-bold text-[#1e293b]">₹4,500.00</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               {/* Totals */}
-              <div className="flex justify-end relative z-10">
-                <div className="w-64 space-y-3">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500 font-medium">Subtotal:</span>
-                    <span className="text-[#0f172a] font-bold">₹ 46,950</span>
+              <div className="flex justify-end relative z-10 mb-8">
+                <div className="w-[300px] space-y-4 pt-4">
+                  <div className="flex justify-between items-center text-[13px]">
+                    <span className="text-gray-500 font-medium">Subtotal</span>
+                    <span className="text-[#1e293b] font-bold">₹ 32,700.00</span>
                   </div>
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-red-500 font-medium">Discounts:</span>
-                    <span className="text-red-500 font-bold">- ₹ 3,030</span>
+                  <div className="flex justify-between items-center text-[13px]">
+                    <span className="text-[#f43f5e] font-medium">Discount</span>
+                    <span className="text-[#f43f5e] font-bold">(-) ₹ 1,300.00</span>
                   </div>
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500 font-medium">Consolidated Taxes:</span>
-                    <span className="text-[#0f172a] font-bold">₹ 8,944.4</span>
+                  <div className="flex justify-between items-center text-[13px]">
+                    <span className="text-gray-500 font-medium">Consolidated Taxes</span>
+                    <span className="text-[#1e293b] font-bold">₹ 4,842.64</span>
                   </div>
-                  <div className="pt-3 mt-1 border-t border-gray-200 flex justify-between items-center">
-                    <span className="text-sm font-bold text-[#0f172a]">Total (INR):</span>
-                    <span className="text-sm font-bold text-[#0f172a]">₹ 52,514</span>
+                  <div className="pt-4 mt-2 border-t border-gray-100 flex justify-between items-center">
+                    <span className="text-[15px] font-bold text-[#1e293b]">Total (INR)</span>
+                    <span className="text-[15px] font-bold text-[#1e293b]">₹ 36,242.64</span>
                   </div>
                 </div>
               </div>
-
             </div>
 
             {/* More Information */}
-            <div className="w-full max-w-[850px] bg-[#f8fbff] rounded-xl p-8 border border-blue-50/50 mb-12">
-              <h3 className="text-lg font-semibold text-[#1a233a] mb-6">More Information</h3>
-              <div className="grid grid-cols-2 gap-y-4 max-w-md text-sm">
-                <div className="text-gray-500">Salesperson</div>
-                <div className="text-[#1a233a] font-medium">Manoj Kumar</div>
-                <div className="text-gray-500">Email Recipients</div>
-                <div className="text-[#1a233a] font-medium">manojkumar@globex.com</div>
+            <div className="w-full max-w-[850px] bg-[#f0f9ff] rounded-xl p-6 border border-[#dcedf8] mb-12">
+              <h3 className="text-[14px] font-bold text-[#1e293b] mb-4">More Information</h3>
+              <div className="grid grid-cols-[180px_1fr] gap-y-3 text-[12px]">
+                <div className="text-gray-400">Salesperson</div>
+                <div className="text-[#1e293b]">Manoj Kumar</div>
+                <div className="text-gray-400">Email Recipients</div>
+                <div className="text-[#1e293b]">manojkumar@globex.com</div>
               </div>
             </div>
 
           </div>
         </div>
+      </div>
       </div>
     </main>
   );

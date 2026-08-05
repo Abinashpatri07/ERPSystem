@@ -68,7 +68,7 @@ const QuoteDetailPage = () => {
       {/* Header & Stepper */}
       <div className="px-4 pt-2 bg-[#f4f7fb] flex-shrink-0 pb-2">
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-2.5 flex flex-col gap-1.5">
-          <h2 className="text-[16px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600 self-start">
+          <h2 className="text-[16px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] self-start">
             Quote View
           </h2>
           
@@ -81,7 +81,7 @@ const QuoteDetailPage = () => {
                   <React.Fragment key={step.name}>
                     <div className="flex flex-col items-center shrink-0 w-[90px]">
                       <div className={`relative z-10 w-[40px] h-[40px] rounded-full flex items-center justify-center border-[1.5px] bg-white ${
-                        isActive ? 'bg-gradient-to-br from-pink-500 to-purple-600 border-transparent text-white shadow-md' : 'border-gray-200 text-gray-400'
+                        isActive ? 'bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] border-transparent text-white shadow-md' : 'border-gray-200 text-gray-400'
                       }`}>
                         <Icon className="w-4 h-4" strokeWidth={isActive ? 2 : 1.5} />
                       </div>
@@ -94,7 +94,7 @@ const QuoteDetailPage = () => {
                     {index !== steps.length - 1 && (
                       <div className="flex-1 flex items-start pt-[19px] -mx-[25px]">
                         <div className={`h-[2px] w-full ${
-                          index === 0 ? 'bg-gradient-to-r from-pink-500 to-pink-200' : 'bg-gray-200'
+                          index === 0 ? 'bg-gradient-to-r from-[#ff7a59] to-[#d54a88]' : 'bg-gray-200'
                         }`}></div>
                       </div>
                     )}
@@ -110,9 +110,9 @@ const QuoteDetailPage = () => {
       <div className="flex-1 flex overflow-hidden px-4 pb-4 gap-4">
         
         {/* Left Sidebar (Quotes List) */}
-        <div className="w-[340px] bg-white rounded-2xl border border-gray-200 flex flex-col flex-shrink-0 shadow-sm overflow-hidden">
+        <div className="w-[270px] bg-white rounded-2xl border border-gray-200 flex flex-col flex-shrink-0 shadow-sm overflow-hidden">
           <div className="px-4 py-3 flex items-center justify-between">
-            <h2 className="text-[16px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">All Quotes</h2>
+            <h2 className="text-[16px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">All Quotes</h2>
             <div className="flex space-x-2">
               <button 
                 onClick={() => navigate('/sales/quotes/new')}
@@ -132,19 +132,19 @@ const QuoteDetailPage = () => {
               <input 
                 type="text" 
                 placeholder="Search quotes..." 
-                className="w-full bg-[#f8fafc] border border-gray-200 rounded-lg pl-8 pr-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-pink-200 text-[#1a2337] transition-all"
+                className="w-full bg-[#f8fafc] border border-gray-200 rounded-lg pl-8 pr-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-[#ff7a59]/30 text-[#1a2337] transition-all"
               />
             </div>
           </div>
 
           <div className="flex-1 p-4 space-y-3">
             {/* Selected Quote Card */}
-            <div className="border border-gray-200 bg-white rounded-3xl p-4 cursor-pointer hover:border-pink-300 transition-colors shadow-sm">
+            <div className="border border-gray-200 bg-white rounded-3xl p-4 cursor-pointer hover:border-[#ff7a59]/30 transition-colors shadow-sm">
               <div className="flex justify-between items-start mb-2">
                 <span className="text-sm font-medium text-gray-500">INV-00001</span>
                 <span className="text-[10px] text-gray-400">25/06/2026</span>
               </div>
-              <p className="text-sm font-bold text-[#1a233a] mb-4 truncate">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
+              <p className="text-sm font-bold text-[#1a233a] leading-tight mb-4">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
               <div className="flex justify-between items-center text-sm">
                 <span className="text-gray-500 font-medium">Sales Quote</span>
                 <span className="font-bold text-[#1a233a]">₹100.00</span>
@@ -160,8 +160,8 @@ const QuoteDetailPage = () => {
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-4 py-2.5">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <h2 className="text-[17px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">{id || 'QT-000001'}</h2>
-                    <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#b45309] bg-[#ffedd5] rounded-full">Unpaid</span>
+                    <h2 className="text-[17px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">{id || 'QT-000001'}</h2>
+                    <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#ff7a59] bg-[#ffecd6] rounded-full">Unpaid</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
@@ -173,7 +173,7 @@ const QuoteDetailPage = () => {
                     <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
                       <Printer className="w-3.5 h-3.5" />
                     </button>
-                    <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-[12px] font-medium hover:opacity-90 transition-opacity shadow-sm">
+                    <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-full text-[12px] font-medium hover:opacity-90 transition-opacity shadow-sm">
                       <ArrowRightLeft className="w-3.5 h-3.5 mr-1.5" />
                       Convert to SO
                     </button>
@@ -191,8 +191,8 @@ const QuoteDetailPage = () => {
               
               {/* Quote Details Box */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-                <h3 className="text-[15px] font-bold text-[#1a233a] pb-3 border-b border-gray-100 mb-3">Quote Details</h3>
-                <p className="text-[16px] font-bold text-[#1a233a] mb-4">Total : ₹10,000.00</p>
+                <h3 className="text-[15px] font-bold text-[#1a233a] pb-2 border-b border-gray-100 mb-2">Quote Details</h3>
+                <p className="text-[16px] font-bold text-[#1a233a] mb-3">Total : ₹10,000.00</p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
                   <div className="bg-[#f9fafb] p-3 rounded-2xl">

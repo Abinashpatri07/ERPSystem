@@ -24,12 +24,12 @@ const QuotesTable = () => {
             <th className="py-3 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
               <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
             </th>
-            <th className="py-3 px-6 font-semibold text-[#1a233a]">Date</th>
-            <th className="py-3 px-6 font-semibold text-[#1a233a]">Quote Number</th>
-            <th className="py-3 px-6 font-semibold text-[#1a233a]">Customer Name</th>
-            <th className="py-3 px-6 font-semibold text-[#1a233a]">Order</th>
-            <th className="py-3 px-6 font-semibold text-[#1a233a]">Amount</th>
-            <th className="py-3 pr-8 pl-6 font-semibold text-[#1a233a]">Status</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Date</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Quote Number</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Customer Name</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Order</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Amount</th>
+            <th className="py-3 pr-8 pl-6 font-semibold text-gray-600">Status</th>
           </tr>
         </thead>
         <tbody>

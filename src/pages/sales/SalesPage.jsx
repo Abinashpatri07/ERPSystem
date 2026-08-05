@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, MoreHorizontal } from 'lucide-react';
+import { Plus, MoreHorizontal, Filter } from 'lucide-react';
 import SalesTable from './SalesTable';
 
 const SalesPage = () => {
@@ -35,24 +35,29 @@ const SalesPage = () => {
       </div>
 
       {/* Header */}
-      <div className="px-8 py-6 flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-[#1a233a]">All Sale Orders</h2>
-        <div className="flex items-center space-x-3">
+      <div className="px-8 py-4 flex items-center justify-between">
+        <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
+          All Sale Orders
+        </h2>
+        <div className="flex items-center space-x-2.5">
           <button 
             onClick={() => navigate('/sales/new')}
-            className="bg-[#3b82f6] hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors shadow-sm"
+            className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center transition-opacity shadow-sm"
           >
-            <Plus className="w-4 h-4 mr-2" strokeWidth={2} />
+            <Plus className="w-3 h-3 mr-1" strokeWidth={2.5} />
             New
           </button>
-          <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-2 rounded-lg transition-colors border border-gray-200">
-            <MoreHorizontal className="w-5 h-5" strokeWidth={1.5} />
+          <button className="w-7 h-7 bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300/50 rounded-full flex items-center justify-center transition-colors">
+            <Filter className="w-3 h-3" strokeWidth={1.5} />
+          </button>
+          <button className="w-7 h-7 bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300/50 rounded-full flex items-center justify-center transition-colors">
+            <MoreHorizontal className="w-3.5 h-3.5" strokeWidth={1.5} />
           </button>
         </div>
       </div>
 
       {/* Table Area */}
-      <div className="flex-1 px-8 pb-8">
+      <div className="flex-1 pb-8 w-full overflow-x-auto">
         <SalesTable />
       </div>
 

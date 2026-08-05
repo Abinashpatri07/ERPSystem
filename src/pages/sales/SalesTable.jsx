@@ -11,6 +11,26 @@ const mockSalesOrders = [
     orderStatus: 'Accepted',
     payment: '2,34,654',
     packed: '...',
+  },
+  {
+    id: 2,
+    date: '03/07/2026',
+    salesOrderNo: 'SL-000023',
+    referenceNo: 'QT-000023',
+    customerName: 'ABC PACKAGING PRIVATE LIMITED',
+    orderStatus: 'Accepted',
+    payment: '3,42,180',
+    packed: '...',
+  },
+  {
+    id: 3,
+    date: '08/07/2026',
+    salesOrderNo: 'SL-000024',
+    referenceNo: 'QT-000024',
+    customerName: 'SUNRISE PRIVATE LIMITED',
+    orderStatus: 'Accepted',
+    payment: '2,15,600',
+    packed: '...',
   }
 ];
 
@@ -21,39 +41,39 @@ const SalesTable = () => {
     <div className="w-full">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="border-b border-gray-200 text-sm">
-            <th className="py-3 px-4 font-semibold text-[#1a233a] w-12 text-center">
-              <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-4 h-4" />
+          <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
+            <th className="py-3 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+              <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
             </th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Date</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Sales Orders#</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Refence#</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Customer Name</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Order Status</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Payment</th>
-            <th className="py-3 px-4 font-semibold text-[#1a233a]">Packed</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Date</th>
+            <th className="py-3 px-6 font-semibold text-gray-600 whitespace-nowrap">Sales Order#</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Reference#</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Customer Name</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Order Status</th>
+            <th className="py-3 px-6 font-semibold text-gray-600">Payment</th>
+            <th className="py-3 pr-8 pl-6 font-semibold text-gray-600 text-center">Packed</th>
           </tr>
         </thead>
         <tbody>
           {mockSalesOrders.map((order) => (
-            <tr key={order.id} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-sm">
-              <td className="py-4 px-4 text-center">
-                <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-4 h-4" />
+            <tr key={order.id} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px]">
+              <td className="py-3 pl-8 pr-6 text-center">
+                <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
               </td>
-              <td className="py-4 px-4 text-gray-700">{order.date}</td>
+              <td className="py-3 px-6 text-[#1a233a] font-medium">{order.date}</td>
               <td 
-                className="py-4 px-4 text-blue-500 font-medium cursor-pointer hover:underline"
+                className="py-3 px-6 text-blue-600 font-medium cursor-pointer hover:underline whitespace-nowrap"
                 onClick={() => navigate(`/sales/order/${order.salesOrderNo}`)}
               >
                 {order.salesOrderNo}
               </td>
-              <td className="py-4 px-4 text-gray-700">{order.referenceNo}</td>
-              <td className="py-4 px-4 text-[#1a233a] max-w-[200px] truncate" title={order.customerName}>
+              <td className="py-3 px-6 text-[#1a233a] font-medium">{order.referenceNo}</td>
+              <td className="py-3 px-6 text-[#1a233a] font-medium max-w-[200px] truncate" title={order.customerName}>
                 {order.customerName}
               </td>
-              <td className="py-4 px-4 text-green-500 font-medium">{order.orderStatus}</td>
-              <td className="py-4 px-4 text-gray-700">{order.payment}</td>
-              <td className="py-4 px-4 text-gray-700">{order.packed}</td>
+              <td className="py-3 px-6 text-green-500 font-medium">{order.orderStatus}</td>
+              <td className="py-3 px-6 text-[#1a233a] font-medium">{order.payment}</td>
+              <td className="py-3 pr-8 pl-6 text-gray-900 font-bold text-center text-lg">{order.packed}</td>
             </tr>
           ))}
         </tbody>
