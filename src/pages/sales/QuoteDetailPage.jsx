@@ -139,13 +139,13 @@ const QuoteDetailPage = () => {
 
           <div className="flex-1 p-4 space-y-3">
             {/* Selected Quote Card */}
-            <div className="border border-gray-200 bg-white rounded-3xl p-4 cursor-pointer hover:border-[#ff7a59]/30 transition-colors shadow-sm">
-              <div className="flex justify-between items-start mb-2">
-                <span className="text-sm font-medium text-gray-500">INV-00001</span>
+            <div className="border border-gray-200 bg-white rounded-3xl px-4 py-3 cursor-pointer hover:border-[#ff7a59]/30 transition-colors shadow-sm">
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="text-[13px] font-medium text-gray-500">INV-00001</span>
                 <span className="text-[10px] text-gray-400">25/06/2026</span>
               </div>
-              <p className="text-sm font-bold text-[#1a233a] leading-tight mb-4">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
-              <div className="flex justify-between items-center text-sm">
+              <p className="text-xs font-bold text-[#1a233a] leading-tight mb-3">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
+              <div className="flex justify-between items-center text-[13px]">
                 <span className="text-gray-500 font-medium">Sales Quote</span>
                 <span className="font-bold text-[#1a233a]">₹100.00</span>
               </div>

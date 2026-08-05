@@ -13,8 +13,8 @@ import {
   UserPlus,
   ShieldCheck,
   FileText,
-  ChevronLeft,
-  ChevronRight
+  PanelLeftClose,
+  PanelLeftOpen
 } from 'lucide-react';
 
 const sidebarItems = [
@@ -149,18 +149,12 @@ const Sidebar = () => {
       >
         <button
           onClick={() => setCollapsed(!collapsed)}
-          title={collapsed ? 'Expand' : 'Collapse'}
-          className="w-full flex items-center gap-2 px-[10px] py-[8px] rounded-lg border-none bg-transparent text-gray-600 cursor-pointer text-[13px] font-semibold hover:bg-gray-100 hover:text-black transition-colors"
-          style={{
-            justifyContent: collapsed ? 'center' : 'flex-start',
-          }}
+          title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
+          className="w-full flex items-center justify-center py-2.5 rounded-lg border-none bg-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"
         >
           {collapsed
-            ? <ChevronRight className="w-[18px] h-[18px]" strokeWidth={2} />
-            : <>
-                <ChevronLeft className="w-[18px] h-[18px]" strokeWidth={2} />
-                <span className="whitespace-nowrap">Collapse</span>
-              </>
+            ? <PanelLeftOpen className="w-5 h-5" strokeWidth={1.8} />
+            : <PanelLeftClose className="w-5 h-5" strokeWidth={1.8} />
           }
         </button>
       </div>
