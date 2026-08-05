@@ -23,10 +23,10 @@ const InvoicesPage = () => {
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`py-2 text-sm font-medium border-b-2 transition-colors ${
                 location.pathname === tab.path || (tab.name === 'Invoices' && location.pathname.includes('/invoices'))
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-gray-900 text-gray-900 font-bold'
+                  : 'border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-600'
               }`}
             >
               {tab.name}

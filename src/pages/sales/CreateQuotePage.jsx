@@ -1,36 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  UserPlus, 
-  Building2, 
-  CircleDollarSign, 
-  Phone, 
-  BarChart3, 
-  ChevronDown,
-  Bookmark,
-  FileText,
-  Eye,
-  ShoppingCart,
-  Factory,
-  Package,
-  Truck,
-  Receipt,
-  CheckCircle,
-  CreditCard,
-  Calendar,
-  Layers,
-  Printer,
-  Palette,
-  Maximize,
-  UploadCloud,
-  ClipboardList
+import {
+  UserPlus, FileText, Box, Calculator, Layers, Palette, ChevronDown, Calendar, Bookmark,
+  Package, Truck, Receipt, CheckCircle, CreditCard, Factory, Search, Plus, UploadCloud, ClipboardList,
+  PackagePlus, PackageCheck, HandCoins, Check
 } from 'lucide-react';
 
 const CreateQuotePage = () => {
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
-  const [showOrderSummary, setShowOrderSummary] = useState(false);
-  const [showMaterial, setShowMaterial] = useState(false);
 
   const tabs = [
     { name: 'Quotes', path: '/sales/quotes' },
@@ -39,33 +17,50 @@ const CreateQuotePage = () => {
     { name: 'Payments', path: '/sales/payments' }
   ];
 
-  // Stepper Items
   const steps = [
-    { name: 'Quote', icon: FileText, active: true },
-    { name: 'Sales order', icon: ShoppingCart, active: false },
+    { name: 'Quote', icon: PackagePlus, active: true },
+    { name: 'Sales order', icon: FileText, active: false },
     { name: 'Production', icon: Factory, active: false },
     { name: 'Package', icon: Package, active: false },
     { name: 'Ship', icon: Truck, active: false },
     { name: 'Invoice', icon: Receipt, active: false },
-    { name: 'Delivered', icon: CheckCircle, active: false },
-    { name: 'Payment', icon: CreditCard, active: false },
+    { name: 'Delivered', icon: PackageCheck, active: false },
+    { name: 'Payment', icon: HandCoins, active: false },
   ];
 
+  const materials = [
+    { id: 1, name: 'Reel 121', spec: 'GSM 230-100x150 BF 18', weight: '1200 Kg', selected: true },
+    { id: 2, name: 'Reel 122', spec: 'GSM 230-100x150 BF 18', weight: '1300 Kg', selected: false },
+    { id: 3, name: 'Reel 123', spec: 'GSM 230-100x150 BF 18', weight: '1000 Kg', selected: true },
+    { id: 4, name: 'Reel 124', spec: 'GSM 230-100x150 BF 18', weight: '800 Kg', selected: false },
+    { id: 5, name: 'Reel 125', spec: 'GSM 230-100x150 BF 18', weight: '900 Kg', selected: false },
+    { id: 6, name: 'Reel 126', spec: 'GSM 230-100x150 BF 18', weight: '1100 Kg', selected: false },
+  ];
+
+  const [selectedMaterials, setSelectedMaterials] = useState([1, 3]);
+
+  const toggleMaterial = (id) => {
+    if (selectedMaterials.includes(id)) {
+      setSelectedMaterials(selectedMaterials.filter(mId => mId !== id));
+    } else {
+      setSelectedMaterials([...selectedMaterials, id]);
+    }
+  };
+
   return (
-    <main className="flex-1 overflow-y-auto bg-[#f8f9fb] flex flex-col relative">
-      
+    <main className="flex-1 overflow-y-auto bg-white flex flex-col relative font-sans">
+
       {/* Sub Navigation */}
-      <div className="px-8 border-b border-gray-200 bg-white">
+      <div className="px-8 border-b border-gray-200">
         <nav className="flex space-x-8">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
-                tab.name === 'Quotes'
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+              className={`py-2 text-sm font-medium border-b-2 transition-colors ${tab.name === 'Quotes'
+                  ? 'border-gray-900 text-gray-900 font-bold'
+                  : 'border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-600'
+                }`}
             >
               {tab.name}
             </button>
@@ -73,45 +68,46 @@ const CreateQuotePage = () => {
         </nav>
       </div>
 
-      <div className="flex-1 p-4 overflow-y-auto custom-scrollbar pb-24">
-        
-        {/* Top Banner with Stepper */}
-        <div className="bg-[#244f5d] text-white p-6 mb-4 rounded-xl shadow-sm">
-          <h2 className="text-2xl font-bold tracking-wide leading-tight mb-6">
+      <div className="flex-1 p-6 pb-6 max-w-[1200px] mx-auto w-full">
+        {/* Header and Stepper */}
+        <div className="bg-white px-6 py-3 rounded-2xl border border-gray-100 shadow-sm mb-4">
+          <h2 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block mb-3">
             Quote Creation
           </h2>
-          
-          <div className="flex items-center w-full justify-between pb-1 overflow-x-auto hide-scrollbar">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <React.Fragment key={step.name}>
-                  <div className={`flex items-center px-3 py-1.5 rounded-full font-medium text-xs flex-shrink-0 shadow-sm ${
-                    step.active ? 'bg-[#e5f0fe] text-[#244f5d]' : 'bg-[#5c8a99] text-white'
-                  }`}>
-                    <span className={`w-5 h-5 rounded-full flex items-center justify-center mr-1.5 ${
-                      step.active ? 'bg-[#244f5d] text-white' : 'bg-white text-[#5c8a99]'
-                    }`}>
-                      <Icon className="w-3 h-3" strokeWidth={2.5} />
+
+          <div className="flex items-center w-full relative px-6 z-0">
+            {/* Connecting Line */}
+            <div className="absolute top-5 left-11 right-11 h-[2px] bg-gray-200 z-[-1]"></div>
+            <div className="absolute top-5 left-11 w-[calc(100%-5.5rem)] max-w-[calc(100%/7)] h-[2px] bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] z-[-1]"></div>
+
+            <div className="flex items-center justify-between w-full">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div key={step.name} className="flex flex-col items-center px-2 relative">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 relative z-10 ${step.active
+                        ? 'bg-gradient-to-br from-[#ff6b6b] via-[#9333ea] to-[#4338ca] text-white shadow-md'
+                        : 'bg-white border-2 border-gray-200 text-gray-400'
+                      }`}>
+                      <Icon className="w-4 h-4" strokeWidth={step.active ? 2.5 : 2} />
+                    </div>
+                    <span className={`text-[11px] font-semibold ${step.active ? 'text-gray-900' : 'text-gray-500'}`}>
+                      {step.name}
                     </span>
-                    {step.name}
                   </div>
-                  {index < steps.length - 1 && (
-                    <div className="flex-1 h-[1px] bg-white/30 mx-2 min-w-[8px]"></div>
-                  )}
-                </React.Fragment>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* Form Area */}
-        <div className="max-w-5xl space-y-6">
-          
+        {/* Main Content */}
+        <div className="space-y-4">
+
           {/* Section 1: Customer Selection */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-blue-600 p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-4">
+              <div className="w-10 h-10 bg-[#ff5a6e] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
                 <UserPlus className="w-5 h-5" />
               </div>
               <div>
@@ -120,334 +116,384 @@ const CreateQuotePage = () => {
               </div>
             </div>
 
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-[#1a233a] mb-2">Search Customer <span className="text-red-500">*</span></label>
+            <div className="mb-4">
+              <label className="block text-xs font-semibold text-[#1a233a] mb-2">Search Customer <span className="text-red-500">*</span></label>
               <div className="relative">
-                <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#3ca0d3] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
                   <option>ZAP Private Limited - GST: 27AABCU9603R1ZV | POC: Rahul Mehta</option>
                 </select>
-                <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="border border-[#c4d6eb] rounded-xl p-4 bg-white shadow-sm flex flex-col">
-                <span className="text-xs font-medium text-gray-400 mb-2">Name</span>
-                <div className="flex items-center text-[#1a233a] font-semibold text-lg">
-                  <Building2 className="w-5 h-5 text-gray-400 mr-3" />
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-2">Name</label>
+                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                  <Box className="w-4 h-4 text-gray-400 mr-3" />
                   ZAP Private Limited
                 </div>
               </div>
-              <div className="border border-[#c4d6eb] rounded-xl p-4 bg-white shadow-sm flex flex-col">
-                <span className="text-xs font-medium text-gray-400 mb-2">GST</span>
-                <div className="flex items-center text-[#1a233a] font-semibold text-lg">
-                  <CircleDollarSign className="w-5 h-5 text-gray-400 mr-3" />
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-2">GST</label>
+                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                  <span className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center text-gray-400 text-[10px] mr-3">$</span>
                   27AABCUJMSAIU462BC
                 </div>
               </div>
-              <div className="border border-[#c4d6eb] rounded-xl p-4 bg-white shadow-sm flex flex-col">
-                <span className="text-xs font-medium text-gray-400 mb-2">Phone</span>
-                <div className="flex items-center text-[#1a233a] font-semibold text-lg">
-                  <Phone className="w-5 h-5 text-gray-400 mr-3" />
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-2">Phone</label>
+                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                  <Search className="w-4 h-4 text-gray-400 mr-3" />
                   +91 764539543
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Section 2: Quote */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-[#3ca0d3] p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-10 h-10 bg-[#3ca0d3] rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
-                <BarChart3 className="w-5 h-5" />
+          {/* Section 2: Quote Details */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-4">
+              <div className="w-10 h-10 bg-[#b649d8] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+                <FileText className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a233a]">Quote</h3>
+                <h3 className="text-xl font-bold text-[#1a233a]">Quote Details</h3>
                 <p className="text-xs text-gray-400 mt-1">Determine product size limits, raw material configurations, and volume structures.</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Quote <span className="text-red-500">*</span></label>
-                <input 
-                  type="text" 
-                  defaultValue="QT-000003"
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" 
-                />
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quote <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="QT-000003" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Reference#</label>
-                <input 
-                  type="text" 
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" 
-                />
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Reference# <span className="text-red-500">*</span></label>
+                <input type="text" placeholder="Optional Reference" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
               </div>
-              
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Quote Date</label>
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="DD/MM/YYYY"
-                    className="w-full border border-[#c4d6eb] rounded-md pl-4 pr-10 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" 
-                  />
-                  <Calendar className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quote Date</label>
+                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
               </div>
-              
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Expire Date</label>
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="DD/MM/YYYY"
-                    className="w-full border border-[#c4d6eb] rounded-md pl-4 pr-10 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" 
-                  />
-                  <Calendar className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Sales Persons</label>
-                <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Manoj Kumar</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Project Name</label>
-                <input 
-                  type="text" 
-                  placeholder="Select Project"
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" 
-                />
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Expire Date</label>
+                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Subject</label>
-                <input 
-                  type="text" 
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3]" 
-                />
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Sales Persons</label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>Manoj Kumar</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Project Name</label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>Select Project</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Section 3: Product Requirements */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-[#3ca0d3] p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-10 h-10 bg-[#3ca0d3] rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
-                <Factory className="w-5 h-5" />
+          {/* Section 3: Product Specification */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-4">
+              <div className="w-10 h-10 bg-[#7b46ef] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+                <Box className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a233a]">Product Requirements</h3>
+                <h3 className="text-xl font-bold text-[#1a233a]">Product Specification</h3>
                 <p className="text-xs text-gray-400 mt-1">Determine product size limits, raw material configurations, and volume structures.</p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Box Type <span className="text-red-500">*</span></label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Printed</option>
-                    <option>Plain</option>
-                    <option>Corrugated</option>
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>Universal</option>
                   </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Size <span className="text-red-500">*</span></label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Size <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
                     <option>Medium</option>
-                    <option>Small</option>
-                    <option>Large</option>
                   </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Measurement <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
-                    <Package className="w-4 h-4" />
-                  </span>
-                  <input type="text" defaultValue="38 * 32 * 54" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Product Type <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Standard</option>
-                    <option>Butterfly</option>
-                    <option>Custom</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Joint Type <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Clean</option>
-                    <option>Standard</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>5 Ply</option>
-                    <option>3 Ply</option>
-                    <option>7 Ply</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Print Type <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white font-medium">
-                    <option>Black</option>
-                    <option>CMYK</option>
-                    <option>Pantone</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Number of Orders <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
-                    <Layers className="w-4 h-4" />
-                  </span>
-                  <input type="text" defaultValue="5000" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
-                </div>
-              </div>
-
-              {/* Material Availability Dropdown */}
-              <div className="md:col-span-2 pt-2">
-                <button 
-                  type="button" 
-                  onClick={() => setShowMaterial(!showMaterial)}
-                  className="flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                  <Layers className="w-4 h-4 mr-2" />
-                  Material Availability
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${showMaterial ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {showMaterial && (
-                  <div className="mt-4 p-6 bg-[#fcf8fa] rounded-xl border border-gray-100 shadow-sm relative">
-                    <div className="absolute top-6 right-6">
-                      <div className="flex items-center gap-1.5 px-3 py-1 bg-[#dcfce7] text-[#16a34a] rounded-full text-xs font-semibold">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]"></span>
-                        Available
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-2">
-                      <div>
-                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">GSM</label>
-                        <input type="number" defaultValue="180" className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" />
-                      </div>
-                      <div>
-                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Color</label>
-                        <input type="text" defaultValue="Brown" className="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-purple-300 font-medium bg-white" />
-                      </div>
-                      <div>
-                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Available Weight</label>
-                        <div className="flex rounded-md shadow-sm">
-                          <input type="text" defaultValue="4,500" className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white" />
-                          <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">Kg</span>
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Required Weight</label>
-                        <div className="flex rounded-md shadow-sm">
-                          <input type="text" defaultValue="3,550" className="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-none rounded-l-md text-sm border-gray-300 border focus:outline-none focus:border-purple-300 text-[#1a233a] font-medium bg-white" />
-                          <span className="inline-flex items-center px-4 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">Kg</span>
-                        </div>
-                      </div>
+              <div className="md:col-span-1">
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Measurement <span className="text-[10px] text-gray-400 font-normal">(IN CM)</span> <span className="text-red-500">*</span></label>
+                <div className="flex items-center space-x-2">
+                  <div className="relative flex-1">
+                    <input type="text" defaultValue="38" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
+                      <Box className="w-3.5 h-3.5" />
+                      <span className="text-[10px] font-bold">L</span>
                     </div>
                   </div>
-                )}
+                  <span className="text-gray-300">×</span>
+                  <div className="relative flex-1">
+                    <input type="text" defaultValue="32" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
+                      <Box className="w-3.5 h-3.5" />
+                      <span className="text-[10px] font-bold">W</span>
+                    </div>
+                  </div>
+                  <span className="text-gray-300">×</span>
+                  <div className="relative flex-1">
+                    <input type="text" defaultValue="54" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
+                      <Box className="w-3.5 h-3.5" />
+                      <span className="text-[10px] font-bold">H</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Paper <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>NS</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>5 Ply</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Top paper GSM <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="145" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-1">
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Liner <span className="text-red-500">*</span></label>
+                  <input type="text" defaultValue="145" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Flute <span className="text-red-500">*</span></label>
+                  <input type="text" defaultValue="120" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Print type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>Plain</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Joint type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                    <option>Clean</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Dispatch date <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="20/08/2026" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quantity <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="5000" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
               </div>
             </div>
           </div>
 
-          {/* Section 4: Print Specifications */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-[#8cb6c4] p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-10 h-10 bg-[#8cb6c4] rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+          {/* Section 4: Board Calculation */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-5">
+              <div className="w-10 h-10 bg-[#4f67ff] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#1a233a]">Board Calculation</h3>
+                <p className="text-xs text-gray-400 mt-1">Calculate board dimensions, paper usage, and production requirements.</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-8">
+              {/* Left inputs */}
+              <div className="flex-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-[#1a233a] mb-2">Board Size (L x W)</label>
+                  <input type="text" defaultValue="88 x 145" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">BF (Board Factor)</label>
+                  <input type="text" defaultValue="18" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Top Paper GSM</label>
+                  <input type="text" defaultValue="1300" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Two Ply GSM</label>
+                  <input type="text" defaultValue="2600" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Weight (Per Box)</label>
+                  <input type="text" defaultValue="1.153" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Total Weight (Order)</label>
+                  <input type="text" defaultValue="1 Ton" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                </div>
+                </div>
+              </div>
+
+              {/* Right Summary */}
+              <div className="w-full md:w-[350px] bg-[#f9f8ff] rounded-2xl p-6 flex flex-col justify-center">
+                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed">
+                  <span className="text-xs font-bold text-gray-500">NO. OF BOARDS / SHEET</span>
+                  <span className="text-sm font-semibold text-[#1a233a]">4</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed">
+                  <span className="text-xs font-bold text-gray-500">BOXES PER TON</span>
+                  <span className="text-sm font-semibold text-[#1a233a]">867</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed mb-4">
+                  <span className="text-xs font-bold text-gray-500">BOX VALUE</span>
+                  <span className="text-sm font-semibold text-[#1a233a]">₹62/BOX</span>
+                </div>
+
+                <div className="mt-2">
+                  <span className="text-xs font-bold text-gray-500 block mb-1">ESTIMATED TOTAL</span>
+                  <div className="text-3xl font-bold text-[#1a233a]">₹ 80,600</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 5: Material Availability */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start">
+                <div className="w-10 h-10 bg-[#089dd2] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1a233a]">Material Availability</h3>
+                  <p className="text-xs text-gray-400 mt-1">Check available stock and material readiness for production.</p>
+                </div>
+              </div>
+              <div className="text-xs font-medium text-gray-400 mt-2">
+                {selectedMaterials.length} of {materials.length} selected
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {materials.map((mat) => (
+                <div
+                  key={mat.id}
+                  onClick={() => toggleMaterial(mat.id)}
+                  className={`border rounded-xl p-4 cursor-pointer transition-colors relative ${selectedMaterials.includes(mat.id)
+                      ? 'border-[#8fc2d6] bg-[#f0f9ff]'
+                      : 'border-gray-200 bg-white hover:border-gray-300'
+                    }`}
+                >
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="font-semibold text-[#1a233a] text-sm">{mat.name}</span>
+                    <div className={`w-5 h-5 rounded flex items-center justify-center transition-colors ${selectedMaterials.includes(mat.id) ? 'bg-[#3f7a8f]' : 'border border-gray-300'
+                      }`}>
+                      {selectedMaterials.includes(mat.id) && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 mb-2">{mat.spec}</div>
+                  <div className="text-sm">
+                    <span className="font-bold text-[#1a233a]">{mat.weight}</span>
+                    <span className="text-gray-400 ml-1 text-xs">in stock</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 6: Print Specifications */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-4">
+              <div className="w-10 h-10 bg-[#15b79e] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
                 <Palette className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-[#1a233a]">Print Specifications</h3>
-                <p className="text-xs text-gray-400 mt-1">Required for printed boxes.</p>
+                <p className="text-xs text-gray-400 mt-1">Required for printed boxes</p>
               </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Number of Colors <span className="text-red-500">*</span></label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Number of Colors <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
+                  <span className="absolute left-4 top-3 text-gray-400">
                     <Palette className="w-4 h-4" />
                   </span>
-                  <input type="text" defaultValue="4" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                  <input type="text" defaultValue="4" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
                 </div>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Print Area <span className="text-red-500">*</span></label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Print Area <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
-                    <Maximize className="w-4 h-4" />
+                  <span className="absolute left-4 top-3 text-gray-400">
+                    <Layers className="w-4 h-4" />
                   </span>
-                  <input type="text" defaultValue="120 * 80 mm" className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-4 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" />
+                  <input type="text" defaultValue="120 x 80 mm" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Artwork Upload <span className="text-red-500">*</span></label>
-                <div className="border-2 border-dashed border-blue-400 rounded-lg p-6 flex items-center justify-center bg-white cursor-pointer hover:bg-blue-50/50 transition-colors h-[88px]">
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Artwork Upload <span className="text-red-500">*</span></label>
+                <div className="border-2 border-dashed border-[#a3c2fa] rounded-lg p-4 flex items-center bg-white cursor-pointer hover:bg-gray-50 transition-colors">
                   <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <UploadCloud className="w-5 h-5 text-gray-500" />
+                    <UploadCloud className="w-5 h-5 text-gray-400" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-bold text-[#1a233a]">Drop artwork or click to upload</p>
-                    <p className="text-[10px] text-gray-400 mt-0.5">PDF, AI, PSD, PNG or JPG - up to 25 MB</p>
+                  <div>
+                    <p className="text-xs font-bold text-[#1a233a]">Drop artwork or click to upload</p>
+                    <p className="text-[10px] text-gray-400 font-medium">PDF, AI, PSD, PNG or JPG up to 25 MB</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Printing Notes</label>
-                <textarea 
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-3 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] h-[88px] resize-none font-medium" 
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Printing Notes</label>
+                <textarea
+                  rows="3"
                   defaultValue="High-density premium finish expected on all outer faces."
+                  className="w-full border border-[#c4d6eb] rounded-lg p-4 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] resize-none h-[76px]"
                 ></textarea>
               </div>
             </div>
           </div>
 
-          {/* Section 5: Additional Information */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-orange-500 p-8">
-            <div className="flex items-start mb-6">
-              <div className="w-10 h-10 bg-orange-400 rounded-lg flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+          {/* Section 7: Additional Information */}
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
+            <div className="flex items-start mb-4">
+              <div className="w-10 h-10 bg-[#b649d8] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
                 <ClipboardList className="w-5 h-5" />
               </div>
               <div>
@@ -455,435 +501,353 @@ const CreateQuotePage = () => {
                 <p className="text-xs text-gray-400 mt-1">Delivery, priority and instructions.</p>
               </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Delivery Date <span className="text-red-500">*</span></label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Delivery Date <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <span className="absolute left-3 top-3 text-gray-400">
+                  <span className="absolute left-4 top-3 text-gray-400">
                     <Calendar className="w-4 h-4" />
                   </span>
-                  <input 
-                    type="text" 
-                    defaultValue="07/15/2026"
-                    className="w-full border border-[#c4d6eb] rounded-md pl-10 pr-10 py-2.5 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] font-medium" 
-                  />
-                  <Calendar className="absolute right-3 top-3 w-4 h-4 text-gray-300 pointer-events-none" />
+                  <input type="text" defaultValue="07/15/2026" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-10 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <Calendar className="absolute right-4 top-3 w-4 h-4 text-gray-300 pointer-events-none" />
                 </div>
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Customer Type <span className="text-red-500">*</span></label>
-                <div className="flex items-center space-x-6 mt-3">
-                  <label className="flex items-center cursor-pointer group">
-                    <div className="relative flex items-center justify-center">
-                      <input type="radio" name="customerType" className="peer sr-only" />
-                      <div className="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-blue-600 group-hover:border-blue-400 flex items-center justify-center transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-blue-600 scale-0 peer-checked:scale-100 transition-transform"></div>
-                      </div>
-                    </div>
-                    <span className="ml-2 text-sm text-gray-600">Normal</span>
-                  </label>
-
-                  <label className="flex items-center cursor-pointer group">
-                    <div className="relative flex items-center justify-center">
-                      <input type="radio" name="customerType" className="peer sr-only" defaultChecked />
-                      <div className="w-4 h-4 rounded-full border border-blue-600 flex items-center justify-center transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-blue-600 scale-100 transition-transform"></div>
-                      </div>
-                    </div>
-                    <span className="ml-2 text-sm text-[#1a233a] font-medium">Urgent</span>
-                  </label>
-
-                  <label className="flex items-center cursor-pointer group">
-                    <div className="relative flex items-center justify-center">
-                      <input type="radio" name="customerType" className="peer sr-only" />
-                      <div className="w-4 h-4 rounded-full border border-gray-300 peer-checked:border-blue-600 group-hover:border-blue-400 flex items-center justify-center transition-colors">
-                        <div className="w-2 h-2 rounded-full bg-blue-600 scale-0 peer-checked:scale-100 transition-transform"></div>
-                      </div>
-                    </div>
-                    <span className="ml-2 text-sm text-gray-600">High Priority</span>
-                  </label>
+                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Customer Type <span className="text-red-500">*</span></label>
+                <div className="flex items-center space-x-2 mt-2.5">
+                  <button className="text-xs font-semibold text-gray-500 px-3 py-1">Normal</button>
+                  <button className="text-xs font-semibold text-[#ff7a59] bg-[#fff0ec] px-4 py-1 rounded-full">Urgent</button>
+                  <button className="text-xs font-semibold text-gray-500 px-3 py-1">High Priority</button>
                 </div>
               </div>
+            </div>
 
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-[#1a233a] mb-2">Remarks / Special Instructions</label>
-                <textarea 
-                  className="w-full border border-[#c4d6eb] rounded-md px-4 py-3 text-sm text-[#1a233a] focus:outline-none focus:border-[#3ca0d3] h-28 resize-none" 
-                  defaultValue="Batch requires additional edge reinforcing during custom slotting."
-                ></textarea>
-              </div>
+            <div>
+              <label className="block text-xs font-semibold text-[#1a233a] mb-2">Remarks / Special Instructions</label>
+              <textarea
+                rows="4"
+                defaultValue="Batch requires additional edge reinforcing during custom slotting."
+                className="w-full border border-[#c4d6eb] rounded-lg p-4 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] resize-none"
+              ></textarea>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Footer Actions */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 px-8 flex justify-between items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-b-xl z-10">
-        <div>
-          <button 
-            onClick={() => setShowPreview(true)}
-            className="flex items-center px-4 py-2 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-lg text-sm font-medium hover:bg-indigo-100 transition-colors"
-          >
-            <Eye className="w-4 h-4 mr-2" strokeWidth={2} />
-            Preview Quote
-          </button>
-        </div>
-        <div className="flex space-x-4">
-          <button className="flex items-center px-4 py-2 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-            <Bookmark className="w-4 h-4 mr-2 text-gray-500" strokeWidth={2} />
-            Save Draft
-          </button>
-          <button 
-            onClick={() => navigate('/sales/quotes')}
-            className="px-6 py-2 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
-          >
-            Cancel
-          </button>
-          <button 
-            onClick={() => setShowOrderSummary(true)}
-            className="px-8 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
-          >
-            Save
-          </button>
-        </div>
+      {/* Floating Footer Actions */}
+      <div className="sticky bottom-0 w-full bg-white border-t border-gray-200 px-6 py-3 flex items-center justify-end space-x-4 z-50 mt-auto">
+        <button
+          onClick={() => navigate('/sales/quotes')}
+          className="px-6 py-3 rounded-lg border border-gray-300 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
+        >
+          Cancel
+        </button>
+        <button className="px-6 py-3 rounded-lg bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-4 h-4 mr-2 text-gray-500" />
+          Save Draft
+        </button>
+        <button
+          onClick={() => setShowPreview(true)}
+          className="px-8 py-3 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity"
+        >
+          Save
+        </button>
       </div>
-
-      {/* Quote Preview Modal */}
-      {showPreview && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 md:p-8">
-          <div className="bg-gray-100 w-full max-w-5xl h-full rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200">
-            {/* Modal Header */}
-            <div className="bg-white px-6 py-4 border-b flex justify-between items-center shadow-sm z-10">
-              <h3 className="text-lg font-bold text-slate-800 flex items-center">
-                <FileText className="w-5 h-5 mr-2 text-indigo-600" />
-                Quote Preview
-              </h3>
-              <button 
-                onClick={() => setShowPreview(false)}
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors"
-              >
-                Close Preview
-              </button>
-            </div>
-            
-            {/* Modal Body - Document Area */}
-            <div className="flex-1 overflow-y-auto p-8 flex justify-center custom-scrollbar">
-              <div className="bg-white w-[800px] min-h-[1050px] shadow-lg relative p-12">
-                {/* Watermark */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
-                  <span className="text-[150px] font-black tracking-widest transform -rotate-45 text-gray-900">PREVIEW</span>
-                </div>
-
-                {/* Header */}
-                <div className="flex justify-between items-start border-b-2 border-gray-100 pb-8 mb-8">
-                  <div>
-                    <h1 className="text-3xl font-black text-gray-900 tracking-tight">QUOTE</h1>
-                    <p className="text-gray-500 mt-1 font-medium">QT-000003</p>
-                  </div>
-                  <div className="text-right">
-                    <h2 className="text-xl font-bold text-gray-800">Globex Advanced Ltd.</h2>
-                    <p className="text-sm text-gray-500 mt-1">142 Tech Park, Sector 4<br/>Bangalore, KA 560034<br/>GSTIN: 29AABCU9603R1Z2</p>
-                  </div>
-                </div>
-
-                {/* Bill To & Details */}
-                <div className="flex justify-between mb-10">
-                  <div>
-                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Quote For</h3>
-                    <p className="font-bold text-gray-800">ZAP Private Limited</p>
-                    <p className="text-sm text-gray-600 mt-1">GST: 27AABCUJMSAIU462BC<br/>Phone: +91 764539543<br/>Attn: Rahul Mehta</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                      <span className="text-gray-500">Quote Date:</span>
-                      <span className="font-medium text-gray-800">18 Jul 2026</span>
-                      <span className="text-gray-500">Valid Until:</span>
-                      <span className="font-medium text-gray-800">18 Aug 2026</span>
-                      <span className="text-gray-500">Sales Person:</span>
-                      <span className="font-medium text-gray-800">Manoj Kumar</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Specifications Box */}
-                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-8">
-                  <h3 className="text-sm font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Product Specifications: Custom Corrugated Box</h3>
-                  <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div><span className="text-gray-500">Type:</span> <span className="font-medium text-gray-800">Printed</span></div>
-                    <div><span className="text-gray-500">Size:</span> <span className="font-medium text-gray-800">Medium</span></div>
-                    <div><span className="text-gray-500">Measurement:</span> <span className="font-medium text-gray-800">38 * 32 * 54</span></div>
-                    <div><span className="text-gray-500">Joint:</span> <span className="font-medium text-gray-800">Clean</span></div>
-                    <div><span className="text-gray-500">Ply:</span> <span className="font-medium text-gray-800">5 Ply</span></div>
-                    <div><span className="text-gray-500">Print:</span> <span className="font-medium text-gray-800">CMYK (4 Colors)</span></div>
-                  </div>
-                </div>
-
-                {/* Pricing Table */}
-                <table className="w-full text-left mb-8">
-                  <thead>
-                    <tr className="border-b-2 border-gray-800 text-gray-800">
-                      <th className="py-3 text-sm font-bold w-1/2">Item Description</th>
-                      <th className="py-3 text-sm font-bold text-center">Qty</th>
-                      <th className="py-3 text-sm font-bold text-right">Rate</th>
-                      <th className="py-3 text-sm font-bold text-right">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-sm">
-                    <tr className="border-b border-gray-100">
-                      <td className="py-4">
-                        <p className="font-bold text-gray-800">Custom Box Manufacturing</p>
-                        <p className="text-gray-500 mt-1">High-density premium finish as per specifications.</p>
-                      </td>
-                      <td className="py-4 text-center font-medium">5000</td>
-                      <td className="py-4 text-right">₹ 145.00</td>
-                      <td className="py-4 text-right font-medium">₹ 7,25,000.00</td>
-                    </tr>
-                    <tr className="border-b border-gray-100">
-                      <td className="py-4">
-                        <p className="font-bold text-gray-800">Setup & Tooling Charge</p>
-                        <p className="text-gray-500 mt-1">One-time die and plate creation fee.</p>
-                      </td>
-                      <td className="py-4 text-center font-medium">1</td>
-                      <td className="py-4 text-right">₹ 12,000.00</td>
-                      <td className="py-4 text-right font-medium">₹ 12,000.00</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                {/* Totals */}
-                <div className="flex justify-end mb-12">
-                  <div className="w-72">
-                    <div className="flex justify-between py-2 text-sm">
-                      <span className="text-gray-600">Subtotal</span>
-                      <span className="font-medium text-gray-800">₹ 7,37,000.00</span>
-                    </div>
-                    <div className="flex justify-between py-2 text-sm border-b border-gray-200">
-                      <span className="text-gray-600">IGST (18%)</span>
-                      <span className="font-medium text-gray-800">₹ 1,32,660.00</span>
-                    </div>
-                    <div className="flex justify-between py-3 text-lg font-bold text-gray-900 bg-gray-50 px-3 mt-2 rounded-lg">
-                      <span>Total</span>
-                      <span>₹ 8,69,660.00</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Terms */}
-                <div>
-                  <h4 className="text-sm font-bold text-gray-800 mb-2">Terms & Conditions</h4>
-                  <ul className="text-xs text-gray-500 space-y-1 list-disc pl-4">
-                    <li>Quote is valid for 30 days from the date of issuance.</li>
-                    <li>Payment terms: 50% advance, 50% against delivery.</li>
-                    <li>Delivery timeline: 15-20 business days from artwork approval.</li>
-                    <li>Subject to Bangalore jurisdiction.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Live Order Summary Modal */}
-      {showOrderSummary && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white w-full max-w-3xl rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[90vh]">
-            
+      {showPreview && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/40 backdrop-blur-[2px] p-4">
+          <div className="bg-[#f4f7fb] w-full max-w-2xl rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[90vh]">
+
             {/* Header */}
-            <div className="bg-[#3a6878] px-6 py-4 flex justify-between items-center">
+            <div className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] px-6 py-4 flex justify-between items-center rounded-t-xl">
               <div>
                 <p className="text-white/80 text-xs font-medium mb-0.5">Live Order Summary</p>
-                <h3 className="text-xl font-bold text-white">Preview</h3>
+                <h3 className="text-2xl font-bold text-white tracking-wide">Preview</h3>
               </div>
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <Package className="w-6 h-6 text-[#3a6878]" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Package className="w-8 h-8 text-white" strokeWidth={1.5} />
               </div>
             </div>
-            
+
             {/* Body */}
-            <div className="flex-1 overflow-y-auto p-6 bg-[#f8fafc] custom-scrollbar space-y-4">
-              
+            <div className="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-3">
+
               {/* Customer */}
-              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shrink-0">
                     <UserPlus className="w-4 h-4" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-[#1a233a]">Customer</h4>
+                  <h4 className="text-[18px] font-bold text-[#1a233a]">Customer</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Name</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">ZAP Private Limited</span>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">Name</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">ZAP Private Limited</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">GST Number</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">22AAAAA0000A1Z5</span>
+                  <div className="flex justify-between items-center pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">GST Number</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">22AAAAA0000A1Z5</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[12px] text-gray-500 font-medium">Phone</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">+91 98765 43210</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[13px] text-gray-500 font-medium">Phone</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">+91 98765 43210</span>
                   </div>
                 </div>
               </div>
 
               {/* Product Specifications */}
-              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shrink-0">
                     <Package className="w-4 h-4" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-[#1a233a]">Product Specifications</h4>
+                  <h4 className="text-[18px] font-bold text-[#1a233a]">Product Specifications</h4>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+
+                <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Box Type</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">Printed</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">Printed</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">BoxSize</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">Medium</span>
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
+                    <span className="text-[12px] text-gray-500 font-medium">Box Size</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">Medium</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Box Measurement</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">998 × 654 × 663</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">998 × 654 × 663</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Paper</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">NS</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">NS</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Ply Type</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">5 Ply</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">5 Ply</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Top Paper</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">GSM</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">GSM</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Liner</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">145</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">145</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Fluter</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">120</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">120</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Print Type</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">Plain</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">Plain</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                     <span className="text-[12px] text-gray-500 font-medium">Joint Type</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">Clean</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">Clean</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
+                  <div className="flex justify-between items-center pb-1">
                     <span className="text-[12px] text-gray-500 font-medium">Dispatch Date</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">20.8.2026</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">20.8.2026</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center pb-1">
                     <span className="text-[12px] text-gray-500 font-medium">Quantity</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">5000</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">5000</span>
                   </div>
                 </div>
               </div>
 
               {/* Board Calculation */}
-              <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
-                    <ClipboardList className="w-4 h-4" />
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shrink-0">
+                    <Calculator className="w-4 h-4" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-[#1a233a]">Board Calculation</h4>
+                  <h4 className="text-[18px] font-bold text-[#1a233a]">Board Calculation</h4>
                 </div>
-                <div className="space-y-3 mb-8">
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Board</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">88 × 145</span>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">Board</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">88 × 145</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">BF</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">18</span>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">BF</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">18</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">TOP Paper</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">1300</span>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">TOP Paper</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">1300</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Two-Ply</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">2600</span>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">Two-Ply</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">2600</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Box Weight</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">1.153 Kg</span>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">Box Weight</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">1.153 Kg</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Total Weight</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">1 Ton</span>
+                  <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                    <span className="text-[13px] text-gray-500 font-medium">Total Weight</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">1 Ton</span>
                   </div>
-                  <div className="flex justify-between border-b border-gray-100 pb-3">
-                    <span className="text-[12px] text-gray-500 font-medium">Box Value</span>
-                    <span className="text-[12px] text-[#1a233a] font-bold">62 × 1300</span>
+                  <div className="flex justify-between items-center pb-1">
+                    <span className="text-[13px] text-gray-500 font-medium">Box Value</span>
+                    <span className="text-[13px] text-[#1a233a] font-bold">62</span>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-full bg-[#3a6878] flex items-center justify-center text-white shrink-0">
+              {/* Material Available */}
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shrink-0">
                     <Layers className="w-4 h-4" />
                   </div>
-                  <h4 className="text-[16px] font-bold text-[#1a233a]">Material Available</h4>
+                  <h4 className="text-[18px] font-bold text-[#1a233a]">Material Available</h4>
                 </div>
-                <div className="flex justify-between items-center py-2 px-1">
-                  <span className="text-[12px] text-gray-500 font-medium">Material</span>
-                  <div className="flex gap-4 text-[12px] text-[#1a233a] font-bold">
-                    <span>Reel 125</span>
-                    <span>100 × 150</span>
-                    <span>230 GSM</span>
-                    <span>NS</span>
-                    <span>1500 Kg</span>
+
+                <div className="space-y-4">
+                  {/* Reel 125 */}
+                  <div className="border border-gray-100 rounded-xl p-4 bg-[#fafbfc]">
+                    <h5 className="text-[14px] font-bold text-[#1a233a] mb-4">Reel 125</h5>
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Type</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">NS</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">GSM</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">230</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Size</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">100 × 150</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">BF</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">18</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Available</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">1500 Kg</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Required</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">800 Kg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reel 126 */}
+                  <div className="border border-gray-100 rounded-xl p-4 bg-[#fafbfc]">
+                    <h5 className="text-[14px] font-bold text-[#1a233a] mb-4">Reel 126</h5>
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Type</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">NS</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">GSM</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">230</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Size</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">100 × 150</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">BF</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">18</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Available</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">1500 Kg</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Required</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">800 Kg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reel 127 */}
+                  <div className="border border-gray-100 rounded-xl p-4 bg-[#fafbfc]">
+                    <h5 className="text-[14px] font-bold text-[#1a233a] mb-4">Reel 127</h5>
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Type</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">NS</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">GSM</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">230</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Size</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">100 × 150</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">BF</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">18</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Available</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">1500 Kg</p>
+                      </div>
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-semibold mb-1">Required</p>
+                        <p className="text-[13px] text-[#1a233a] font-bold">800 Kg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 px-2 space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[14px] text-[#1a233a] font-bold">Total Reels</span>
+                      <span className="text-[14px] text-[#1a233a] font-bold">3</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[14px] text-[#1a233a] font-bold">Total Quantity Allocated</span>
+                      <span className="text-[14px] text-[#1a233a] font-bold">2400 Kg</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Estimated Total Block */}
-              <div className="bg-[#eaf4fd] rounded-xl p-6 flex justify-between items-center">
+              <div className="bg-[#fff1f2] rounded-xl p-5 flex justify-between items-end border border-[#ffe4e6]">
                 <div>
-                  <p className="text-[11px] font-bold text-[#4491e0] uppercase tracking-wider mb-2">Estimated Total</p>
-                  <h2 className="text-[28px] leading-none font-bold text-[#1a233a]">₹ 80,600</h2>
+                  <p className="text-[11px] font-bold text-[#ff6b6b] uppercase tracking-wider mb-2">Estimated Total</p>
+                  <h2 className="text-[32px] leading-none font-bold text-[#1a233a]">₹ 80,600</h2>
                 </div>
-                <div className="text-[14px] font-bold text-[#4491e0]">
+                <div className="text-[14px] font-bold text-gray-500">
                   @ ₹62 /BOX
                 </div>
               </div>
 
-              {/* Production Status */}
-              <div className="flex justify-between items-center pb-2">
-                <span className="text-[13px] text-gray-500 font-medium">Production Status</span>
-                <span className="px-3 py-1 bg-[#e0f5e7] text-[#16a34a] text-[11px] font-bold rounded-full border border-green-200">
-                  Ready for Production
-                </span>
+              {/* Footer Buttons */}
+              <div className="flex justify-between items-center pt-4 pb-2">
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="w-[48%] py-3 bg-white text-[#1a233a] rounded-full text-sm font-bold border-2 border-gray-100 hover:bg-gray-50 hover:border-gray-200 transition-all shadow-sm flex items-center justify-center"
+                >
+                  Edit Order
+                </button>
+                <button
+                  onClick={() => {
+                    setShowPreview(false);
+                    navigate('/sales/quotes');
+                  }}
+                  className="w-[48%] py-3 bg-gradient-to-r from-[#f86583] to-[#4534e1] text-white rounded-full text-sm font-bold shadow-md hover:shadow-lg hover:opacity-95 transition-all flex items-center justify-center"
+                >
+                  Confirm Order
+                </button>
               </div>
 
             </div>
-
-            {/* Footer */}
-            <div className="bg-white border-t border-gray-100 px-6 py-4 flex justify-end items-center space-x-3">
-              <button 
-                onClick={() => setShowOrderSummary(false)}
-                className="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors"
-              >
-                Cancel
-              </button>
-              <button 
-                onClick={() => navigate('/sales/quotes')}
-                className="px-6 py-2.5 bg-[#2563eb] text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-sm"
-              >
-                Create Order
-              </button>
-            </div>
-            
           </div>
         </div>
       )}

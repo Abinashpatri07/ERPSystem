@@ -9,6 +9,7 @@ import {
   Printer, 
   ChevronDown,
   FileText,
+  PackagePlus,
   ShoppingCart,
   Factory,
   Package,
@@ -16,6 +17,8 @@ import {
   Receipt,
   CheckCircle,
   CreditCard,
+  PackageCheck,
+  HandCoins,
   ArrowRightLeft
 } from 'lucide-react';
 
@@ -31,18 +34,18 @@ const QuoteDetailPage = () => {
   ];
 
   const steps = [
-    { name: 'Quote', icon: FileText, active: true },
-    { name: 'Sales order', icon: ShoppingCart, active: false },
+    { name: 'Quote', icon: PackagePlus, active: true },
+    { name: 'Sales order', icon: FileText, active: false },
     { name: 'Production', icon: Factory, active: false },
     { name: 'Package', icon: Package, active: false },
     { name: 'Ship', icon: Truck, active: false },
     { name: 'Invoice', icon: Receipt, active: false },
-    { name: 'Delivered', icon: CheckCircle, active: false },
-    { name: 'Payment', icon: CreditCard, active: false },
+    { name: 'Delivered', icon: PackageCheck, active: false },
+    { name: 'Payment', icon: HandCoins, active: false },
   ];
 
   return (
-    <main className="flex-1 overflow-hidden bg-white flex flex-col relative">
+    <main className="flex-1 overflow-hidden bg-[#f4f7fb] flex flex-col relative">
       {/* Sub Navigation */}
       <div className="px-8 border-b border-gray-200 bg-white flex-shrink-0">
         <nav className="flex space-x-8">
@@ -50,7 +53,7 @@ const QuoteDetailPage = () => {
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 tab.name === 'Quotes'
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -62,46 +65,88 @@ const QuoteDetailPage = () => {
         </nav>
       </div>
 
+      {/* Header & Stepper */}
+      <div className="px-4 pt-2 bg-[#f4f7fb] flex-shrink-0 pb-2">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm px-5 py-2.5 flex flex-col gap-1.5">
+          <h2 className="text-[16px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600 self-start">
+            Quote View
+          </h2>
+          
+          <div className="relative overflow-x-auto pb-1 custom-scrollbar">
+            <div className="flex items-start w-full min-w-[700px]">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                const isActive = step.active;
+                return (
+                  <React.Fragment key={step.name}>
+                    <div className="flex flex-col items-center shrink-0 w-[90px]">
+                      <div className={`relative z-10 w-[40px] h-[40px] rounded-full flex items-center justify-center border-[1.5px] bg-white ${
+                        isActive ? 'bg-gradient-to-br from-pink-500 to-purple-600 border-transparent text-white shadow-md' : 'border-gray-200 text-gray-400'
+                      }`}>
+                        <Icon className="w-4 h-4" strokeWidth={isActive ? 2 : 1.5} />
+                      </div>
+                      <span className={`mt-1.5 text-[11px] font-medium text-center w-[90px] ${isActive ? 'text-gray-900' : 'text-gray-500'}`}>
+                        {step.name}
+                      </span>
+                    </div>
+
+                    {/* Connecting Line */}
+                    {index !== steps.length - 1 && (
+                      <div className="flex-1 flex items-start pt-[19px] -mx-[25px]">
+                        <div className={`h-[2px] w-full ${
+                          index === 0 ? 'bg-gradient-to-r from-pink-500 to-pink-200' : 'bg-gray-200'
+                        }`}></div>
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Split View Content */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden px-4 pb-4 gap-4">
         
         {/* Left Sidebar (Quotes List) */}
-        <div className="w-[320px] bg-white border-r border-gray-200 flex flex-col flex-shrink-0">
-          <div className="p-4 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-[#1a233a]">All Quotes</h2>
+        <div className="w-[340px] bg-white rounded-2xl border border-gray-200 flex flex-col flex-shrink-0 shadow-sm overflow-hidden">
+          <div className="px-4 py-3 flex items-center justify-between">
+            <h2 className="text-[16px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">All Quotes</h2>
             <div className="flex space-x-2">
               <button 
                 onClick={() => navigate('/sales/quotes/new')}
-                className="w-8 h-8 bg-blue-500 text-white rounded flex items-center justify-center hover:bg-blue-600 transition-colors"
+                className="w-[28px] h-[28px] bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors shadow-sm"
               >
-                <Plus className="w-5 h-5" />
+                <Plus className="w-4 h-4" />
               </button>
-              <button className="w-8 h-8 bg-gray-100 text-gray-600 rounded flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <MoreHorizontal className="w-5 h-5" />
+              <button className="w-[28px] h-[28px] bg-gray-200 text-gray-600 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors shadow-sm">
+                <MoreHorizontal className="w-4 h-4" />
               </button>
             </div>
           </div>
           
-          <div className="px-4 pb-4 border-b border-gray-100">
-            <div className="relative">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
+          <div className="px-4 pb-3 border-b border-gray-100">
+            <div className="relative flex items-center">
+              <Search className="absolute left-3 w-3.5 h-3.5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search customer, product or item..." 
-                className="w-full bg-[#f4f7fb] border border-gray-200/60 rounded-md pl-9 pr-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 text-[#1a233a]"
+                placeholder="Search quotes..." 
+                className="w-full bg-[#f8fafc] border border-gray-200 rounded-lg pl-8 pr-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-pink-200 text-[#1a2337] transition-all"
               />
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
+          <div className="flex-1 p-4 space-y-3">
             {/* Selected Quote Card */}
-            <div className="border border-gray-200 bg-white rounded-xl p-4 cursor-pointer hover:border-blue-300 transition-colors shadow-sm">
+            <div className="border border-gray-200 bg-white rounded-3xl p-4 cursor-pointer hover:border-pink-300 transition-colors shadow-sm">
               <div className="flex justify-between items-start mb-2">
-                <span className="text-gray-400 font-medium text-[10px]">25/06/2026</span>
+                <span className="text-sm font-medium text-gray-500">INV-00001</span>
+                <span className="text-[10px] text-gray-400">25/06/2026</span>
               </div>
-              <p className="text-xs font-bold text-[#1a233a] mb-4 truncate">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
-              <div className="flex justify-between items-center text-[11px]">
-                <span className="text-gray-400 font-medium">INV-00001</span>
+              <p className="text-sm font-bold text-[#1a233a] mb-4 truncate">CLIMAMAX CONTROLS PRIVATE LIMITED</p>
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-gray-500 font-medium">Sales Quote</span>
                 <span className="font-bold text-[#1a233a]">₹100.00</span>
               </div>
             </div>
@@ -109,169 +154,164 @@ const QuoteDetailPage = () => {
         </div>
 
         {/* Right Main Content */}
-        <div className="flex-1 flex flex-col overflow-y-auto bg-white custom-scrollbar">
-          
-          <div className="p-6">
-            {/* Dark Teal Banner (Stepper) */}
-            <div className="bg-[#244f5d] text-white p-6 mb-6 rounded-xl shadow-sm">
-              <h2 className="text-2xl font-bold tracking-wide leading-tight mb-6">
-                Quote Creation
-              </h2>
-              
-              <div className="flex items-center w-full justify-between pb-1 overflow-x-auto hide-scrollbar">
-                {steps.map((step, index) => {
-                  const Icon = step.icon;
-                  return (
-                    <React.Fragment key={step.name}>
-                      <div className={`flex items-center px-3 py-1.5 rounded-full font-medium text-xs flex-shrink-0 shadow-sm ${
-                        step.active ? 'bg-[#e5f0fe] text-[#244f5d]' : 'bg-[#5c8a99] text-white'
-                      }`}>
-                        <span className={`w-5 h-5 rounded-full flex items-center justify-center mr-1.5 ${
-                          step.active ? 'bg-[#244f5d] text-white' : 'bg-white text-[#5c8a99]'
-                        }`}>
-                          <Icon className="w-3 h-3" strokeWidth={2.5} />
-                        </span>
-                        {step.name}
-                      </div>
-                      {index < steps.length - 1 && (
-                        <div className="flex-1 h-[1px] bg-white/30 mx-2 min-w-[8px]"></div>
-                      )}
-                    </React.Fragment>
-                  );
-                })}
-              </div>
-            </div>
-
+        <div className="flex-1 flex flex-col overflow-hidden min-h-0">
             {/* Action Header */}
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold text-[#1a233a]">{id || 'QT-00002'}</h2>
-              <div className="flex items-center space-x-3">
-                <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                  <Edit className="w-4 h-4 mr-2" />
-                  Edit
-                </button>
-                <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send
-                  <ChevronDown className="w-4 h-4 ml-2 text-gray-500" />
-                </button>
-                <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors">
-                  <Printer className="w-4 h-4 mr-2" />
-                  PDF/ Print
-                </button>
-                <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md text-sm font-medium hover:bg-blue-600 transition-colors shadow-sm">
-                  <ArrowRightLeft className="w-4 h-4 mr-2" />
-                  Convert to SO
-                </button>
-                <button className="px-2 py-2 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200 transition-colors">
-                  <MoreHorizontal className="w-5 h-5" />
-                </button>
+            <div className="pt-0 pb-2 flex-shrink-0">
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-4 py-2.5">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-[17px] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">{id || 'QT-000001'}</h2>
+                    <span className="px-2.5 py-0.5 text-[11px] font-semibold text-[#b45309] bg-[#ffedd5] rounded-full">Unpaid</span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                      <Edit className="w-3.5 h-3.5" />
+                    </button>
+                    <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                      <Send className="w-3.5 h-3.5" />
+                    </button>
+                    <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                      <Printer className="w-3.5 h-3.5" />
+                    </button>
+                    <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-[12px] font-medium hover:opacity-90 transition-opacity shadow-sm">
+                      <ArrowRightLeft className="w-3.5 h-3.5 mr-1.5" />
+                      Convert to SO
+                    </button>
+                    <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
+                      <MoreHorizontal className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Quote Details Box */}
-            <div className="mb-8">
-              <h3 className="text-[15px] font-bold text-[#1a233a] mb-4">Quote Details</h3>
-              <div className="border border-[#e6edf5] rounded-xl p-6 bg-white">
-                <h4 className="text-xl text-[#1a233a] mb-1 tracking-tight">{id || 'QT-000002'}</h4>
-                <p className="text-[11px] text-gray-700 mb-8 font-medium">Total : ₹10,000.00</p>
+            {/* Main Details Containers */}
+            <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] pb-3">
+              <div className="space-y-2">
+              
+              {/* Quote Details Box */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                <h3 className="text-[15px] font-bold text-[#1a233a] pb-3 border-b border-gray-100 mb-3">Quote Details</h3>
+                <p className="text-[16px] font-bold text-[#1a233a] mb-4">Total : ₹10,000.00</p>
                 
-                <div className="grid grid-cols-5 gap-4">
-                  <div>
-                    <p className="text-xs font-bold text-[#1a233a] mb-1">Quote Type</p>
-                    <p className="text-sm text-gray-500">Invoice</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+                  <div className="bg-[#f9fafb] p-3 rounded-2xl">
+                    <p className="text-xs font-semibold text-[#1a233a] mb-1">Quote Date</p>
+                    <p className="text-[13px] text-gray-600">26/06/2026</p>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#1a233a] mb-1">Quote Date</p>
-                    <p className="text-sm text-gray-500">26/06/2026</p>
+                  <div className="bg-[#f9fafb] p-3 rounded-2xl">
+                    <p className="text-xs font-semibold text-[#1a233a] mb-1">Salesperson</p>
+                    <p className="text-[13px] text-gray-600">Ramesh Kumar</p>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#1a233a] mb-1">Salesperson</p>
-                    <p className="text-sm text-gray-500">---</p>
+                  <div className="bg-[#f9fafb] p-3 rounded-2xl">
+                    <p className="text-xs font-semibold text-[#1a233a] mb-1">Quote Number</p>
+                    <p className="text-[13px] text-gray-600">QT-000001</p>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#1a233a] mb-1">Quote Number</p>
-                    <p className="text-sm text-gray-400">QT-000001</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#1a233a] mb-1">Creation Date</p>
-                    <p className="text-sm text-gray-400">25/06/2026</p>
+                  <div className="bg-[#f9fafb] p-3 rounded-2xl">
+                    <p className="text-xs font-semibold text-[#1a233a] mb-1">Creation Date</p>
+                    <p className="text-[13px] text-gray-600">25/06/2026</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Customer Details Box */}
-            <div className="mb-8">
-              <h3 className="text-[15px] font-bold text-[#1a233a] mb-4">Customer Details</h3>
-              <div className="border border-[#e6edf5] rounded-xl p-6 bg-white">
-                <h4 className="text-[15px] font-medium text-[#3b82f6] tracking-wide mb-6">CLIMAMAX CONTROLS PRIVATE LIMITED</h4>
+              {/* Addresses Box */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col lg:flex-row">
+                <div className="flex-1 p-5">
+                    <h5 className="text-[14px] font-semibold text-gray-500 mb-3">Billing Address</h5>
+                    <p className="text-[13px] text-[#1a233a] font-medium leading-relaxed">
+                      648/A, OM Chambers, Binnamangala 1st<br/>
+                      Stage, Bengaluru, Karnataka 560038
+                    </p>
+                </div>
                 
-                <div className="flex">
-                  <div className="flex-1 pr-6 border-r border-[#e6edf5]">
-                    <h5 className="text-[13px] font-bold text-[#1a233a] mb-2">Shipping Address</h5>
-                    <p className="text-[13px] text-[#475569] leading-relaxed">
-                      Wholesale Business, Import, Supplier Of Services<br/>
-                      648/A, OM Chambers, Binnamangala 1st Stage<br/>
-                      Bengaluru<br/>
-                      Bengaluru Urban, Karnataka<br/>
-                      India - 560038
+                {/* Divider */}
+                <div className="w-auto mx-5 lg:mx-0 lg:w-[1px] h-[1px] lg:h-auto bg-gray-200 lg:my-5"></div>
+                
+                <div className="flex-1 p-5">
+                    <h5 className="text-[14px] font-semibold text-gray-500 mb-3">Shipping Address</h5>
+                    <p className="text-[13px] text-[#1a233a] font-medium leading-relaxed">
+                      Warehouse No. 12,<br/>
+                      KIADB Industrial Area, Whitefield,<br/>
+                      Bengaluru, Karnataka 560066
                     </p>
+                </div>
+              </div>
+
+              {/* Product Specification Box */}
+              <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-4">
+                <h3 className="text-[15px] font-bold text-[#1a233a] pb-3 border-b border-gray-100 mb-3">Product Specification</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
+                  <div className="bg-[#f8f9fc] p-3 rounded-2xl">
+                    <p className="text-xs text-gray-500 mb-1">Paper Type</p>
+                    <p className="text-[13px] font-semibold text-[#1a233a]">Kraft</p>
                   </div>
-                  <div className="flex-1 pl-8">
-                    <h5 className="text-[13px] font-bold text-[#1a233a] mb-2">Shipping Address</h5>
-                    <p className="text-[13px] text-[#475569] leading-relaxed">
-                      Wholesale Business, Import, Supplier Of Services<br/>
-                      648/A, OM Chambers, Binnamangala 1st Stage<br/>
-                      Bengaluru<br/>
-                      Bengaluru Urban, Karnataka<br/>
-                      India - 560038
-                    </p>
+                  <div className="bg-[#f8f9fc] p-3 rounded-2xl">
+                    <p className="text-xs text-gray-500 mb-1">Size</p>
+                    <p className="text-[13px] font-semibold text-[#1a233a]">18×12×10 In</p>
+                  </div>
+                  <div className="bg-[#f8f9fc] p-3 rounded-2xl">
+                    <p className="text-xs text-gray-500 mb-1">Ply</p>
+                    <p className="text-[13px] font-semibold text-[#1a233a]">5 Ply</p>
+                  </div>
+                  <div className="bg-[#f8f9fc] p-3 rounded-2xl">
+                    <p className="text-xs text-gray-500 mb-1">BF</p>
+                    <p className="text-[13px] font-semibold text-[#1a233a]">18 BF</p>
+                  </div>
+                  <div className="bg-[#f8f9fc] p-3 rounded-2xl">
+                    <p className="text-xs text-gray-500 mb-1">Print</p>
+                    <p className="text-[13px] font-semibold text-[#1a233a]">2 Color Flexo</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Items Table */}
-            <div className="bg-[#f8f9fb] rounded-t-lg border-b border-[#e6edf5] px-6 py-3">
-              <div className="grid grid-cols-12 text-xs font-medium text-gray-500">
-                <div className="col-span-5">Items</div>
-                <div className="col-span-3 text-center">Quantity</div>
-                <div className="col-span-2 text-right">Price</div>
-                <div className="col-span-2 text-right">Amount</div>
-              </div>
-            </div>
-            
-            <div className="px-6 py-4 border-b border-gray-100">
-              <div className="grid grid-cols-12 text-xs items-center text-[#1a233a]">
-                <div className="col-span-5 font-bold">Calibrated Glass Pipette</div>
-                <div className="col-span-3 text-center font-bold">1,000 Box</div>
-                <div className="col-span-2 text-right font-bold">30.00</div>
-                <div className="col-span-2 text-right font-bold">50,645</div>
-              </div>
-            </div>
+              {/* Calculation Box */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                <h3 className="text-[15px] font-bold text-[#1a233a] pb-3 border-b border-gray-100 mb-3">Calculation</h3>
+                
+                <div className="w-full">
+                  <div className="grid grid-cols-12 text-[11px] font-medium text-gray-400 border-b border-gray-100 pb-2">
+                    <div className="col-span-6">Items</div>
+                    <div className="col-span-2">Ordered Quantity</div>
+                    <div className="col-span-2">Unit Rate (INR)</div>
+                    <div className="col-span-2 text-right">Amount Total</div>
+                  </div>
+                  
+                  <div className="grid grid-cols-12 text-[12px] items-center text-[#1a233a] py-3 border-b border-gray-100">
+                    <div className="col-span-6">
+                      <p className="font-bold mb-0.5">5-Ply Corrugated Box</p>
+                      <p className="text-[10px] text-gray-500">Kraft, 18×12×10 In, 18 BF</p>
+                    </div>
+                    <div className="col-span-2 font-bold">1,000 Box</div>
+                    <div className="col-span-2 font-bold">30.00</div>
+                    <div className="col-span-2 text-right font-bold">50,645</div>
+                  </div>
+                </div>
 
-            {/* Totals */}
-            <div className="flex justify-end mt-8 mb-12">
-              <div className="w-72">
-                <div className="flex justify-between py-3 border-b border-gray-100">
-                  <span className="text-sm font-bold text-[#1a233a]">Sub Total</span>
-                  <span className="text-sm font-bold text-[#1a233a]">50,645</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-gray-100">
-                  <span className="text-[10px] text-gray-500 font-medium">Adjustment</span>
-                  <span className="text-xs text-gray-500 font-medium">0</span>
-                </div>
-                <div className="flex justify-between py-4">
-                  <span className="text-sm font-bold text-[#1a233a]">Total Payable</span>
-                  <span className="text-sm font-bold text-[#1a233a]">₹53,900.00</span>
+                <div className="flex justify-end mt-6">
+                  <div className="w-[300px]">
+                    <div className="flex justify-between py-2.5">
+                      <span className="text-[13px] font-bold text-[#1a233a]">Sub Total</span>
+                      <span className="text-[13px] font-bold text-[#1a233a]">50,645</span>
+                    </div>
+                    <div className="flex justify-between py-2.5">
+                      <span className="text-[13px] text-gray-500">GST :</span>
+                      <span className="text-[13px] text-gray-500">600.96</span>
+                    </div>
+                    <div className="flex justify-between py-2.5">
+                      <span className="text-[13px] text-gray-500">Discount Rate</span>
+                      <span className="text-[13px] text-gray-500">400.97</span>
+                    </div>
+                    <div className="flex justify-between py-4 mt-2">
+                      <span className="text-[15px] font-medium text-rose-400">Total Payable</span>
+                      <span className="text-[15px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">₹53,900.00</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
-
       </div>
     </main>
   );

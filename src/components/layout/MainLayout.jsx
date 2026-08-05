@@ -11,7 +11,7 @@ const MainLayout = () => {
       <Sidebar />
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 flex flex-col overflow-hidden">
           {/* Pass the search query down to whichever page is currently active */}
           <Outlet context={{ searchQuery }} />
         </div>
