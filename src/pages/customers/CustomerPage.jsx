@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
-import { Plus, MoreHorizontal } from 'lucide-react';
+import { Plus, MoreHorizontal, Filter } from 'lucide-react';
 import CustomerTable from './CustomerTable';
 
 const initialCustomers = [
   { id: 1, name: 'ZAP INDIA PRIVATE LIMITED', company: 'ZAP INDIA PRIVATE LIMITED', email: 'rajesg.zap@gmail.com', phone: '+91 746359465', receivables: '2,34,654' },
-  { id: 2, name: 'Apex Packaging Solutions', company: 'Apex Packaging Solutions', email: 'contact@apexpack.in', phone: '+91 9876543210', receivables: '1,12,000' },
-  { id: 3, name: 'Global Cartons Ltd', company: 'Global Cartons Ltd', email: 'billing@globalcartons.com', phone: '+91 8899776655', receivables: '5,40,200' },
-  { id: 4, name: 'EcoBox Enterprises', company: 'EcoBox Enterprises', email: 'hello@ecobox.co.in', phone: '+91 9988776655', receivables: '85,500' }
+  { id: 2, name: 'ABC INDIA PRIVATE LIMITED', company: 'ABC INDIA PRIVATE LIMITED', email: 'nilesh.abc@gmail.com', phone: '+91 847259685', receivables: '3,44,600' }
 ];
 
 const CustomerPage = () => {
@@ -43,21 +41,24 @@ const CustomerPage = () => {
   };
 
   return (
-    <main className="flex-1 overflow-y-auto bg-white m-4 rounded-xl border border-gray-100 shadow-sm flex flex-col">
+    <main className="flex-1 overflow-y-auto bg-white flex flex-col relative">
       
       {/* Page Toolbar */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-        <h2 className="text-xl font-semibold text-gray-800">All Customer</h2>
+        <h2 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">All Customer</h2>
         <div className="flex items-center space-x-3">
           <Link 
             to="/customers/new"
-            className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors shadow-sm"
+            className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-4 py-1.5 rounded-full text-sm font-medium flex items-center transition-opacity shadow-sm"
           >
-            <Plus className="w-4 h-4 mr-2" strokeWidth={2} />
+            <Plus className="w-4 h-4 mr-1.5" strokeWidth={2} />
             New Customer
           </Link>
-          <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-2 rounded-lg transition-colors">
-            <MoreHorizontal className="w-5 h-5" strokeWidth={1.5} />
+          <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 p-2.5 rounded-full transition-colors flex items-center justify-center">
+            <Filter className="w-4 h-4" strokeWidth={2} />
+          </button>
+          <button className="bg-gray-100 hover:bg-gray-200 text-gray-600 p-2.5 rounded-full transition-colors flex items-center justify-center">
+            <MoreHorizontal className="w-4 h-4" strokeWidth={2} />
           </button>
         </div>
       </div>
@@ -72,7 +73,7 @@ const CustomerPage = () => {
       />
       
       {/* Footer */}
-      <div className="px-6 py-3 border-t border-gray-100 bg-[#f8f9fb] text-xs text-gray-500 flex justify-between items-center rounded-b-xl mt-auto">
+      <div className="px-6 py-4 border-t border-gray-100 bg-white text-xs text-gray-500 flex justify-between items-center mt-auto">
         <span>Showing {filteredCustomers.length} customer(s)</span>
         {selectedIds.length > 0 && (
           <span className="text-blue-600 font-medium">{selectedIds.length} selected</span>

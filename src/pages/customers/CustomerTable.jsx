@@ -10,7 +10,7 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
   return (
     <div className="overflow-x-auto flex-1">
       <table className="w-full text-sm text-left">
-        <thead className="bg-[#f8f9fb] text-gray-700 border-b border-gray-200 font-medium sticky top-0">
+        <thead className="bg-[#f8f9fb]/70 text-gray-900 border-b border-gray-100 font-semibold sticky top-0">
           <tr>
             <th className="px-6 py-4 w-12">
               <input 
