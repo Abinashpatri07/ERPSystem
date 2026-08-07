@@ -11,10 +11,10 @@ const CreateCustomerPage = () => {
   const tabs = ['Other Details', 'Billing & Delivery Address', 'Contact Person', 'Remark & Audit Log'];
 
   return (
-    <main className="flex-1 overflow-y-auto bg-white flex flex-col relative">
+    <main className="flex-1 overflow-y-auto bg-[#f4f7f9] flex flex-col relative p-1.5 gap-1.5">
       
       {/* Top Banner with Stepper */}
-      <div className="bg-white px-6 py-2 md:px-8 md:py-3 flex items-center justify-between border-b border-gray-100">
+      <div className="bg-white px-6 py-2 md:px-8 md:py-2 flex items-center justify-between border border-gray-200 rounded-2xl shadow-sm shrink-0">
         <h2 className="text-[20px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">
           Create New Customer Profile
         </h2>
@@ -22,8 +22,8 @@ const CreateCustomerPage = () => {
         <div className="flex items-start mr-4 w-72">
           {/* Step 1 */}
           <div className="flex flex-col items-center flex-shrink-0 w-24">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#ff3b30] to-[#b82db8] text-white flex items-center justify-center shadow-md relative z-10">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ff3b30] to-[#b82db8] text-white flex items-center justify-center shadow-md relative z-10">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v15l-3.5-2.5L12 21l-3.5-2.5L5 21V6z" />
                 <line x1="8" y1="10" x2="15" y2="10" />
                 <line x1="8" y1="14" x2="12" y2="14" />
@@ -37,8 +37,8 @@ const CreateCustomerPage = () => {
           
           {/* Step 2 */}
           <div className="flex flex-col items-center flex-shrink-0 w-24">
-            <div className="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-400 flex items-center justify-center shadow-sm relative z-10">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="w-8 h-8 rounded-full bg-white border border-gray-200 text-gray-500 flex items-center justify-center shadow-sm relative z-10">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z" />
                 <line x1="4" y1="11" x2="20" y2="11" />
                 <line x1="12" y1="6" x2="12" y2="11" />
@@ -52,8 +52,8 @@ const CreateCustomerPage = () => {
       </div>
 
       {/* Form Area */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar pb-24">
-        <div className="p-6 md:px-8">
+      <div className="bg-white border border-gray-200 rounded-2xl shadow-sm flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 overflow-y-auto custom-scrollbar px-6 pt-5 pb-24 md:px-8 md:pt-6">
           <form className="max-w-6xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
               
@@ -144,7 +144,7 @@ const CreateCustomerPage = () => {
               {/* Right Column */}
               <div className="space-y-5 min-w-0">
                 {/* Spacer for Customer Type row to align grids */}
-                <div className="hidden md:block h-4"></div>
+                <div className="hidden md:block h-[24px]"></div>
 
                 {/* Company Name */}
                 <div className="flex items-center min-w-0">
@@ -164,7 +164,7 @@ const CreateCustomerPage = () => {
                 </div>
 
                 {/* Spacer to align with Language */}
-                <div className="hidden md:block h-5"></div>
+                <div className="hidden md:block h-[38px]"></div>
 
                 {/* Secondary Number */}
                 <div className="flex items-center min-w-0">

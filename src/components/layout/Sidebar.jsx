@@ -88,11 +88,10 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Nav Items */}
       <nav
         className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar"
         style={{
-          padding: collapsed ? '16px 8px' : '16px 12px',
+          padding: collapsed ? '16px 8px' : '16px 20px 16px 12px',
           transition: 'padding 0.3s ease',
         }}
       >
