@@ -17,40 +17,42 @@ const QuotesTable = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full">
+    <div className="flex-1 overflow-x-auto w-full">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-            <th className="py-3 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+            <th className="py-4 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
               <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
             </th>
-            <th className="py-3 px-6 font-semibold text-gray-600">Date</th>
-            <th className="py-3 px-6 font-semibold text-gray-600">Quote Number</th>
-            <th className="py-3 px-6 font-semibold text-gray-600">Customer Name</th>
-            <th className="py-3 px-6 font-semibold text-gray-600">Order</th>
-            <th className="py-3 px-6 font-semibold text-gray-600">Amount</th>
-            <th className="py-3 pr-8 pl-6 font-semibold text-gray-600">Status</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Date</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Quote Number</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Customer Name</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Order</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Amount</th>
+            <th className="py-4 pr-8 pl-6 font-semibold text-[#1a233a]">Status</th>
           </tr>
         </thead>
         <tbody>
           {mockQuotes.map((quote) => (
             <tr key={quote.id} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px]">
-              <td className="py-3 pl-8 pr-6 text-center">
+              <td className="py-4 pl-8 pr-6 text-center">
                 <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
               </td>
-              <td className="py-3 px-6 text-[#1a233a] font-medium">
-                {quote.date}
-              </td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.date}</td>
               <td 
-                className="py-3 px-6 text-blue-600 font-medium cursor-pointer hover:underline"
-                onClick={() => navigate(`/sales/quotes/${quote.quoteNo}`)}
+                className="py-4 px-6 text-blue-600 font-medium cursor-pointer hover:underline"
+                onClick={() => navigate(`/sales/quotes/${quote.id}`)}
               >
                 {quote.quoteNo}
               </td>
-              <td className="py-3 px-6 text-[#1a233a] font-medium">{quote.customerName}</td>
-              <td className="py-3 px-6 text-[#1a233a] font-medium">{quote.order}</td>
-              <td className="py-3 px-6 text-[#1a233a] font-medium">{quote.amount}</td>
-              <td className="py-3 pr-8 pl-6 text-green-500 font-medium">{quote.status}</td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.customerName}</td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.order}</td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.amount}</td>
+              <td className="py-4 pr-8 pl-6">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-semibold bg-[#e6f4ea] text-[#1e8e3e]">
+                  {quote.status}
+                </span>
+              </td>
             </tr>
           ))}
         </tbody>

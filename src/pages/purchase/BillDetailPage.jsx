@@ -101,17 +101,17 @@ const BillDetailPage = () => {
             </div>
 
             {/* List Item */}
-            <div className="bg-white border-2 border-blue-500 rounded-lg p-4 cursor-pointer shadow-sm relative">
-              <div className="flex justify-between items-start mb-2">
-                <span className="text-[11px] text-gray-500">25/06/2026</span>
+            <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-4 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="text-[15px] font-medium text-[#374151]">SO-00001</span>
+                <span className="text-[12px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
               </div>
-              <h3 className="text-[13px] font-bold text-[#1a233a] mb-3 uppercase truncate">CLIMAMAX CONTROLS PRIVATE LIMITED</h3>
+              <h3 className="text-[14px] font-medium text-[#111827] mb-3 uppercase leading-snug">
+                CLIMAMAX CONTROLS PRIVATE LIMITED
+              </h3>
               <div className="flex justify-between items-center text-[12px]">
                 <span className="text-blue-500 font-medium">OPEN</span>
-              </div>
-              <div className="flex justify-between items-center text-[12px] mt-1">
-                <span className="text-gray-500">SO-00001</span>
-                <span className="font-bold text-[#1a233a]">₹100.00</span>
+                <span className="text-[18px] font-bold text-[#111827]">₹100.00</span>
               </div>
             </div>
           </div>

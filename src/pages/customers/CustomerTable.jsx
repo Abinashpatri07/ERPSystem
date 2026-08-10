@@ -21,11 +21,11 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
                   onChange={onToggleSelectAll}
                 />
               </th>
-              <th className="py-3 px-6 font-semibold text-gray-600">Name</th>
-              <th className="py-3 px-6 font-semibold text-gray-600">Company Name</th>
-              <th className="py-3 px-6 font-semibold text-gray-600">E-Mail</th>
-              <th className="py-3 px-6 font-semibold text-gray-600">Phone</th>
-              <th className="py-3 pr-8 pl-6 font-semibold text-gray-600">Receivables</th>
+              <th className="py-4 px-6 font-semibold text-[#1a233a]">Name</th>
+              <th className="py-4 px-6 font-semibold text-[#1a233a]">GST</th>
+              <th className="py-4 px-6 font-semibold text-[#1a233a]">Primary Contact</th>
+              <th className="py-4 px-6 font-semibold text-[#1a233a]">Email</th>
+              <th className="py-4 pr-8 pl-6 font-semibold text-[#1a233a]">Phone</th>
             </tr>
           </thead>
           <tbody>
@@ -44,20 +44,20 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
                       onChange={() => onToggleSelect(customer.id)}
                     />
                   </td>
-                  <td className="py-3 px-6 text-blue-600 font-medium hover:underline">
+                  <td className="py-4 px-6 text-blue-600 font-medium hover:underline">
                     {customer.name}
                   </td>
-                  <td className="py-3 px-6 text-[#1a233a] font-medium">
-                    {customer.company}
+                  <td className="py-4 px-6 text-[#1a233a] font-medium">
+                    {customer.gst}
                   </td>
-                  <td className="py-3 px-6 text-[#1a233a] font-medium">
+                  <td className="py-4 px-6 text-[#1a233a] font-medium">
+                    {customer.primaryContact}
+                  </td>
+                  <td className="py-4 px-6 text-[#1a233a] font-medium">
                     {customer.email}
                   </td>
-                  <td className="py-3 px-6 text-[#1a233a] font-medium">
+                  <td className="py-4 pr-8 pl-6 text-[#1a233a] font-medium">
                     {customer.phone}
-                  </td>
-                  <td className="py-3 pr-8 pl-6 text-[#1a233a] font-medium">
-                    {customer.receivables}
                   </td>
                 </tr>
               ))

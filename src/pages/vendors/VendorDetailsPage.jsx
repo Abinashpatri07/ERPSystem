@@ -41,16 +41,16 @@ const VendorDetailsPage = () => {
 
         <div className="flex-1 overflow-y-auto px-3 pb-3 hide-scrollbar">
           {/* Vendor List Item */}
-          <div className="bg-white border border-gray-200 rounded-[10px] p-2.5 cursor-pointer hover:border-gray-300 transition-colors shadow-sm mb-3">
-            <div className="flex justify-between items-center mb-0.5">
-              <span className="text-[14px] font-medium text-[#374151]">VEND-00287</span>
+          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-4 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="text-[15px] font-medium text-[#374151]">VEND-00287</span>
               <span className="text-[12px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
             </div>
-            <h3 className="text-[13px] font-medium text-[#1a233a] mb-1.5 leading-snug">
+            <h3 className="text-[14px] font-medium text-[#111827] mb-3 leading-snug">
               Century Pulp & Paper
             </h3>
             <div className="text-right">
-              <span className="text-[15px] font-bold text-[#1a233a]">₹100.00</span>
+              <span className="text-[18px] font-bold text-[#111827]">₹100.00</span>
             </div>
           </div>
         </div>
