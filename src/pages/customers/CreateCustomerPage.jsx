@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package } from 'lucide-react';
+import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const CreateCustomerPage = () => {
@@ -46,7 +46,7 @@ const CreateCustomerPage = () => {
                 <line x1="7" y1="18" x2="13" y2="18" />
               </svg>
             </div>
-            <span className="text-[12px] font-medium text-gray-500 mt-2 whitespace-nowrap">Order Creation</span>
+            <span className="text-[12px] font-medium text-gray-500 mt-2 whitespace-nowrap">Customer Onboarded</span>
           </div>
         </div>
       </div>
@@ -411,6 +411,12 @@ const CreateCustomerPage = () => {
                         <label className="text-[13px] font-bold text-[#1a233a] mb-1">Designation</label>
                         <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Designation" />
                       </div>
+                    </div>
+                    <div className="pt-2">
+                      <button type="button" className="text-blue-600 hover:text-blue-700 text-[13px] font-semibold flex items-center gap-1.5 transition-colors hover:underline">
+                        <Plus className="w-4 h-4" strokeWidth={2.5} />
+                        Add Contact Person
+                      </button>
                     </div>
                   </div>
                 )}
