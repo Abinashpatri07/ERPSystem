@@ -41,16 +41,16 @@ const CustomerDetailsPage = () => {
 
         <div className="flex-1 overflow-y-auto px-3 pb-3 hide-scrollbar">
           {/* Customer List Item */}
-          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-4 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
-            <div className="flex justify-between items-center mb-1.5">
-              <span className="text-[15px] font-medium text-[#374151]">CLIC-01142</span>
-              <span className="text-[12px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
+          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[13px] font-medium text-[#374151]">CLIC-01142</span>
+              <span className="text-[10px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
             </div>
-            <h3 className="text-[14px] font-medium text-[#111827] mb-3 uppercase leading-snug">
+            <h3 className="text-[12px] font-medium text-[#111827] mb-2 uppercase leading-snug">
               CLIMAMAX CONTROLS PRIVATE LIMITED
             </h3>
             <div className="text-right">
-              <span className="text-[18px] font-bold text-[#111827]">₹100.00</span>
+              <span className="text-[16px] font-bold text-[#111827]">₹100.00</span>
             </div>
           </div>
         </div>
@@ -87,35 +87,35 @@ const CustomerDetailsPage = () => {
 
             {/* Stat Cards */}
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
-              
+
               {/* Card 1: Lifetime Orders */}
               <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[140px] flex-1">
                 <div className="text-[11px] text-gray-500 font-medium mb-0.5 truncate">Lifetime Orders</div>
                 <div className="text-[24px] font-bold text-[#111827] leading-none">128</div>
                 <div className="text-[9px] text-gray-400 mt-1 font-medium truncate">Total Customer Value</div>
               </div>
-              
+
               {/* Card 2: Lifetime Value */}
               <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[140px] flex-1">
                 <div className="text-[11px] text-gray-500 font-medium mb-0.5 truncate">Lifetime Value</div>
                 <div className="text-[24px] font-bold text-[#111827] leading-none">₹4.8 <span className="text-[14px] font-medium text-gray-400">Cr</span></div>
                 <div className="text-[9px] text-gray-400 mt-1 font-medium truncate">Orders Placed</div>
               </div>
-              
+
               {/* Card 3: Out-Standing Balance */}
               <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[140px] flex-1">
                 <div className="text-[11px] text-gray-500 font-medium mb-0.5 truncate">Out-Standing Balance</div>
                 <div className="text-[24px] font-bold text-[#111827] leading-none">₹2.45 <span className="text-[14px] font-medium text-gray-400">L</span></div>
                 <div className="text-[9px] text-gray-400 mt-1 font-medium truncate">Amount Due</div>
               </div>
-              
+
               {/* Card 4: Active Order */}
               <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[140px] flex-1">
                 <div className="text-[11px] text-gray-500 font-medium mb-0.5 truncate">Active Order</div>
                 <div className="text-[24px] font-bold text-[#16a34a] leading-none">9</div>
                 <div className="text-[9px] text-gray-400 mt-1 font-medium truncate">Orders In Progress</div>
               </div>
-              
+
               {/* Card 5: Ontime Delivery */}
               <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[140px] flex-1">
                 <div className="text-[11px] text-gray-500 font-medium mb-0.5 truncate">Ontime Delivery</div>
@@ -136,8 +136,8 @@ const CustomerDetailsPage = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`relative pb-3 text-[13px] transition-colors ${activeTab === tab
-                    ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]'
-                    : 'font-semibold text-gray-500 hover:text-gray-700'
+                  ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]'
+                  : 'font-semibold text-gray-500 hover:text-gray-700'
                   }`}
               >
                 {tab}
@@ -147,44 +147,29 @@ const CustomerDetailsPage = () => {
               </button>
             ))}
           </div>
-          {/* Non-Scrollable Header for Box Specifications */}
-          {activeTab === 'Box Specifications' && (
-            <div className="shrink-0 px-3 lg:px-4 pt-2 bg-[#f8fafc]">
-              <div className="bg-white rounded-xl border border-gray-100 p-2.5 lg:p-3 shadow-sm flex justify-between items-center">
-                <div>
-                  <div className="inline-flex px-1.5 py-0.5 bg-[#ffedd5] text-[#ea580c] text-[8.5px] font-medium rounded-md mb-0.5">
-                    BOX-VF-3PLY-001
-                  </div>
-                  <h3 className="text-[14px] font-medium text-[#1a233a]">5kg Master Export Carton (Biscuits & Snacks)</h3>
-                </div>
-                <div className="text-right">
-                  <div className="text-[#1a233a] font-medium text-[16px] leading-none mb-0.5">
-                    ₹42.50 <span className="text-[10px] text-gray-400 font-normal">/ box</span>
-                  </div>
-                  <div className="text-[8.5px] text-gray-500">Monthly Vol: 45,000 pcs</div>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Scrollable Tab Content Area */}
           <div className="flex-1 overflow-y-auto p-3 lg:p-4 bg-[#f8fafc] rounded-b-[20px]">
             {/* Tab Content - Overview */}
             {activeTab === 'Overview' && (
-              <div className="space-y-4">
+              <div className="bg-white rounded-[12px] p-2.5 shadow-sm border border-gray-100">
+                <div className="space-y-4">
+
+                <div className="flex justify-end">
+                  <button className="p-1.5 border border-gray-100 rounded-md bg-white hover:bg-gray-50 text-gray-400 transition-colors shadow-sm">
+                    <Edit className="w-4 h-4" />
+                  </button>
+                </div>
 
                 {/* ── Top Row: Profile & Payment ── */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  
+
                   {/* Customer Profile Card */}
-                  <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5 relative">
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-[16px] font-bold text-[#1a233a]">Customer Profile</h3>
-                      <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                        <Edit className="w-4 h-4" />
-                      </button>
+                  <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm p-5 relative">
+                    <div className="border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-[16px] font-medium text-[#1a233a]">Customer Profile</h3>
                     </div>
-                    
+
                     <div className="flex items-center gap-4 mb-5">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#f43f5e] to-[#9333ea] flex items-center justify-center text-white text-[15px] font-bold shadow-sm shrink-0">
                         CC
@@ -216,15 +201,12 @@ const CustomerDetailsPage = () => {
                   </div>
 
                   {/* Payment Details Card */}
-                  <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5 relative">
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-[16px] font-bold text-[#1a233a]">Payment Details</h3>
-                      <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                        <Edit className="w-4 h-4" />
-                      </button>
+                  <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm p-5 relative">
+                    <div className="border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-[16px] font-medium text-[#1a233a]">Payment Details</h3>
                     </div>
 
-                    <div className="space-y-3 mt-[60px]">
+                    <div className="space-y-3 mt-[44px]">
                       <div className="grid grid-cols-[140px_1fr] items-center text-[13px]">
                         <span className="text-gray-400 font-medium">Sale Region</span>
                         <span className="font-bold text-[#1a233a]">South India</span>
@@ -253,9 +235,6 @@ const CustomerDetailsPage = () => {
                     <div className="pr-6 border-r-2 border-pink-300">
                       <div className="flex justify-between items-center mb-2">
                         <h3 className="text-[14px] font-bold text-gray-500">Billing Address</h3>
-                        <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                          <Edit className="w-3 h-3" />
-                        </button>
                       </div>
                       <div className="text-[12px] font-bold text-[#4b5563] leading-snug">
                         Century Pulp & Paper Mill<br />
@@ -269,9 +248,6 @@ const CustomerDetailsPage = () => {
                     <div className="pl-6">
                       <div className="flex justify-between items-center mb-2">
                         <h3 className="text-[14px] font-bold text-gray-500">Shipping Address</h3>
-                        <button className="text-gray-400 hover:text-gray-600 transition-colors">
-                          <Edit className="w-3 h-3" />
-                        </button>
                       </div>
                       <div className="text-[12px] font-bold text-[#4b5563] leading-snug">
                         Century Pulp & Paper Mill<br />
@@ -287,9 +263,6 @@ const CustomerDetailsPage = () => {
                 <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-[16px] font-bold text-[#1a233a]">Contacts Directory</h3>
-                    <button className="flex items-center gap-1.5 text-[12px] font-bold text-blue-600 hover:text-blue-700 transition-colors">
-                      <Edit className="w-3.5 h-3.5" /> Edit
-                    </button>
                   </div>
                   <div className="flex flex-col divide-y divide-gray-100">
                     {[1, 2, 3].map((item, idx) => (
@@ -324,9 +297,6 @@ const CustomerDetailsPage = () => {
                 <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5">
                   <div className="flex justify-between items-center mb-3">
                     <h3 className="text-[16px] font-bold text-[#1a233a]">Bank Details</h3>
-                    <button className="flex items-center gap-1.5 text-[12px] font-bold text-blue-600 hover:text-blue-700 transition-colors">
-                      <Edit className="w-3.5 h-3.5" /> Edit
-                    </button>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-[12px] text-left">
@@ -366,40 +336,42 @@ const CustomerDetailsPage = () => {
                   </div>
                 </div>
 
+                </div>
               </div>
             )}
 
             {/* Tab Content - Commercial Terms */}
             {activeTab === 'Commercial Terms' && (
-              <div className="space-y-8">
+              <div className="bg-white rounded-[12px] p-2.5 shadow-sm border border-gray-100">
+                <div className="space-y-4">
 
                 {/* Credit & Payment */}
                 <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
                   <h3 className="text-[14px] font-semibold text-[#1a233a] mb-4">Credit & Payment</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3">
-                      <div className="text-[10px] text-gray-500 font-medium mb-1.5">Credit Limit</div>
-                      <div className="text-[14px] font-bold text-[#1a233a] mb-2">₹40,00,000</div>
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3">
+                      <div className="text-[10px] text-gray-500 font-medium mb-1">Credit Limit</div>
+                      <div className="text-[14px] font-bold text-[#1a233a] mb-1">₹40,00,000</div>
                       <div className="text-[9px] text-gray-400 font-medium mb-1">Overdue Status</div>
                       <div className="inline-flex px-2 py-0.5 bg-[#e0f5e7] text-[#16a34a] text-[9px] font-bold rounded">
                         No overdue
                       </div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3">
-                      <div className="text-[10px] text-gray-500 font-medium mb-1.5">Credit Period</div>
-                      <div className="text-[12px] font-medium text-[#1a233a] mb-3">45 Days</div>
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3">
+                      <div className="text-[10px] text-gray-500 font-medium mb-1">Credit Period</div>
+                      <div className="text-[12px] font-medium text-[#1a233a] mb-2">45 Days</div>
                       <div className="text-[9px] text-gray-400 font-medium mb-1">Available Credit</div>
                       <div className="text-[13px] font-bold text-[#1a233a]">₹21,60,000</div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Payment Terms</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Payment Terms</div>
                         <div className="text-[12px] font-medium text-[#1a233a]">Credit — Post Delivery</div>
                       </div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Outstanding Balance</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Outstanding Balance</div>
                         <div className="text-[14px] font-bold text-[#1a233a]">₹18,40,000</div>
                       </div>
                     </div>
@@ -410,27 +382,27 @@ const CustomerDetailsPage = () => {
                 <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
                   <h3 className="text-[14px] font-semibold text-[#1a233a] mb-4">Pricing</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Rate Category</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Rate Category</div>
                         <div className="text-[12px] font-medium text-[#1a233a]">Negotiated — Key Account</div>
                       </div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Price List</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Price List</div>
                         <div className="text-[12px] font-medium text-[#1a233a]">PL-KA-2026-Q3</div>
                       </div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Standard Discount</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Standard Discount</div>
                         <div className="text-[12px] font-medium text-[#1a233a]">3.5% on invoice value</div>
                       </div>
                     </div>
-                    <div className="border border-[#c4d6eb] rounded-[8px] p-3 flex flex-col justify-between">
+                    <div className="bg-[#f8fbff] border border-[#e8f1f8] rounded-[8px] p-3 flex flex-col justify-between">
                       <div>
-                        <div className="text-[10px] text-gray-500 font-medium mb-1.5">Volume Slab Pricing</div>
+                        <div className="text-[10px] text-gray-500 font-medium mb-1">Volume Slab Pricing</div>
                         <div className="text-[11px] font-medium text-gray-500 leading-snug">Applicable above 50,000<br />boxes/order</div>
                       </div>
                     </div>
@@ -438,48 +410,63 @@ const CustomerDetailsPage = () => {
                 </div>
 
                 {/* Recent Payment Activity */}
-                <div>
-                  <h3 className="text-[15px] font-bold text-[#1a233a] mb-4">Recent Payment Activity</h3>
-                  <div className="bg-white rounded-xl border border-[#c4d6eb] overflow-hidden">
-                    <table className="w-full text-left text-[12px]">
-                      <thead>
-                        <tr className="border-b border-gray-100 text-gray-400 font-medium">
-                          <th className="py-4 px-6 font-medium">Invoice No.</th>
-                          <th className="py-4 px-6 font-medium">Amount</th>
-                          <th className="py-4 px-6 font-medium">Due Date</th>
-                          <th className="py-4 px-6 font-medium">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-[#1a233a]">
-                        <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">INV-8821</td>
-                          <td className="py-4 px-6 font-bold">₹6,20,000</td>
-                          <td className="py-4 px-6 font-medium text-gray-600">05-Aug-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full border border-blue-100">Pending</span>
-                          </td>
-                        </tr>
-                        <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">INV-8790</td>
-                          <td className="py-4 px-6 font-bold">₹4,10,000</td>
-                          <td className="py-4 px-6 font-medium text-gray-600">18-Jul-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-[#e0f5e7] text-[#16a34a] text-[10px] font-bold rounded-full border border-green-100">Paid</span>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">INV-8754</td>
-                          <td className="py-4 px-6 font-bold">₹8,10,000</td>
-                          <td className="py-4 px-6 font-medium text-gray-600">02-Jul-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-[#e0f5e7] text-[#16a34a] text-[10px] font-bold rounded-full border border-green-100">Paid</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
+                  <div className="flex justify-between items-center mb-5">
+                    <h3 className="text-[16px] font-bold text-[#1a233a]">Recent Payment Activity</h3>
+                    <div className="flex items-center gap-3">
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 border border-gray-100 rounded-md text-[12px] text-gray-500 font-medium hover:bg-gray-50 transition-colors shadow-sm">
+                        <Calendar className="w-3.5 h-3.5" />
+                        Select Date Range
+                      </button>
+                      <button className="flex items-center gap-1.5 px-3 py-1.5 border border-gray-100 rounded-md text-[12px] text-gray-500 font-medium hover:bg-gray-50 transition-colors shadow-sm">
+                        <Download className="w-3.5 h-3.5" />
+                        Export
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {/* Header */}
+                    <div className="grid grid-cols-4 px-4 py-2.5 border border-gray-200 rounded-[8px] text-[11px] text-gray-400 font-medium bg-white">
+                      <div>Invoice No.</div>
+                      <div>Amount</div>
+                      <div>Due Date</div>
+                      <div>Status</div>
+                    </div>
+                    
+                    {/* Row 1 */}
+                    <div className="grid grid-cols-4 px-4 py-3 border border-gray-100 rounded-[8px] text-[12px] items-center bg-white hover:border-gray-200 transition-colors">
+                      <div className="font-medium text-[#1a233a]">INV-8821</div>
+                      <div className="font-bold text-[#1a233a]">₹6,20,000</div>
+                      <div className="text-[#1a233a] font-medium">05-Aug-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#fef3c7] text-[#d97706] text-[10px] font-bold rounded-full">Pending</span>
+                      </div>
+                    </div>
+
+                    {/* Row 2 */}
+                    <div className="grid grid-cols-4 px-4 py-3 border border-gray-100 rounded-[8px] text-[12px] items-center bg-white hover:border-gray-200 transition-colors">
+                      <div className="font-medium text-[#1a233a]">INV-8790</div>
+                      <div className="font-bold text-[#1a233a]">₹4,10,000</div>
+                      <div className="text-[#1a233a] font-medium">18-Jul-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold rounded-full">Paid</span>
+                      </div>
+                    </div>
+
+                    {/* Row 3 */}
+                    <div className="grid grid-cols-4 px-4 py-3 border border-gray-100 rounded-[8px] text-[12px] items-center bg-white hover:border-gray-200 transition-colors">
+                      <div className="font-medium text-[#1a233a]">INV-8754</div>
+                      <div className="font-bold text-[#1a233a]">₹8,10,000</div>
+                      <div className="text-[#1a233a] font-medium">02-Jul-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold rounded-full">Paid</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
+                </div>
               </div>
             )}
 
@@ -487,134 +474,134 @@ const CustomerDetailsPage = () => {
             {activeTab === 'Box Specifications' && (
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Card 1 */}
-                    <div onClick={() => setSelectedBox({ name: 'RSC 5-Ply Export Box', code: 'SPEC-VF-0142', size: '40 × 30 × 25 cm', ply: '5-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'BC Flute (Dual)', gsm: '150/120/100/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
-                      <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
-                        SPEC-VF-0142
-                      </div>
-                      <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">RSC 5-Ply Export Box</h4>
-                      <div className="text-[10px] text-gray-500 mb-3">40 × 30 × 25 cm</div>
-                      
-                      <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Board Spec:</span>
-                          <span className="text-[#1a233a] font-medium">150/120/100/120/150</span>
-                        </div>
-                        <div className="border-t border-gray-100"></div>
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Flute Type:</span>
-                          <span className="text-[#1a233a] font-medium">BC Flute (Dual)</span>
-                        </div>
-                      </div>
+                  {/* Card 1 */}
+                  <div onClick={() => setSelectedBox({ name: 'RSC 5-Ply Export Box', code: 'SPEC-VF-0142', size: '40 × 30 × 25 cm', ply: '5-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'BC Flute (Dual)', gsm: '150/120/100/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
+                    <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
+                      SPEC-VF-0142
+                    </div>
+                    <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">RSC 5-Ply Export Box</h4>
+                    <div className="text-[10px] text-gray-500 mb-3">40 × 30 × 25 cm</div>
 
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
-                        <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
+                    <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Board Spec:</span>
+                        <span className="text-[#1a233a] font-medium">150/120/100/120/150</span>
                       </div>
-
-                      <div className="border-t border-gray-100 pt-3 mt-auto">
-                        <div className="text-[13px] font-medium text-[#1a233a]">
-                          ₹42.50 <span className="text-[9px] text-gray-400">/box</span>
-                        </div>
+                      <div className="border-t border-gray-100"></div>
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Flute Type:</span>
+                        <span className="text-[#1a233a] font-medium">BC Flute (Dual)</span>
                       </div>
                     </div>
 
-                    {/* Card 2 */}
-                    <div onClick={() => setSelectedBox({ name: 'HSC 3-Ply Retail Box', code: 'SPEC-VF-0142', size: '30 × 22 × 18 cm', ply: '3-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'Flute C', gsm: 'GSM 150/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
-                      <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
-                        SPEC-VF-0142
-                      </div>
-                      <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">HSC 3-Ply Retail Box</h4>
-                      <div className="text-[10px] text-gray-500 mb-3">30 × 22 × 18 cm</div>
-                      
-                      <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Board Spec:</span>
-                          <span className="text-[#1a233a] font-medium">GSM 150/120/150</span>
-                        </div>
-                        <div className="border-t border-gray-100"></div>
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Flute Type:</span>
-                          <span className="text-[#1a233a] font-medium">Flute C</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
-                        <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
-                      </div>
-
-                      <div className="border-t border-gray-100 pt-3 mt-auto">
-                        <div className="text-[13px] font-medium text-[#1a233a]">
-                          ₹28.50 <span className="text-[9px] text-gray-400">/box</span>
-                        </div>
-                      </div>
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
+                      <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
                     </div>
 
-                    {/* Card 3 */}
-                    <div onClick={() => setSelectedBox({ name: 'Die-Cut Mailer Box', code: 'SPEC-VF-0077', size: '25 × 18 × 9 cm', ply: '3-Ply', dieNumber: 'DIE - 0201', ect: 'Standard', flute: 'E', gsm: '150/100/150', print: '4 (Full color process)', status: 'Under Review', statusMessage: '- new artwork pending approval' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
-                      <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
-                        SPEC-VF-0142
-                      </div>
-                      <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">Die-Cut Mailer Box</h4>
-                      <div className="text-[10px] text-gray-500 mb-3">40 × 30 × 25 cm</div>
-                      
-                      <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Board Spec:</span>
-                          <span className="text-[#1a233a] font-medium">GSM 110/100/150</span>
-                        </div>
-                        <div className="border-t border-gray-100"></div>
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Flute Type:</span>
-                          <span className="text-[#1a233a] font-medium">Flute E</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
-                        <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
-                      </div>
-
-                      <div className="border-t border-gray-100 pt-3 mt-auto">
-                        <div className="text-[13px] font-medium text-[#1a233a]">
-                          ₹19.50 <span className="text-[9px] text-gray-400">/box</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card 4 */}
-                    <div onClick={() => setSelectedBox({ name: 'Heavy Duty 7-Ply Bulk Shippers', code: 'SPEC-VF-0142', size: '60 × 45 × 40 cm', ply: '7-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'BC Flute (Dual)', gsm: '150/120/100/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
-                      <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
-                        SPEC-VF-0142
-                      </div>
-                      <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">Heavy Duty 7-Ply Bulk Shippers</h4>
-                      <div className="text-[10px] text-gray-500 mb-3">60 × 45 × 40 cm</div>
-                      
-                      <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Board Spec:</span>
-                          <span className="text-[#1a233a] font-medium">150/120/100/120/150</span>
-                        </div>
-                        <div className="border-t border-gray-100"></div>
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-gray-500">Flute Type:</span>
-                          <span className="text-[#1a233a] font-medium">BC Flute (Dual)</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
-                        <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
-                      </div>
-
-                      <div className="border-t border-gray-100 pt-3 mt-auto">
-                        <div className="text-[13px] font-medium text-[#1a233a]">
-                          ₹42.50 <span className="text-[9px] text-gray-400">/box</span>
-                        </div>
+                    <div className="border-t border-gray-100 pt-3 mt-auto">
+                      <div className="text-[13px] font-medium text-[#1a233a]">
+                        ₹42.50 <span className="text-[9px] text-gray-400">/box</span>
                       </div>
                     </div>
                   </div>
+
+                  {/* Card 2 */}
+                  <div onClick={() => setSelectedBox({ name: 'HSC 3-Ply Retail Box', code: 'SPEC-VF-0142', size: '30 × 22 × 18 cm', ply: '3-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'Flute C', gsm: 'GSM 150/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
+                    <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
+                      SPEC-VF-0142
+                    </div>
+                    <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">HSC 3-Ply Retail Box</h4>
+                    <div className="text-[10px] text-gray-500 mb-3">30 × 22 × 18 cm</div>
+
+                    <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Board Spec:</span>
+                        <span className="text-[#1a233a] font-medium">GSM 150/120/150</span>
+                      </div>
+                      <div className="border-t border-gray-100"></div>
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Flute Type:</span>
+                        <span className="text-[#1a233a] font-medium">Flute C</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
+                      <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-3 mt-auto">
+                      <div className="text-[13px] font-medium text-[#1a233a]">
+                        ₹28.50 <span className="text-[9px] text-gray-400">/box</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div onClick={() => setSelectedBox({ name: 'Die-Cut Mailer Box', code: 'SPEC-VF-0077', size: '25 × 18 × 9 cm', ply: '3-Ply', dieNumber: 'DIE - 0201', ect: 'Standard', flute: 'E', gsm: '150/100/150', print: '4 (Full color process)', status: 'Under Review', statusMessage: '- new artwork pending approval' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
+                    <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
+                      SPEC-VF-0142
+                    </div>
+                    <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">Die-Cut Mailer Box</h4>
+                    <div className="text-[10px] text-gray-500 mb-3">40 × 30 × 25 cm</div>
+
+                    <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Board Spec:</span>
+                        <span className="text-[#1a233a] font-medium">GSM 110/100/150</span>
+                      </div>
+                      <div className="border-t border-gray-100"></div>
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Flute Type:</span>
+                        <span className="text-[#1a233a] font-medium">Flute E</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
+                      <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-3 mt-auto">
+                      <div className="text-[13px] font-medium text-[#1a233a]">
+                        ₹19.50 <span className="text-[9px] text-gray-400">/box</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 4 */}
+                  <div onClick={() => setSelectedBox({ name: 'Heavy Duty 7-Ply Bulk Shippers', code: 'SPEC-VF-0142', size: '60 × 45 × 40 cm', ply: '7-Ply', dieNumber: 'DIE - 0219', ect: 'Standard', flute: 'BC Flute (Dual)', gsm: '150/120/100/120/150', print: '2 Color Print', status: 'Approved', statusMessage: '' })} className="bg-white border border-gray-100 rounded-[10px] p-4 shadow-sm flex flex-col cursor-pointer hover:border-[#ea580c] hover:shadow-md transition-all">
+                    <div className="inline-flex px-2 py-0.5 border border-[#fed7aa] text-[#ea580c] text-[9px] font-medium rounded-full mb-3 self-start">
+                      SPEC-VF-0142
+                    </div>
+                    <h4 className="text-[13px] font-medium text-[#1a233a] mb-0.5">Heavy Duty 7-Ply Bulk Shippers</h4>
+                    <div className="text-[10px] text-gray-500 mb-3">60 × 45 × 40 cm</div>
+
+                    <div className="bg-[#f8fafc] rounded-md p-2.5 mb-3 space-y-1.5">
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Board Spec:</span>
+                        <span className="text-[#1a233a] font-medium">150/120/100/120/150</span>
+                      </div>
+                      <div className="border-t border-gray-100"></div>
+                      <div className="flex justify-between text-[10px]">
+                        <span className="text-gray-500">Flute Type:</span>
+                        <span className="text-[#1a233a] font-medium">BC Flute (Dual)</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="inline-flex px-1.5 py-0.5 border border-blue-200 text-blue-600 text-[8.5px] font-medium rounded-full bg-white">Die-0219</span>
+                      <span className="inline-flex px-1.5 py-0.5 border border-gray-200 text-gray-500 text-[8.5px] font-medium rounded-full bg-white">2 Color Print</span>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-3 mt-auto">
+                      <div className="text-[13px] font-medium text-[#1a233a]">
+                        ₹42.50 <span className="text-[9px] text-gray-400">/box</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -744,7 +731,7 @@ const CustomerDetailsPage = () => {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             {/* Modal Content */}
             <div className="p-6 pt-5 flex gap-8">
               {/* Left Column */}
@@ -766,7 +753,7 @@ const CustomerDetailsPage = () => {
                   <div className="text-[13px] text-[#1a233a] font-medium">{selectedBox.ect}</div>
                 </div>
               </div>
-              
+
               {/* Right Column */}
               <div className="flex-1 space-y-6 pl-2">
                 <div>

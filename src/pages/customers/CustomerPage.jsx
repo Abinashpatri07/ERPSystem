@@ -4,8 +4,8 @@ import { ChevronDown, Plus, MoreHorizontal } from 'lucide-react';
 import CustomerTable from './CustomerTable';
 
 const initialCustomers = [
-  { id: 1, name: 'ZAP INDIA PRIVATE LIMITED', gst: '22AAACL1234A1Z5', primaryContact: 'Rajesh Mehta', email: 'rajesg.zap@gmail.com', phone: '+91 746359465' },
-  { id: 2, name: 'ABC INDIA PRIVATE LIMITED', gst: '29AABCT5678M1Z2', primaryContact: 'Nilesh Sharma', email: 'nilesh.abc@gmail.com', phone: '+91 847259685' }
+  { id: 1, name: 'ZAP INDIA PRIVATE LIMITED', gst: '22AAACL1234A1Z5', primaryContact: 'Rajesh Mehta', email: 'rajesg.zap@gmail.com', phone: '+91 746359465', receivable: '₹2,34,654', status: 'Active' },
+  { id: 2, name: 'ABC INDIA PRIVATE LIMITED', gst: '29AABCT5678M1Z2', primaryContact: 'Nilesh Sharma', email: 'nilesh.abc@gmail.com', phone: '+91 847259685', receivable: '₹3,44,600', status: 'In Active' }
 ];
 
 const CustomerPage = () => {
