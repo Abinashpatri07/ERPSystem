@@ -1,18 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
 import { ChevronDown, Plus, MoreHorizontal } from 'lucide-react';
 import CustomerTable from './CustomerTable';
 
-const initialCustomers = [
-  { id: 1, name: 'ZAP INDIA PRIVATE LIMITED', gst: '22AAACL1234A1Z5', primaryContact: 'Rajesh Mehta', email: 'rajesg.zap@gmail.com', phone: '+91 746359465', receivable: '₹2,34,654', status: 'Active' },
-  { id: 2, name: 'ABC INDIA PRIVATE LIMITED', gst: '29AABCT5678M1Z2', primaryContact: 'Nilesh Sharma', email: 'nilesh.abc@gmail.com', phone: '+91 847259685', receivable: '₹3,44,600', status: 'In Active' }
-];
-
 const CustomerPage = () => {
   const { searchQuery = '' } = useOutletContext() || {};
   
-  const [customers, setCustomers] = useState(initialCustomers);
+  const [customers, setCustomers] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/customers/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch customers');
+        }
+        const data = await response.json();
+        const mappedCustomers = data.map(item => ({
+          id: item.id,
+          name: item.display_name || item.company_name || 'N/A',
+          gst: item.gstin || '-',
+          primaryContact: `${item.primary_contact_first_name || ''} ${item.primary_contact_last_name || ''}`.trim() || 'N/A',
+          email: item.email_address || '-',
+          phone: item.primary_number || '-',
+          receivable: `₹${item.opening_balance || '0.00'}`,
+          status: 'Active'
+        }));
+        setCustomers(mappedCustomers);
+      } catch (error) {
+        console.error('Error fetching customers:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCustomers();
+  }, []);
 
   // Filter logic
   const safeQuery = (searchQuery || '').toLowerCase();

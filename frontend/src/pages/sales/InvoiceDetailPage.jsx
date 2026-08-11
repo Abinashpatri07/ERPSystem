@@ -54,18 +54,18 @@ const InvoiceDetailPage = () => {
   ];
 
   return (
-    <main className="flex-1 overflow-hidden bg-[#f8f9fb] flex flex-col relative">
+    <main className="flex-1 overflow-hidden bg-[#f8f9fb] flex flex-col relative p-1.5 gap-1.5">
       {/* Sub Navigation */}
-      <div className="px-8 border-b border-gray-200 bg-white flex-shrink-0">
-        <nav className="flex space-x-8">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
+        <nav className="flex space-x-1">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-2 text-sm font-medium border-b-2 transition-colors ${
+              className={`flex items-center gap-1 px-4 py-2 text-[13px] border-b-2 transition-colors whitespace-nowrap ${
                 tab.name === 'Invoices'
-                  ? 'border-gray-900 text-gray-900 font-bold'
-                  : 'border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-600'
+                  ? 'text-black font-bold border-black'
+                  : 'text-gray-500 font-medium border-transparent hover:text-gray-700 hover:border-gray-300'
               }`}
             >
               {tab.name}
@@ -74,10 +74,10 @@ const InvoiceDetailPage = () => {
         </nav>
       </div>
 
-      <div className="flex-1 overflow-y-auto custom-scrollbar p-4 flex flex-col">
+      <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-1.5">
         
         {/* Top Banner with Stepper */}
-        <div className="bg-white px-6 py-2 mb-4 rounded-xl shadow-sm flex-shrink-0">
+        <div className="bg-white px-6 py-2 rounded-xl shadow-sm flex-shrink-0">
           <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit mb-1">
             Invoice
           </h2>
@@ -136,7 +136,7 @@ const InvoiceDetailPage = () => {
         </div>
 
         {/* Master Detail View Area */}
-        <div className="flex-1 flex space-x-4 overflow-hidden min-h-0">
+        <div className="flex-1 flex gap-1.5 overflow-hidden min-h-0">
           
           {/* Left Sidebar (Invoice List) */}
           <div className="w-[270px] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col flex-shrink-0 overflow-hidden">
@@ -170,14 +170,16 @@ const InvoiceDetailPage = () => {
 
             <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
               {/* Selected Invoice Card */}
-              <div className="border border-gray-100 bg-white rounded-xl p-4 shadow-sm cursor-pointer hover:border-gray-200 transition-colors">
-                <div className="flex justify-between items-center mb-1.5">
-                  <span className="text-[13px] font-bold text-gray-900">INV-00001</span>
-                  <span className="text-[10px] text-gray-400 font-medium">25/06/2026</span>
+              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm">
+                <div className="text-[10px] text-gray-400 font-medium tracking-wide mb-1">
+                  25/06/2026
                 </div>
-                <div className="text-[11px] font-bold text-gray-800 leading-tight mb-4">CLIMAMAX CONTROLS PRIVATE LIMITED</div>
-                <div className="flex justify-end">
-                  <span className="text-[11px] font-semibold text-gray-500">₹100.00</span>
+                <h3 className="text-[12px] font-medium text-[#111827] mb-2 uppercase leading-snug">
+                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                </h3>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] font-medium text-[#374151]">INV-00001</span>
+                  <span className="text-[16px] font-bold text-[#111827]">₹100.00</span>
                 </div>
               </div>
             </div>

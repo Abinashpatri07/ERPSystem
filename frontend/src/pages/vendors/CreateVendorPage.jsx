@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package } from 'lucide-react';
+import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const CreateVendorPage = () => {
@@ -62,22 +62,22 @@ const CreateVendorPage = () => {
                   <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0 mt-2.5">Primary Contact <span className="text-red-500">*</span></label>
                   <div className="flex-1 flex items-center space-x-2 min-w-0">
                     <div className="relative w-20 shrink-0">
-                      <select className="w-full border border-gray-200 rounded-md px-2 py-2 text-[13px] text-gray-600 focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                      <select className="w-full border border-gray-200 rounded-md px-2 py-2 text-[13px] text-gray-600 focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                         <option></option>
                         <option>Mr.</option>
                         <option>Ms.</option>
                       </select>
                       <ChevronDown className="absolute right-2 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
                     </div>
-                    <input type="text" placeholder="First Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400" />
-                    <input type="text" placeholder="Last Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400" />
+                    <input type="text" placeholder="First Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
+                    <input type="text" placeholder="Last Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
                   </div>
                 </div>
 
                 {/* Display Name */}
                 <div className="flex items-center relative min-w-0">
                   <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0">Display Name <span className="text-red-500">*</span></label>
-                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                   <span className="absolute right-2 top-1.5 bg-[#fce8e8] text-[#d9534f] text-[10px] px-2 py-0.5 rounded-full font-semibold">Required</span>
                 </div>
 
@@ -88,7 +88,7 @@ const CreateVendorPage = () => {
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       <Globe className="w-4 h-4 text-gray-400" />
                     </span>
-                    <select className="w-full border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] text-gray-600 focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                    <select className="w-full border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] text-gray-600 focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                       <option></option>
                       <option>English</option>
                     </select>
@@ -103,7 +103,7 @@ const CreateVendorPage = () => {
                     <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-gray-200 bg-gray-50 rounded-l-md px-3 text-[13px] text-gray-500 shrink-0">
                       +91
                     </div>
-                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400" />
+                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@ const CreateVendorPage = () => {
                 {/* Company Name */}
                 <div className="flex items-center min-w-0">
                   <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0">Company Name <span className="text-red-500">*</span></label>
-                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
 
                 {/* Email Address */}
@@ -123,7 +123,7 @@ const CreateVendorPage = () => {
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       <Mail className="w-4 h-4 text-gray-400" />
                     </span>
-                    <input type="email" className="w-full min-w-0 border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                    <input type="email" className="w-full min-w-0 border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                   </div>
                 </div>
 
@@ -137,7 +137,7 @@ const CreateVendorPage = () => {
                     <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-gray-200 bg-gray-50 rounded-l-md px-3 text-[13px] text-gray-500 shrink-0">
                       +91
                     </div>
-                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400" />
+                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
                   </div>
                 </div>
               </div>
@@ -178,14 +178,14 @@ const CreateVendorPage = () => {
                         <label className="text-[13px] font-bold text-[#1a233a] w-36 shrink-0">
                           PAN <span className="text-red-500">*</span>
                         </label>
-                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                       </div>
 
                       <div className="flex items-center min-w-0">
                         <label className="text-[13px] font-bold text-[#1a233a] w-36 shrink-0">
                           GSTIN
                         </label>
-                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                       </div>
 
                       <div className="flex items-center min-w-0">
@@ -203,7 +203,7 @@ const CreateVendorPage = () => {
                           Currency <span className="text-red-500">*</span>
                         </label>
                         <div className="flex-1 relative">
-                          <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                             <option>INR - Indian Rupees</option>
                           </select>
                           <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
@@ -214,7 +214,7 @@ const CreateVendorPage = () => {
                         <label className="text-[13px] font-bold text-[#1a233a] w-36 shrink-0">
                           Accounts Payable
                         </label>
-                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                        <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                       </div>
                     </div>
 
@@ -225,7 +225,7 @@ const CreateVendorPage = () => {
                           Payment Terms <span className="text-red-500">*</span>
                         </label>
                         <div className="flex-1 relative">
-                          <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 appearance-none bg-white">
+                          <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                             <option></option>
                           </select>
                           <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
@@ -240,7 +240,7 @@ const CreateVendorPage = () => {
                           <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-gray-200 bg-gray-50 rounded-l-md px-3 text-[13px] text-gray-500 shrink-0">
                             INR
                           </div>
-                          <input type="text" placeholder="0.00" className="w-full min-w-0 pl-12 border border-gray-200 rounded-md pr-8 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-800" />
+                          <input type="text" placeholder="0.00" className="w-full min-w-0 pl-12 border border-gray-200 rounded-md pr-8 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-800 bg-white shadow-sm" />
                           <ChevronDown className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
                         </div>
                       </div>
@@ -279,14 +279,14 @@ const CreateVendorPage = () => {
 
                     {/* Billing Address */}
                     <div>
-                      <h3 className="text-[15px] font-bold text-[#1a233a] mb-6">Billing Address</h3>
-                      <div className="space-y-5">
+                      <h3 className="text-[15px] font-bold text-[#1a233a] mb-5">Billing Address</h3>
+                      <div className="space-y-3">
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Attention</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Attention</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Country / Region</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Country / Region</label>
                           <div className="relative">
                             <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                               <option>India</option>
@@ -295,28 +295,28 @@ const CreateVendorPage = () => {
                           </div>
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Address</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Address</label>
                           <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none" placeholder="Street 1"></textarea>
                           <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none mt-3" placeholder="Street 2"></textarea>
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">City</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">City</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">State</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">State</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Zip Code</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Zip Code</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Phone</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Phone</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Fax</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Fax</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                       </div>
@@ -324,20 +324,20 @@ const CreateVendorPage = () => {
 
                     {/* Shipping Address */}
                     <div>
-                      <div className="flex justify-between items-center mb-6">
+                      <div className="flex justify-between items-center mb-5">
                         <h3 className="text-[15px] font-bold text-[#1a233a]">Shipping Address</h3>
                         <button className="text-[12px] font-semibold text-blue-600 flex items-center hover:underline">
                           <Copy className="w-3.5 h-3.5 mr-1" />
                           Copy billing address
                         </button>
                       </div>
-                      <div className="space-y-5">
+                      <div className="space-y-3">
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Attention</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Attention</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Country / Region</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Country / Region</label>
                           <div className="relative">
                             <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                               <option>India</option>
@@ -346,28 +346,28 @@ const CreateVendorPage = () => {
                           </div>
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Address</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Address</label>
                           <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none" placeholder="Street 1"></textarea>
                           <textarea rows="2" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none mt-3" placeholder="Street 2"></textarea>
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">City</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">City</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">State</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">State</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Zip Code</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Zip Code</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Phone</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Phone</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                         <div className="flex flex-col">
-                          <label className="text-[13px] font-bold text-[#1a233a] mb-2">Fax</label>
+                          <label className="text-[13px] font-bold text-[#1a233a] mb-1">Fax</label>
                           <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                         </div>
                       </div>
@@ -379,23 +379,29 @@ const CreateVendorPage = () => {
                 {/* === CONTACT PERSON TAB === */}
                 {activeTab === 'Contact Person' && (
                   <div className="max-w-4xl space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                       <div className="flex flex-col">
-                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Name</label>
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-1">Name</label>
                         <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Contact Person Name" />
                       </div>
                       <div className="flex flex-col">
-                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Email Address</label>
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-1">Email Address</label>
                         <input type="email" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Email Address" />
                       </div>
                       <div className="flex flex-col">
-                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Mobile Number</label>
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-1">Mobile Number</label>
                         <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Mobile Number" />
                       </div>
                       <div className="flex flex-col">
-                        <label className="text-[13px] font-bold text-[#1a233a] mb-2">Designation</label>
+                        <label className="text-[13px] font-bold text-[#1a233a] mb-1">Designation</label>
                         <input type="text" className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" placeholder="Designation" />
                       </div>
+                    </div>
+                    <div className="pt-2">
+                      <button type="button" className="text-blue-600 hover:text-blue-700 text-[13px] font-semibold flex items-center gap-1.5 transition-colors hover:underline">
+                        <Plus className="w-4 h-4" strokeWidth={2.5} />
+                        Add Contact Person
+                      </button>
                     </div>
                   </div>
                 )}

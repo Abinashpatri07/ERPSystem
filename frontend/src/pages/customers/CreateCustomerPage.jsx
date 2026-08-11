@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,6 +8,44 @@ const CreateCustomerPage = () => {
   const [customerType, setCustomerType] = useState('Business');
   const [activeTab, setActiveTab] = useState('Other Details');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const [formData, setFormData] = useState({
+    customer_type: 'Business',
+    primary_contact_salutation: '',
+    primary_contact_first_name: '',
+    primary_contact_last_name: '',
+    display_name: '',
+    customer_language: 'English',
+    primary_number: '',
+    secondary_number: '',
+    msme: '',
+    company_name: '',
+    email_address: '',
+    sales_region: '',
+    pan: '',
+    gstin: '',
+    currency: '',
+    opening_balance: '0.00',
+    payment_terms: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/customers/', formData);
+      if (response.status === 201) {
+        setShowSuccessModal(true);
+      }
+    } catch (error) {
+      console.error('Error creating customer:', error);
+      alert('Failed to create customer');
+    }
+  };
+
 
   const tabs = ['Other Details', 'Address', 'Contact Person', 'Remark & Audit Log'];
 
@@ -54,7 +93,7 @@ const CreateCustomerPage = () => {
       {/* Form Area */}
       <div className="bg-white border border-gray-200 rounded-2xl shadow-sm flex-1 flex flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto custom-scrollbar px-6 pt-5 pb-24 md:px-8 md:pt-6">
-          <form className="max-w-6xl">
+          <form id="customer-form" className="max-w-6xl" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
 
               {/* Left Column */}
@@ -70,8 +109,8 @@ const CreateCustomerPage = () => {
                       <input
                         type="radio"
                         className="hidden"
-                        checked={customerType === 'Business'}
-                        onChange={() => setCustomerType('Business')}
+                        checked={formData.customer_type === 'Business'}
+                        onChange={() => setFormData({ ...formData, customer_type: 'Business' })}
                       />
                       Business
                     </label>
@@ -82,8 +121,8 @@ const CreateCustomerPage = () => {
                       <input
                         type="radio"
                         className="hidden"
-                        checked={customerType === 'Individual'}
-                        onChange={() => setCustomerType('Individual')}
+                        checked={formData.customer_type === 'Individual'}
+                        onChange={() => setFormData({ ...formData, customer_type: 'Individual' })}
                       />
                       Individual
                     </label>
@@ -102,15 +141,15 @@ const CreateCustomerPage = () => {
                       </select>
                       <ChevronDown className="absolute right-1 top-2.5 w-3 h-3 text-gray-400 pointer-events-none" />
                     </div>
-                    <input type="text" placeholder="First Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
-                    <input type="text" placeholder="Last Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
+                    <input type="text" placeholder="First Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" name="primary_contact_first_name" value={formData.primary_contact_first_name} onChange={handleChange} />
+                    <input type="text" placeholder="Last Name" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" name="primary_contact_last_name" value={formData.primary_contact_last_name} onChange={handleChange} />
                   </div>
                 </div>
 
                 {/* Display Name */}
                 <div className="flex items-center relative min-w-0">
                   <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0">Display Name <span className="text-red-500">*</span></label>
-                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" name="display_name" value={formData.display_name} onChange={handleChange} required />
                   <span className="absolute right-2 top-1.5 bg-[#fce8e8] text-[#d9534f] text-[10px] px-2 py-0.5 rounded-full font-semibold">Required</span>
                 </div>
 
@@ -136,7 +175,7 @@ const CreateCustomerPage = () => {
                     <div className="absolute inset-y-0 left-0 flex items-center justify-center border-r border-gray-200 bg-gray-50 rounded-l-md px-3 text-[13px] text-gray-500 shrink-0">
                       +91
                     </div>
-                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" />
+                    <input type="text" placeholder="Work Number" className="w-full min-w-0 pl-13 border border-gray-200 rounded-md pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 placeholder-gray-400 bg-white shadow-sm" name="primary_number" value={formData.primary_number} onChange={handleChange} required />
                   </div>
                 </div>
 
@@ -158,7 +197,7 @@ const CreateCustomerPage = () => {
                 {/* Company Name */}
                 <div className="flex items-center min-w-0">
                   <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0">Company Name <span className="text-red-500">*</span></label>
-                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                  <input type="text" className="flex-1 min-w-0 border border-gray-200 rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" name="company_name" value={formData.company_name} onChange={handleChange} />
                 </div>
 
                 {/* Email Address */}
@@ -168,7 +207,7 @@ const CreateCustomerPage = () => {
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       <Mail className="w-4 h-4 text-gray-400" />
                     </span>
-                    <input type="email" className="w-full min-w-0 border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                    <input type="email" className="w-full min-w-0 border border-gray-200 rounded-md pl-9 pr-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 bg-white shadow-sm" name="email_address" value={formData.email_address} onChange={handleChange} />
                   </div>
                 </div>
 
@@ -447,7 +486,8 @@ const CreateCustomerPage = () => {
           Cancel
         </button>
         <button
-          onClick={() => setShowSuccessModal(true)}
+          type="submit"
+          form="customer-form"
           className="px-6 py-2 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-xl text-[12px] font-semibold hover:opacity-90 transition-opacity shadow-sm"
         >
           Save Customer
