@@ -48,18 +48,18 @@ const CreateQuotePage = () => {
   };
 
   return (
-    <main className="flex-1 overflow-y-auto bg-white flex flex-col relative font-sans">
+    <main className="flex-1 overflow-hidden bg-[#f4f7f9] flex flex-col relative p-1.5 gap-1.5 font-sans">
 
       {/* Sub Navigation */}
-      <div className="px-8 border-b border-gray-200">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
         <nav className="flex space-x-8">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-2 text-sm font-medium border-b-2 transition-colors ${tab.name === 'Quotes'
-                  ? 'border-gray-900 text-gray-900 font-bold'
-                  : 'border-transparent text-gray-500 hover:text-blue-600 hover:border-blue-600'
+              className={`py-2.5 text-sm font-medium border-b-2 transition-colors ${tab.name === 'Quotes'
+                  ? 'border-blue-500 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               {tab.name}
@@ -68,30 +68,30 @@ const CreateQuotePage = () => {
         </nav>
       </div>
 
-      <div className="flex-1 p-6 pb-6 max-w-[1200px] mx-auto w-full">
+      <div className="flex-1 flex flex-col gap-1.5 min-h-0">
         {/* Header and Stepper */}
-        <div className="bg-white px-6 py-3 rounded-2xl border border-gray-100 shadow-sm mb-4">
-          <h2 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block mb-3">
+        <div className="bg-white px-6 py-2 rounded-xl border border-gray-200 shadow-sm shrink-0">
+          <h2 className="text-[20px] font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block mb-1">
             Quote Creation
           </h2>
 
           <div className="flex items-center w-full relative px-6 z-0">
             {/* Connecting Line */}
-            <div className="absolute top-5 left-11 right-11 h-[2px] bg-gray-200 z-[-1]"></div>
-            <div className="absolute top-5 left-11 w-[calc(100%-5.5rem)] max-w-[calc(100%/7)] h-[2px] bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] z-[-1]"></div>
+            <div className="absolute top-4 left-10 right-10 h-[2px] bg-gray-200 z-[-1]"></div>
+            <div className="absolute top-4 left-10 w-[calc(100%-5rem)] max-w-[calc(100%/7)] h-[2px] bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] z-[-1]"></div>
 
             <div className="flex items-center justify-between w-full">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <div key={step.name} className="flex flex-col items-center px-2 relative">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 relative z-10 ${step.active
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 relative z-10 ${step.active
                         ? 'bg-gradient-to-br from-[#ff6b6b] via-[#9333ea] to-[#4338ca] text-white shadow-md'
                         : 'bg-white border-2 border-gray-200 text-gray-400'
                       }`}>
-                      <Icon className="w-4 h-4" strokeWidth={step.active ? 2.5 : 2} />
+                      <Icon className="w-3.5 h-3.5" strokeWidth={step.active ? 2.5 : 2} />
                     </div>
-                    <span className={`text-[11px] font-semibold ${step.active ? 'text-gray-900' : 'text-gray-500'}`}>
+                    <span className={`text-[10px] font-semibold ${step.active ? 'text-gray-900' : 'text-gray-500'}`}>
                       {step.name}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ const CreateQuotePage = () => {
         </div>
 
         {/* Main Content */}
-        <div className="space-y-4">
+        <div className="flex flex-col gap-1.5 flex-1 overflow-y-auto custom-scrollbar pb-4 pr-1">
 
           {/* Section 1: Customer Selection */}
           <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
@@ -117,9 +117,9 @@ const CreateQuotePage = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-xs font-semibold text-[#1a233a] mb-2">Search Customer <span className="text-red-500">*</span></label>
+              <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Search Customer <span className="text-red-500">*</span></label>
               <div className="relative">
-                <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#3ca0d3] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-gray-600 focus:outline-none focus:border-blue-500 appearance-none bg-white shadow-sm">
                   <option>ZAP Private Limited - GST: 27AABCU9603R1ZV | POC: Rahul Mehta</option>
                 </select>
                 <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
@@ -128,22 +128,22 @@ const CreateQuotePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-2">Name</label>
-                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                <label className="block text-[13px] font-bold text-gray-500 mb-2">Name</label>
+                <div className="border border-gray-200 rounded-md px-3 py-2 bg-white flex items-center text-[13px] text-[#1a233a] shadow-sm">
                   <Box className="w-4 h-4 text-gray-400 mr-3" />
                   ZAP Private Limited
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-2">GST</label>
-                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                <label className="block text-[13px] font-bold text-gray-500 mb-2">GST</label>
+                <div className="border border-gray-200 rounded-md px-3 py-2 bg-white flex items-center text-[13px] text-[#1a233a] shadow-sm">
                   <span className="w-4 h-4 rounded-full border border-gray-400 flex items-center justify-center text-gray-400 text-[10px] mr-3">$</span>
                   27AABCUJMSAIU462BC
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-2">Phone</label>
-                <div className="border border-[#c4d6eb] rounded-lg px-4 py-2.5 bg-white flex items-center text-sm font-semibold text-[#1a233a]">
+                <label className="block text-[13px] font-bold text-gray-500 mb-2">Phone</label>
+                <div className="border border-gray-200 rounded-md px-3 py-2 bg-white flex items-center text-[13px] text-[#1a233a] shadow-sm">
                   <Search className="w-4 h-4 text-gray-400 mr-3" />
                   +91 764539543
                 </div>
@@ -165,35 +165,35 @@ const CreateQuotePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quote <span className="text-red-500">*</span></label>
-                <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Quote <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Reference# <span className="text-red-500">*</span></label>
-                <input type="text" placeholder="Optional Reference" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Reference# <span className="text-red-500">*</span></label>
+                <input type="text" placeholder="Optional Reference" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quote Date</label>
-                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Quote Date</label>
+                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Expire Date</label>
-                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Expire Date</label>
+                <input type="text" placeholder="DD/MM/YYYY" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Sales Persons</label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Sales Persons</label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Manoj Kumar</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Project Name</label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Project Name</label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Select Project</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
@@ -214,30 +214,30 @@ const CreateQuotePage = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Type <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Box Type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Universal</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Size <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Box Size <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Medium</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
-              <div className="md:col-span-1">
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Measurement <span className="text-[10px] text-gray-400 font-normal">(IN CM)</span> <span className="text-red-500">*</span></label>
+              <div className="md:col-span-2">
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Box Measurement <span className="text-[10px] text-gray-400 font-normal">(IN CM)</span> <span className="text-red-500">*</span></label>
                 <div className="flex items-center space-x-2">
                   <div className="relative flex-1">
-                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-gray-200 rounded-md px-2 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm text-center" />
                     <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
                       <Box className="w-3.5 h-3.5" />
                       <span className="text-[10px] font-bold">L</span>
@@ -245,7 +245,7 @@ const CreateQuotePage = () => {
                   </div>
                   <span className="text-gray-300">×</span>
                   <div className="relative flex-1">
-                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-gray-200 rounded-md px-2 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm text-center" />
                     <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
                       <Box className="w-3.5 h-3.5" />
                       <span className="text-[10px] font-bold">W</span>
@@ -253,7 +253,7 @@ const CreateQuotePage = () => {
                   </div>
                   <span className="text-gray-300">×</span>
                   <div className="relative flex-1">
-                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-[#c4d6eb] rounded-lg px-2 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] text-center" />
+                    <input type="text" defaultValue="" placeholder=" " className="peer w-full border border-gray-200 rounded-md px-2 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm text-center" />
                     <div className="absolute left-4 top-3 items-center space-x-1.5 text-gray-400 hidden peer-placeholder-shown:flex pointer-events-none">
                       <Box className="w-3.5 h-3.5" />
                       <span className="text-[10px] font-bold">H</span>
@@ -262,9 +262,9 @@ const CreateQuotePage = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Paper <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Paper <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>NS</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
@@ -272,54 +272,55 @@ const CreateQuotePage = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>5 Ply</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Top paper GSM <span className="text-red-500">*</span></label>
-                <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Top paper GSM <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Liner <span className="text-red-500">*</span></label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
-                </div>
-                <div className="flex-1">
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Flute <span className="text-red-500">*</span></label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
-                </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Liner <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Flute <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Print type <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Print type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Plain</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Joint type <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Joint type <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <select className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] appearance-none bg-white">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
                     <option>Clean</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Dispatch date <span className="text-red-500">*</span></label>
-                <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Quantity <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
-              <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Quantity <span className="text-red-500">*</span></label>
-                <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+              
+              <div className="md:col-span-2"></div>
+              <div className="flex items-end justify-end">
+                <button className="w-full bg-gradient-to-r from-[#f43f5e] to-[#6366f1] text-white text-[13px] font-medium py-2 px-6 rounded-md shadow-sm transition-all hover:opacity-90 mt-2 md:mt-0">
+                  Calculate
+                </button>
               </div>
             </div>
           </div>
@@ -341,50 +342,56 @@ const CreateQuotePage = () => {
               <div className="flex-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-[#1a233a] mb-2">Board Size (L x W)</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                    <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Board Size (L x W)</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">BF (Board Factor)</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <label className="block text-[13px] font-bold text-[#1a233a] mb-2">BF (Board Factor)</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Top Paper GSM</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Top Paper GSM</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Two Ply GSM</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Two Ply GSM</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Box Weight (Per Box)</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Box Weight (Per Box)</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#1a233a] mb-2">Total Weight (Order)</label>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg px-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Total Weight (Order)</label>
+                  <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
                 </div>
               </div>
 
               {/* Right Summary */}
-              <div className="w-full md:w-[350px] bg-[#f9f8ff] rounded-2xl p-6 flex flex-col justify-center">
-                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed">
-                  <span className="text-xs font-bold text-gray-500">NO. OF BOARDS / SHEET</span>
-                  <span className="text-sm font-semibold text-[#1a233a]">4</span>
+              <div className="w-full md:w-[350px] bg-gradient-to-br from-[#fff5f5] to-[#f5f3ff] rounded-2xl p-5 flex flex-col justify-center border border-white/50 shadow-sm">
+                <div className="flex justify-between items-center pb-2 border-b border-dashed border-[#dce4f0]">
+                  <span className="text-[11px] font-semibold text-gray-500">Box Value</span>
+                  <span className="text-[12px] font-medium text-[#1a233a]">₹62/BOX</span>
                 </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed">
-                  <span className="text-xs font-bold text-gray-500">BOXES PER TON</span>
-                  <span className="text-sm font-semibold text-[#1a233a]">867</span>
+                <div className="flex justify-between items-center py-2 border-b border-dashed border-[#dce4f0]">
+                  <span className="text-[11px] font-semibold text-gray-500">Sub Total</span>
+                  <span className="text-[12px] font-medium text-[#1a233a]">₹53,754.00</span>
                 </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-200 border-dashed mb-4">
-                  <span className="text-xs font-bold text-gray-500">BOX VALUE</span>
-                  <span className="text-sm font-semibold text-[#1a233a]">₹62/BOX</span>
+                <div className="flex justify-between items-center py-2 border-b border-dashed border-[#dce4f0]">
+                  <span className="text-[11px] font-semibold text-gray-500">GST</span>
+                  <span className="text-[12px] font-medium text-[#1a233a]">18%</span>
+                </div>
+                <div className="flex justify-between items-center py-2 mb-1">
+                  <span className="text-[11px] font-semibold text-gray-500">Discount</span>
+                  <div className="bg-white px-2.5 py-0.5 rounded text-[12px] font-medium text-[#1a233a] shadow-sm border border-gray-100">
+                    ₹2,829.72
+                  </div>
                 </div>
 
-                <div className="mt-2">
-                  <span className="text-xs font-bold text-gray-500 block mb-1">ESTIMATED TOTAL</span>
-                  <div className="text-3xl font-bold text-[#1a233a]">₹ 80,600</div>
+                <div className="mt-0">
+                  <span className="text-[11px] font-bold text-gray-500 block mb-0.5">ESTIMATED TOTAL</span>
+                  <div className="text-[32px] leading-tight font-bold text-[#1a233a]">₹ 80,600</div>
                 </div>
               </div>
             </div>
@@ -407,27 +414,27 @@ const CreateQuotePage = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {materials.map((mat) => (
                 <div
                   key={mat.id}
                   onClick={() => toggleMaterial(mat.id)}
-                  className={`border rounded-xl p-4 cursor-pointer transition-colors relative ${selectedMaterials.includes(mat.id)
+                  className={`border rounded-xl p-3 cursor-pointer transition-colors relative ${selectedMaterials.includes(mat.id)
                       ? 'border-[#8fc2d6] bg-[#f0f9ff]'
                       : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                 >
-                  <div className="flex justify-between items-center mb-1">
+                  <div className="flex justify-between items-center mb-0.5">
                     <span className="font-semibold text-[#1a233a] text-sm">{mat.name}</span>
-                    <div className={`w-5 h-5 rounded flex items-center justify-center transition-colors ${selectedMaterials.includes(mat.id) ? 'bg-[#3f7a8f]' : 'border border-gray-300'
+                    <div className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${selectedMaterials.includes(mat.id) ? 'bg-[#3f7a8f]' : 'border border-gray-300'
                       }`}>
-                      {selectedMaterials.includes(mat.id) && <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
+                      {selectedMaterials.includes(mat.id) && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                     </div>
                   </div>
-                  <div className="text-xs text-gray-400 mb-2">{mat.spec}</div>
-                  <div className="text-sm">
+                  <div className="text-[11px] text-gray-400 mb-1.5">{mat.spec}</div>
+                  <div className="text-[13px]">
                     <span className="font-bold text-[#1a233a]">{mat.weight}</span>
-                    <span className="text-gray-400 ml-1 text-xs">in stock</span>
+                    <span className="text-gray-400 ml-1 text-[11px]">in stock</span>
                   </div>
                 </div>
               ))}
@@ -448,26 +455,26 @@ const CreateQuotePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Number of Colors <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Number of Colors <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <span className="absolute left-4 top-3 text-gray-400">
                     <Palette className="w-4 h-4" />
                   </span>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <input type="text" defaultValue="" className="w-full min-w-0 border border-gray-200 rounded-md pl-10 pr-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Print Area <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Print Area <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <span className="absolute left-4 top-3 text-gray-400">
                     <Layers className="w-4 h-4" />
                   </span>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-4 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
+                  <input type="text" defaultValue="" className="w-full min-w-0 border border-gray-200 rounded-md pl-10 pr-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Artwork Upload <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Artwork Upload <span className="text-red-500">*</span></label>
                 <div className="border-2 border-dashed border-[#a3c2fa] rounded-lg p-4 flex items-center bg-white cursor-pointer hover:bg-gray-50 transition-colors">
                   <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                     <UploadCloud className="w-5 h-5 text-gray-400" />
@@ -480,11 +487,11 @@ const CreateQuotePage = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Printing Notes</label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Printing Notes</label>
                 <textarea
                   rows="3"
                   defaultValue=""
-                  className="w-full border border-[#c4d6eb] rounded-lg p-4 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] resize-none h-[76px]"
+                  className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none h-[76px]"
                 ></textarea>
               </div>
             </div>
@@ -493,8 +500,8 @@ const CreateQuotePage = () => {
           {/* Section 7: Additional Information */}
           <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 shadow-sm">
             <div className="flex items-start mb-4">
-              <div className="w-10 h-10 bg-[#b649d8] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
-                <ClipboardList className="w-5 h-5" />
+              <div className="w-10 h-10 bg-gradient-to-br from-[#ff6b6b] to-[#b649d8] rounded-xl flex items-center justify-center text-white mr-4 shadow-sm flex-shrink-0">
+                <FileText className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-[#1a233a]">Additional Information</h3>
@@ -504,32 +511,29 @@ const CreateQuotePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Delivery Date <span className="text-red-500">*</span></label>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Delivery Date <span className="text-red-500">*</span></label>
                 <div className="relative">
-                  <span className="absolute left-4 top-3 text-gray-400">
-                    <Calendar className="w-4 h-4" />
-                  </span>
-                  <input type="text" defaultValue="" className="w-full border border-[#c4d6eb] rounded-lg pl-10 pr-10 py-2.5 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3]" />
-                  <Calendar className="absolute right-4 top-3 w-4 h-4 text-gray-300 pointer-events-none" />
+                  <input type="text" defaultValue="07/15/2026" className="w-full min-w-0 border border-gray-200 rounded-md px-3 pr-10 py-2 text-[13px] font-semibold text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+                  <Calendar className="absolute right-3 top-2.5 w-4 h-4 text-gray-400 pointer-events-none" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#1a233a] mb-2">Customer Type <span className="text-red-500">*</span></label>
-                <div className="flex items-center space-x-2 mt-2.5">
-                  <button className="text-xs font-semibold text-gray-500 px-3 py-1">Normal</button>
-                  <button className="text-xs font-semibold text-[#ff7a59] bg-[#fff0ec] px-4 py-1 rounded-full">Urgent</button>
-                  <button className="text-xs font-semibold text-gray-500 px-3 py-1">High Priority</button>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Order Type <span className="text-red-500">*</span></label>
+                <div className="flex items-center space-x-2 mt-1.5">
+                  <button className="text-[11px] font-semibold text-gray-600 bg-white border border-gray-200 px-4 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition-colors">Normal</button>
+                  <button className="text-[11px] font-semibold text-[#f97316] bg-[#fff7ed] border border-[#fdba74]/50 px-4 py-1.5 rounded-full shadow-sm">Urgent</button>
+                  <button className="text-[11px] font-semibold text-gray-600 bg-white border border-gray-200 px-4 py-1.5 rounded-full shadow-sm hover:bg-gray-50 transition-colors">High Priority</button>
                 </div>
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#1a233a] mb-2">Remarks / Special Instructions</label>
+              <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Remarks / Special Instructions</label>
               <textarea
-                rows="4"
-                defaultValue=""
-                className="w-full border border-[#c4d6eb] rounded-lg p-4 text-sm text-[#1a233a] font-medium focus:outline-none focus:border-[#3ca0d3] resize-none"
+                rows="3"
+                defaultValue="Batch requires additional edge reinforcing during custom slotting."
+                className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm resize-none"
               ></textarea>
             </div>
           </div>
@@ -538,20 +542,20 @@ const CreateQuotePage = () => {
       </div>
 
       {/* Floating Footer Actions */}
-      <div className="sticky bottom-0 w-full bg-white border-t border-gray-200 px-6 py-3 flex items-center justify-end space-x-4 z-50 mt-auto">
+      <div className="sticky bottom-0 w-full bg-white border-t border-gray-200 px-6 py-2 flex items-center justify-end space-x-3 z-50 mt-auto">
         <button
           onClick={() => navigate('/sales/quotes')}
-          className="px-6 py-2 rounded-lg border border-gray-300 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
         >
           Cancel
         </button>
-        <button className="px-6 py-2 rounded-lg bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
-          <Bookmark className="w-4 h-4 mr-2 text-gray-500" />
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
           Save Draft
         </button>
         <button
           onClick={() => setShowPreview(true)}
-          className="px-8 py-2 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-sm font-bold shadow-sm hover:opacity-90 transition-opacity"
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-opacity"
         >
           Save
         </button>

@@ -9,20 +9,22 @@ const VendorsPage = () => {
     {
       id: 1,
       name: 'Climamax',
+      gst: '29BGBBB2222B2Z2',
+      primaryContact: 'Sarah Jenkins',
       companyName: 'Climamax Controls',
       email: 'ramesh.clima@gmail.com',
       phone: '+91 7465925396',
-      payables: '₹0.00',
-      unusedCredit: '₹0.00'
+      payables: '₹0.00'
     },
     {
       id: 2,
       name: 'Sunrise',
+      gst: '21AAECS5678F1Z2',
+      primaryContact: 'Nilesh Rise',
       companyName: 'Century Pulp & Paper',
       email: 'nilesh.rise@gmail.com',
       phone: '+91 8456293569',
-      payables: '₹0.00',
-      unusedCredit: '₹0.00'
+      payables: '₹0.00'
     }
   ];
 
@@ -52,37 +54,39 @@ const VendorsPage = () => {
       {/* Table Area */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex-1 overflow-hidden flex flex-col">
         <div className="flex-1 overflow-x-auto w-full">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-collapse whitespace-nowrap">
             <thead>
               <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-                <th className="py-3 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+                <th className="py-3 pl-4 pr-3 font-semibold text-gray-500 w-12 text-center">
                   <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
                 </th>
-                <th className="py-4 px-6 font-semibold text-[#1a233a]">Name</th>
-                <th className="py-4 px-6 font-semibold text-[#1a233a]">Company Name</th>
-                <th className="py-4 px-6 font-semibold text-[#1a233a]">E-Mail Address</th>
-                <th className="py-4 px-6 font-semibold text-[#1a233a]">Work Phone</th>
-                <th className="py-4 px-6 font-semibold text-[#1a233a]">Payables(BCY)</th>
-                <th className="py-4 pr-8 pl-6 font-semibold text-[#1a233a]">Unused Credit (BCY)</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">Name</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">GST</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">Primary Contact</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">Company Name</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">E-Mail Address</th>
+                <th className="py-4 px-3 font-semibold text-gray-500">Phone No</th>
+                <th className="py-4 pr-4 pl-3 font-semibold text-gray-500">Payables(BCY)</th>
               </tr>
             </thead>
             <tbody>
               {vendors.map((vendor) => (
                 <tr key={vendor.id} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px]">
-                  <td className="py-4 pl-8 pr-6 text-center">
+                  <td className="py-4 pl-4 pr-3 text-center">
                     <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
                   </td>
                   <td 
                     onClick={() => navigate(`/vendors/${vendor.id}`)}
-                    className="py-4 px-6 text-blue-600 font-medium cursor-pointer hover:underline"
+                    className="py-4 px-3 text-blue-600 font-medium cursor-pointer hover:underline"
                   >
                     {vendor.name}
                   </td>
-                  <td className="py-4 px-6 text-[#1a233a] font-medium">{vendor.companyName}</td>
-                  <td className="py-4 px-6 text-blue-500 font-medium">{vendor.email}</td>
-                  <td className="py-4 px-6 text-[#1a233a] font-medium">{vendor.phone}</td>
-                  <td className="py-4 px-6 text-[#1a233a] font-medium">{vendor.payables}</td>
-                  <td className="py-4 pr-8 pl-6 text-[#1a233a] font-medium">{vendor.unusedCredit}</td>
+                  <td className="py-4 px-3 text-[#1a233a] font-medium">{vendor.gst}</td>
+                  <td className="py-4 px-3 text-[#1a233a] font-medium">{vendor.primaryContact}</td>
+                  <td className="py-4 px-3 text-[#1a233a] font-medium">{vendor.companyName}</td>
+                  <td className="py-4 px-3 text-[#1a233a] font-medium">{vendor.email}</td>
+                  <td className="py-4 px-3 text-[#1a233a] font-medium">{vendor.phone}</td>
+                  <td className="py-4 pr-4 pl-3 text-[#1a233a] font-medium">{vendor.payables}</td>
                 </tr>
               ))}
             </tbody>

@@ -7,9 +7,9 @@ const mockQuotes = [
     date: '25/06/2026',
     quoteNo: 'QT-000001',
     customerName: 'CLIMAMAX CONTROLS PRIVATE LIMITED',
-    order: 'NS',
+    boxSpec: 'NS',
+    quantity: '5,000',
     amount: '2,34,654',
-    status: 'Accepted',
   }
 ];
 
@@ -27,9 +27,9 @@ const QuotesTable = () => {
             <th className="py-4 px-6 font-semibold text-[#1a233a]">Date</th>
             <th className="py-4 px-6 font-semibold text-[#1a233a]">Quote Number</th>
             <th className="py-4 px-6 font-semibold text-[#1a233a]">Customer Name</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Order</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Box Spec</th>
+            <th className="py-4 px-6 font-semibold text-[#1a233a]">Quantity</th>
             <th className="py-4 px-6 font-semibold text-[#1a233a]">Amount</th>
-            <th className="py-4 pr-8 pl-6 font-semibold text-[#1a233a]">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -46,13 +46,9 @@ const QuotesTable = () => {
                 {quote.quoteNo}
               </td>
               <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.customerName}</td>
-              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.order}</td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.boxSpec}</td>
+              <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.quantity}</td>
               <td className="py-4 px-6 text-[#1a233a] font-medium">{quote.amount}</td>
-              <td className="py-4 pr-8 pl-6">
-                <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-semibold bg-[#e6f4ea] text-[#1e8e3e]">
-                  {quote.status}
-                </span>
-              </td>
             </tr>
           ))}
         </tbody>

@@ -144,46 +144,99 @@ const VendorDetailsPage = () => {
             {activeTab === 'Overview' && (
               <div className="space-y-6">
 
-                {/* Company Details */}
-                <div className="bg-white rounded-[12px] border border-gray-100 p-6 shadow-sm">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-[16px] font-bold text-[#1a233a]">Company Details</h3>
-                    <button className="p-1.5 border border-gray-200 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
-                      <Edit className="w-3.5 h-3.5" />
-                    </button>
+                <div className="bg-white rounded-[12px] p-2.5 shadow-sm border border-gray-100">
+                <div className="space-y-4">
+
+                <div className="flex justify-end">
+                  <button className="p-1.5 border border-gray-100 rounded-md bg-white hover:bg-gray-50 text-gray-400 transition-colors shadow-sm">
+                    <Edit className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* ── Top Row: Profile & Payment ── */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+                  {/* Vendor Profile Card */}
+                  <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm p-5 relative">
+                    <div className="border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-[16px] font-medium text-[#1a233a]">Customer Profile</h3>
+                    </div>
+
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center text-white text-[15px] font-bold shadow-sm shrink-0">
+                        CP
+                      </div>
+                      <div>
+                        <h4 className="text-[14px] font-bold text-[#1a233a] leading-tight">Century Pulp & Paper</h4>
+                        <span className="text-[11px] text-gray-400 font-medium">VEND- 00001</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2.5">
+                      <div className="grid grid-cols-[120px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">Vendor Type</span>
+                        <span className="font-bold text-[#1a233a]">Key Accounts</span>
+                      </div>
+                      <div className="grid grid-cols-[120px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">PAN</span>
+                        <span className="font-bold text-[#1a233a]">AABCC1235H</span>
+                      </div>
+                      <div className="grid grid-cols-[120px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">GSTIN</span>
+                        <span className="font-bold text-[#1a233a]">29BGBBB2222B2Z2</span>
+                      </div>
+                      <div className="grid grid-cols-[120px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">MSME Register</span>
+                        <span className="font-bold text-[#1a233a]">No</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-6 mb-6">
-                    <div>
-                      <div className="text-[11px] text-gray-500 font-medium mb-1.5">Vendor Type</div>
-                      <div className="text-[13px] font-bold text-[#1a233a]">Paper Mill</div>
+                  {/* Payment Details Card */}
+                  <div className="bg-white rounded-[12px] border border-gray-100 shadow-sm p-5 relative">
+                    <div className="border-b border-gray-100 pb-3 mb-4">
+                      <h3 className="text-[16px] font-medium text-[#1a233a]">Payment Details</h3>
                     </div>
-                    <div>
-                      <div className="text-[11px] text-gray-500 font-medium mb-1.5">MSME Registered</div>
-                      <div className="text-[13px] font-bold text-[#1a233a]">No</div>
-                    </div>
-                    <div>
-                      <div className="text-[11px] text-gray-500 font-medium mb-1.5">GSTIN</div>
-                      <div className="text-[13px] font-bold text-[#1a233a]">05AABCC1234D1Z8</div>
-                    </div>
-                    <div>
-                      <div className="text-[11px] text-gray-500 font-medium mb-1.5">PAN</div>
-                      <div className="text-[13px] font-bold text-[#1a233a]">AABCC1234D</div>
+
+                    <div className="space-y-3 mt-[44px]">
+                      <div className="grid grid-cols-[140px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">Currency</span>
+                        <span className="font-bold text-[#1a233a]">INR - Indian Rupee</span>
+                      </div>
+                      <div className="grid grid-cols-[140px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">Opening Balance</span>
+                        <span className="font-bold text-[#1a233a]">₹0.00</span>
+                      </div>
+                      <div className="grid grid-cols-[140px_1fr] items-center text-[13px]">
+                        <span className="text-gray-400 font-medium">Payment Terms</span>
+                        <span className="font-bold text-[#1a233a]">Net 30</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-100 pt-6 grid grid-cols-2 gap-6">
-                    <div>
-                      <div className="text-[12px] text-gray-500 font-medium mb-2">Billing Address</div>
-                      <div className="text-[13px] font-semibold text-[#1a233a] leading-relaxed">
+                </div>
+
+                {/* ── Addresses Card ── */}
+                <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 relative gap-0">
+                    {/* Left: Billing Address */}
+                    <div className="pr-6 border-r-2 border-pink-300">
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="text-[14px] font-bold text-gray-500">Billing Address</h3>
+                      </div>
+                      <div className="text-[12px] font-bold text-[#4b5563] leading-snug">
                         Century Pulp & Paper Mill<br />
                         Gate No. 2, Administrative Office Lalkuan Industrial Area<br />
                         Lalkuan Nainital District Uttarakhand 43552
                       </div>
                     </div>
-                    <div>
-                      <div className="text-[12px] text-gray-500 font-medium mb-2">Shipping Address</div>
-                      <div className="text-[13px] font-semibold text-[#1a233a] leading-relaxed">
+
+                    {/* Right: Shipping Address */}
+                    <div className="pl-6">
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="text-[14px] font-bold text-gray-500">Shipping Address</h3>
+                      </div>
+                      <div className="text-[12px] font-bold text-[#4b5563] leading-snug">
                         Century Pulp & Paper Mill<br />
                         Century House, Lalkuan Industrial Complex<br />
                         NH-109, Lalkuan Nainital District<br />
@@ -193,19 +246,19 @@ const VendorDetailsPage = () => {
                   </div>
                 </div>
 
+                </div>
+              </div>
+
                 {/* Contacts Directory */}
-                <div className="bg-white rounded-[12px] border border-gray-100 p-6 shadow-sm">
-                  <div className="flex justify-between items-center mb-6">
+                <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5">
+                  <div className="flex justify-between items-center mb-2">
                     <h3 className="text-[16px] font-bold text-[#1a233a]">Contacts Directory</h3>
-                    <button className="p-1.5 border border-gray-200 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
-                      <Edit className="w-3.5 h-3.5" />
-                    </button>
                   </div>
-                  <div className="space-y-4">
+                  <div className="flex flex-col divide-y divide-gray-100">
                     {[1, 2, 3].map((item, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-[13px] font-bold text-gray-600">
+                      <div key={idx} className="flex items-center justify-between py-2.5 hover:bg-gray-50/50 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[12px] font-bold text-gray-600">
                             SK
                           </div>
                           <div>
@@ -213,15 +266,15 @@ const VendorDetailsPage = () => {
                             <div className="text-[11px] text-gray-400 mt-0.5">Purchase Manager • Purchase</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <div className="flex items-center gap-2 text-gray-500 text-[12px] bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1.5 text-gray-500 text-[10px] font-medium bg-gray-50 px-2.5 py-1 rounded-full border border-gray-100 shadow-sm">
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                             +91 98220 44102
                           </div>
-                          <div className="flex items-center gap-2 text-gray-500 text-[12px] bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-                            <Mail className="w-3.5 h-3.5" />
+                          <div className="flex items-center gap-1.5 text-gray-500 text-[10px] font-medium bg-gray-50 px-2.5 py-1 rounded-full border border-gray-100 shadow-sm">
+                            <Mail className="w-3 h-3" />
                             s.kulkarni@veenafoods.in
                           </div>
                         </div>
@@ -231,45 +284,42 @@ const VendorDetailsPage = () => {
                 </div>
 
                 {/* Bank Details */}
-                <div className="bg-white rounded-[12px] border border-gray-100 p-6 shadow-sm">
-                  <div className="flex justify-between items-center mb-6">
+                <div className="bg-white rounded-[12px] border border-blue-50 shadow-sm p-5">
+                  <div className="flex justify-between items-center mb-3">
                     <h3 className="text-[16px] font-bold text-[#1a233a]">Bank Details</h3>
-                    <button className="p-1.5 border border-gray-200 rounded-md text-gray-500 hover:bg-gray-50 transition-colors">
-                      <Edit className="w-3.5 h-3.5" />
-                    </button>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-[12px] text-left">
                       <thead>
                         <tr className="text-gray-500 font-medium border-b border-gray-100">
-                          <th className="pb-3 px-2">Bank Name</th>
-                          <th className="pb-3 px-2">Account Holder Name</th>
-                          <th className="pb-3 px-2">Account No</th>
-                          <th className="pb-3 px-2">IFSC Code</th>
-                          <th className="pb-3 px-2">Open Date</th>
+                          <th className="pb-2 px-2">Bank Name</th>
+                          <th className="pb-2 px-2">Account Holder Name</th>
+                          <th className="pb-2 px-2">Account No</th>
+                          <th className="pb-2 px-2">IFSC Code</th>
+                          <th className="pb-2 px-2">Open Date</th>
                         </tr>
                       </thead>
                       <tbody className="text-[#1a233a]">
                         <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-2 font-medium">HDFC Bank</td>
-                          <td className="py-4 px-2 text-gray-600">Climamex Private Limited</td>
-                          <td className="py-4 px-2 font-medium">123456789012</td>
-                          <td className="py-4 px-2 text-gray-600">HDFC0000123</td>
-                          <td className="py-4 px-2 text-gray-600">01-Jul-2026</td>
+                          <td className="py-2.5 px-2 font-medium">HDFC Bank</td>
+                          <td className="py-2.5 px-2 text-gray-600">Climamex Private Limited</td>
+                          <td className="py-2.5 px-2 font-medium">123456789012</td>
+                          <td className="py-2.5 px-2 text-gray-600">HDFC0000123</td>
+                          <td className="py-2.5 px-2 text-gray-600">01-Jul-2026</td>
                         </tr>
                         <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-2 font-medium">IDFC Bank</td>
-                          <td className="py-4 px-2 text-gray-600">Niman Private Limited</td>
-                          <td className="py-4 px-2 font-medium">123456789012</td>
-                          <td className="py-4 px-2 text-gray-600">IDFC0000223</td>
-                          <td className="py-4 px-2 text-gray-600">07-Jul-2026</td>
+                          <td className="py-2.5 px-2 font-medium">IDFC Bank</td>
+                          <td className="py-2.5 px-2 text-gray-600">Niman Private Limited</td>
+                          <td className="py-2.5 px-2 font-medium">123456789012</td>
+                          <td className="py-2.5 px-2 text-gray-600">IDFC0000223</td>
+                          <td className="py-2.5 px-2 text-gray-600">07-Jul-2026</td>
                         </tr>
                         <tr className="hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-2 font-medium">ICICI Bank</td>
-                          <td className="py-4 px-2 text-gray-600">Godrej Private Limited</td>
-                          <td className="py-4 px-2 font-medium">123456789012</td>
-                          <td className="py-4 px-2 text-gray-600">ICICI0000333</td>
-                          <td className="py-4 px-2 text-gray-600">12-Jul-2026</td>
+                          <td className="py-2.5 px-2 font-medium">ICICI Bank</td>
+                          <td className="py-2.5 px-2 text-gray-600">Godrej Private Limited</td>
+                          <td className="py-2.5 px-2 font-medium">123456789012</td>
+                          <td className="py-2.5 px-2 text-gray-600">ICICI0000333</td>
+                          <td className="py-2.5 px-2 text-gray-600">12-Jul-2026</td>
                         </tr>
                       </tbody>
                     </table>
@@ -281,28 +331,28 @@ const VendorDetailsPage = () => {
 
             {/* Tab Content - Commercial Terms */}
             {activeTab === 'Commercial Terms' && (
-              <div className="space-y-8">
+              <div className="space-y-3">
 
                 {/* Payment Terms */}
-                <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
+                <div className="bg-white border border-blue-50 rounded-[12px] p-5 shadow-sm">
                   <h3 className="text-[16px] font-bold text-[#1a233a] mb-4">Payment Terms</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Payment Terms</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">30 Days Post GRN</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Payment Terms</div>
+                      <div className="text-[16px] font-medium text-black">30 Days Post GRN</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Advance Required</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">None</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Advance Required</div>
+                      <div className="text-[16px] font-medium text-black">None</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">payable Outstanding</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">₹32,60,000</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">payable Outstanding</div>
+                      <div className="text-[16px] font-medium text-black">₹32,60,000</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Overdue Status</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Overdue Status</div>
                       <div>
-                        <span className="inline-flex px-2 py-0.5 bg-[#e0f5e7] text-[#16a34a] text-[11px] font-medium rounded-full">
+                        <span className="inline-flex px-2 py-0.5 bg-[#e0f5e7] text-[#16a34a] text-[11px] font-medium rounded-full mt-0.5">
                           No Overdue
                         </span>
                       </div>
@@ -311,68 +361,69 @@ const VendorDetailsPage = () => {
                 </div>
 
                 {/* Rate Contract */}
-                <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
+                <div className="bg-white border border-blue-50 rounded-[12px] p-5 shadow-sm">
                   <h3 className="text-[16px] font-bold text-[#1a233a] mb-4">Rate Contract</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Contract Reference</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">RC-CP-2026-Q3</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Contract Reference</div>
+                      <div className="text-[16px] font-medium text-black">RC-CP-2026-Q3</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Valid Till</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">30-Sep-2026</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Valid Till</div>
+                      <div className="text-[16px] font-medium text-black">30-Sep-2026</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Price Basic</div>
-                      <div className="text-[14px] font-medium text-[#1a233a]">Per Kg, Ex-Mill</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Price Basic</div>
+                      <div className="text-[16px] font-medium text-black">Per Kg, Ex-Mill</div>
                     </div>
-                    <div className="border border-gray-100 rounded-[8px] p-4 flex flex-col justify-center">
-                      <div className="text-[11px] text-gray-500 font-medium mb-2">Escalation Clause</div>
-                      <div className="text-[13px] font-medium text-[#1a233a] leading-snug">Quarterly review linked to pulp index</div>
+                    <div className="bg-[#f7fbff] border border-blue-100 rounded-[8px] p-4 flex flex-col justify-center">
+                      <div className="text-[12px] text-gray-800 font-medium mb-1">Escalation Clause</div>
+                      <div className="text-[14px] font-medium text-black leading-snug">Quarterly review linked to pulp index</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Recent Payment Activity */}
-                <div className="bg-white border border-gray-100 rounded-[12px] p-5 shadow-sm">
-                  <h3 className="text-[16px] font-bold text-[#1a233a] mb-4">Recent Payment Activity</h3>
-                  <div className="rounded-[8px] border border-gray-100 overflow-hidden">
-                    <table className="w-full text-left text-[12px]">
-                      <thead>
-                        <tr className="border-b border-gray-100 text-gray-400 font-medium">
-                          <th className="py-4 px-6 font-medium">Bill No.</th>
-                          <th className="py-4 px-6 font-medium">Amount</th>
-                          <th className="py-4 px-6 font-medium">Due Date</th>
-                          <th className="py-4 px-6 font-medium">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-[#1a233a]">
-                        <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">CP-BILL-4421</td>
-                          <td className="py-4 px-6 font-medium">₹6,20,000</td>
-                          <td className="py-4 px-6 font-medium">05-Aug-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-[#ffedd5] text-[#b45309] text-[10px] font-medium rounded-full">Pending</span>
-                          </td>
-                        </tr>
-                        <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">CP-BILL-4390</td>
-                          <td className="py-4 px-6 font-medium">₹4,10,000</td>
-                          <td className="py-4 px-6 font-medium">18-Jul-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Paid</span>
-                          </td>
-                        </tr>
-                        <tr className="hover:bg-gray-50 transition-colors">
-                          <td className="py-4 px-6 font-medium">CP-BILL-6490</td>
-                          <td className="py-4 px-6 font-medium">₹8,10,000</td>
-                          <td className="py-4 px-6 font-medium">02-Jul-2026</td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Paid</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div className="bg-white border border-blue-50 rounded-[12px] p-5 shadow-sm">
+                  <h3 className="text-[16px] font-bold text-[#1a233a] mb-5">Recent Payment Activity</h3>
+                  <div className="space-y-2.5">
+                    
+                    {/* Header Row */}
+                    <div className="grid grid-cols-4 items-center bg-white border border-gray-100 rounded-[8px] px-6 py-1.5 text-[12px] text-gray-400 font-medium">
+                      <div>Bill No.</div>
+                      <div>Amount</div>
+                      <div>Due Date</div>
+                      <div>Status</div>
+                    </div>
+
+                    {/* Data Rows */}
+                    <div className="grid grid-cols-4 items-center bg-white border border-gray-100 rounded-[8px] px-6 py-1.5 text-[12px] text-[#1a233a] font-medium hover:border-gray-200 hover:shadow-sm transition-all cursor-pointer">
+                      <div>CP-BILL-4421</div>
+                      <div>₹6,20,000</div>
+                      <div>05-Aug-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#fbe8c7] text-[#92400e] text-[10px] font-medium rounded-full">Pending</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-4 items-center bg-white border border-gray-100 rounded-[8px] px-6 py-1.5 text-[12px] text-[#1a233a] font-medium hover:border-gray-200 hover:shadow-sm transition-all cursor-pointer">
+                      <div>CP-BILL-4390</div>
+                      <div>₹4,10,000</div>
+                      <div>18-Jul-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Paid</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-4 items-center bg-white border border-gray-100 rounded-[8px] px-6 py-1.5 text-[12px] text-[#1a233a] font-medium hover:border-gray-200 hover:shadow-sm transition-all cursor-pointer">
+                      <div>CP-BILL-6490</div>
+                      <div>₹8,10,000</div>
+                      <div>02-Jul-2026</div>
+                      <div>
+                        <span className="inline-flex px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Paid</span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -384,14 +435,14 @@ const VendorDetailsPage = () => {
                 <h3 className="text-[16px] font-bold text-[#1a233a]">Material Supplied (3)</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* Card 1 */}
-                  <div className="bg-white border border-gray-200 rounded-[12px] p-5 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
+                  <div className="bg-white border border-gray-200 rounded-[12px] p-3 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
                     <div className="flex justify-between items-start mb-1">
                       <h4 className="text-[14px] font-bold text-[#1a233a]">Kraft Liner 150 GSM</h4>
                       <span className="inline-flex px-2 py-0.5 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Approved</span>
                     </div>
-                    <div className="text-[11px] text-gray-400 mb-5">RM-PAP-1150</div>
+                    <div className="text-[11px] text-gray-400 mb-1.5">RM-PAP-1150</div>
                     
-                    <div className="text-[12px] text-[#1a233a] font-medium mb-8 leading-relaxed">
+                    <div className="text-[12px] text-[#1a233a] font-medium mb-2 leading-relaxed">
                       GSM Range: 140-160<br/>
                       Reel Width: 900-1250mm
                     </div>
@@ -408,14 +459,14 @@ const VendorDetailsPage = () => {
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-white border border-gray-200 rounded-[12px] p-5 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
+                  <div className="bg-white border border-gray-200 rounded-[12px] p-3 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
                     <div className="flex justify-between items-start mb-1">
                       <h4 className="text-[14px] font-bold text-[#1a233a]">Fluting Medium 120 GSM</h4>
                       <span className="inline-flex px-2 py-0.5 bg-[#dcfce7] text-[#16a34a] text-[10px] font-medium rounded-full">Approved</span>
                     </div>
-                    <div className="text-[11px] text-gray-400 mb-5">RM-PAP-1120</div>
+                    <div className="text-[11px] text-gray-400 mb-1.5">RM-PAP-1120</div>
                     
-                    <div className="text-[12px] text-[#1a233a] font-medium mb-8 leading-relaxed">
+                    <div className="text-[12px] text-[#1a233a] font-medium mb-2 leading-relaxed">
                       GSM Range: 100-140<br/>
                       Reel Width: 900-1250mm
                     </div>
@@ -432,14 +483,14 @@ const VendorDetailsPage = () => {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-white border border-gray-200 rounded-[12px] p-5 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
+                  <div className="bg-white border border-gray-200 rounded-[12px] p-3 shadow-sm flex flex-col hover:border-[#ea580c] hover:shadow-md transition-all cursor-pointer">
                     <div className="flex justify-between items-start mb-1">
                       <h4 className="text-[14px] font-bold text-[#1a233a] pr-2">Test Linear 100 GSM<br/>(Recycled)</h4>
                       <span className="inline-flex px-2 py-0.5 bg-[#ffedd5] text-[#d97706] text-[10px] font-medium rounded-full whitespace-nowrap shrink-0">Under Evaluation</span>
                     </div>
-                    <div className="text-[11px] text-gray-400 mb-5">RM-PAP-1120</div>
+                    <div className="text-[11px] text-gray-400 mb-1.5">RM-PAP-1120</div>
                     
-                    <div className="text-[12px] text-[#1a233a] font-medium mb-8 leading-relaxed">
+                    <div className="text-[12px] text-[#1a233a] font-medium mb-2 leading-relaxed">
                       GSM Range: 100-140<br/>
                       Reel Width: 900-1250mm
                     </div>

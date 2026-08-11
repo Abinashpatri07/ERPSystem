@@ -39,16 +39,16 @@ const CreateInvoicePage = () => {
   ];
 
   return (
-    <main className="flex-1 overflow-y-auto bg-[#f8f9fb] flex flex-col relative">
+    <main className="flex-1 overflow-hidden bg-[#f4f7f9] flex flex-col relative p-1.5 gap-1.5 font-sans">
       
       {/* Sub Navigation */}
-      <div className="px-8 border-b border-gray-200 bg-white">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
         <nav className="flex space-x-8">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 tab.name === 'Invoices'
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -60,11 +60,11 @@ const CreateInvoicePage = () => {
         </nav>
       </div>
 
-      <div className="flex-1 p-4 overflow-y-auto custom-scrollbar pb-24">
+      <div className="flex-1 flex flex-col gap-1.5 min-h-0">
         
         {/* Top Banner with Stepper */}
-        <div className="bg-[#244f5d] text-white p-6 mb-4 rounded-xl shadow-sm">
-          <h2 className="text-2xl font-bold tracking-wide leading-tight mb-6">
+        <div className="bg-[#244f5d] text-white px-6 py-2 shrink-0 rounded-xl shadow-sm">
+          <h2 className="text-[20px] font-bold tracking-wide leading-tight mb-2">
             Invoice Creation
           </h2>
           
@@ -73,13 +73,13 @@ const CreateInvoicePage = () => {
               const Icon = step.icon;
               return (
                 <React.Fragment key={step.name}>
-                  <div className={`flex items-center px-4 py-2 rounded-full font-medium text-sm flex-shrink-0 shadow-sm ${
+                  <div className={`flex items-center px-3 py-1.5 rounded-full font-medium text-xs flex-shrink-0 shadow-sm ${
                     step.active ? 'bg-white text-[#244f5d]' : 'bg-[#5c8a99] text-white'
                   }`}>
-                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2 ${
+                    <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] mr-1.5 ${
                       step.active ? 'bg-[#244f5d] text-white' : 'bg-white text-[#5c8a99]'
                     }`}>
-                      <Icon className="w-3.5 h-3.5" strokeWidth={2.5} />
+                      <Icon className="w-2.5 h-2.5" strokeWidth={2.5} />
                     </span>
                     {step.name}
                   </div>
@@ -93,7 +93,7 @@ const CreateInvoicePage = () => {
         </div>
 
         {/* Form Area */}
-        <div className="max-w-5xl space-y-6">
+        <div className="flex-1 overflow-y-auto custom-scrollbar pb-4 pr-1 max-w-5xl space-y-6">
           
           {/* Main Form Section */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 border-t-[3px] border-t-blue-600 p-8">
@@ -346,20 +346,20 @@ const CreateInvoicePage = () => {
       </div>
 
       {/* Footer Actions */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-4 px-8 flex justify-end items-center space-x-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-b-xl z-10">
-        <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
-          <Bookmark className="w-4 h-4 mr-2" strokeWidth={2} />
+      <div className="sticky bottom-0 w-full bg-white border-t border-gray-200 px-6 py-2 flex items-center justify-end space-x-3 z-50 mt-auto rounded-b-xl">
+        <button 
+          onClick={() => navigate('/sales/invoices')}
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
+        >
+          Cancel
+        </button>
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
           Save Draft
         </button>
         <button 
           onClick={() => navigate('/sales/invoices')}
-          className="px-6 py-2 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
-        >
-          Cancel
-        </button>
-        <button 
-          onClick={() => navigate('/sales/invoices')}
-          className="px-8 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors shadow-sm"
+          className="px-6 py-1.5 rounded-lg bg-[#244f5d] text-white text-[13px] font-bold shadow-sm hover:bg-[#1a3842] transition-colors"
         >
           Save
         </button>
