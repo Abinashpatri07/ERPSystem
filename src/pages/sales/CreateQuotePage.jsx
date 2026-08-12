@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   UserPlus, FileText, Box, Calculator, Layers, Palette, ChevronDown, Calendar, Bookmark,
   Package, Truck, Receipt, CheckCircle, CreditCard, Factory, Search, Plus, UploadCloud, ClipboardList,
-  PackagePlus, PackageCheck, HandCoins, Check
+  PackagePlus, PackageCheck, HandCoins, Check, Phone
 } from 'lucide-react';
 
 const CreateQuotePage = () => {
@@ -144,7 +144,7 @@ const CreateQuotePage = () => {
               <div>
                 <label className="block text-[13px] font-bold text-gray-500 mb-2">Phone</label>
                 <div className="border border-gray-200 rounded-md px-3 py-2 bg-white flex items-center text-[13px] text-[#1a233a] shadow-sm">
-                  <Search className="w-4 h-4 text-gray-400 mr-3" />
+                  <Phone className="w-4 h-4 text-gray-400 mr-3" />
                   +91 764539543
                 </div>
               </div>
