@@ -15,7 +15,10 @@ const CustomerDetailsPage = () => {
       <div className="w-full lg:w-[260px] shrink-0 flex flex-col bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-3 pb-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl tracking-tight font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]">All Customer</h2>
+            <div className="flex items-center space-x-1 cursor-pointer">
+              <h2 className="text-xl tracking-tight font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]">All Customer</h2>
+              <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
+            </div>
             <div className="flex gap-2">
               <button
                 onClick={() => navigate('/customers/new')}

@@ -142,7 +142,10 @@ const InvoiceDetailPage = () => {
           <div className="w-[270px] bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col flex-shrink-0 overflow-hidden">
             <div className="p-4 border-b border-gray-100">
               <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-1 cursor-pointer">
                 <h2 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">All Invoices</h2>
+                <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
+              </div>
                 <div className="flex items-center space-x-2">
                   <button 
                     onClick={() => navigate('/sales/invoices/new')}

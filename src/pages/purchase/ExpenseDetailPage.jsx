@@ -78,7 +78,10 @@ const ExpenseDetailPage = () => {
           {/* Left Sidebar: List of Expenses (Sticky & Independently Scrollable) */}
           <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 lg:sticky lg:top-[110px] lg:h-[calc(100vh-220px)] lg:overflow-y-auto hide-scrollbar">
             <div className="flex items-center justify-between">
-              <h2 className="text-[16px] font-bold text-[#1a233a]">All Expenses</h2>
+              <div className="flex items-center space-x-1 cursor-pointer">
+                <h2 className="text-[16px] font-bold text-[#1a233a]">All Expenses</h2>
+                <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
+              </div>
               <div className="flex gap-2">
                 <button 
                   onClick={() => navigate('/purchase/expense/new')}
