@@ -69,14 +69,14 @@ const QuoteDetailPage = () => {
 
         {/* Top Banner with Stepper */}
         <div className="bg-white px-6 py-2 rounded-xl shadow-sm flex-shrink-0">
-          <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block w-fit mb-1">
+          <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit mb-1">
             Quote View
           </h2>
 
           <div className="flex items-center w-full relative px-6 z-0">
             {/* Connecting Line */}
             <div className="absolute top-4 left-10 right-10 h-[2px] bg-gray-200 z-[-1]"></div>
-            <div className="absolute top-4 left-10 w-[calc(100%-5rem)] max-w-[calc(100%/7)] h-[2px] bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] z-[-1]"></div>
+            <div className="absolute top-4 left-10 w-[calc(100%-5rem)] max-w-[calc(100%/7)] h-[2px] bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] z-[-1]"></div>
 
             <div className="flex items-center justify-between w-full">
               {steps.map((step, index) => {
@@ -85,7 +85,7 @@ const QuoteDetailPage = () => {
                 return (
                   <div key={step.name} className="flex flex-col items-center px-2 relative">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 relative z-10 ${isActive
-                      ? 'bg-gradient-to-br from-[#ff6b6b] via-[#9333ea] to-[#4338ca] text-white shadow-md'
+                      ? 'bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white shadow-md'
                       : 'bg-white border-2 border-gray-200 text-gray-400'
                       }`}>
                       <Icon className="w-3.5 h-3.5" strokeWidth={isActive ? 2.5 : 2} />
@@ -107,7 +107,7 @@ const QuoteDetailPage = () => {
           <div className="w-[270px] bg-white rounded-2xl border border-gray-200 flex flex-col flex-shrink-0 shadow-sm overflow-hidden">
             <div className="p-5 border-b border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block w-fit">All Quotes</h3>
+                <h3 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">All Quotes</h3>
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => navigate('/sales/quotes/new')}
@@ -155,7 +155,7 @@ const QuoteDetailPage = () => {
             {/* Detail Header */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-2.5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center space-x-3">
-                <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] bg-clip-text text-transparent inline-block w-fit">
+                <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
                   {id && id !== 'new' ? (isNaN(id) ? id : `QT-${id.toString().padStart(5, '0')}`) : 'QT-00002'}
                 </h2>
                 <span className="bg-[#ffe8e8] text-[#ff6b6b] text-[10px] font-bold px-2 py-0.5 rounded-full">
@@ -172,7 +172,7 @@ const QuoteDetailPage = () => {
                 <button className="w-8 h-8 bg-gray-50 hover:bg-gray-100 border border-gray-100 rounded-full flex items-center justify-center text-gray-600 transition-colors shadow-sm">
                   <Printer className="w-3.5 h-3.5" />
                 </button>
-                <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff6b6b] via-[#9333ea] to-[#4338ca] hover:opacity-90 text-white rounded-full text-xs font-bold transition-opacity shadow-sm">
+                <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white rounded-full text-xs font-bold transition-opacity shadow-sm">
                   <ArrowRightLeft className="w-3 h-3 mr-1.5" />
                   Convert to SO
                 </button>
@@ -195,7 +195,7 @@ const QuoteDetailPage = () => {
                     </div>
                     <div className="p-4 flex-1">
                       <div className="flex items-center mb-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#b649d8] text-white flex items-center justify-center text-sm font-bold shadow-sm mr-3 flex-shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white flex items-center justify-center text-sm font-bold shadow-sm mr-3 flex-shrink-0">
                           CC
                         </div>
                         <div>
@@ -339,7 +339,7 @@ const QuoteDetailPage = () => {
                       </div>
                       <div className="flex justify-between py-4 mt-2">
                         <span className="text-[15px] font-medium text-rose-400">Total Payable</span>
-                        <span className="text-[15px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">₹53,900.00</span>
+                        <span className="text-[15px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">₹53,900.00</span>
                       </div>
                     </div>
                   </div>

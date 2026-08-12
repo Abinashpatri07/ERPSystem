@@ -24,14 +24,14 @@ const CreateSalesOrderPage = () => {
       
       {/* Sub Navigation */}
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
-        <nav className="flex space-x-8">
+        <nav className="flex space-x-1">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
               className={`py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 tab.name === 'Sales Orders'
-                  ? 'border-blue-500 text-blue-600'
+                  ? 'border-black text-black font-bold'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
               }`}
             >
@@ -220,7 +220,7 @@ const CreateSalesOrderPage = () => {
         </button>
         <button 
           onClick={() => navigate('/sales')}
-          className="px-6 py-1.5 rounded-lg bg-[#244f5d] text-white text-[13px] font-bold shadow-sm hover:bg-[#1a3842] transition-colors"
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
         >
           Save
         </button>

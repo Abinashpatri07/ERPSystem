@@ -18,6 +18,36 @@ const orders = [
   },
 ];
 
+const procurements = [
+  {
+    id: 'PR-2031',
+    date: '02 Aug 2026',
+    prNo: 'PR-2031',
+    vendorName: 'Sai Paper Mills',
+    material: 'Kraft Paper',
+    quantity: '5,000 Kg',
+    amount: '₹5,00,000',
+  },
+  {
+    id: 'PR-2030',
+    date: '30 Jul 2026',
+    prNo: 'PR-2030',
+    vendorName: 'Metro Corrugators',
+    material: 'Corrugated Sheet',
+    quantity: '2,500 Kg',
+    amount: '₹1,84,200',
+  },
+  {
+    id: 'PR-2029',
+    date: '28 Jul 2026',
+    prNo: 'PR-2029',
+    vendorName: 'Anand Kraft Suppliers',
+    material: 'Duplex Board',
+    quantity: '1,200 Kg',
+    amount: '₹76,450',
+  },
+];
+
 const expenses = [
   {
     id: 'EXP-00001',
@@ -39,7 +69,7 @@ const bills = [
     billNo: '8645',
     reference: '8688322738',
     vendorName: 'CLIMAMAX',
-    status: 'Undeposited Funds',
+    status: 'Partially Paid',
     dueDate: '10/06/2026',
     amount: '₹5,999.00',
     balanceDue: '1,000.00',
@@ -70,10 +100,9 @@ const PurchasePage = () => {
     <main className="flex-1 overflow-y-auto bg-[#f4f7f9] flex flex-col relative p-1.5 gap-1.5">
 
       {/* ── Page Toolbar & Navigation ── */}
-      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0">
-        {/* Sub Navigation */}
-        <div className="px-8 border-b border-gray-100">
-          <nav className="flex space-x-1">
+      {/* Sub Navigation */}
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
+        <nav className="flex space-x-1">
             {tabs.map(tab => (
               <button
                 key={tab}
@@ -88,13 +117,13 @@ const PurchasePage = () => {
               </button>
             ))}
           </nav>
-        </div>
+      </div>
 
-        {/* Header */}
-        <div className="flex items-center justify-between px-8 py-3">
-          <div className="flex items-center gap-1 cursor-pointer">
+      {/* Header */}
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-1 cursor-pointer">
             <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent">
-              {activeTab}
+              All {activeTab}{activeTab === 'Purchase Order' || activeTab === 'Payment' ? 's' : ''}
             </h2>
             <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
           </div>
@@ -103,6 +132,7 @@ const PurchasePage = () => {
               onClick={() => {
                 if (activeTab === 'Expenses') navigate('/purchase/expense/new');
                 else if (activeTab === 'Bills') navigate('/purchase/bill/new');
+                else if (activeTab === 'Procurement') navigate('/purchase/procurement/new');
                 else navigate('/purchase/new');
               }}
               className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center transition-opacity shadow-sm"
@@ -115,7 +145,7 @@ const PurchasePage = () => {
             </button>
           </div>
         </div>
-      </div>
+
 
       {/* ── Content ── */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex-1 overflow-hidden flex flex-col">
@@ -123,7 +153,7 @@ const PurchasePage = () => {
         <div className="flex-1 overflow-x-auto w-full">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
+              <tr className="bg-[#f8f9fc] border-b border-gray-100 text-[13px]">
                 <th className="py-4 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
                   <input
                     type="checkbox"
@@ -133,38 +163,50 @@ const PurchasePage = () => {
                 </th>
                 {activeTab === 'Expenses' && (
                   <>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Date</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Expenses Account</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Reference#</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Vendor Name</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Paid Through</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Customer Name</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Status</th>
-                    <th className="py-4 pr-6 font-semibold text-[#1a233a] text-right whitespace-nowrap">Amount</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Expenses Account</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference#</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Paid Through</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Customer Name</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Status</th>
+                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
                   </>
                 )}
                 {activeTab === 'Bills' && (
                   <>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Date</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Bill#</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Reference Number</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Vendor Name</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Status</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Due Date</th>
-                    <th className="py-4 pr-6 font-semibold text-[#1a233a] text-right whitespace-nowrap">Amount</th>
-                    <th className="py-4 pr-6 font-semibold text-[#1a233a] text-right whitespace-nowrap">Balance Due</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Bill#</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference Number</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Balance Due</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Due Date</th>
+                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">
+                      <div className="flex items-center gap-1">Status <ChevronDown className="w-3.5 h-3.5" /></div>
+                    </th>
                   </>
                 )}
-                {activeTab !== 'Expenses' && activeTab !== 'Bills' && (
+                {activeTab === 'Procurement' && (
                   <>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Date</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Purchase Order</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Reference#</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Vendor Name</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Status</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Received</th>
-                    <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Billed</th>
-                    <th className="py-4 pr-6 font-semibold text-[#1a233a] text-right whitespace-nowrap">Amount</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">PR No</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Material</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Quantity</th>
+                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
+                  </>
+                )}
+                {activeTab !== 'Expenses' && activeTab !== 'Bills' && activeTab !== 'Procurement' && (
+                  <>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Purchase Order</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference#</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Status</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Received</th>
+                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Billed</th>
+                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
                   </>
                 )}
               </tr>
@@ -188,16 +230,16 @@ const PurchasePage = () => {
                     </td>
                     <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{expense.date}</td>
                     <td className="py-4 px-6">
-                      <span className="text-blue-600 hover:underline cursor-pointer font-medium">
+                      <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {expense.expensesAccount}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{expense.reference || ''}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{expense.vendorName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{expense.paidThrough}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{expense.customerName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{expense.status}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-semibold text-right whitespace-nowrap">{expense.amount}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.reference || ''}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.vendorName}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.paidThrough}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.customerName}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.status}</td>
+                    <td className="py-4 pr-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{expense.amount}</td>
                   </tr>
                 ))
               ) : activeTab === 'Bills' ? (
@@ -218,16 +260,48 @@ const PurchasePage = () => {
                     </td>
                     <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{bill.date}</td>
                     <td className="py-4 px-6">
-                      <span className="text-blue-600 hover:underline cursor-pointer font-medium">
+                      <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {bill.billNo}
                       </span>
                     </td>
                     <td className="py-4 px-6 text-[#1a233a] font-medium">{bill.reference}</td>
                     <td className="py-4 px-6 text-[#1a233a] font-medium uppercase">{bill.vendorName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{bill.status}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{bill.dueDate}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-semibold text-right">{bill.amount}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-medium text-right">{bill.balanceDue}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{bill.amount}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{bill.balanceDue}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{bill.dueDate}</td>
+                    <td className="py-4 pr-6 text-left">
+                      <span className="bg-[#ffe8e8] text-[#ff6b6b] px-3 py-1 rounded-full text-[11px] font-medium">
+                        {bill.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))
+              ) : activeTab === 'Procurement' ? (
+                procurements.map((pr, idx) => (
+                  <tr
+                    key={pr.id}
+                    onClick={() => navigate('/purchase/procurement/1')}
+                    className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px] cursor-pointer
+                        ${selectedRows.includes(pr.id) ? 'bg-blue-50' : 'bg-white'}`}
+                  >
+                    <td className="py-4 pl-8 pr-6 text-center" onClick={e => e.stopPropagation()}>
+                      <input
+                        type="checkbox"
+                        checked={selectedRows.includes(pr.id)}
+                        onChange={() => toggleRow(pr.id)}
+                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
+                      />
+                    </td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{pr.date}</td>
+                    <td className="py-4 px-6">
+                      <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
+                        {pr.prNo}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium">{pr.vendorName}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium">{pr.material}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{pr.quantity}</td>
+                    <td className="py-4 pr-6 text-[#1a233a] font-medium text-left">{pr.amount}</td>
                   </tr>
                 ))
               ) : (
@@ -248,20 +322,20 @@ const PurchasePage = () => {
                     </td>
                     <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{order.date}</td>
                     <td className="py-4 px-6">
-                      <span className="text-blue-600 hover:underline cursor-pointer font-medium">
+                      <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {order.purchaseOrder}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{order.reference || ''}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{order.vendorName}</td>
-                    <td className="py-4 px-6">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide ${statusColors[order.status] || 'bg-gray-100 text-gray-600'}`}>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.reference || ''}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.vendorName}</td>
+                    <td className="py-4 px-6 text-left">
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium ${statusColors[order.status] || 'bg-gray-100 text-gray-600'}`}>
                         {order.status}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{order.received}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{order.billed}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-semibold text-right whitespace-nowrap">{order.amount}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.received}</td>
+                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.billed}</td>
+                    <td className="py-4 pr-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{order.amount}</td>
                   </tr>
                 ))
               )}

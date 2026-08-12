@@ -52,13 +52,13 @@ const CreateQuotePage = () => {
 
       {/* Sub Navigation */}
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
-        <nav className="flex space-x-8">
+        <nav className="flex space-x-1">
           {tabs.map((tab) => (
             <button
               key={tab.name}
               onClick={() => navigate(tab.path)}
-              className={`py-2.5 text-sm font-medium border-b-2 transition-colors ${tab.name === 'Quotes'
-                  ? 'border-blue-500 text-blue-600'
+              className={`flex items-center gap-1 px-4 py-2 text-[13px] border-b-2 transition-colors whitespace-nowrap ${tab.name === 'Quotes'
+                  ? 'border-black text-black font-bold'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
@@ -215,6 +215,30 @@ const CreateQuotePage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {/* Row 1 */}
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Item Name <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Item Description <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Quantity <span className="text-red-500">*</span></label>
+                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
+              </div>
+              <div>
+                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Print type <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
+                    <option>Plain</option>
+                  </select>
+                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Row 2 */}
               <div>
                 <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Box Type <span className="text-red-500">*</span></label>
                 <div className="relative">
@@ -271,6 +295,7 @@ const CreateQuotePage = () => {
                 </div>
               </div>
 
+              {/* Row 3 */}
               <div>
                 <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Ply Type <span className="text-red-500">*</span></label>
                 <div className="relative">
@@ -292,16 +317,6 @@ const CreateQuotePage = () => {
                 <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Flute <span className="text-red-500">*</span></label>
                 <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
               </div>
-
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Print type <span className="text-red-500">*</span></label>
-                <div className="relative">
-                  <select className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm appearance-none bg-white">
-                    <option>Plain</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
-                </div>
-              </div>
               <div>
                 <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Joint type <span className="text-red-500">*</span></label>
                 <div className="relative">
@@ -311,14 +326,11 @@ const CreateQuotePage = () => {
                   <ChevronDown className="absolute right-4 top-3 w-4 h-4 text-[#1a233a] pointer-events-none" />
                 </div>
               </div>
-              <div>
-                <label className="block text-[13px] font-bold text-[#1a233a] mb-2">Quantity <span className="text-red-500">*</span></label>
-                <input type="text" defaultValue="" className="w-full border border-gray-200 rounded-md px-3 py-2 text-[13px] text-[#1a233a] focus:outline-none focus:border-blue-500 bg-white shadow-sm" />
-              </div>
-              
-              <div className="md:col-span-2"></div>
+
+              {/* Row 4: Calculate Button */}
+              <div className="md:col-span-4"></div>
               <div className="flex items-end justify-end">
-                <button className="w-full bg-gradient-to-r from-[#f43f5e] to-[#6366f1] text-white text-[13px] font-medium py-2 px-6 rounded-md shadow-sm transition-all hover:opacity-90 mt-2 md:mt-0">
+                <button className="w-full px-6 py-2 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-md hover:opacity-90 transition-opacity">
                   Calculate
                 </button>
               </div>
@@ -856,7 +868,7 @@ const CreateQuotePage = () => {
         </div>
       )}
 
-    </main>
+      </main>
   );
 };
 

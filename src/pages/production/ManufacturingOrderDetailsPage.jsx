@@ -387,17 +387,25 @@ const ManufacturingOrderDetailsPage = () => {
           </div>
           
           {/* Bottom Floating Bar */}
-          <div className="absolute bottom-0 right-0 left-0 bg-white border-t border-gray-200 px-8 py-4 flex justify-end gap-3 z-10 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-            <button className="flex items-center gap-2 px-6 py-2 rounded-md border border-gray-200 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-              <Bookmark className="w-4 h-4" /> Save Draft
-            </button>
-            <button className="px-6 py-2 rounded-md border border-gray-200 text-[13px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-              Cancel
-            </button>
-            <button className="px-6 py-2 rounded-md bg-blue-600 text-[13px] font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm">
-              Save
-            </button>
-          </div>
+          {/* ── Fixed Footer ── */}
+      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3 z-20">
+        <button 
+          onClick={() => navigate('/production')}
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
+        >
+          Cancel
+        </button>
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
+          Save Draft
+        </button>
+        <button 
+          onClick={() => navigate('/production')}
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
+        >
+          Save
+        </button>
+      </div>
 
         </div>
       </div>

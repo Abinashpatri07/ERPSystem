@@ -204,7 +204,7 @@ const InvoiceDetailPage = () => {
               <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">
                 <Printer className="w-3.5 h-3.5" />
               </button>
-              <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-full text-[12px] font-medium hover:opacity-90 transition-opacity shadow-sm">
+              <button className="flex items-center px-4 py-1.5 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-full text-xs font-bold transition-opacity hover:opacity-90 shadow-sm">
                 Record Payment
               </button>
               <button className="w-7 h-7 flex items-center justify-center bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 transition-colors shadow-sm">

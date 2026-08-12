@@ -24,6 +24,8 @@ import CreateExpensePage from './pages/purchase/CreateExpensePage';
 import ExpenseDetailPage from './pages/purchase/ExpenseDetailPage';
 import CreateBillPage from './pages/purchase/CreateBillPage';
 import BillDetailPage from './pages/purchase/BillDetailPage';
+import ProcurementDetailPage from './pages/purchase/ProcurementDetailPage';
+import CreateProcurementPage from './pages/purchase/CreateProcurementPage';
 import ProductionPage from './pages/production/ProductionPage';
 import CreateManufacturingPage from './pages/production/CreateManufacturingPage';
 import ManufacturingOrderDetailsPage from './pages/production/ManufacturingOrderDetailsPage';
@@ -72,6 +74,8 @@ function App() {
           <Route path="purchase/expense/:id" element={<ExpenseDetailPage />} />
           <Route path="purchase/bill/new" element={<CreateBillPage />} />
           <Route path="purchase/bill/:id" element={<BillDetailPage />} />
+          <Route path="purchase/procurement/new" element={<CreateProcurementPage />} />
+          <Route path="purchase/procurement/:id" element={<ProcurementDetailPage />} />
           <Route path="inventory" element={<PlaceholderPage title="Inventory" />} />
           <Route path="production" element={<ProductionPage />} />
           <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />

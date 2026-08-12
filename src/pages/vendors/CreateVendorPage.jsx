@@ -419,23 +419,23 @@ const CreateVendorPage = () => {
         </div>
       </div>
 
-      {/* Footer Actions */}
-      <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 py-2.5 px-8 flex justify-end items-center space-x-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-10">
-        <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-xl text-[12px] font-semibold hover:bg-gray-200 transition-colors">
-          <Bookmark className="w-3.5 h-3.5 mr-2 text-gray-500" strokeWidth={2.5} />
-          Save Draft
-        </button>
-        <button
+      {/* ── Fixed Footer ── */}
+      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3 z-20">
+        <button 
           onClick={() => navigate('/vendors')}
-          className="px-5 py-2 border border-gray-200 text-gray-700 rounded-xl text-[12px] font-semibold hover:bg-gray-50 transition-colors"
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
         >
           Cancel
         </button>
-        <button
-          onClick={() => setShowSuccessModal(true)}
-          className="px-6 py-2 bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white rounded-xl text-[12px] font-semibold hover:opacity-90 transition-opacity shadow-sm"
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
+          Save Draft
+        </button>
+        <button 
+          onClick={() => navigate('/vendors')}
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
         >
-          Save Vendor
+          Save
         </button>
       </div>
 

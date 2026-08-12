@@ -6,21 +6,21 @@ const ExpenseDetailPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col h-full bg-[#f8fafc] overflow-hidden">
+    <div className="flex flex-col h-full bg-[#f4f7f9] overflow-hidden p-1.5 gap-1.5">
       {/* ── Sub Navigation ── */}
-      <div className="flex-shrink-0 border-b border-gray-200 bg-white px-6">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8">
         <nav className="flex space-x-1">
           {['Expenses', 'Procurement', 'Purchase Order', 'Bills', 'Payment'].map(tab => (
             <button
               key={tab}
-              className={`flex items-center gap-1 px-4 py-4 text-[13px] font-medium border-b-2 transition-colors whitespace-nowrap
+              onClick={() => navigate('/purchase', { state: { activeTab: tab } })}
+              className={`flex items-center gap-1 px-4 py-2 text-[13px] border-b-2 transition-colors whitespace-nowrap
                 ${tab === 'Expenses'
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-[#1a233a] text-[#1a233a] font-bold'
+                  : 'border-transparent text-gray-500 font-medium hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               {tab}
-              <ChevronDown className="w-3.5 h-3.5 opacity-60" />
             </button>
           ))}
         </nav>

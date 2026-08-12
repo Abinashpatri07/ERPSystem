@@ -153,17 +153,22 @@ const CreateMachinePage = () => {
       </div>
 
       {/* ── Fixed Bottom Actions ── */}
-      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-4 flex justify-end items-center gap-4 z-50">
-        <button className="flex items-center gap-2 px-4 py-2 text-[13px] font-semibold text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors">
-          <Bookmark className="w-4 h-4" /> Save Draft
-        </button>
+      {/* ── Fixed Footer ── */}
+      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3">
         <button 
           onClick={() => navigate('/production')}
-          className="px-6 py-2 text-[13px] font-semibold text-gray-700 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors"
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
         >
           Cancel
         </button>
-        <button className="px-6 py-2 text-[13px] font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
+          Save Draft
+        </button>
+        <button 
+          onClick={() => navigate('/production')}
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
+        >
           Save
         </button>
       </div>

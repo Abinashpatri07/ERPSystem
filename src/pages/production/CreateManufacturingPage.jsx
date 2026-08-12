@@ -17,7 +17,7 @@ const CreateManufacturingPage = () => {
               key={tab}
               className={`flex items-center gap-1 px-4 py-4 text-[13px] font-medium border-b-2 transition-colors whitespace-nowrap
                 ${tab === 'Manufacturing'
-                  ? 'border-blue-500 text-blue-600'
+                  ? 'border-black text-black font-bold'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
@@ -169,7 +169,7 @@ const CreateManufacturingPage = () => {
                 <button
                   onClick={() => setActiveTab('Components')}
                   className={`px-6 py-3 text-[14px] font-medium border-b-2 transition-colors ${
-                    activeTab === 'Components' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'
+                    activeTab === 'Components' ? 'border-black text-black font-bold' : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   Components
@@ -177,7 +177,7 @@ const CreateManufacturingPage = () => {
                 <button
                   onClick={() => setActiveTab('Operations')}
                   className={`px-6 py-3 text-[14px] font-medium border-b-2 transition-colors ${
-                    activeTab === 'Operations' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'
+                    activeTab === 'Operations' ? 'border-black text-black font-bold' : 'border-transparent text-gray-500 hover:text-gray-700'
                   }`}
                 >
                   Operations
@@ -235,19 +235,21 @@ const CreateManufacturingPage = () => {
       </div>
 
       {/* ── Fixed Footer ── */}
-      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3 z-10 relative shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <button className="flex items-center gap-2 px-5 py-2 border border-gray-200 rounded-md text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-gray-50">
-          <Bookmark className="w-4 h-4" /> Save Draft
-        </button>
-        <button
+      {/* ── Fixed Footer ── */}
+      <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3">
+        <button 
           onClick={() => navigate('/production')}
-          className="px-5 py-2 border border-gray-200 rounded-md text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
+          className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
         >
           Cancel
         </button>
+        <button className="px-4 py-1.5 rounded-lg bg-gray-100 text-[13px] font-semibold text-gray-700 hover:bg-gray-200 transition-colors flex items-center shadow-sm">
+          <Bookmark className="w-3.5 h-3.5 mr-1.5 text-gray-500" />
+          Save Draft
+        </button>
         <button 
           onClick={() => navigate('/production')}
-          className="px-6 py-2 bg-blue-600 text-white rounded-md text-[13px] font-bold hover:bg-blue-700 transition-colors"
+          className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
         >
           Save
         </button>

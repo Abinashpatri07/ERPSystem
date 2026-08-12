@@ -10,10 +10,11 @@ import {
   Download,
   Check,
   HandCoins,
-  ArrowRightLeft
+  ArrowRightLeft,
+  ChevronDown
 } from 'lucide-react';
 
-const BillDetailPage = () => {
+const ProcurementDetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -29,9 +30,9 @@ const BillDetailPage = () => {
               key={tab}
               onClick={() => navigate('/purchase', { state: { activeTab: tab } })}
               className={`flex items-center gap-1 px-4 py-2 text-[13px] border-b-2 transition-colors whitespace-nowrap
-                ${tab === 'Bills'
-                  ? 'border-[#1a233a] text-[#1a233a] font-bold'
-                  : 'border-transparent text-gray-500 font-medium hover:text-gray-700 hover:border-gray-300'
+                ${tab === 'Procurement'
+                  ? 'text-[#1a233a] font-bold border-[#1a233a]'
+                  : 'text-gray-500 font-medium border-transparent hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               {tab}
@@ -46,40 +47,42 @@ const BillDetailPage = () => {
         {/* Top Banner with Stepper */}
         <div className="bg-white px-6 py-2 md:px-8 md:py-3 flex items-center justify-between border border-gray-200 rounded-2xl shadow-sm shrink-0">
           <h2 className="text-[17px] md:text-[18px] font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">
-            Bill View
+            PO View
           </h2>
 
           <div className="flex items-center gap-0">
             {/* Step 1: Procurement */}
             <div className="flex flex-col items-center flex-shrink-0 w-16 md:w-20">
-              <div className="w-8 h-8 rounded-full bg-green-400 ring-2 ring-green-100 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
-                <Check className="w-4 h-4" strokeWidth={3} />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] ring-2 ring-pink-50 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
               </div>
-              <span className="text-[10px] md:text-[11px] font-bold text-green-600">Procurement</span>
+              <span className="text-[10px] md:text-[11px] font-semibold text-[#1a233a] text-center leading-tight">Procurement</span>
             </div>
 
             {/* Line */}
-            <div className="w-6 md:w-10 h-[2px] bg-green-400 -ml-4 -mr-4 mb-4 z-0" />
+            <div className="w-6 md:w-10 h-[2px] bg-gray-200 -ml-4 -mr-4 mb-4 z-0" />
 
             {/* Step 2: Purchase order */}
             <div className="flex flex-col items-center flex-shrink-0 w-16 md:w-20">
-              <div className="w-8 h-8 rounded-full bg-green-400 ring-2 ring-green-100 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-gray-200 text-gray-400 flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
                 <Check className="w-4 h-4" strokeWidth={3} />
               </div>
-              <span className="text-[10px] md:text-[11px] font-bold text-green-600">Purchase order</span>
+              <span className="text-[10px] md:text-[11px] font-medium text-gray-500">Purchase order</span>
             </div>
 
             {/* Line */}
-            <div className="w-6 md:w-10 h-[2px] bg-green-400 -ml-4 -mr-4 mb-4 z-0" />
+            <div className="w-6 md:w-10 h-[2px] bg-gray-200 -ml-4 -mr-4 mb-4 z-0" />
 
             {/* Step 3: Bill */}
             <div className="flex flex-col items-center flex-shrink-0 w-16 md:w-20">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] ring-2 ring-pink-50 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-gray-200 text-gray-400 flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <span className="text-[10px] md:text-[11px] font-semibold text-[#1a233a] text-center leading-tight">Bill</span>
+              <span className="text-[10px] md:text-[11px] font-medium text-gray-500">Bill</span>
             </div>
 
             {/* Line */}
@@ -102,10 +105,13 @@ const BillDetailPage = () => {
           <div className="w-[270px] bg-white rounded-2xl border border-gray-200 flex flex-col flex-shrink-0 shadow-sm overflow-hidden">
             <div className="p-5 border-b border-gray-100">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">All Bills</h3>
+                <div className="flex items-center cursor-pointer">
+                  <h3 className="text-[15px] font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">All PO</h3>
+                  <ChevronDown className="w-4 h-4 ml-1 text-[#9333ea]" />
+                </div>
                 <div className="flex items-center space-x-2">
                   <button
-                    onClick={() => navigate('/purchase/bill/new')}
+                    onClick={() => navigate('/purchase/procurement/new')}
                     className="w-7 h-7 bg-gray-900 hover:bg-black text-white rounded-full flex items-center justify-center shadow-sm transition-colors"
                   >
                     <Plus className="w-4 h-4" />
@@ -121,28 +127,53 @@ const BillDetailPage = () => {
                   <Search className="absolute left-3 w-3.5 h-3.5 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Search bills..."
+                    placeholder="Search customer, product or item..."
                     className="w-full bg-[#f8fafc] border border-gray-200 rounded-lg pl-8 pr-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-[#ff6b6b]/30 text-[#1a2337] transition-all"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex-1 p-4 space-y-3">
-              {/* Selected Bill Card */}
-              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-[15px] font-bold text-[#111827]">Bill# 76547</span>
-                  <span className="text-[11px] text-gray-400 font-medium">25/06/2026</span>
+            <div className="flex-1 p-4 space-y-3 overflow-y-auto custom-scrollbar">
+              {/* Active PO Card */}
+              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm flex flex-col justify-between h-[85px]">
+                <div className="flex justify-between items-start">
+                  <span className="text-[13px] font-bold text-[#111827]">PO-2026-00482</span>
+                  <span className="text-[9px] text-gray-500 font-medium">25/06/2026</span>
                 </div>
-                <h3 className="text-[12px] font-medium text-[#111827] mb-3 uppercase leading-snug">
+                <h3 className="text-[10px] font-bold text-[#111827] mt-1 uppercase leading-snug">
                   CLIMAMAX CONTROLS PRIVATE LIMITED
                 </h3>
-                <div className="flex justify-between items-end">
-                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
-                    OPEN
-                  </span>
-                  <span className="text-[14px] font-bold text-[#111827]">₹100.00</span>
+                <div className="flex justify-end mt-1">
+                  <span className="text-[11px] font-bold text-[#111827]">₹100.00</span>
+                </div>
+              </div>
+
+              {/* Inactive PO Card 1 */}
+              <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-3 cursor-pointer hover:border-pink-200 hover:bg-gradient-to-br hover:from-[#fff5f2] hover:via-[#fcf5fd] hover:to-[#f6f5fe] hover:shadow-md transition-all flex flex-col justify-between h-[85px]">
+                <div className="flex justify-between items-start">
+                  <span className="text-[13px] font-bold text-gray-600">PO-2026-00482</span>
+                  <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+                </div>
+                <h3 className="text-[10px] font-bold text-gray-700 mt-1 uppercase leading-snug">
+                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                </h3>
+                <div className="flex justify-end mt-1">
+                  <span className="text-[11px] font-bold text-gray-800">₹100.00</span>
+                </div>
+              </div>
+
+              {/* Inactive PO Card 2 */}
+              <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-3 cursor-pointer hover:border-pink-200 hover:bg-gradient-to-br hover:from-[#fff5f2] hover:via-[#fcf5fd] hover:to-[#f6f5fe] hover:shadow-md transition-all flex flex-col justify-between h-[85px]">
+                <div className="flex justify-between items-start">
+                  <span className="text-[13px] font-bold text-gray-600">PO-2026-00482</span>
+                  <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+                </div>
+                <h3 className="text-[10px] font-bold text-gray-700 mt-1 uppercase leading-snug">
+                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                </h3>
+                <div className="flex justify-end mt-1">
+                  <span className="text-[11px] font-bold text-gray-800">₹100.00</span>
                 </div>
               </div>
             </div>
@@ -154,9 +185,9 @@ const BillDetailPage = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-2.5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center space-x-3">
                 <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
-                  {id && id !== 'new' ? (isNaN(id) ? id : `BILL-${id.toString().padStart(5, '0')}`) : 'BILL-00001'}
+                  {id && id !== 'new' ? (isNaN(id) ? id : `PO-2026-${id.toString().padStart(5, '0')}`) : 'PO-2026-00482'}
                 </h2>
-                <span className="bg-[#ffe8e8] text-[#ff6b6b] text-[10px] font-bold px-2 py-0.5 rounded-full">
+                <span className="bg-[#ffedd5] text-[#9a3412] text-[10px] font-bold px-2 py-0.5 rounded-full">
                   Unpaid
                 </span>
               </div>
@@ -198,7 +229,7 @@ const BillDetailPage = () => {
                         </div>
                         <div>
                           <h4 className="text-[13px] font-bold text-gray-900">Climamax Controls Pvt Ltd</h4>
-                          <p className="text-[10px] text-gray-400 mt-0.5 uppercase tracking-wide">BL- 00001</p>
+                          <p className="text-[10px] text-gray-400 mt-0.5 uppercase tracking-wide">PO-2026-00482</p>
                         </div>
                       </div>
                       <div className="space-y-2.5">
@@ -220,26 +251,22 @@ const BillDetailPage = () => {
                       <h3 className="text-[15px] font-bold text-gray-900 px-1">Details</h3>
                     </div>
                     <div className="px-5 pt-4 pb-5 flex-1">
-                      <div className="space-y-2.5">
+                      <div className="space-y-4">
                         <div className="grid grid-cols-2">
-                          <span className="text-[12px] font-medium text-gray-400">Order Number</span>
-                          <span className="text-[12px] font-bold text-gray-900">5453</span>
+                          <span className="text-[12px] font-medium text-gray-400">Order Date</span>
+                          <span className="text-[12px] font-bold text-gray-900">30/06/2026</span>
                         </div>
                         <div className="grid grid-cols-2">
-                          <span className="text-[12px] font-medium text-gray-400">Bill Date</span>
-                          <span className="text-[12px] font-bold text-gray-900">15/07/2026</span>
+                          <span className="text-[12px] font-medium text-gray-400">Delivery Date</span>
+                          <span className="text-[12px] font-bold text-gray-900">26/06/2026</span>
                         </div>
                         <div className="grid grid-cols-2">
-                          <span className="text-[12px] font-medium text-gray-400">Due Date</span>
-                          <span className="text-[12px] font-bold text-gray-900">15/07/2026</span>
+                          <span className="text-[12px] font-medium text-gray-400">Reference No</span>
+                          <span className="text-[12px] font-bold text-gray-900">REF-2026-00847</span>
                         </div>
                         <div className="grid grid-cols-2">
                           <span className="text-[12px] font-medium text-gray-400">Payment Terms</span>
                           <span className="text-[12px] font-bold text-gray-900">Due On Receipt</span>
-                        </div>
-                        <div className="grid grid-cols-2">
-                          <span className="text-[12px] font-medium text-gray-400">Balance Due</span>
-                          <span className="text-[12px] font-bold text-gray-900">₹5,000.00</span>
                         </div>
                       </div>
                     </div>
@@ -269,93 +296,86 @@ const BillDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Grid for Notes and Totals */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                  {/* Notes & Terms Box */}
-                  <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-                    <h5 className="text-[15px] font-bold text-[#1a233a] mb-3 pb-3 border-b border-gray-100">Internal Bill Notes / Reminders</h5>
-                    <div className="bg-white border border-blue-50 rounded-xl p-4 mt-2">
-                      <p className="text-[12px] text-gray-500 leading-relaxed">
-                        This Transaction Covers Initial Core Paper Stock Orders Mapped To Office Administration Expenses. Balance Reconciled Directly With Account Manager.
-                      </p>
-                    </div>
+                {/* Calculation Section */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 mt-2 flex flex-col">
+                  <div className="px-4 pt-4 pb-2 mx-1 border-b border-gray-200">
+                    <h3 className="text-[15px] font-bold text-gray-900 px-1">Calculation</h3>
                   </div>
+                  
+                  <div className="p-5 overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="bg-gray-50/50">
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Items & Description</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap text-left">Ordered</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap text-left">Status</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap text-left">Rate</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap text-left">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gray-50">
+                          <td className="py-4 px-4 align-top">
+                            <p className="text-[12px] font-bold text-gray-900">Calibrated Glass Pipette</p>
+                            <p className="text-[10px] text-gray-500 mt-1">Standard High Resolution Glass Testing Pipettes</p>
+                          </td>
+                          <td className="py-4 px-4 align-top">
+                            <p className="text-[12px] font-bold text-gray-900">566 <span className="text-[10px] font-normal text-gray-500">Box</span></p>
+                          </td>
+                          <td className="py-4 px-4 align-top space-y-1">
+                            <p className="text-[11px] text-gray-900"><span className="font-bold">0</span> Received</p>
+                            <p className="text-[11px] text-gray-900"><span className="font-bold">0</span> Billed</p>
+                          </td>
+                          <td className="py-4 px-4 align-top text-[12px] text-gray-900">30.00</td>
+                          <td className="py-4 px-4 align-top text-[12px] text-gray-900">50,645</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                  {/* Totals Summary Box */}
-                  <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
-                    <div className="space-y-4 pt-1">
-                      <div className="flex justify-between items-center">
-                        <span className="text-[12px] font-medium text-gray-500">Sub Total</span>
-                        <span className="text-[13px] font-medium text-[#1a233a]">₹5,000.00</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[12px] font-medium text-gray-500">Discount</span>
-                        <span className="text-[13px] font-medium text-gray-500">(-) ₹0.00</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-[12px] font-medium text-gray-500">Tax Rate</span>
-                        <span className="text-[13px] font-medium text-gray-500">(+) ₹0.00</span>
-                      </div>
-                      <div className="flex justify-between items-center pt-3 mt-1">
-                        <span className="text-[14px] font-bold text-[#1a233a]">Total</span>
-                        <span className="text-[16px] font-bold text-[#1a233a]">₹5,000.00</span>
+                    <div className="flex justify-end mt-6 pr-4">
+                      <div className="w-64 space-y-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-[13px] font-bold text-gray-900">Sub Total</span>
+                          <span className="text-[14px] font-bold text-gray-900">50,645</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-[12px] text-gray-500">Total Quantity :</span>
+                          <span className="text-[12px] text-gray-600">04 PCS</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-[12px] text-gray-500">GST :</span>
+                          <span className="text-[12px] text-gray-600">600.96</span>
+                        </div>
+                        <div className="flex justify-between items-center pb-3 border-b border-gray-200">
+                          <span className="text-[12px] text-gray-500">Discount Rate</span>
+                          <span className="text-[12px] text-gray-600">400.97</span>
+                        </div>
+                        <div className="flex justify-between items-center pt-1">
+                          <span className="text-[13px] font-semibold text-[#ff6b6b]">Total Payable</span>
+                          <span className="text-[16px] font-bold bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent">₹53,900.00</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Journal Section */}
-                <div className="mt-2 pt-2 border-t border-gray-100/60">
-                  {/* Tabs */}
-                  <div className="flex space-x-6 border-b border-gray-100 mb-2 px-2">
-                    <div className="relative pb-1">
-                      <button className="text-[12px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">
-                        Journal
-                      </button>
-                      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]"></div>
-                    </div>
+                {/* Notes and Terms Box */}
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col lg:flex-row mt-2 p-5 mb-2">
+                  <div className="flex-1 pr-5">
+                    <h5 className="text-[14px] font-bold text-gray-900 mb-3">Customer Note</h5>
+                    <p className="text-[12px] text-gray-600 leading-relaxed max-w-sm">
+                      Customer Requested Timely Delivery With Secure Packaging And Prior Dispatch Confirmation.
+                    </p>
                   </div>
+                  
+                  {/* Divider */}
+                  <div className="w-auto mx-5 lg:mx-0 lg:w-[2px] h-[1px] lg:h-auto bg-pink-200/60 lg:my-0 rounded-full"></div>
 
-                  <div className="bg-white border border-gray-100 shadow-sm rounded-xl overflow-hidden">
-                    {/* Banner */}
-                    <div className="bg-gradient-to-r from-[#fbe3de] via-[#f0e8f7] to-[#e4e6f9] px-4 py-1.5 border-b border-gray-100">
-                      <span className="text-[11px] text-gray-700">Amount Is Displayed In Your Base Currency <span className="font-bold text-[#1a233a]">INR</span></span>
-                    </div>
-
-                    <div className="p-0">
-                      <div className="px-4 py-1.5 border-b border-gray-100 bg-white">
-                        <h4 className="text-[13px] font-bold text-[#1a233a]">Expense</h4>
-                      </div>
-                      
-                      <table className="w-full text-left">
-                        <thead className="border-b border-gray-100 bg-gray-50/50">
-                          <tr>
-                            <th className="px-4 py-1.5 text-[11px] font-bold text-[#1a233a]">Account</th>
-                            <th className="px-4 py-1.5 text-[11px] font-bold text-[#1a233a]">Debit</th>
-                            <th className="px-4 py-1.5 text-[11px] font-bold text-[#1a233a]">Credit</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-50">
-                          <tr>
-                            <td className="px-4 py-1.5 text-[11px] font-medium text-[#1a233a]">Materials</td>
-                            <td className="px-4 py-1.5 text-[11px] font-medium text-[#1a233a]">4,67,254.00</td>
-                            <td className="px-4 py-1.5 text-[11px] text-gray-400">0.00</td>
-                          </tr>
-                          <tr>
-                            <td className="px-4 py-1.5 text-[11px] font-medium text-[#1a233a]">Undeposited Funds</td>
-                            <td className="px-4 py-1.5 text-[11px] text-gray-400">0.00</td>
-                            <td className="px-4 py-1.5 text-[11px] text-gray-500 font-medium">4,67,254.00</td>
-                          </tr>
-                        </tbody>
-                        <tfoot className="border-t border-gray-200 bg-gray-50/30">
-                          <tr>
-                            <td className="px-4 py-1.5 text-[12px] font-bold text-[#1a233a]">Total</td>
-                            <td className="px-4 py-1.5 text-[11px] font-bold text-[#1a233a]">4,67,254.00</td>
-                            <td className="px-4 py-1.5 text-[11px] font-bold text-[#1a233a]">4,67,254.00</td>
-                          </tr>
-                        </tfoot>
-                      </table>
-                    </div>
+                  <div className="flex-1 pl-5">
+                    <h5 className="text-[14px] font-bold text-gray-900 mb-3">Term & Condition</h5>
+                    <p className="text-[12px] text-gray-600 leading-relaxed">
+                      Prices Are Exclusive Of Taxes. Payment Is Due Within 30 Days. Delivery Dates Are Estimated And Subject To Availability. Orders Cannot Be Cancelled After Production Begins. Goods Remain The Seller's Property Until Full Payment Is Received. All Disputes Are Subject To Local Jurisdiction.
+                    </p>
                   </div>
                 </div>
 
@@ -368,4 +388,4 @@ const BillDetailPage = () => {
   );
 };
 
-export default BillDetailPage;
+export default ProcurementDetailPage;

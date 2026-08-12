@@ -45,6 +45,7 @@ const InvoicesPage = () => {
           <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
         </div>
         <div className="flex items-center space-x-3">
+          {/* 
           <button 
             onClick={() => navigate('/sales/invoices/new')}
             className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center transition-opacity shadow-sm"
@@ -52,6 +53,7 @@ const InvoicesPage = () => {
             <Plus className="w-3 h-3 mr-1" strokeWidth={2.5} />
             New
           </button>
+          */}
           <button className="w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center transition-colors">
             <MoreHorizontal className="w-4 h-4" strokeWidth={2} />
           </button>

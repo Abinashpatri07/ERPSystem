@@ -4,7 +4,7 @@ import {
   ChevronDown, Plus, Minus, GripVertical, Bookmark, Check, HandCoins
 } from 'lucide-react';
 
-const CreatePurchaseOrderPage = () => {
+const CreateProcurementPage = () => {
   const navigate = useNavigate();
 
   const [customerType, setCustomerType] = useState('Organization');
@@ -14,7 +14,7 @@ const CreatePurchaseOrderPage = () => {
   const removeRow = (id) => setRows(prev => prev.filter(r => r.id !== id));
 
   const tabs = ['Expenses', 'Procurement', 'Purchase Order', 'Bills', 'Payment'];
-  const activeTab = 'Purchase Order';
+  const activeTab = 'Procurement';
 
   return (
     <main className="flex-1 flex flex-col overflow-hidden bg-[#f4f7f9] p-1.5 gap-1.5">
@@ -43,29 +43,29 @@ const CreatePurchaseOrderPage = () => {
         {/* Top Banner with Stepper */}
         <div className="bg-white px-6 py-2 md:px-8 md:py-3 flex items-center justify-between border border-gray-200 rounded-2xl shadow-sm shrink-0">
           <h2 className="text-[17px] md:text-[18px] font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8]">
-            Create Purchase Order
+            Create Procurement
           </h2>
 
           <div className="flex items-center gap-0">
             {/* Step 1: Procurement */}
             <div className="flex flex-col items-center flex-shrink-0 w-16 md:w-20">
-              <div className="w-8 h-8 rounded-full bg-green-400 ring-2 ring-green-100 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
-                <Check className="w-4 h-4" strokeWidth={3} />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] ring-2 ring-pink-50 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
               </div>
-              <span className="text-[10px] md:text-[11px] font-bold text-green-600">Procurement</span>
+              <span className="text-[10px] md:text-[11px] font-semibold text-[#1a233a] text-center leading-tight">Procurement</span>
             </div>
 
             {/* Line */}
-            <div className="w-6 md:w-10 h-[2px] bg-green-400 -ml-4 -mr-4 mb-4 z-0" />
+            <div className="w-6 md:w-10 h-[2px] bg-gray-200 -ml-4 -mr-4 mb-4 z-0" />
 
             {/* Step 2: Purchase order */}
             <div className="flex flex-col items-center flex-shrink-0 w-16 md:w-20">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] ring-2 ring-pink-50 text-white flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-gray-200 text-gray-400 flex items-center justify-center font-semibold mb-1 z-10 relative shadow-sm">
+                <Check className="w-4 h-4" strokeWidth={3} />
               </div>
-              <span className="text-[10px] md:text-[11px] font-semibold text-[#1a233a] text-center leading-tight">Purchase order</span>
+              <span className="text-[10px] md:text-[11px] font-medium text-gray-500">Purchase order</span>
             </div>
 
             {/* Line */}
@@ -97,84 +97,100 @@ const CreatePurchaseOrderPage = () => {
         {/* ── Scrollable Form Area ── */}
         <div className="flex-1 overflow-y-auto flex flex-col gap-1.5 custom-scrollbar">
 
-          {/* ── Section 1: Product Details ── */}
+          {/* ── Section 1: Vendor Selection ── */}
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-6 py-5 shrink-0">
-            <h3 className="text-[15px] font-bold text-[#1a233a] mb-4">Product Details</h3>
+            <div className="mb-4">
+              <h3 className="text-[15px] font-bold text-[#1a233a]">Vendor Selection</h3>
+              <p className="text-[11px] text-gray-400 mt-1">Define corporate account details for dynamic tax and billing mapping.</p>
+            </div>
 
+            <div className="border-t border-gray-100 pt-4">
+              <div className="flex flex-col gap-1.5 mb-5">
+                <label className="text-[13px] font-semibold text-[#1a233a]">Search Customer <span className="text-red-500">*</span></label>
+                <div className="relative">
+                  <select className="w-full border border-[#402de8]/30 bg-blue-50/10 rounded-md shadow-sm px-3 py-2 text-[12px] focus:outline-none focus:border-blue-500 appearance-none text-[#1a233a]">
+                    <option value="CLIMAMAX CONTROLS Private Limited - GST: 29BGBB2222B2Z2 | POC: Sarah Jenkins">CLIMAMAX CONTROLS Private Limited - GST: 29BGBB2222B2Z2 | POC: Sarah Jenkins</option>
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-gray-600 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-
-            {/* Customer Type */}
-            <div className="col-span-2 flex items-center min-w-0">
-              <label className="w-36 text-[13px] font-bold text-[#1a233a] shrink-0">Customer Type <span className="text-red-500">*</span></label>
-              <div className="flex items-center space-x-6">
-                {['Organization', 'Customer'].map(type => (
-                  <label key={type} className="flex items-center cursor-pointer text-[13px] text-gray-700 font-medium">
-                    <div className={`flex items-center justify-center w-5 h-5 rounded-full mr-2.5 transition-all ${customerType === type ? 'bg-gradient-to-br from-[#ff3b30] to-[#b82db8]' : 'border border-gray-300'}`}>
-                      {customerType === type && <div className="w-2 h-2 bg-white rounded-full"></div>}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] font-medium text-gray-500">Name</label>
+                  <div className="border border-blue-200 rounded-md px-3 py-2 text-[13px] font-semibold text-[#1a233a] flex items-center gap-2 bg-white">
+                    <div className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                     </div>
-                    <input
-                      type="radio"
-                      className="hidden"
-                      checked={customerType === type}
-                      onChange={() => setCustomerType(type)}
-                    />
-                    {type}
-                  </label>
-                ))}
+                    CLIMAMAX CONTROLS Pvt Ltd
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] font-medium text-gray-500">GST</label>
+                  <div className="border border-blue-200 rounded-md px-3 py-2 text-[13px] font-semibold text-[#1a233a] flex items-center gap-2 bg-white">
+                    <div className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center">
+                      <span className="text-gray-500 text-[10px] font-bold">$</span>
+                    </div>
+                    29BGBBB2222B2Z2
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[12px] font-medium text-gray-500">Phone</label>
+                  <div className="border border-blue-200 rounded-md px-3 py-2 text-[13px] font-semibold text-[#1a233a] flex items-center gap-2 bg-white">
+                    <div className="w-6 h-6 rounded bg-gray-100 flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                    </div>
+                    +91 8245798900
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Vendor */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Vendor <span className="text-red-500">*</span></label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Purchase Order */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Purchase Order</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Order Date */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Order Date <span className="text-red-500">*</span></label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Delivery Date */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Delivery Date</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Payment Terms */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Payment Terms</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Reference */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Reference</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Shipment Preference */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Shipment Preference</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
-            {/* Delivery Address */}
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[13px] font-semibold text-[#1a233a]">Delivery Address</label>
-              <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
-            </div>
-
           </div>
-        </div>
+
+          {/* ── Section 2: Procurement Details ── */}
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-6 py-5 shrink-0">
+            <h3 className="text-[15px] font-bold text-[#1a233a] mb-5">Procurement Details</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 border-t border-gray-100 pt-5">
+              {/* Left Column */}
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">POC <span className="text-red-500">*</span></label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">Dispatch Date</label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">Delivery Date</label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">Order Date <span className="text-red-500">*</span></label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">Reference No</label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[13px] font-semibold text-[#1a233a]">Payment Terms</label>
+                  <input type="text" className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500" />
+                </div>
+              </div>
+
+              {/* Delivery Address - Full Width */}
+              <div className="flex flex-col gap-1.5 md:col-span-2">
+                <label className="text-[13px] font-semibold text-[#1a233a]">Delivery Address</label>
+                <textarea rows={2} className="w-full border border-gray-200 rounded-md shadow-sm px-3 py-2 text-[13px] focus:outline-none focus:border-blue-500 resize-none" />
+              </div>
+            </div>
+          </div>
 
         {/* ── Item Table ── */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-6 py-5 shrink-0">
@@ -395,4 +411,4 @@ const CreatePurchaseOrderPage = () => {
   );
 };
 
-export default CreatePurchaseOrderPage;
+export default CreateProcurementPage;
