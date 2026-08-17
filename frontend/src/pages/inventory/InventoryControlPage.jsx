@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, MoreHorizontal, ChevronDown } from 'lucide-react';
-import InventoryTable from './InventoryTable';
+import { Plus, MoreVertical, ChevronDown } from 'lucide-react';
+import InventoryControlTable from './InventoryControlTable';
 
-const InventoryPage = () => {
+const InventoryControlPage = () => {
   const navigate = useNavigate();
   const tabs = [
     { name: 'Items', path: '/inventory' },
@@ -21,13 +21,14 @@ const InventoryPage = () => {
               key={tab.name}
               onClick={() => navigate(tab.path)}
               className={`flex items-center gap-1 px-4 py-2 text-[13px] border-b-2 transition-colors whitespace-nowrap ${
-                tab.name === 'Items'
+                tab.name === 'Inventory Control'
                   ? 'text-black font-bold border-black'
                   : 'text-gray-500 font-medium border-transparent hover:text-gray-700 hover:border-gray-300'
               }`}
             >
               {tab.name}
-              {tab.name === 'Items' && <ChevronDown className="w-3.5 h-3.5 ml-1" />}
+              {tab.name === 'Inventory Control' && <ChevronDown className="w-3.5 h-3.5 ml-1" />}
+              {tab.name === 'Items' && <ChevronDown className="w-3.5 h-3.5 ml-1 text-gray-400" />}
             </button>
           ))}
         </nav>
@@ -37,31 +38,28 @@ const InventoryPage = () => {
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm shrink-0 px-8 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-1 cursor-pointer">
           <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
-            Inventory
+            Inventory Control
           </h2>
           <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
         </div>
         <div className="flex items-center space-x-3">
-          <button 
-            onClick={() => navigate('/inventory/new')}
-            className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center transition-opacity shadow-sm"
-          >
+          <button onClick={() => navigate('/inventory/control/new')} className="bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] hover:opacity-90 text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center transition-opacity shadow-sm">
             <Plus className="w-3 h-3 mr-1" strokeWidth={2.5} />
             New
           </button>
           <button className="w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center transition-colors">
-            <MoreHorizontal className="w-4 h-4" strokeWidth={2} />
+            <MoreVertical className="w-4 h-4" strokeWidth={2} />
           </button>
         </div>
       </div>
 
       {/* Table Area */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex-1 overflow-hidden flex flex-col">
-        <InventoryTable />
+        <InventoryControlTable />
       </div>
 
     </main>
   );
 };
 
-export default InventoryPage;
+export default InventoryControlPage;

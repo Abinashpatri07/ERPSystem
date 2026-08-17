@@ -34,6 +34,11 @@ import MachineDetailsPage from './pages/production/MachineDetailsPage';
 import CorrugatorJobDetailsPage from './pages/production/CorrugatorJobDetailsPage';
 import UserManagementPage from './pages/user-management/UserManagementPage';
 import InventoryPage from './pages/inventory/InventoryPage';
+import CreateInventoryItemPage from './pages/inventory/CreateInventoryItemPage';
+import InventoryItemDetailPage from './pages/inventory/InventoryItemDetailPage';
+import InventoryControlPage from './pages/inventory/InventoryControlPage';
+import CreateInventoryControlPage from './pages/inventory/CreateInventoryControlPage';
+import InventoryControlDetailPage from './pages/inventory/InventoryControlDetailPage';
 
 // Placeholder for other pages to avoid errors
 const PlaceholderPage = ({ title }) => (
@@ -78,6 +83,11 @@ function App() {
           <Route path="purchase/procurement/new" element={<CreateProcurementPage />} />
           <Route path="purchase/procurement/:id" element={<ProcurementDetailPage />} />
           <Route path="inventory" element={<InventoryPage />} />
+          <Route path="inventory/control" element={<InventoryControlPage />} />
+          <Route path="inventory/control/new" element={<CreateInventoryControlPage />} />
+          <Route path="inventory/control/:id" element={<InventoryControlDetailPage />} />
+          <Route path="inventory/new" element={<CreateInventoryItemPage />} />
+          <Route path="inventory/:id" element={<InventoryItemDetailPage />} />
           <Route path="production" element={<ProductionPage />} />
           <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />
           <Route path="production/manufacturing/:id" element={<ManufacturingOrderDetailsPage />} />
