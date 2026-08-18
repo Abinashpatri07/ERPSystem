@@ -79,7 +79,7 @@ const Sidebar = () => {
           }}
         >
           <div className="text-[17px] font-extrabold leading-tight tracking-wide">
-            <span className="text-[#1f2937]">ORR</span><span className="text-[#f97316]">NEX</span>
+            <span className="text-[#132A5E]">ORR</span><span className="text-[#f97316]">NEX</span>
           </div>
         </div>
       </div>
