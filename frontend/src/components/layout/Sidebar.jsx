@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import logoImg from '../../assets/logo.png';
 import { 
   LayoutDashboard,
   User,
@@ -55,23 +56,21 @@ const Sidebar = () => {
       >
         {/* Logo icon box */}
         <div
-          className="flex items-center justify-center flex-shrink-0"
+          className="flex items-center justify-center flex-shrink-0 overflow-hidden"
           style={{
             width: '32px',
             height: '32px',
             borderRadius: '8px',
-            background: 'linear-gradient(135deg, #fbb65c 0%, #f97316 100%)',
-            boxShadow: '0 2px 4px rgba(249,115,22,0.2)',
           }}
         >
-          <span className="text-white font-extrabold text-[15px]">N</span>
+          <img src={logoImg} alt="Logo" className="w-full h-full object-cover" />
         </div>
 
         {/* Brand text */}
         <div
           className="whitespace-nowrap flex flex-col justify-center"
           style={{
-            marginLeft: collapsed ? '0px' : '12px',
+            marginLeft: collapsed ? '0px' : '2px',
             opacity: collapsed ? 0 : 1,
             width: collapsed ? '0px' : 'auto',
             overflow: 'hidden',
@@ -80,10 +79,7 @@ const Sidebar = () => {
           }}
         >
           <div className="text-[17px] font-extrabold leading-tight tracking-wide">
-            <span className="text-[#1f2937]">CORR</span><span className="text-[#f97316]">NEX</span>
-          </div>
-          <div className="text-gray-500 text-[10px] tracking-wide font-medium mt-0.5 uppercase">
-            Cardboard Manufacturing
+            <span className="text-[#1f2937]">ORR</span><span className="text-[#f97316]">NEX</span>
           </div>
         </div>
       </div>

@@ -129,21 +129,55 @@ const BillDetailPage = () => {
               </div>
             </div>
 
-            <div className="flex-1 p-4 space-y-3">
-              {/* Selected Bill Card */}
-              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-[15px] font-bold text-[#111827]">Bill# 76547</span>
-                  <span className="text-[11px] text-gray-400 font-medium">25/06/2026</span>
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
+              {/* Active Card */}
+              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">Bill# 76547</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
                 </div>
-                <h3 className="text-[12px] font-medium text-[#111827] mb-3 uppercase leading-snug">
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
                   CLIMAMAX CONTROLS PRIVATE LIMITED
                 </h3>
-                <div className="flex justify-between items-end">
-                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
                     OPEN
                   </span>
-                  <span className="text-[14px] font-bold text-[#111827]">₹100.00</span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
+                </div>
+              </div>
+
+              {/* Inactive Card 1 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">Bill# 76548</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
+                </div>
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  NEXUS TECHNOLOGIES
+                </h3>
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
+                    OPEN
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
+                </div>
+              </div>
+
+              {/* Inactive Card 2 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">Bill# 76549</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
+                </div>
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  APEX INDUSTRIES
+                </h3>
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#f3f4f6] text-[#4b5563] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
+                    CLOSED
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>
                 </div>
               </div>
             </div>

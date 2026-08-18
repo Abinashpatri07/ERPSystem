@@ -292,7 +292,7 @@ const CreateInventoryItemPage = () => {
             </div>
 
             {/* Track Inventory for this Item */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-6">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-1">
               <div className="p-5 border-b border-gray-100 flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#f64f59] to-[#c471ed] flex items-center justify-center text-white shadow-sm">
                   <Box className="w-4 h-4" />

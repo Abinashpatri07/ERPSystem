@@ -43,17 +43,45 @@ const VendorDetailsPage = () => {
         </div>
 
         <div className="flex-1 overflow-y-auto px-3 pb-3 hide-scrollbar">
-          {/* Vendor List Item */}
-          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
-            <div className="flex justify-between items-center mb-1">
-              <span className="text-[13px] font-medium text-[#374151]">VEND-00287</span>
-              <span className="text-[10px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
+          {/* Vendor List Item (Active) */}
+          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
+            <div className="flex justify-between items-center mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">VEND-00287</span>
+              <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
             </div>
-            <h3 className="text-[12px] font-medium text-[#111827] mb-2 leading-snug">
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
               Century Pulp & Paper
             </h3>
             <div className="text-right">
-              <span className="text-[16px] font-bold text-[#111827]">₹100.00</span>
+              <span className="text-[14px] font-bold text-[#111827]">₹45,000.00</span>
+            </div>
+          </div>
+
+          {/* Vendor List Item 2 (Inactive) */}
+          <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+            <div className="flex justify-between items-center mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">VEND-00288</span>
+              <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
+            </div>
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+              Global Supplies Inc
+            </h3>
+            <div className="text-right">
+              <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
+            </div>
+          </div>
+
+          {/* Vendor List Item 3 (Inactive) */}
+          <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+            <div className="flex justify-between items-center mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">VEND-00289</span>
+              <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
+            </div>
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+              TechHardware Ltd
+            </h3>
+            <div className="text-right">
+              <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>
             </div>
           </div>
         </div>

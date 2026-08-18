@@ -104,17 +104,47 @@ const ExpenseDetailPage = () => {
               <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" />
             </div>
 
-            {/* List Item */}
-            <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm mb-3">
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-[13px] font-medium text-[#374151]">SO-00001</span>
-                <span className="text-[10px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
+            <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pb-3 mt-3">
+              {/* Active Card */}
+              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">EXP-00001</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
+                </div>
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                </h3>
+                <div className="text-right">
+                  <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
+                </div>
               </div>
-              <h3 className="text-[12px] font-medium text-[#111827] mb-2 uppercase leading-snug">
-                CLIMAMAX CONTROLS PRIVATE LIMITED
-              </h3>
-              <div className="text-right">
-                <span className="text-[16px] font-bold text-[#111827]">₹100.00</span>
+
+              {/* Inactive Card 1 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">EXP-00002</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
+                </div>
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  NEXUS TECHNOLOGIES
+                </h3>
+                <div className="text-right">
+                  <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
+                </div>
+              </div>
+
+              {/* Inactive Card 2 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">EXP-00003</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
+                </div>
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  APEX INDUSTRIES
+                </h3>
+                <div className="text-right">
+                  <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>
+                </div>
               </div>
             </div>
           </div>

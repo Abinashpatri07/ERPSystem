@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import { Mail, ChevronDown, Bookmark, Globe, Check, UploadCloud, Copy, Receipt, Package, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,10 +36,9 @@ const CreateCustomerPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/customers/', formData);
-      if (response.status === 201) {
-        setShowSuccessModal(true);
-      }
+      // Demo Mock API Call
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setShowSuccessModal(true);
     } catch (error) {
       console.error('Error creating customer:', error);
       alert('Failed to create customer');

@@ -136,44 +136,53 @@ const ProcurementDetailPage = () => {
 
             <div className="flex-1 p-4 space-y-3 overflow-y-auto custom-scrollbar">
               {/* Active PO Card */}
-              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent rounded-2xl p-3 cursor-pointer hover:shadow-md transition-all shadow-sm flex flex-col justify-between h-[85px]">
-                <div className="flex justify-between items-start">
-                  <span className="text-[13px] font-bold text-[#111827]">PO-2026-00482</span>
-                  <span className="text-[9px] text-gray-500 font-medium">25/06/2026</span>
+              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00482</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
                 </div>
-                <h3 className="text-[10px] font-bold text-[#111827] mt-1 uppercase leading-snug">
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
                   CLIMAMAX CONTROLS PRIVATE LIMITED
                 </h3>
-                <div className="flex justify-end mt-1">
-                  <span className="text-[11px] font-bold text-[#111827]">₹100.00</span>
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
+                    OPEN
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
                 </div>
               </div>
 
-              {/* Inactive PO Card 1 */}
-              <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-3 cursor-pointer hover:border-pink-200 hover:bg-gradient-to-br hover:from-[#fff5f2] hover:via-[#fcf5fd] hover:to-[#f6f5fe] hover:shadow-md transition-all flex flex-col justify-between h-[85px]">
-                <div className="flex justify-between items-start">
-                  <span className="text-[13px] font-bold text-gray-600">PO-2026-00482</span>
-                  <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+              {/* Inactive Card 1 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00483</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
                 </div>
-                <h3 className="text-[10px] font-bold text-gray-700 mt-1 uppercase leading-snug">
-                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  NEXUS TECHNOLOGIES
                 </h3>
-                <div className="flex justify-end mt-1">
-                  <span className="text-[11px] font-bold text-gray-800">₹100.00</span>
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
+                    OPEN
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
                 </div>
               </div>
 
-              {/* Inactive PO Card 2 */}
-              <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-3 cursor-pointer hover:border-pink-200 hover:bg-gradient-to-br hover:from-[#fff5f2] hover:via-[#fcf5fd] hover:to-[#f6f5fe] hover:shadow-md transition-all flex flex-col justify-between h-[85px]">
-                <div className="flex justify-between items-start">
-                  <span className="text-[13px] font-bold text-gray-600">PO-2026-00482</span>
-                  <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+              {/* Inactive Card 2 */}
+              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
+                <div className="flex justify-between items-center mb-0.5">
+                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00484</span>
+                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
                 </div>
-                <h3 className="text-[10px] font-bold text-gray-700 mt-1 uppercase leading-snug">
-                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                  APEX INDUSTRIES
                 </h3>
-                <div className="flex justify-end mt-1">
-                  <span className="text-[11px] font-bold text-gray-800">₹100.00</span>
+                <div className="flex justify-between items-end mt-1">
+                  <span className="bg-[#f3f4f6] text-[#4b5563] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
+                    CLOSED
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>
                 </div>
               </div>
             </div>

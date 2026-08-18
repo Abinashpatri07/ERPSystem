@@ -11,32 +11,41 @@ const CustomerPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCustomers = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:8000/api/customers/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch customers');
-        }
-        const data = await response.json();
-        const mappedCustomers = data.map(item => ({
-          id: item.id,
-          name: item.display_name || item.company_name || 'N/A',
-          gst: item.gstin || '-',
-          primaryContact: `${item.primary_contact_first_name || ''} ${item.primary_contact_last_name || ''}`.trim() || 'N/A',
-          email: item.email_address || '-',
-          phone: item.primary_number || '-',
-          receivable: `₹${item.opening_balance || '0.00'}`,
-          status: 'Active'
-        }));
-        setCustomers(mappedCustomers);
-      } catch (error) {
-        console.error('Error fetching customers:', error);
-      } finally {
-        setIsLoading(false);
+    // Demo Dummy Data
+    const dummyData = [
+      {
+        id: 1,
+        name: 'Climamax Controls Pvt Ltd',
+        gst: '29BGBB2222B2Z2',
+        primaryContact: 'Sarah Jenkins',
+        email: 'sarah.j@climamax.com',
+        phone: '+91 98765 43210',
+        receivable: '₹45,000.00',
+        status: 'Active'
+      },
+      {
+        id: 2,
+        name: 'Nexus Technologies',
+        gst: '29ABCDE1234F1Z5',
+        primaryContact: 'Rahul Sharma',
+        email: 'rahul@nexus.in',
+        phone: '+91 91234 56789',
+        receivable: '₹12,500.00',
+        status: 'Active'
+      },
+      {
+        id: 3,
+        name: 'Apex Industries',
+        gst: '07AABCB2222B1Z1',
+        primaryContact: 'Amit Patel',
+        email: 'amit@apex.com',
+        phone: '+91 99887 76655',
+        receivable: '₹0.00',
+        status: 'Active'
       }
-    };
-
-    fetchCustomers();
+    ];
+    setCustomers(dummyData);
+    setIsLoading(false);
   }, []);
 
   // Filter logic
