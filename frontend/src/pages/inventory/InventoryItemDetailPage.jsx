@@ -280,7 +280,7 @@ const InventoryItemDetailPage = () => {
 
                   {/* Stock Details */}
                   <div className="bg-gradient-to-br from-[#fff5f0] via-[#fdf5fb] to-[#f4f2ff] rounded-xl border border-purple-100 shadow-sm p-5 flex flex-col">
-                    <div className="border-b border-gray-300/40 pb-3 mb-4">
+                    <div className="border-b border-gray-300/40 pb-3 mb-3">
                       <h3 className="text-[17px] font-bold text-gray-900">
                         Available Stock : <span className="bg-gradient-to-r from-[#ff7a59] to-[#6366f1] bg-clip-text text-transparent">220.00</span>
                       </h3>
