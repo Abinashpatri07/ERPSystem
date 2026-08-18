@@ -15,7 +15,8 @@ import {
   ShieldCheck,
   FileText,
   PanelLeftClose,
-  PanelLeftOpen
+  PanelLeftOpen,
+  Settings
 } from 'lucide-react';
 
 const sidebarItems = [
@@ -25,6 +26,7 @@ const sidebarItems = [
   { name: 'Vendors',         icon: UserCog,         path: '/vendors' },
   { name: 'Purchase',        icon: ShoppingCart,    path: '/purchase' },
   { name: 'Inventory',       icon: Network,         path: '/inventory' },
+  { name: 'Machine',         icon: Settings,        path: '/machine' },
   { name: 'Production',      icon: Monitor,         path: '/production' },
   { name: 'Supply Chain',    icon: Truck,           path: '/supply-chain' },
   { name: 'Accounting',      icon: ClipboardList,   path: '/accounting' },

@@ -31,6 +31,7 @@ import CreateManufacturingPage from './pages/production/CreateManufacturingPage'
 import ManufacturingOrderDetailsPage from './pages/production/ManufacturingOrderDetailsPage';
 import CreateMachinePage from './pages/production/CreateMachinePage';
 import MachineDetailsPage from './pages/production/MachineDetailsPage';
+import MachinePage from './pages/machine/MachinePage';
 import CorrugatorJobDetailsPage from './pages/production/CorrugatorJobDetailsPage';
 import UserManagementPage from './pages/user-management/UserManagementPage';
 import InventoryPage from './pages/inventory/InventoryPage';
@@ -92,8 +93,9 @@ function App() {
           <Route path="production/manufacturing/new" element={<CreateManufacturingPage />} />
           <Route path="production/manufacturing/:id" element={<ManufacturingOrderDetailsPage />} />
           <Route path="production/job-card/:id" element={<CorrugatorJobDetailsPage />} />
-          <Route path="production/machine/new" element={<CreateMachinePage />} />
-          <Route path="production/machine/:id" element={<MachineDetailsPage />} />
+          <Route path="machine" element={<MachinePage />} />
+          <Route path="machine/new" element={<CreateMachinePage />} />
+          <Route path="machine/:id" element={<MachineDetailsPage />} />
           <Route path="supply-chain" element={<PlaceholderPage title="Supply Chain" />} />
           <Route path="accounting" element={<PlaceholderPage title="Accounting" />} />
           <Route path="hrms" element={<PlaceholderPage title="HRMS" />} />

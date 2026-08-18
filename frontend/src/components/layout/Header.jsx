@@ -73,19 +73,18 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            background: '#f4f6f8',
-            border: '1px solid #e8ecef',
-            borderRadius: '8px',
+            background: '#f3f4f6',
+            borderRadius: '10px',
             padding: '4px 10px',
           }}
         >
-          <Calendar style={{ width: '14px', height: '14px', color: '#3a6878' }} strokeWidth={2} />
+          <Calendar style={{ width: '18px', height: '18px', color: '#2563eb' }} strokeWidth={2} />
           <div>
-            <div style={{ fontSize: '12px', fontWeight: 600, color: '#343a40', lineHeight: 1.2 }}>
+            <div style={{ fontSize: '13px', fontWeight: 500, color: '#111827', lineHeight: 1.1 }}>
               {formatDate(currentTime)}
             </div>
-            <div style={{ fontSize: '10px', color: '#868e96', lineHeight: 1.2, marginTop: '1px' }}>
-              {formatTime(currentTime)}
+            <div style={{ fontSize: '11px', color: '#6b7280', lineHeight: 1.1, marginTop: '2px' }}>
+              {formatTime(currentTime)} IST
             </div>
           </div>
         </div>
@@ -101,7 +100,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            color: '#868e96',
+            color: '#1a233a',
             display: 'flex',
             alignItems: 'center',
             padding: '4px',
@@ -109,9 +108,9 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             transition: 'color 0.2s',
           }}
           onMouseEnter={e => e.currentTarget.style.color = '#343a40'}
-          onMouseLeave={e => e.currentTarget.style.color = '#868e96'}
+          onMouseLeave={e => e.currentTarget.style.color = '#1a233a'}
         >
-          <HelpCircle style={{ width: '16px', height: '16px' }} strokeWidth={1.6} />
+          <HelpCircle style={{ width: '22px', height: '22px' }} strokeWidth={2.2} />
         </button>
 
         {/* Bell Icon */}
@@ -120,7 +119,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            color: '#868e96',
+            color: '#1a233a',
             display: 'flex',
             alignItems: 'center',
             padding: '4px',
@@ -129,19 +128,19 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             transition: 'color 0.2s',
           }}
           onMouseEnter={e => e.currentTarget.style.color = '#343a40'}
-          onMouseLeave={e => e.currentTarget.style.color = '#868e96'}
+          onMouseLeave={e => e.currentTarget.style.color = '#1a233a'}
         >
-          <Bell style={{ width: '16px', height: '16px' }} strokeWidth={1.6} />
+          <Bell style={{ width: '22px', height: '22px' }} strokeWidth={2.2} />
           <span
             style={{
               position: 'absolute',
-              top: '3px',
-              right: '3px',
-              width: '6px',
-              height: '6px',
-              background: '#e74c3c',
+              top: '2px',
+              right: '4px',
+              width: '10px',
+              height: '10px',
+              background: '#fff',
               borderRadius: '50%',
-              border: '1.5px solid #fff',
+              border: '2.5px solid #ff3344',
             }}
           />
         </button>
@@ -150,18 +149,18 @@ const Header = ({ searchQuery, setSearchQuery }) => {
         <div style={{ width: '1px', height: '24px', background: '#e8ecef' }} />
 
         {/* User Profile */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
           <div
             style={{
-              width: '32px',
-              height: '32px',
+              width: '36px',
+              height: '36px',
               borderRadius: '50%',
-              background: '#3a6878',
+              background: 'linear-gradient(135deg, #ff3344 0%, #a044b7 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '12px',
-              fontWeight: 700,
+              fontSize: '14px',
+              fontWeight: 500,
               color: '#fff',
               flexShrink: 0,
             }}
@@ -169,10 +168,10 @@ const Header = ({ searchQuery, setSearchQuery }) => {
             MT
           </div>
           <div>
-            <div style={{ fontSize: '13px', fontWeight: 600, color: '#343a40', lineHeight: 1.2 }}>
+            <div style={{ fontSize: '14px', fontWeight: 500, color: '#000', lineHeight: 1.1 }}>
               Maruty Tandon
             </div>
-            <div style={{ fontSize: '11px', color: '#868e96', lineHeight: 1.2, marginTop: '1px' }}>
+            <div style={{ fontSize: '11px', color: '#868e96', lineHeight: 1.1, marginTop: '2px' }}>
               marutyon43@gmail.com
             </div>
           </div>

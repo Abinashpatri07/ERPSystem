@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Calendar, Settings, Clock, Package, CheckCircle, TrendingUp, AlertCircle, FileText, Activity, Box } from 'lucide-react';
+import { Calendar, Settings, Clock, Package, CheckCircle, TrendingUp, AlertCircle, FileText, Activity, Box, Search, Plus, MoreHorizontal, ChevronDown, X, Factory, Gauge, Zap, Layers, Weight, Ruler, Battery, Power, Wrench, Briefcase, User, Timer } from 'lucide-react';
 
 const BAR_DATA = [
   { day: 'Mon', value: 120, height: '120px', color: '#34d399' },
@@ -15,6 +15,7 @@ const MAX_VAL = 200;
 
 const MachineDetailsPage = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('Overview');
   const { id } = useParams();
 
   const productionReportData = Array(6).fill({
@@ -30,565 +31,551 @@ const MachineDetailsPage = () => {
   });
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#f4f7f9]">
+    <div className="flex h-full bg-[#f4f7f9] p-1.5 gap-1.5 overflow-hidden">
       
-      {/* ── Top Header ── */}
-      <div className="bg-white border-b border-gray-200 px-8 py-5 flex items-center justify-between shadow-sm z-10">
-        <div>
-          <h1 className="text-[22px] font-bold text-[#1a233a] mb-1">Machine Details</h1>
-          <p className="text-[13px] text-gray-500">Monitor machine performance, utilization, maintenance history and production metrics.</p>
+      {/* ── Left Sidebar (List) ── */}
+      <div className="w-full lg:w-[260px] shrink-0 flex flex-col bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
+        <div className="p-3 pb-2">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-1 cursor-pointer">
+              <h2 className="text-xl tracking-tight font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]">All Machinery</h2>
+              <ChevronDown className="w-5 h-5 text-[#8b5cf6]" />
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => navigate('/machine/new')}
+                className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+              <button className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-black hover:bg-gray-200 transition-colors">
+                <MoreHorizontal className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search machine..."
+              className="w-full pl-8 pr-3 py-2 text-[12px] bg-gray-100 border border-transparent rounded-md focus:bg-white focus:border-blue-500 focus:outline-none"
+            />
+            <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" />
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 text-[13px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-md hover:bg-blue-100 transition-colors">
-            <Calendar className="w-4 h-4" /> Schedule Maintenance
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 text-[13px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-md hover:bg-blue-100 transition-colors">
-            <Settings className="w-4 h-4" /> Create Work Order
-          </button>
+
+        <div className="flex-1 overflow-y-auto px-3 pb-3 hide-scrollbar">
+          {/* Active Machine */}
+          <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-transparent mb-2">
+            <div className="flex justify-between items-start mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[9px] text-gray-500 font-medium">25/06/2026</span>
+            </div>
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 truncate">
+              Bobst Die Cutting Machine
+            </h3>
+            <span className="inline-block px-2 py-[2px] opacity-0 pointer-events-none text-[9px] font-medium rounded-full leading-none">
+              Placeholder
+            </span>
+          </div>
+
+          {/* Inactive Machine 1 */}
+          <div className="bg-white rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-gray-200 mb-2 hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all">
+            <div className="flex justify-between items-start mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+            </div>
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 truncate">
+              Bobst Die Cutting Machine
+            </h3>
+            <span className="inline-block px-2 py-[2px] bg-[#e6fce5] text-[#16a34a] text-[9px] font-bold rounded-full leading-none uppercase">
+              Active
+            </span>
+          </div>
+
+          {/* Inactive Machine 2 */}
+          <div className="bg-white rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-gray-200 mb-2 hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all">
+            <div className="flex justify-between items-start mb-0.5">
+              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
+            </div>
+            <h3 className="text-[11px] font-bold text-[#111827] mb-1 truncate">
+              Bobst Die Cutting Machine
+            </h3>
+            <span className="inline-block px-2 py-[2px] bg-[#e6fce5] text-[#16a34a] text-[9px] font-bold rounded-full leading-none uppercase">
+              Active
+            </span>
+          </div>
+          
         </div>
       </div>
 
-      {/* ── Scrollable Body ── */}
-      <div className="flex-1 overflow-y-auto p-8 relative">
-        <div className="max-w-7xl mx-auto space-y-6">
-
-          {/* 1. Main Info Card */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 flex justify-between items-center relative overflow-hidden">
-            {/* Top accent line */}
-            <div className="h-1 bg-gray-200 w-full absolute top-0 left-0"></div>
-
-            <div className="flex items-center gap-8 flex-1">
-              {/* Machine Icon Box */}
-              <div className="w-20 h-20 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0">
-                <svg className="w-10 h-10 text-[#475569]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-
-              {/* Machine Specs Grid */}
-              <div className="flex-1">
-                <div className="flex items-center gap-4 mb-6">
-                  <h2 className="text-2xl font-bold text-[#1a233a]">AD 1228_5C</h2>
-                  <span className="px-3 py-1 bg-[#dcfce7] text-[#16a34a] text-[12px] font-bold rounded-full flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-[#16a34a] rounded-full"></div> Active
-                  </span>
+      {/* ── Right Area (Details) ── */}
+      <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden bg-transparent">
+        
+        {/* Top Header Card */}
+        <div className="bg-white shrink-0 border border-gray-100 rounded-[20px] shadow-sm mb-1">
+          <div className="px-3 lg:px-4 p-3">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#ef4444] to-[#a855f7] flex items-center justify-center text-white shadow-sm shrink-0">
+                  <Factory className="w-[22px] h-[22px]" strokeWidth={1.5} />
                 </div>
-
-                <div className="grid grid-cols-3 gap-x-8 gap-y-6">
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Code</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">MC-001</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Department</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">Corrugation</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Production Line</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">Line A</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Reported HRS</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">108.93</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Location</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">Plant 01</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Manufacturer</div>
-                    <div className="text-[14px] font-semibold text-[#1a233a]">BHS</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right side: Utilization Donut & Info */}
-            <div className="flex items-center gap-10 pl-10 border-l border-gray-100">
-              <div className="flex flex-col items-center">
-                <span className="text-[14px] font-semibold text-[#1a233a] mb-4">Utilization</span>
-                
-                {/* CSS Donut Chart */}
-                <div className="relative w-[120px] h-[120px] rounded-full flex items-center justify-center bg-gray-100 shadow-inner"
-                     style={{ background: `conic-gradient(#2563eb 0% 92%, #e5e7eb 92% 100%)` }}>
-                  <div className="absolute inset-2 bg-white rounded-full shadow-sm flex items-center justify-center">
-                    <span className="text-3xl font-bold text-[#1a233a]">92%</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-5">
-                <div>
-                  <div className="text-[12px] text-gray-500 mb-0.5">Operator</div>
-                  <div className="text-[13px] font-semibold text-[#1a233a]">Rahul Das</div>
-                </div>
-                <div>
-                  <div className="text-[12px] text-gray-500 mb-0.5">Current Shift</div>
-                  <div className="text-[13px] font-semibold text-[#1a233a]">Shift A</div>
-                </div>
-                <div>
-                  <div className="text-[12px] text-gray-500 mb-0.5">Running Since</div>
-                  <div className="text-[13px] font-semibold text-[#1a233a]">08:20 AM</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. Four Metrics Cards */}
-          <div className="grid grid-cols-4 gap-6">
-            {/* Today's Runtime */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-              <div className="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-4 border border-green-100">
-                <Clock className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1">Today's Runtime</div>
-                <div className="text-xl font-bold text-[#1a233a]">9 Hours</div>
-              </div>
-            </div>
-
-            {/* Today's Production */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-              <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center mb-4 border border-blue-100">
-                <Package className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1">Today's Production</div>
-                <div className="text-xl font-bold text-[#1a233a]">4,250 <span className="text-[12px] font-medium text-gray-500">Boxes</span></div>
-              </div>
-            </div>
-
-            {/* Reported Hours */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-              <div className="w-8 h-8 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center mb-4 border border-pink-100">
-                <Calendar className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1">Reported Hours</div>
-                <div className="text-xl font-bold text-[#1a233a]">216 <span className="text-[12px] font-medium text-gray-500">Hours</span></div>
-              </div>
-            </div>
-
-            {/* Machine Efficiency */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col justify-between">
-              <div className="w-8 h-8 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center mb-4 border border-orange-100">
-                <TrendingUp className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide mb-1">Machine Efficiency</div>
-                <div className="text-xl font-bold text-[#1a233a]">96%</div>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. Bottom Split Section */}
-          <div className="flex gap-6 h-[400px]">
-            
-            {/* Left: Machine Utilization Analytics (Bar Chart) */}
-            <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-6 relative flex flex-col">
-              <div className="flex items-center justify-between mb-8 z-10 relative">
-                <h3 className="text-[16px] font-bold text-[#1a233a]">Machine Utilization Analytics</h3>
-                <button className="flex items-center gap-1 px-3 py-1.5 text-[12px] font-semibold text-blue-600 bg-white border border-blue-200 rounded-md shadow-sm">
-                  Last Week <span className="text-[10px]">▼</span>
-                </button>
-              </div>
-
-              {/* Bar Chart Area */}
-              <div className="flex-1 relative flex mt-2">
-                
-                {/* Horizontal Grid Lines & Y Axis Labels */}
-                <div className="absolute right-0 left-12 flex flex-col justify-between pointer-events-none" style={{ height: '200px', top: 'auto', bottom: '40px' }}>
-                  {[200, 150, 100, 50, 0].map(val => (
-                    <div key={val} className="w-full border-t border-dashed border-gray-300 relative">
-                      <span className="absolute -left-12 -top-[10px] text-[12px] text-gray-500 font-medium w-10 text-right">{val}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bars Container */}
-                <div className="absolute right-0 left-12 bottom-[40px] pr-4 flex justify-between items-end h-[200px]">
-                  {BAR_DATA.map((item, index) => (
-                    <div key={index} className="flex flex-col items-center gap-3 relative group w-14">
-                      {/* Tooltip on hover */}
-                      <div className="absolute -top-8 bg-gray-800 text-white text-[11px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                        {item.value} hrs
-                      </div>
-                      
-                      {/* Bar */}
-                      <div 
-                        className="w-12 rounded-t-xl rounded-b-md transition-all duration-300 hover:opacity-80 flex flex-col items-center justify-end pb-2"
-                        style={{ height: item.height, backgroundColor: item.color }}
-                      >
-                        <span className="text-white text-[11px] font-semibold">{item.value}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* X Axis Labels */}
-                <div className="absolute bottom-0 right-0 left-12 pr-4 flex justify-between">
-                  {BAR_DATA.map((item, index) => (
-                    <div key={index} className="w-14 text-center text-[12px] font-medium text-gray-500">
-                      {item.day}
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-            </div>
-
-            {/* Right: Live Summary Table */}
-            <div className="w-[340px] shrink-0 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden">
-              <div className="bg-[#447186] text-white px-6 py-5 flex items-center justify-between">
-                <h3 className="text-[16px] font-bold">Live Summary</h3>
-                <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center">
-                  <Package className="w-4 h-4 text-[#447186]" />
-                </div>
-              </div>
-              
-              <div className="flex-1 overflow-y-auto hide-scrollbar p-6">
-                <h4 className="text-[13px] font-bold text-[#1a233a] mb-4">Machine Summary</h4>
-                
-                <div className="flex flex-col">
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Machine Health</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">96%</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Current Status</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">Running</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Today's Runtime</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">9 Hours</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Current Shift</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">Shift A</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Operator</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">Rahul Das</span>
-                  </div>
-                  
-                  {/* Gap between sections */}
-                  <div className="h-6"></div>
-                  
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Temperature</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">42°C</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Power</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">18.4 kW</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Utilization</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">92%</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">OEE</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">89%</span>
-                  </div>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-[13px] text-gray-500 font-medium">Production</span>
-                    <span className="text-[13px] font-bold text-[#1a233a]">4,250 Boxes</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-
-          {/* ── NEW LAYOUT APPENDED ── */}
-          <div className="mt-12 pt-8 border-t border-gray-200 space-y-6">
-            
-            {/* Top KPI Cards */}
-            <div className="grid grid-cols-4 gap-4">
-              <div className="bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-                <div className="text-[11px] text-gray-500 mb-2">Average Utilization</div>
-                <div className="text-2xl font-bold text-gray-800">85.4%</div>
-              </div>
-              <div className="bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-                <div className="text-[11px] text-gray-500 mb-2">Peak Utilization</div>
-                <div className="text-2xl font-bold text-gray-800">96%</div>
-              </div>
-              <div className="bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-                <div className="text-[11px] text-gray-500 mb-2">Lowest Utilization</div>
-                <div className="text-2xl font-bold text-gray-800">62%</div>
-              </div>
-              <div className="bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-                <div className="text-[11px] text-gray-500 mb-2">Operating Hours</div>
-                <div className="text-2xl font-bold text-gray-800">92h</div>
-              </div>
-            </div>
-
-            {/* Middle Row: Machine Info & Live Status */}
-            <div className="grid grid-cols-2 gap-6">
-              
-              {/* Machine Information */}
-              <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-6">
-                  <Box className="w-5 h-5 text-blue-500" />
-                  <h2 className="text-base font-semibold text-gray-800">Machine Information</h2>
-                </div>
-                <div className="grid grid-cols-2 gap-y-5 gap-x-8">
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Machine Code</div>
-                    <div className="text-[13px] font-semibold text-gray-800">MC-001</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Machine Name</div>
-                    <div className="text-[13px] font-semibold text-gray-800">AD 1228_5C</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Machine Type</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Corrugator</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Manufacturer</div>
-                    <div className="text-[13px] font-semibold text-gray-800">BHS</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Model Number</div>
-                    <div className="text-[13px] font-semibold text-gray-800">BHS-009541</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Serial Number</div>
-                    <div className="text-[13px] font-semibold text-gray-800">SN-789456</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Installation Date</div>
-                    <div className="text-[13px] font-semibold text-gray-800">2019-02-14</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Warranty Expiry</div>
-                    <div className="text-[13px] font-semibold text-gray-800">2028-02-14</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Department</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Corrugation</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Production Line</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Line A</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Plant</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Plant A</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Machine Capacity</div>
-                    <div className="text-[13px] font-semibold text-gray-800">6,000 Boxes/day</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Current Operator</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Rahul Das</div>
-                  </div>
-                  <div>
-                    <div className="text-[12px] text-gray-500 mb-1">Supervisor</div>
-                    <div className="text-[13px] font-semibold text-gray-800">Meera Iyer</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Live Machine Status */}
-              <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm relative">
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex flex-col gap-[3px]">
                   <div className="flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-blue-500" />
-                    <h2 className="text-base font-semibold text-gray-800">Live Machine Status</h2>
-                  </div>
-                  <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Online
-                  </span>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Running Status</span>
-                    <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Running
+                    <h1 className="text-[16px] font-medium text-[#111827] leading-none tracking-tight">Corrugation</h1>
+                    <span className="px-2 py-[2px] bg-[#e6fce5] text-[#16a34a] text-[10px] font-medium rounded-full leading-none">
+                      Active
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Current Shift</span>
-                    <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Shift A
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Operator</span>
-                    <span className="text-[13px] font-semibold text-gray-800">Rahul Das</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Running Since</span>
-                    <span className="text-[13px] font-semibold text-gray-800">08:20 AM</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Temperature</span>
-                    <span className="text-[13px] font-semibold text-gray-800">42°C</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Power Consumption</span>
-                    <span className="text-[13px] font-semibold text-gray-800">18.4 kW</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">RPM</span>
-                    <span className="text-[13px] font-semibold text-gray-800">1240</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Machine Speed</span>
-                    <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Normal
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Oil Level</span>
-                    <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Good
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[13px] text-gray-500">Network Status</span>
-                    <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded-full text-[10px] font-medium flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div> Online
-                    </span>
+                  <div className="text-[11px] text-[#6b7280] font-medium tracking-wide leading-none">
+                    CODE • MC-001
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Third Row: Production Performance & Working Hours Summary */}
-            <div className="grid grid-cols-2 gap-6">
-              
-              {/* Production Performance */}
-              <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-6">
-                  <Box className="w-5 h-5 text-blue-500" />
-                  <h2 className="text-base font-semibold text-gray-800">Production Performance</h2>
-                </div>
-                
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[12px] text-gray-500">Today's Target</span>
-                    <span className="text-sm font-bold text-gray-800">5,000</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-2.5">
-                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '85%' }}></div>
-                  </div>
-                </div>
+            {/* Divider */}
+            <div className="h-[1px] bg-gray-100 my-3"></div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="border border-blue-100 bg-blue-50/30 rounded-xl p-4">
-                    <div className="text-[12px] text-blue-500 font-medium mb-1">Completed</div>
-                    <div className="text-2xl font-bold text-gray-800">4,250</div>
-                  </div>
-                  <div className="border border-gray-200 bg-white rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 font-medium mb-1">Remaining</div>
-                    <div className="text-2xl font-bold text-gray-800">750</div>
-                  </div>
-                  <div className="border border-red-100 bg-red-50/50 rounded-xl p-4">
-                    <div className="text-[12px] text-red-500 font-medium mb-1">Rejected</div>
-                    <div className="text-2xl font-bold text-gray-800">32</div>
-                  </div>
-                  <div className="border border-green-100 bg-green-50/50 rounded-xl p-4">
-                    <div className="text-[12px] text-green-600 font-medium mb-1">Quality Score</div>
-                    <div className="text-2xl font-bold text-gray-800">99.2%</div>
-                  </div>
+            {/* Stat Cards */}
+            <div className="flex gap-4 overflow-x-auto hide-scrollbar">
+              <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[170px] flex-1">
+                <div className="w-8 h-8 rounded-lg mb-2 flex items-center justify-center bg-[#e5fce3] text-[#16a34a]">
+                  <Clock className="w-4 h-4" />
+                </div>
+                <div className="text-[11px] text-[#4b5563] font-medium mb-1 truncate">Today's Runtime</div>
+                <div className="text-[18px] font-bold text-[#111827] leading-none flex items-baseline gap-1">
+                  9 <span className="text-[11px] font-medium text-[#4b5563]">Hours</span>
                 </div>
               </div>
 
-              {/* Working Hours Summary */}
-              <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-6">
-                  <Clock className="w-5 h-5 text-blue-500" />
-                  <h2 className="text-base font-semibold text-gray-800">Working Hours Summary</h2>
+              <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[170px] flex-1">
+                <div className="w-8 h-8 rounded-lg mb-2 flex items-center justify-center bg-[#eef2ff] text-[#4f46e5]">
+                  <Box className="w-4 h-4" />
                 </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="border border-gray-200 bg-white rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Today's Hours</div>
-                    <div className="text-xl font-bold text-gray-800">11</div>
-                  </div>
-                  <div className="border border-gray-200 bg-white rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Weekly Off</div>
-                    <div className="text-xl font-bold text-gray-800">2</div>
-                  </div>
-                  <div className="border border-blue-200 bg-white rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Working Days</div>
-                    <div className="text-xl font-bold text-gray-800">9</div>
-                  </div>
-                  <div className="border border-gray-200 bg-white rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Reported Hours</div>
-                    <div className="text-xl font-bold text-gray-800">216</div>
-                  </div>
-                  <div className="border border-green-200 bg-green-50/50 rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Runtime</div>
-                    <div className="text-xl font-bold text-green-600">108 Hrs</div>
-                  </div>
-                  <div className="border border-orange-200 bg-orange-50/50 rounded-xl p-4">
-                    <div className="text-[12px] text-gray-500 mb-1">Idle Hours</div>
-                    <div className="text-xl font-bold text-orange-500">12 Hrs</div>
-                  </div>
+                <div className="text-[11px] text-[#4b5563] font-medium mb-1 truncate">Today's Production</div>
+                <div className="text-[18px] font-bold text-[#111827] leading-none flex items-baseline gap-1">
+                  4,250 <span className="text-[11px] font-medium text-[#4b5563]">Boxes</span>
                 </div>
               </div>
 
-            </div>
+              <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[170px] flex-1">
+                <div className="w-8 h-8 rounded-lg mb-2 flex items-center justify-center bg-[#fae8ff] text-[#c026d3]">
+                  <Calendar className="w-4 h-4" />
+                </div>
+                <div className="text-[11px] text-[#4b5563] font-medium mb-1 truncate">Reported Hours</div>
+                <div className="text-[18px] font-bold text-[#111827] leading-none flex items-baseline gap-1">
+                  216 <span className="text-[11px] font-medium text-[#4b5563]">Hours</span>
+                </div>
+              </div>
 
-            {/* Bottom Table: Production Report */}
-            <div>
-              <h2 className="text-base font-semibold text-gray-800 mb-1">Production Report</h2>
-              <p className="text-[12px] text-gray-500 mb-3">Detailed runtime, utilization, and downtime records</p>
-              
-              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-gray-50/80 border-b border-gray-200">
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Date</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Today's Hours</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Weekly Off</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Working Day</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Planned Hours</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Reported Hours</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Idle Hours</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Downtime</th>
-                      <th className="py-3 px-4 text-[12px] font-semibold text-gray-600">Utilization</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {productionReportData.map((row, idx) => (
-                      <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.date}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.todaysHours}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.weeklyOff}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.workingDay}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.plannedHours}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.reportedHours}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.idleHours}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.downtime}</td>
-                        <td className="py-3 px-4 text-[13px] text-gray-600">{row.utilization}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                
-                <div className="py-3 px-4 flex items-center justify-between border-t border-gray-100 bg-white">
-                  <span className="text-[12px] text-gray-500">Showing <span className="font-semibold text-gray-700">1-6</span> of <span className="font-semibold text-gray-700">128</span></span>
-                  <div className="flex items-center gap-1">
-                    <button className="w-7 h-7 flex items-center justify-center rounded border border-gray-200 text-gray-400 hover:bg-gray-50">&lt;</button>
-                    <button className="w-7 h-7 flex items-center justify-center rounded bg-blue-50 text-blue-600 font-medium">1</button>
-                    <button className="w-7 h-7 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:bg-gray-50">2</button>
-                    <button className="w-7 h-7 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:bg-gray-50">3</button>
-                    <span className="text-gray-400 px-1">...</span>
-                    <button className="w-7 h-7 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:bg-gray-50">11</button>
-                    <button className="w-7 h-7 flex items-center justify-center rounded border border-gray-200 text-gray-400 hover:bg-gray-50">&gt;</button>
-                  </div>
+              <div className="bg-[#f9fafb] rounded-[12px] p-3 min-w-[170px] flex-1">
+                <div className="w-8 h-8 rounded-lg mb-2 flex items-center justify-center bg-[#ffedd5] text-[#ea580c]">
+                  <TrendingUp className="w-4 h-4" />
+                </div>
+                <div className="text-[11px] text-[#4b5563] font-medium mb-1 truncate">Machine Utilization</div>
+                <div className="text-[18px] font-bold text-[#111827] leading-none flex items-baseline gap-1">
+                  96%
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
+        {/* Bottom Content Card */}
+        <div className="bg-white flex-1 flex flex-col overflow-hidden border border-gray-100 rounded-[20px] shadow-sm">
+          
+          {/* Tabs */}
+          <div className="flex gap-6 px-3 lg:px-4 pt-3 shrink-0 border-b border-gray-100">
+            {['Overview', 'Utilization', 'Maintenance', 'Document'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`relative pb-3 text-[13px] transition-colors ${activeTab === tab
+                  ? 'font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]'
+                  : 'font-semibold text-gray-500 hover:text-gray-700'
+                  }`}
+              >
+                {tab}
+                {activeTab === tab && (
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#ff3b30] via-[#b82db8] to-[#5a67d8]"></div>
+                )}
+              </button>
+            ))}
           </div>
 
+          {/* Scrollable Tab Content Area */}
+          <div className="flex-1 overflow-y-auto p-3 lg:p-4 bg-[#f8fafc] rounded-b-[20px]">
+            {activeTab === 'Overview' && (
+              <div className="space-y-6 max-w-7xl mx-auto">
+            
+
+            
+            {/* 1. Machine Details */}
+            <div className="bg-white rounded-[12px] p-6 mb-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                  <Box className="w-4 h-4 text-white" />
+                </div>
+                <h2 className="text-[16px] font-bold text-[#111827]">Machine Details</h2>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-x-12 gap-y-5">
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Machine Code</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">MC-001</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Machine Name</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">AD 1228_5C</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Machine Category</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">Corrugation Machinery</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Machine Type</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">Corrugator</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Brand</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">BHS</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Model</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">BHS-009541</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Serial Number</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">SN-789456</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Manufacturing Date</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">02 Jan 2019</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Vendor / Supplier</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">BHS Service Pvt Ltd</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Purchase Date</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">20 Jan 2019</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Purchase Price</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">₹48,50,000</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Warranty Period</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">24 Month (Expire 14Feb)</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Installation Date</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">14 Feb 2019</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Location</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">Plant A, Line A</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Department</span>
+                  <span className="text-[13px] font-semibold text-[#111827]">Corrugation</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-gray-500">Machine Status <span className="text-red-500">*</span></span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-4.5 bg-[#16a34a] rounded-full p-[2px] flex items-center shadow-inner relative cursor-pointer transition-colors">
+                      <div className="w-3.5 h-3.5 bg-white rounded-full shadow-sm absolute right-[2px]"></div>
+                    </div>
+                    <span className="text-[13px] font-semibold text-[#111827]">Active</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-5">
+                <span className="text-[13px] text-gray-500 block mb-2">Description</span>
+                <div className="bg-[#f9fafb] border border-gray-100 rounded-[12px] p-4">
+                  <p className="text-[13px] text-gray-600 leading-relaxed">
+                    High-speed corrugator unit installed for core paper board production. Operates on 3-shift cycle supporting Line A daily output target of 6,000 boxes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Technical Specification */}
+            <div className="bg-white rounded-[12px] p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                  <Package className="w-4 h-4 text-white" />
+                </div>
+                <h2 className="text-[16px] font-bold text-[#111827]">Technical specification</h2>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-4 auto-rows-fr">
+                {/* Speed */}
+                <div className="bg-yellow-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 shrink-0">
+                    <Gauge className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">Speed</div>
+                    <div className="text-[15px] font-bold text-[#111827]">180 RPM</div>
+                  </div>
+                </div>
+                
+                {/* Voltage */}
+                <div className="bg-purple-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 shrink-0">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">Voltage</div>
+                    <div className="text-[15px] font-bold text-[#111827]">415 V</div>
+                  </div>
+                </div>
+                
+                {/* Capacity */}
+                <div className="bg-blue-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">Capacity</div>
+                    <div className="text-[15px] font-bold text-[#111827]">6,000 Boxes/day</div>
+                  </div>
+                </div>
+                
+                {/* Power */}
+                <div className="bg-pink-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 shrink-0">
+                    <Power className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">power</div>
+                    <div className="text-[15px] font-bold text-[#111827]">45 KW</div>
+                  </div>
+                </div>
+                
+                {/* Weight */}
+                <div className="bg-green-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                    <Weight className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">Weight</div>
+                    <div className="text-[15px] font-bold text-[#111827]">6,200 Kg</div>
+                  </div>
+                </div>
+                
+                {/* Dimensions */}
+                <div className="bg-cyan-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 shrink-0">
+                    <Ruler className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] text-gray-500 mb-0.5">Dimensions (L × W × H)</div>
+                    <div className="text-[15px] font-bold text-[#111827]">12.5m × 2.8m × 3.2m</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      )}
+
+      
+            {activeTab === 'Maintenance' && (
+              <div className="space-y-6 max-w-7xl mx-auto">
+                
+                {/* Top Row: Maintenance & Last Maintenance */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
+                  {/* Maintenance Info */}
+                  <div className="flex flex-col lg:col-span-5">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <Wrench className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Maintenance</h2>
+                    </div>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 px-3 py-5 border border-gray-100 rounded-[12px] bg-white shadow-sm flex-1 items-center">
+                      <span className="text-[13px] text-gray-500">Maintenance Type</span><span className="text-[13px] font-bold text-[#111827]">Preventive</span>
+                      <span className="text-[13px] text-gray-500">Maintenance Status</span><span className="text-[13px] font-bold text-[#111827]">Scheduled</span>
+                      <span className="text-[13px] text-gray-500">Service Vendor</span><span className="text-[13px] font-bold text-[#111827]">sunservice PVT.LTD</span>
+                      <span className="text-[13px] text-gray-500">Maintenance contact</span><span className="text-[13px] font-bold text-[#111827]">+ 91 7643542763</span>
+                      <span className="text-[13px] text-gray-500">last Service Cost</span><span className="text-[13px] font-bold text-[#111827]">18,456.00</span>
+                      <span className="text-[13px] text-gray-500">Note</span><span className="text-[13px] font-bold text-[#111827]">Monthly repair</span>
+                    </div>
+                  </div>
+                  
+                  {/* Last Maintenance */}
+                  <div className="flex flex-col lg:col-span-7">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <Briefcase className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Last Maintenance</h2>
+                    </div>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 px-3 py-5 border border-gray-100 rounded-[12px] bg-white shadow-sm flex-1 items-start">
+                      <span className="text-[13px] text-gray-500 pt-0.5">Maintenance date</span><span className="text-[13px] font-bold text-[#111827]">4.5 Hrs</span>
+                      <span className="text-[13px] text-gray-500 pt-0.5">Maintenance Type</span><span className="text-[13px] font-bold text-[#111827]">18,500</span>
+                      <span className="text-[13px] text-gray-500 pt-0.5">Duration</span><span className="text-[13px] font-bold text-[#111827]">4.5 Hrs</span>
+                      <span className="text-[13px] text-gray-500 pt-0.5">Cost</span><span className="text-[13px] font-bold text-[#111827]">18,500</span>
+                      <span className="text-[13px] text-gray-500 pt-0.5">Technician</span><span className="text-[13px] font-bold text-[#111827]">Rajesh Kumar</span>
+                      <span className="text-[13px] text-gray-500 pt-0.5">Work Performed</span><span className="text-[13px] font-bold text-[#111827] leading-relaxed">Oil Replacement, lubrication, inspection, mechanical and electrical check.</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second Row: Vendor & Upcoming Maintenance */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
+                  {/* Vendor Info */}
+                  <div className="flex flex-col lg:col-span-5">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <User className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Vendor</h2>
+                    </div>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 px-3 py-5 border border-gray-100 rounded-[12px] bg-white shadow-sm flex-1 items-center">
+                      <span className="text-[13px] text-gray-500">Service Vendor</span><span className="text-[13px] font-bold text-[#111827]">Bobst India Pvt Ltd</span>
+                      <span className="text-[13px] text-gray-500">Vendor Contact</span><span className="text-[13px] font-bold text-[#111827]">+91 8041235678</span>
+                      <span className="text-[13px] text-gray-500">Email</span><span className="text-[13px] font-bold text-[#111827]">service@bobstindia.com</span>
+                      <span className="text-[13px] text-gray-500">service Agreement</span>
+                      <div><div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[11px] font-bold px-3 py-1 rounded-full">Active</div></div>
+                    </div>
+                  </div>
+                  
+                  {/* Upcoming Maintenance */}
+                  <div className="flex flex-col lg:col-span-7">
+                    <div className="flex items-center gap-3 mb-4 shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <Timer className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Upcoming Maintanance</h2>
+                    </div>
+                    <div className="px-3 py-5 border border-gray-100 rounded-[12px] bg-white shadow-sm flex-1 flex flex-col justify-between">
+                      <div className="grid grid-cols-[auto_1fr] xl:grid-cols-[auto_1fr_auto_1fr] gap-x-6 gap-y-3 items-center">
+                        <span className="text-[13px] text-gray-500">Next Maintenance Date</span>
+                        <span className="text-[13px] font-bold text-red-500">15/07/2026</span>
+                        
+                        <span className="text-[13px] text-gray-500">Priority</span>
+                        <div><span className="inline-block bg-orange-50 text-orange-600 text-[11px] font-bold px-3 py-1 rounded-full border border-orange-100">Medium</span></div>
+                        
+                        <span className="text-[13px] text-gray-500">Estimated Duration</span>
+                        <span className="text-[13px] font-bold text-[#111827]">4.0 Hrs</span>
+                        
+                        <span className="text-[13px] text-gray-500">Maintenance Type</span>
+                        <span className="text-[13px] font-bold text-[#111827]">Preventive</span>
+                      </div>
+                      <div className="mt-8 bg-orange-50/50 p-2.5 rounded-[8px] flex items-center justify-between border border-orange-50">
+                        <span className="text-[12px] text-yellow-700 font-medium ml-2">Maintenance is due in 21 days</span>
+                        <button className="text-[10px] font-semibold text-blue-600 bg-white border border-blue-200 px-3 py-1.5 rounded-[4px] shadow-sm">Schedule Maintenance</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Frequency Section */}
+                <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <Calendar className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Frequency</h2>
+                    </div>
+                    
+                    <div className="p-1">
+                      <div className="grid grid-cols-4 gap-4 bg-white border border-gray-100 rounded-[12px] p-4 shadow-sm">
+                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                          <div className="text-[11px] text-gray-500 mb-1">Maintenance frequency</div>
+                          <div className="text-[15px] font-bold text-[#111827]">Montly</div>
+                        </div>
+                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                          <div className="text-[11px] text-gray-500 mb-1">Next Cycle Due In</div>
+                          <div className="inline-block bg-orange-100 text-orange-600 text-[13px] font-bold px-2 py-0.5 rounded-[6px]">21 Days</div>
+                        </div>
+                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                          <div className="text-[11px] text-gray-500 mb-1">Average Duration</div>
+                          <div className="text-[15px] font-bold text-[#111827]">4.0 Hrs</div>
+                        </div>
+                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                          <div className="text-[11px] text-gray-500 mb-1">Cycle</div>
+                          <div className="text-[15px] font-bold text-[#111827]">Every 30 Days</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                {/* Maintenance History Table */}
+                <div className="pb-6">
+                   <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                        <FileText className="w-4 h-4 text-white" />
+                      </div>
+                      <h2 className="text-[17px] font-bold text-[#111827]">Maintenance History</h2>
+                    </div>
+                    
+                    <div className="bg-white rounded-[12px] shadow-sm border border-gray-100 overflow-hidden">
+                       <table className="w-full text-left">
+                         <thead>
+                           <tr className="border-b border-gray-100 bg-gray-50/50">
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Date</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Maintenance ID</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Type</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500">Description</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Technician</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Cost</th>
+                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Status</th>
+                           </tr>
+                         </thead>
+                         <tbody>
+                           <tr className="border-b border-gray-100">
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/06/2026</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0048</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Preventive</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Oil replacement,lubrication, inspection</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Rajesh Kumar</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹18,500</td>
+                             <td className="py-2.5 px-4 whitespace-nowrap">
+                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                             </td>
+                           </tr>
+                           <tr className="border-b border-gray-100">
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">12/05/2026</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0035</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Routine</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Mechanical & electrical inspection</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Amit Verma</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹12,800</td>
+                             <td className="py-2.5 px-4 whitespace-nowrap">
+                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                             </td>
+                           </tr>
+                           <tr>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/04/2026</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0022</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Corrective</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Sensor replacement</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Ramesh Yadav</td>
+                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹8,500</td>
+                             <td className="py-2.5 px-4 whitespace-nowrap">
+                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                             </td>
+                           </tr>
+                         </tbody>
+                       </table>
+                    </div>
+                </div>
+              </div>
+            )}
+            
+            {activeTab !== 'Overview' && activeTab !== 'Maintenance' && (
+
+              <div className="flex items-center justify-center h-full text-gray-400 font-medium">
+                Content for {activeTab} will appear here.
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

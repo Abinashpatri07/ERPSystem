@@ -156,7 +156,7 @@ const CreateMachinePage = () => {
       {/* ── Fixed Footer ── */}
       <div className="flex-shrink-0 bg-white border-t border-gray-200 px-8 py-3 flex justify-end items-center gap-3">
         <button 
-          onClick={() => navigate('/production')}
+          onClick={() => navigate('/machine')}
           className="px-4 py-1.5 rounded-lg border border-gray-300 text-[13px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors bg-white shadow-sm"
         >
           Cancel
@@ -166,7 +166,7 @@ const CreateMachinePage = () => {
           Save Draft
         </button>
         <button 
-          onClick={() => navigate('/production')}
+          onClick={() => navigate('/machine')}
           className="px-6 py-1.5 rounded-lg bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white text-[13px] font-bold shadow-sm hover:opacity-90 transition-colors"
         >
           Save
