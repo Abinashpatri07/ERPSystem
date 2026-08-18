@@ -153,13 +153,13 @@ const PurchaseOrderDetailPage = () => {
                   <span className="text-[11px] text-gray-400 font-medium">25/06/2026</span>
                 </div>
                 <h3 className="text-[12px] font-medium text-[#111827] mb-3 uppercase leading-snug">
-                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                  SUNRISE PVT LTD
                 </h3>
                 <div className="flex justify-between items-end">
                   <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
                     OPEN
                   </span>
-                  <span className="text-[14px] font-bold text-[#111827]">₹100.00</span>
+                  <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
                 </div>
               </div>
             </div>
@@ -214,7 +214,7 @@ const PurchaseOrderDetailPage = () => {
                           CC
                         </div>
                         <div>
-                          <h4 className="text-[13px] font-bold text-gray-900">Climamax Controls Pvt Ltd</h4>
+                          <h4 className="text-[13px] font-bold text-gray-900">Sunrise Pvt Ltd</h4>
                           <p className="text-[11px] text-gray-400 mt-0.5">PO- 00001</p>
                         </div>
                       </div>
