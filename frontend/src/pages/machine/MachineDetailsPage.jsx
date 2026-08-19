@@ -68,7 +68,7 @@ const MachineDetailsPage = () => {
           {/* Active Machine */}
           <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-transparent mb-2">
             <div className="flex justify-between items-start mb-0.5">
-              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[12px] font-medium text-[#374151]">MC-001</span>
               <span className="text-[9px] text-gray-500 font-medium">25/06/2026</span>
             </div>
             <h3 className="text-[11px] font-semibold text-[#111827] mb-1 truncate">
@@ -82,7 +82,7 @@ const MachineDetailsPage = () => {
           {/* Inactive Machine 1 */}
           <div className="bg-white rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-gray-200 mb-2 hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all">
             <div className="flex justify-between items-start mb-0.5">
-              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[12px] font-medium text-[#374151]">MC-002</span>
               <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
             </div>
             <h3 className="text-[11px] font-semibold text-[#111827] mb-1 truncate">
@@ -96,7 +96,7 @@ const MachineDetailsPage = () => {
           {/* Inactive Machine 2 */}
           <div className="bg-white rounded-[14px] px-3 py-2 cursor-pointer shadow-sm border border-gray-200 mb-2 hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all">
             <div className="flex justify-between items-start mb-0.5">
-              <span className="text-[12px] font-medium text-[#374151]">MC-0011</span>
+              <span className="text-[12px] font-medium text-[#374151]">MC-003</span>
               <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
             </div>
             <h3 className="text-[11px] font-semibold text-[#111827] mb-1 truncate">

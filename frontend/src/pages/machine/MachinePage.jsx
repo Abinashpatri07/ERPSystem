@@ -5,7 +5,7 @@ import { Plus, MoreHorizontal, ChevronDown, MapPin, Eye, MoreVertical } from 'lu
 const machineData = [
   {
     id: 1,
-    machineId: 'MCH-1042',
+    machineId: 'MC-001',
     name: 'Corrugator Line 1',
     type: 'Corrugation',
     location: 'Plant A - Bay 1',
@@ -20,7 +20,7 @@ const machineData = [
   },
   {
     id: 2,
-    machineId: 'MCH-1043',
+    machineId: 'MC-002',
     name: 'Flexo Printer 2',
     type: 'Printing',
     location: 'Plant A - Bay 2',
@@ -35,7 +35,7 @@ const machineData = [
   },
   {
     id: 3,
-    machineId: 'MCH-1044',
+    machineId: 'MC-003',
     name: 'Die Cutter 1',
     type: 'Die-cutting',
     location: 'Plant A - Bay 3',
@@ -50,7 +50,7 @@ const machineData = [
   },
   {
     id: 4,
-    machineId: 'MCH-1051',
+    machineId: 'MC-004',
     name: 'Stitching Machine 4',
     type: 'Finishing',
     location: 'Plant B - Bay 1',
