@@ -138,11 +138,11 @@ const ProcurementDetailPage = () => {
               {/* Active PO Card */}
               <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
                 <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00482</span>
+                  <span className="text-[12px] font-medium text-[#374151]">PR-00001</span>
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                  CENTURY PULP & PAPER
                 </h3>
                 <div className="flex justify-between items-end mt-1">
                   <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
@@ -155,11 +155,11 @@ const ProcurementDetailPage = () => {
               {/* Inactive Card 1 */}
               <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
                 <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00483</span>
+                  <span className="text-[12px] font-medium text-[#374151]">PR-00002</span>
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  NEXUS TECHNOLOGIES
+                  GLOBAL SUPPLIES INC
                 </h3>
                 <div className="flex justify-between items-end mt-1">
                   <span className="bg-[#dcfce7] text-[#16a34a] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
@@ -172,11 +172,11 @@ const ProcurementDetailPage = () => {
               {/* Inactive Card 2 */}
               <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
                 <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">PO-2026-00484</span>
+                  <span className="text-[12px] font-medium text-[#374151]">PR-00003</span>
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  APEX INDUSTRIES
+                  TECHHARDWARE LTD
                 </h3>
                 <div className="flex justify-between items-end mt-1">
                   <span className="bg-[#f3f4f6] text-[#4b5563] text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider leading-none">
@@ -194,7 +194,7 @@ const ProcurementDetailPage = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-2.5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center space-x-3">
                 <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
-                  {id && id !== 'new' ? (isNaN(id) ? id : `PO-2026-${id.toString().padStart(5, '0')}`) : 'PO-2026-00482'}
+                  {id && id !== 'new' ? (isNaN(id) ? id : `PR-${id.toString().padStart(5, '0')}`) : 'PR-00001'}
                 </h2>
                 <span className="bg-[#ffedd5] text-[#9a3412] text-[10px] font-bold px-2 py-0.5 rounded-full">
                   Unpaid
@@ -237,8 +237,8 @@ const ProcurementDetailPage = () => {
                           CC
                         </div>
                         <div>
-                          <h4 className="text-[13px] font-bold text-gray-900">Climamax Controls Pvt Ltd</h4>
-                          <p className="text-[10px] text-gray-400 mt-0.5 uppercase tracking-wide">PO-2026-00482</p>
+                          <h4 className="text-[13px] font-bold text-gray-900">CENTURY PULP & PAPER</h4>
+                          <p className="text-[10px] text-gray-400 mt-0.5 uppercase tracking-wide">PR-00001</p>
                         </div>
                       </div>
                       <div className="space-y-2.5">
@@ -248,7 +248,7 @@ const ProcurementDetailPage = () => {
                         </div>
                         <div className="grid grid-cols-2">
                           <span className="text-[12px] font-medium text-gray-400">Point Of Contact</span>
-                          <span className="text-[12px] font-bold text-gray-900">Sarah Jenkins</span>
+                          <span className="text-[12px] font-bold text-gray-900">P. Verma</span>
                         </div>
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import logoImg from '../../assets/logo.png';
 import { 
   LayoutDashboard,
@@ -48,20 +48,22 @@ const Sidebar = () => {
       }}
     >
       {/* Logo / Brand */}
-      <div
-        className="flex items-center flex-shrink-0 border-b border-[#e8ecef] h-[52px]"
+      <Link
+        to="/"
+        className="flex items-center flex-shrink-0 border-b border-[#e8ecef] h-[52px] hover:bg-gray-50/50 cursor-pointer"
         style={{
           padding: collapsed ? '0' : '0 20px',
           justifyContent: collapsed ? 'center' : 'flex-start',
           transition: 'all 0.3s ease',
+          textDecoration: 'none'
         }}
       >
         {/* Logo icon box */}
         <div
           className="flex items-center justify-center flex-shrink-0 overflow-hidden"
           style={{
-            width: '32px',
-            height: '32px',
+            width: '38px',
+            height: '38px',
             borderRadius: '8px',
           }}
         >
@@ -72,7 +74,7 @@ const Sidebar = () => {
         <div
           className="whitespace-nowrap flex flex-col justify-center"
           style={{
-            marginLeft: collapsed ? '0px' : '2px',
+            marginLeft: collapsed ? '0px' : '-4px',
             opacity: collapsed ? 0 : 1,
             width: collapsed ? '0px' : 'auto',
             overflow: 'hidden',
@@ -80,11 +82,11 @@ const Sidebar = () => {
             pointerEvents: collapsed ? 'none' : 'auto',
           }}
         >
-          <div className="text-[17px] font-extrabold leading-tight tracking-wide">
+          <div className="text-[20px] font-extrabold leading-tight tracking-tight">
             <span className="text-[#132A5E]">ORR</span><span className="text-[#f97316]">NEX</span>
           </div>
         </div>
-      </div>
+      </Link>
 
       <nav
         className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar"

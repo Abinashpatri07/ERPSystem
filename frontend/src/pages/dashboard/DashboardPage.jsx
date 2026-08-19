@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, PieChart, Pie, Cell,
 } from 'recharts';
 import {
-  ShoppingCart, Package, Factory, Settings, Recycle, Truck,
+  ShoppingCart, Package, Factory, Settings, Recycle, Truck, Layers, Warehouse, Coins,
   RefreshCw, Download, TrendingUp, ChevronDown, FileText, Search,
 } from 'lucide-react';
 
@@ -14,7 +14,7 @@ const overviewChartData = {
   all: [
     { name: 'JAN', output: 28, wastage: 25 },
     { name: 'FEB', output: 32, wastage: 28 },
-    { name: 'MAR', output: 10, wastage: 8  },
+    { name: 'MAR', output: 10, wastage: 8 },
     { name: 'APR', output: 18, wastage: 40 },
     { name: 'MAY', output: 45, wastage: 65 },
     { name: 'JUN', output: 55, wastage: 70 },
@@ -26,11 +26,11 @@ const overviewChartData = {
     { name: 'DEC', output: 92, wastage: 95 },
   ],
   '14days': [
-    { name: 'Day 1',  output: 60, wastage: 45 },
-    { name: 'Day 3',  output: 72, wastage: 55 },
-    { name: 'Day 5',  output: 65, wastage: 50 },
-    { name: 'Day 7',  output: 80, wastage: 62 },
-    { name: 'Day 9',  output: 75, wastage: 58 },
+    { name: 'Day 1', output: 60, wastage: 45 },
+    { name: 'Day 3', output: 72, wastage: 55 },
+    { name: 'Day 5', output: 65, wastage: 50 },
+    { name: 'Day 7', output: 80, wastage: 62 },
+    { name: 'Day 9', output: 75, wastage: 58 },
     { name: 'Day 11', output: 88, wastage: 70 },
     { name: 'Day 14', output: 92, wastage: 75 },
   ],
@@ -47,7 +47,7 @@ const overviewChartData = {
 
 const buildOverviewOEEDonut = () => {
   const segments = [];
-  
+
   // Availability (Red to Orange) - 18 segments
   for (let i = 0; i < 18; i++) {
     const hue = 5 + (i / 17) * 20; // 5 -> 25
@@ -72,32 +72,32 @@ const overviewOEEDonut = buildOverviewOEEDonut();
 
 const overviewOEELegend = [
   { name: 'Availability', color: '#e55353' },
-  { name: 'Performance',  color: '#3399ff' },
-  { name: 'Quality',      color: '#4dbd74' },
+  { name: 'Performance', color: '#3399ff' },
+  { name: 'Quality', color: '#4dbd74' },
 ];
 
 const overviewCards = [
-  { label: 'Sales (MTD)',                    value: '₹4.87 Cr', change: '+11.4%', icon: ShoppingCart },
-  { label: 'Material Cost / Ton',            value: '₹18,240',  change: '+11.4%', icon: Package     },
-  { label: 'Production Output',              value: '48,620',   change: '+11.4%', icon: Factory     },
-  { label: 'Overall Equipment Effectiveness',value: '82.6%',    change: '+11.4%', icon: Settings    },
-  { label: 'Wastage',                        value: '3.2%',     change: '+11.4%', icon: Recycle     },
-  { label: 'OTIF Dispatch',                  value: '94.1%',    change: '+11.4%', icon: Truck       },
+  { label: 'Sales (MTD)', value: '₹4.87 Cr', change: '+11.4%', icon: ShoppingCart },
+  { label: 'Material Cost / Ton', value: '₹18,240', change: '+11.4%', icon: Layers },
+  { label: 'Production Output', value: '48,620', change: '+11.4%', icon: Factory },
+  { label: 'Overall Equipment Effectiveness', value: '82.6%', change: '+11.4%', icon: Warehouse },
+  { label: 'Wastage', value: '3.2%', change: '+11.4%', icon: Recycle, trendColor: 'text-rose-500' },
+  { label: 'OTIF Dispatch', value: '94.1%', change: '+11.4%', icon: Truck },
 ];
 
 // ─── Sales Data ─────────────────────────────────────────────────────────────────
 
 const salesCards = [
-  { label: 'Sales Revenue (MTD)', value: '₹4.87 Cr', change: '+₹2.53 last month',          icon: TrendingUp  },
-  { label: 'New Orders',          value: '16',        change: '+11.4% orders booked this month', icon: ShoppingCart },
-  { label: 'Avg Order Value',     value: '₹1.78 L',  change: '+13.4% per production order', icon: FileText    },
-  { label: 'OTIF Dispatch',       value: '82.6%',     change: '+11.4% on time, in full',     icon: Truck       },
+  { label: 'Sales Revenue (MTD)', value: '₹4.87 Cr', change: '+₹2.53 last month', icon: TrendingUp },
+  { label: 'New Orders', value: '16', change: '+11.4% orders booked this month', icon: ShoppingCart },
+  { label: 'Avg Order Value', value: '₹1.78 L', change: '+13.4% per production order', icon: FileText },
+  { label: 'OTIF Dispatch', value: '82.6%', change: '+11.4% on time, in full', icon: Truck },
 ];
 
 const salesTrendAll = [
   { name: 'JAN', revenue: 22, target: 30 },
   { name: 'FEB', revenue: 20, target: 32 },
-  { name: 'MAR', revenue:  8, target: 28 },
+  { name: 'MAR', revenue: 8, target: 28 },
   { name: 'APR', revenue: 80, target: 40 },
   { name: 'MAY', revenue: 75, target: 45 },
   { name: 'JUN', revenue: 40, target: 50 },
@@ -145,45 +145,45 @@ const buildRainbowDonut = () => {
 const rainbowDonut = buildRainbowDonut();
 
 const channelLegend = [
-  { name: 'Direct Sales',  pct: '48%', color: '#4a45c5' },
-  { name: 'Distributors',  pct: '28%', color: '#e53030' },
-  { name: 'Export',        pct: '14%', color: '#f47c10' },
+  { name: 'Direct Sales', pct: '48%', color: '#4a45c5' },
+  { name: 'Distributors', pct: '28%', color: '#e53030' },
+  { name: 'Export', pct: '14%', color: '#f47c10' },
   { name: 'Online Portal', pct: '10%', color: '#f5c800' },
 ];
 
 const topCustomers = [
-  { name: 'BlueWave Foods Ltd.',     orders: 3, quantity: '22,200',  revenue: '₹39.6 L' },
-  { name: 'GreenLeaf Organics',      orders: 4, quantity: '30,745',  revenue: '₹59.6 L' },
-  { name: 'Nova Electronics Pvt Ltd',orders: 6, quantity: '29,600',  revenue: '₹79.6 L' },
-  { name: 'Reliant Packaging Co.',   orders: 3, quantity: '26,200',  revenue: '₹48.2 L' },
-  { name: 'BlueWave Foods Ltd.',     orders: 3, quantity: '22,200',  revenue: '₹39.6 L' },
-  { name: 'Sundar Textiles',         orders: 8, quantity: '1,45,200', revenue: '₹89.6 L' },
+  { name: 'BlueWave Foods Ltd.', orders: 3, quantity: '22,200', revenue: '₹39.6 L' },
+  { name: 'GreenLeaf Organics', orders: 4, quantity: '30,745', revenue: '₹59.6 L' },
+  { name: 'Nova Electronics Pvt Ltd', orders: 6, quantity: '29,600', revenue: '₹79.6 L' },
+  { name: 'Reliant Packaging Co.', orders: 3, quantity: '26,200', revenue: '₹48.2 L' },
+  { name: 'BlueWave Foods Ltd.', orders: 3, quantity: '22,200', revenue: '₹39.6 L' },
+  { name: 'Sundar Textiles', orders: 8, quantity: '1,45,200', revenue: '₹89.6 L' },
 ];
 
 const recentOrders = [
-  { id: 'SO-4471', customer: 'BlueWave Foods Ltd.',     product: '3-Ply RSC Produce Box',    qty: '22,200',  status: 'In Progress', date: 'Jul 25, 2026', revenue: '₹39.6 L' },
-  { id: 'SO-4472', customer: 'GreenLeaf Organics',      product: '3-Ply Duplex Mailer Box',  qty: '30,745',  status: 'Completed',   date: 'Jul 17, 2026', revenue: '₹59.6 L' },
-  { id: 'SO-4473', customer: 'Nova Electronics Pvt Ltd',product: 'Wax-Coated Fish Box',       qty: '29,600',  status: 'In Progress', date: 'Jul 29, 2026', revenue: '₹79.6 L' },
-  { id: 'SO-4475', customer: 'Reliant Packaging Co.',   product: 'Die-Cut Shipping Carton',   qty: '26,200',  status: 'Dispatched',  date: 'Jul 23, 2026', revenue: '₹48.2 L' },
-  { id: 'SO-7475', customer: 'BlueWave Foods Ltd.',     product: '3-Ply Printed Mailer',      qty: '22,200',  status: 'Completed',   date: 'Jul 19, 2026', revenue: '₹39.6 L' },
-  { id: 'SO-8592', customer: 'Sundar Textiles',         product: '7-Ply Heavy Duty Box',      qty: '1,45,200',status: 'Dispatched',  date: 'Jul 24, 2026', revenue: '₹89.6 L' },
+  { id: 'SO-4471', customer: 'BlueWave Foods Ltd.', product: '3-Ply RSC Produce Box', qty: '22,200', status: 'In Progress', date: 'Jul 25, 2026', revenue: '₹39.6 L' },
+  { id: 'SO-4472', customer: 'GreenLeaf Organics', product: '3-Ply Duplex Mailer Box', qty: '30,745', status: 'Completed', date: 'Jul 17, 2026', revenue: '₹59.6 L' },
+  { id: 'SO-4473', customer: 'Nova Electronics Pvt Ltd', product: 'Wax-Coated Fish Box', qty: '29,600', status: 'In Progress', date: 'Jul 29, 2026', revenue: '₹79.6 L' },
+  { id: 'SO-4475', customer: 'Reliant Packaging Co.', product: 'Die-Cut Shipping Carton', qty: '26,200', status: 'Dispatched', date: 'Jul 23, 2026', revenue: '₹48.2 L' },
+  { id: 'SO-7475', customer: 'BlueWave Foods Ltd.', product: '3-Ply Printed Mailer', qty: '22,200', status: 'Completed', date: 'Jul 19, 2026', revenue: '₹39.6 L' },
+  { id: 'SO-8592', customer: 'Sundar Textiles', product: '7-Ply Heavy Duty Box', qty: '1,45,200', status: 'Dispatched', date: 'Jul 24, 2026', revenue: '₹89.6 L' },
 ];
 
 // ─── Purchase Data ──────────────────────────────────────────────────────────────
 
 const purchaseCards = [
-  { label: 'Purchase Spend (MTD)', value: '₹2.89 Cr', change: '+₹2.53 Cr last month',              icon: TrendingUp   },
-  { label: 'Open Purchase Orders', value: '40',        change: '+11.4% orders booked this month',  icon: ShoppingCart },
-  { label: 'Avg Lead Time',        value: '6.2 days',  change: '+11.4% per production order',      icon: FileText     },
-  { label: 'Delayed Orders',       value: '4',         change: '+15.4% on time, in full',           icon: Package      },
+  { label: 'Purchase Spend (MTD)', value: '₹2.89 Cr', change: '+₹2.53 Cr last month', icon: TrendingUp },
+  { label: 'Open Purchase Orders', value: '40', change: '+11.4% orders booked this month', icon: ShoppingCart },
+  { label: 'Avg Lead Time', value: '6.2 days', change: '+11.4% per production order', icon: FileText },
+  { label: 'Delayed Orders', value: '4', change: '+15.4% on time, in full', icon: Package },
 ];
 
 const rawMaterialTrendAll = [
   { name: 'JAN', spend: 20 }, { name: 'FEB', spend: 18 },
   { name: 'MAR', spend: 12 }, { name: 'APR', spend: 35 },
-  { name: 'MAY', spend: 30 }, { name: 'JUN', spend: 8  },
+  { name: 'MAY', spend: 30 }, { name: 'JUN', spend: 8 },
   { name: 'JUL', spend: 50 }, { name: 'AUG', spend: 55 },
-  { name: 'SEP', spend: 65 }, { name: 'OCT', spend: 100},
+  { name: 'SEP', spend: 65 }, { name: 'OCT', spend: 100 },
   { name: 'NOV', spend: 92 }, { name: 'DEC', spend: 95 },
 ];
 const rawMaterialTrend6M = rawMaterialTrendAll.slice(6);
@@ -223,57 +223,57 @@ const buildSpendDonut = () => {
 const spendDonut = buildSpendDonut();
 
 const spendLegend = [
-  { name: 'Raw Paper',     pct: '38%', color: '#4a45c5' },
-  { name: 'Kraft Paper',   pct: '24%', color: '#e53030' },
+  { name: 'Raw Paper', pct: '38%', color: '#4a45c5' },
+  { name: 'Kraft Paper', pct: '24%', color: '#e53030' },
   { name: 'Printing Inks', pct: '14%', color: '#f47c10' },
-  { name: 'Adhesives',     pct: '10%', color: '#f5c800' },
+  { name: 'Adhesives', pct: '10%', color: '#f5c800' },
   { name: 'Machine Parts', pct: '10%', color: '#d946a8' },
-  { name: 'Others',        pct: '4%',  color: '#22c095' },
+  { name: 'Others', pct: '4%', color: '#22c095' },
 ];
 
 const purchaseSummaryItems = [
-  { label: 'Pending',  value: '₹2.89 Cr', icon: TrendingUp   },
-  { label: 'Approved', value: '40',        icon: ShoppingCart },
-  { label: 'Received', value: '6.2 days',  icon: FileText     },
-  { label: 'Delayed',  value: '4',         icon: Package      },
+  { label: 'Pending', value: '₹2.89 Cr', icon: TrendingUp },
+  { label: 'Approved', value: '40', icon: ShoppingCart },
+  { label: 'Received', value: '6.2 days', icon: FileText },
+  { label: 'Delayed', value: '4', icon: Package },
 ];
 
 const stockAlerts = [
-  { name: 'Glue',        pct: 44, level: 'critical', note: 'Urgent reorder needed' },
-  { name: 'Kraft Paper', pct: 66, level: 'warning',  note: '' },
-  { name: 'CMYK Ink',    pct: 66, level: 'warning',  note: '' },
+  { name: 'Glue', pct: 44, level: 'critical', note: 'Urgent reorder needed' },
+  { name: 'Kraft Paper', pct: 66, level: 'warning', note: '' },
+  { name: 'CMYK Ink', pct: 66, level: 'warning', note: '' },
 ];
 
 const vendorPerformance = [
-  { vendor: 'Star Paper Mills', material: 'Raw Paper / Kraft', orders: 14, spend: '₹86.4 L', rating: 4.8, leadTime: '3 Days',  onTime: '76%', status: 'Active' },
-  { vendor: 'Balaji Chemicals', material: 'Glue & Adhesive',   orders:  8, spend: '₹66.4 L', rating: 4.9, leadTime: '5 Days',  onTime: '86%', status: 'Active' },
-  { vendor: 'ColorPrint Inks',  material: 'Printing Inks',     orders: 23, spend: '₹88.8 L', rating: 4.3, leadTime: '10 Days', onTime: '76%', status: 'Active' },
-  { vendor: 'Kumar Meal & Co',  material: 'Machine Spares',    orders:  4, spend: '₹96.1 L', rating: 3.9, leadTime: '2 Days',  onTime: '66%', status: 'Active' },
-  { vendor: 'MetalParts Co.',   material: 'Stitching Wire',    orders: 10, spend: '₹36.4 L', rating: 4.1, leadTime: '8 Days',  onTime: '96%', status: 'Active' },
-  { vendor: 'WireTech Pvt',     material: 'Clamp Pin',         orders: 15, spend: '₹16.4 L', rating: 4.7, leadTime: '9 Days',  onTime: '93%', status: 'Active' },
+  { vendor: 'Star Paper Mills', material: 'Raw Paper / Kraft', orders: 14, spend: '₹86.4 L', rating: 4.8, leadTime: '3 Days', onTime: '76%', status: 'Active' },
+  { vendor: 'Balaji Chemicals', material: 'Glue & Adhesive', orders: 8, spend: '₹66.4 L', rating: 4.9, leadTime: '5 Days', onTime: '86%', status: 'Active' },
+  { vendor: 'ColorPrint Inks', material: 'Printing Inks', orders: 23, spend: '₹88.8 L', rating: 4.3, leadTime: '10 Days', onTime: '76%', status: 'Active' },
+  { vendor: 'Kumar Meal & Co', material: 'Machine Spares', orders: 4, spend: '₹96.1 L', rating: 3.9, leadTime: '2 Days', onTime: '66%', status: 'Active' },
+  { vendor: 'MetalParts Co.', material: 'Stitching Wire', orders: 10, spend: '₹36.4 L', rating: 4.1, leadTime: '8 Days', onTime: '96%', status: 'Active' },
+  { vendor: 'WireTech Pvt', material: 'Clamp Pin', orders: 15, spend: '₹16.4 L', rating: 4.7, leadTime: '9 Days', onTime: '93%', status: 'Active' },
 ];
 
 const purchaseOrders = [
-  { po: 'PUR-4440', vendor: 'BlueWave Foods Ltd.',      material: '3-Ply RSC Produce Box',   qty: '200 Tons', status: 'Approved', date: 'Jul 25, 2026' },
-  { po: 'PUR-7462', vendor: 'GreenLeaf Organics',       material: '3-Ply Duplex Mailer Box', qty: '100 Tons', status: 'Received', date: 'Jul 17, 2026' },
-  { po: 'PUR-4246', vendor: 'Nova Electronics Pvt Ltd', material: 'Wax-Coated Fish Box',      qty: '56 Tons',  status: 'Approved', date: 'Jul 29, 2026' },
-  { po: 'PUR-2341', vendor: 'Reliant Packaging Co.',    material: 'Die-Cut Shipping Carton',  qty: '220 Tons', status: 'Pending',  date: 'Jul 23, 2026' },
-  { po: 'PUR-9573', vendor: 'BlueWave Foods Ltd.',      material: '3-Ply Printed Mailer',     qty: '420 L',    status: 'Received', date: 'Jul 19, 2026' },
-  { po: 'PUR-7452', vendor: 'Sundar Textiles',          material: '7-Ply Heavy Duty Box',     qty: '12 Trips', status: 'Pending',  date: 'Jul 24, 2026' },
+  { po: 'PUR-4440', vendor: 'BlueWave Foods Ltd.', material: '3-Ply RSC Produce Box', qty: '200 Tons', status: 'Approved', date: 'Jul 25, 2026' },
+  { po: 'PUR-7462', vendor: 'GreenLeaf Organics', material: '3-Ply Duplex Mailer Box', qty: '100 Tons', status: 'Received', date: 'Jul 17, 2026' },
+  { po: 'PUR-4246', vendor: 'Nova Electronics Pvt Ltd', material: 'Wax-Coated Fish Box', qty: '56 Tons', status: 'Approved', date: 'Jul 29, 2026' },
+  { po: 'PUR-2341', vendor: 'Reliant Packaging Co.', material: 'Die-Cut Shipping Carton', qty: '220 Tons', status: 'Pending', date: 'Jul 23, 2026' },
+  { po: 'PUR-9573', vendor: 'BlueWave Foods Ltd.', material: '3-Ply Printed Mailer', qty: '420 L', status: 'Received', date: 'Jul 19, 2026' },
+  { po: 'PUR-7452', vendor: 'Sundar Textiles', material: '7-Ply Heavy Duty Box', qty: '12 Trips', status: 'Pending', date: 'Jul 24, 2026' },
 ];
 
 // ─── Production Data ────────────────────────────────────────────────────────────
 
 const productionCards = [
-  { label: 'Production Output',               value: '48,620',  change: '+₹2.53 Cr last month',           icon: TrendingUp },
-  { label: 'Overall Equipment Effectiveness', value: '82.6%',   change: '+11.4% orders booked this month', icon: Settings   },
-  { label: 'Wastage',                         value: '3.2%',    change: '+11.4% per production order',     icon: Recycle    },
-  { label: 'Running Machines',                value: '18 / 22', change: '+15.4% on time, in full',         icon: Factory    },
+  { label: 'Production Output', value: '48,620', change: '+₹2.53 Cr last month', icon: TrendingUp },
+  { label: 'Overall Equipment Effectiveness', value: '82.6%', change: '+11.4% orders booked this month', icon: Settings },
+  { label: 'Wastage', value: '3.2%', change: '+11.4% per production order', icon: Recycle , trendColor: 'text-rose-500' },
+  { label: 'Running Machines', value: '18 / 22', change: '+15.4% on time, in full', icon: Factory },
 ];
 
 const productionTrend7D = [
-  { name: 'Jul 8',  output: 62, wastage: 38 },
-  { name: 'Jul 9',  output: 58, wastage: 35 },
+  { name: 'Jul 8', output: 62, wastage: 38 },
+  { name: 'Jul 9', output: 58, wastage: 35 },
   { name: 'Jul 10', output: 65, wastage: 40 },
   { name: 'Jul 11', output: 60, wastage: 38 },
   { name: 'Jul 12', output: 75, wastage: 42 },
@@ -284,8 +284,8 @@ const productionTrend1M = [
   { name: 'Jun 15', output: 55, wastage: 32 }, { name: 'Jun 18', output: 58, wastage: 34 },
   { name: 'Jun 21', output: 62, wastage: 36 }, { name: 'Jun 24', output: 60, wastage: 38 },
   { name: 'Jun 27', output: 65, wastage: 35 }, { name: 'Jun 30', output: 70, wastage: 40 },
-  { name: 'Jul 3',  output: 72, wastage: 42 }, { name: 'Jul 6',  output: 68, wastage: 38 },
-  { name: 'Jul 9',  output: 58, wastage: 35 }, { name: 'Jul 12', output: 75, wastage: 42 },
+  { name: 'Jul 3', output: 72, wastage: 42 }, { name: 'Jul 6', output: 68, wastage: 38 },
+  { name: 'Jul 9', output: 58, wastage: 35 }, { name: 'Jul 12', output: 75, wastage: 42 },
   { name: 'Jul 14', output: 95, wastage: 48 },
 ];
 
@@ -293,7 +293,7 @@ const buildOEEDonut = () => {
   const segments = [];
   // Availability 48% — yellow/gold (20 segs)
   for (let i = 0; i < 20; i++) {
-    segments.push({ value: 1, color: `hsl(${46 + (i/19)*12}, 100%, 52%)` });
+    segments.push({ value: 1, color: `hsl(${46 + (i / 19) * 12}, 100%, 52%)` });
   }
   // Performance 26% — orange-red (11 segs)
   for (let i = 0; i < 11; i++) {
@@ -306,7 +306,7 @@ const buildOEEDonut = () => {
   }
   // Losses 12% — indigo (5 segs)
   for (let i = 0; i < 5; i++) {
-    segments.push({ value: 1, color: `hsl(${248 - i*4}, 72%, 50%)` });
+    segments.push({ value: 1, color: `hsl(${248 - i * 4}, 72%, 50%)` });
   }
   return segments;
 };
@@ -314,56 +314,56 @@ const oeeDonut = buildOEEDonut();
 
 const oeeLegend = [
   { name: 'Availability', pct: '48%', color: '#f5c800' },
-  { name: 'Performance',  pct: '26%', color: '#e53030' },
-  { name: 'Quality',      pct: '14%', color: '#f47c10' },
+  { name: 'Performance', pct: '26%', color: '#e53030' },
+  { name: 'Quality', pct: '14%', color: '#f47c10' },
 ];
 
 const shifts = [
-  { name: 'Shift A', supervisor: 'Animesh Sen',    produced: 1450, target: 1600, wastage: 2.8, achieved: 91, barColor: '#3b82f6' },
+  { name: 'Shift A', supervisor: 'Animesh Sen', produced: 1450, target: 1600, wastage: 2.8, achieved: 91, barColor: '#3b82f6' },
   { name: 'Shift B', supervisor: 'Gurpreet Singh', produced: 1365, target: 1600, wastage: 3.8, achieved: 85, barColor: '#f97316' },
   { name: 'Shift C', supervisor: 'Gurpreet Singh', produced: 1365, target: 1600, wastage: 4.8, achieved: 85, barColor: '#3b82f6' },
 ];
 
 const productionOrders = [
-  { id: 'SO-4471', customer: 'Nilkamal Crates',   qty: '22,200', status: 'Shipped'       },
-  { id: 'SO-7365', customer: 'Britannia FMCG',    qty: '30,745', status: 'In Production' },
-  { id: 'SO-8364', customer: 'Local Distributor', qty: '29,600', status: 'Shipped'       },
-  { id: 'SO-6344', customer: 'Havells Pkg. Div',  qty: '26,200', status: 'Delayed'       },
+  { id: 'SO-4471', customer: 'Nilkamal Crates', qty: '22,200', status: 'Shipped' },
+  { id: 'SO-7365', customer: 'Britannia FMCG', qty: '30,745', status: 'In Production' },
+  { id: 'SO-8364', customer: 'Local Distributor', qty: '29,600', status: 'Shipped' },
+  { id: 'SO-6344', customer: 'Havells Pkg. Div', qty: '26,200', status: 'Delayed' },
   { id: 'SO-6343', customer: 'Local Distributor', qty: '22,200', status: 'In Production' },
-  { id: 'SO-7354', customer: 'Local Distributor', qty: '45,200', status: 'Shipped'       },
+  { id: 'SO-7354', customer: 'Local Distributor', qty: '45,200', status: 'Shipped' },
 ];
 
 // ─── Machine Data ─────────────────────────────────────────────────────────────
 
 const machineKPICards = [
-  { label: 'Machine Utilization',             value: '87.3%',  change: 'Across 24 Machines',   icon: TrendingUp   },
-  { label: 'Running Machines',                value: '18 / 22',change: '4 Idle Or Down',         icon: ShoppingCart },
-  { label: 'Overall Equipment Effectiveness', value: '82.6%',  change: 'OEE This Month',          icon: FileText     },
-  { label: 'Open Maintenance Jobs',           value: '3',      change: 'Scheduled This Week',    icon: Package      },
+  { label: 'Machine Utilization', value: '87.3%', change: 'Across 24 Machines', icon: TrendingUp },
+  { label: 'Running Machines', value: '18 / 22', change: '4 Idle Or Down', icon: ShoppingCart },
+  { label: 'Overall Equipment Effectiveness', value: '82.6%', change: 'OEE This Month', icon: FileText },
+  { label: 'Open Maintenance Jobs', value: '3', change: 'Scheduled This Week', icon: Package },
 ];
 
 const machineStatusItems = [
-  { label: 'Running',     count: 18, color: '#22c55e', textColor: 'text-emerald-500', dot: 'bg-emerald-500' },
-  { label: 'Idle',        count:  3, color: '#f59e0b', textColor: 'text-amber-400',   dot: 'bg-amber-400'   },
-  { label: 'Maintenance', count:  2, color: '#3b82f6', textColor: 'text-blue-500',    dot: 'bg-blue-500'    },
-  { label: 'Offline',     count:  1, color: '#ef4444', textColor: 'text-red-500',     dot: 'bg-red-500'     },
+  { label: 'Running', count: 18, color: '#22c55e', textColor: 'text-emerald-500', dot: 'bg-emerald-500' },
+  { label: 'Idle', count: 3, color: '#f59e0b', textColor: 'text-amber-400', dot: 'bg-amber-400' },
+  { label: 'Maintenance', count: 2, color: '#3b82f6', textColor: 'text-blue-500', dot: 'bg-blue-500' },
+  { label: 'Offline', count: 1, color: '#ef4444', textColor: 'text-red-500', dot: 'bg-red-500' },
 ];
 
 const machineUtilization = [
-  { name: 'Corrugator Line 1',       status: 'Running',     utilization: 94, barColor: '#22c55e' },
-  { name: 'Flexo Printer A',         status: 'Running',     utilization: 88, barColor: '#22c55e' },
-  { name: 'Die-Cutting Machine 1',   status: 'Running',     utilization: 81, barColor: '#22c55e' },
-  { name: 'Slotting Machine',        status: 'Maintenance', utilization: 74, barColor: '#3b82f6' },
-  { name: 'Stitching / Baling Unit', status: 'Idle',        utilization: 84, barColor: '#f97316' },
+  { name: 'Corrugator Line 1', status: 'Running', utilization: 94, barColor: '#22c55e' },
+  { name: 'Flexo Printer A', status: 'Running', utilization: 88, barColor: '#22c55e' },
+  { name: 'Die-Cutting Machine 1', status: 'Running', utilization: 81, barColor: '#22c55e' },
+  { name: 'Slotting Machine', status: 'Maintenance', utilization: 74, barColor: '#3b82f6' },
+  { name: 'Stitching / Baling Unit', status: 'Idle', utilization: 84, barColor: '#f97316' },
 ];
 
 // ─── Quality Data ─────────────────────────────────────────────────────────────
 
 const qualityCards = [
-  { label: 'Quality Score',       value: '97.8%', change: 'Across 24 Machines',  icon: TrendingUp   },
-  { label: 'Rejection Rate',      value: '3.4%',  change: '4 Idle Or Down',       icon: ShoppingCart },
-  { label: 'Rework Rate',         value: '2.1%',  change: 'OEE This Month',        icon: FileText     },
-  { label: 'Customer Complaints', value: '5',     change: 'Scheduled This Week',  icon: Package      },
+  { label: 'Quality Score', value: '97.8%', change: 'Across 24 Machines', icon: TrendingUp },
+  { label: 'Rejection Rate', value: '3.4%', change: '4 Idle Or Down', icon: ShoppingCart },
+  { label: 'Rework Rate', value: '2.1%', change: 'OEE This Month', icon: FileText },
+  { label: 'Customer Complaints', value: '5', change: 'Scheduled This Week', icon: Package },
 ];
 
 const qualityScoreTrend = [
@@ -376,10 +376,10 @@ const qualityScoreTrend = [
 ];
 
 const qualitySummaryItems = [
-  { label: 'Passed',     value: '1850', icon: TrendingUp   },
-  { label: 'Rejected',   value: '40',   icon: ShoppingCart },
-  { label: 'Rework',     value: '38',   icon: TrendingUp   },
-  { label: 'Complaints', value: '4',    icon: ShoppingCart },
+  { label: 'Passed', value: '1850', icon: TrendingUp },
+  { label: 'Rejected', value: '40', icon: ShoppingCart },
+  { label: 'Rework', value: '38', icon: TrendingUp },
+  { label: 'Complaints', value: '4', icon: ShoppingCart },
 ];
 
 const tabs = ['Overview', 'Sales', 'Purchase', 'Production', 'Machine', 'Quality'];
@@ -403,19 +403,18 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const MetricCard = ({ label, value, change, icon: Icon }) => (
-  <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-    <div className="h-1 bg-blue-500 w-full" />
-    <div className="p-4 flex flex-col gap-2 flex-1">
-      <div className="flex items-start justify-between">
-        <p className="text-xs text-gray-500 font-medium leading-snug max-w-[65%]">{label}</p>
-        <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-sky-50">
-          <Icon className="w-4 h-4 text-sky-500" strokeWidth={1.8} />
-        </div>
+const MetricCard = ({ label, value, change, icon: Icon, trendColor = "text-emerald-500", trendIcon: TrendIcon = TrendingUp }) => (
+  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-all flex flex-col p-4 h-full">
+    <div className="flex items-start justify-between mb-2">
+      <p className="text-[12px] text-gray-500 font-medium leading-tight pr-2">{label}</p>
+      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] shadow-sm">
+        <Icon className="w-4 h-4 text-white" strokeWidth={2} />
       </div>
-      <p className="text-2xl font-bold text-gray-800 tracking-tight">{value}</p>
-      <p className="text-xs text-emerald-500 font-medium flex items-center gap-1">
-        <TrendingUp className="w-3 h-3" />
+    </div>
+    <div className="mt-auto">
+      <p className="text-[20px] font-bold text-gray-900 tracking-tight mb-1">{value}</p>
+      <p className={`text-[11px] ${trendColor} font-medium flex items-center gap-1`}>
+        <TrendIcon className="w-3 h-3" />
         {change}
       </p>
     </div>
@@ -431,19 +430,19 @@ const OverviewTab = () => {
   return (
     <>
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-3">
         {overviewCards.map((card, i) => <MetricCard key={i} {...card} />)}
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
 
         {/* Production Output vs Wastage */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 className="text-sm font-semibold text-gray-800">Production Output vs Wastage</h2>
             <div className="flex items-center gap-2">
-              {[['14days','14 Days'],['7days','7 days'],['all','All']].map(([key, lbl]) => (
+              {[['14days', '14 Days'], ['7days', '7 days'], ['all', 'All']].map(([key, lbl]) => (
                 <button key={key} onClick={() => setTimeRange(key)}
                   className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${timeRange === key ? 'bg-gray-800 text-white' : 'border border-gray-200 text-gray-500 hover:bg-gray-50'}`}>
                   {lbl}
@@ -455,13 +454,13 @@ const OverviewTab = () => {
             <LineChart data={chartData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0,10,20,30,40,50,60,70,80,90,100]} />
+              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} />
               <Tooltip content={<CustomTooltip />} />
-              <Line type="monotone" dataKey="output"  name="Output (units)" stroke="#7c3aed" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
-              <Line type="monotone" dataKey="wastage" name="Wastage (%)"    stroke="#ec4899" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+              <Line type="monotone" dataKey="output" name="Output (units)" stroke="#7c3aed" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+              <Line type="monotone" dataKey="wastage" name="Wastage (%)" stroke="#ec4899" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
             </LineChart>
           </ResponsiveContainer>
-          <div className="flex items-center gap-4 mt-2">
+          <div className="flex items-center gap-3 mt-2">
             <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-violet-500">Output (units)</span>
             <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-pink-400">Wastage (%)</span>
           </div>
@@ -472,12 +471,12 @@ const OverviewTab = () => {
           <h2 className="text-sm font-semibold text-gray-800 mb-4">OEE Composition</h2>
           <div className="flex-1 flex flex-col items-center justify-center">
             <PieChart width={230} height={230}>
-              <Pie 
-                data={overviewOEEDonut} 
-                cx={115} cy={115} 
-                innerRadius={60} outerRadius={100} 
-                paddingAngle={0.8} 
-                dataKey="value" 
+              <Pie
+                data={overviewOEEDonut}
+                cx={115} cy={115}
+                innerRadius={60} outerRadius={100}
+                paddingAngle={0.8}
+                dataKey="value"
                 startAngle={255} endAngle={255 - 360}
                 labelLine={false}
               >
@@ -511,12 +510,12 @@ const SalesTab = () => {
   return (
     <>
       {/* Sales KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
         {salesCards.map((card, i) => <MetricCard key={i} {...card} />)}
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-3">
 
         {/* Sales Trend Line Chart */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -533,7 +532,7 @@ const SalesTab = () => {
               </button>
               {dropdownOpen && (
                 <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 w-36 overflow-hidden">
-                  {[['6M','Last 6 month'],['1Y','Last 1 year']].map(([key, lbl]) => (
+                  {[['6M', 'Last 6 month'], ['1Y', 'Last 1 year']].map(([key, lbl]) => (
                     <button key={key} onClick={() => { setTrendRange(key); setDropdownOpen(false); }}
                       className={`w-full text-left px-3 py-2 text-xs transition-colors ${trendRange === key ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`}>
                       {lbl}
@@ -547,22 +546,16 @@ const SalesTab = () => {
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={trendData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#6b7280' }} axisLine={{ stroke: '#a78bfa', strokeWidth: 1.5 }} tickLine={{ stroke: '#a78bfa' }} tickMargin={8} />
-              <YAxis tick={{ fontSize: 10, fill: '#6b7280' }} axisLine={{ stroke: '#a78bfa', strokeWidth: 1.5 }} tickLine={{ stroke: '#a78bfa' }} tickMargin={8} domain={[0, 110]} ticks={[0,10,20,30,40,50,60,70,80,90,100]} />
+              <YAxis tick={{ fontSize: 10, fill: '#6b7280' }} axisLine={{ stroke: '#a78bfa', strokeWidth: 1.5 }} tickLine={{ stroke: '#a78bfa' }} tickMargin={8} domain={[0, 110]} ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} />
               <Tooltip content={<CustomTooltip />} />
-              <Line type="monotone" dataKey="revenue" name="Revenue (Cr)" stroke="#3b82f6" strokeWidth={2} dot={false} activeDot={{ r: 5, fill: '#3b82f6' }} />
-              <Line type="monotone" dataKey="target"  name="Target (Cr)"  stroke="#e5e7eb" strokeWidth={1.5} dot={false} activeDot={{ r: 5, fill: '#e5e7eb' }} />
+              <Line type="monotone" dataKey="revenue" name="Revenue (Cr)" stroke="#7c3aed" strokeWidth={2} dot={false} activeDot={{ r: 5, fill: '#7c3aed' }} />
+              <Line type="monotone" dataKey="target" name="Target (Cr)" stroke="#ec4899" strokeWidth={1.5} dot={false} activeDot={{ r: 5, fill: '#ec4899' }} />
             </LineChart>
           </ResponsiveContainer>
 
-          <div className="flex items-center gap-6 mt-2 ml-10">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-3 rounded-full bg-[#3b82f6]"></span>
-              <span className="text-xs font-semibold text-gray-500">Revenue (Cr)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-3 rounded-full bg-[#e5e7eb]"></span>
-              <span className="text-xs font-semibold text-gray-500">Target (Cr)</span>
-            </div>
+          <div className="flex items-center gap-3 mt-2">
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-violet-500">Revenue (Cr)</span>
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-pink-400">Target (Cr)</span>
           </div>
         </div>
 
@@ -601,7 +594,7 @@ const SalesTab = () => {
       </div>
 
       {/* Top Customer Table */}
-      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 mb-5">
+      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 mb-3">
         <h2 className="text-sm font-semibold text-gray-800 mb-3">Top Customer</h2>
 
         {/* Search + Filter row */}
@@ -623,7 +616,7 @@ const SalesTab = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Customer','Order','Quantity','Revenue'].map(h => (
+                {['Customer', 'Order', 'Quantity', 'Revenue'].map(h => (
                   <th key={h} className="text-left text-xs text-gray-400 font-medium pb-3 pr-6 last:pr-0">{h}</th>
                 ))}
               </tr>
@@ -665,7 +658,7 @@ const SalesTab = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Order','Customer','Product','Quantity','Status','Date','Revenue'].map(h => (
+                {['Order', 'Customer', 'Product', 'Quantity', 'Status', 'Date', 'Revenue'].map(h => (
                   <th key={h} className="text-left text-xs text-gray-400 font-medium pb-3 pr-4 last:pr-0">{h}</th>
                 ))}
               </tr>
@@ -678,11 +671,10 @@ const SalesTab = () => {
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.product}</td>
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.qty}</td>
                   <td className="py-3 pr-4">
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                      o.status === 'In Progress' ? 'text-sky-500 bg-sky-50'
-                      : o.status === 'Completed'  ? 'text-emerald-600 bg-emerald-50'
-                      : 'text-pink-500 bg-pink-50'
-                    }`}>{o.status}</span>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${o.status === 'In Progress' ? 'text-sky-500 bg-sky-50'
+                        : o.status === 'Completed' ? 'text-emerald-600 bg-emerald-50'
+                          : 'text-pink-500 bg-pink-50'
+                      }`}>{o.status}</span>
                   </td>
                   <td className="py-3 pr-4 text-sm text-gray-500">{o.date}</td>
                   <td className="py-3 text-sm font-medium text-gray-800">{o.revenue}</td>
@@ -712,12 +704,12 @@ const PurchaseTab = () => {
   return (
     <>
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
         {purchaseCards.map((card, i) => <MetricCard key={i} {...card} />)}
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-3">
 
         {/* Raw Material Cost Trend */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -731,7 +723,7 @@ const PurchaseTab = () => {
               </button>
               {costDropOpen && (
                 <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 w-36 overflow-hidden">
-                  {[['6M','Last 6 month'],['1Y','Last 1 year']].map(([key, lbl]) => (
+                  {[['6M', 'Last 6 month'], ['1Y', 'Last 1 year']].map(([key, lbl]) => (
                     <button key={key} onClick={() => { setCostRange(key); setCostDropOpen(false); }}
                       className={`w-full text-left px-3 py-2 text-xs transition-colors ${costRange === key ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`}>
                       {lbl}
@@ -745,13 +737,13 @@ const PurchaseTab = () => {
             <LineChart data={costData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0,10,20,30,40,50,60,70,80,90,100]} />
+              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} />
               <Tooltip content={<CustomTooltip />} />
-              <Line type="monotone" dataKey="spend" name="Spend" stroke="#38bdf8" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+              <Line type="monotone" dataKey="spend" name="Spend" stroke="#7c3aed" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
             </LineChart>
           </ResponsiveContainer>
-          <div className="flex items-center gap-4 mt-2">
-            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-400">Spend</span>
+          <div className="flex items-center gap-3 mt-2">
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-violet-500">Spend</span>
           </div>
         </div>
 
@@ -783,7 +775,7 @@ const PurchaseTab = () => {
       </div>
 
       {/* Purchase Summary + Stock Reorder Alerts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3">
 
         {/* Purchase Summary */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -814,24 +806,20 @@ const PurchaseTab = () => {
           <h2 className="text-sm font-semibold text-gray-800 mb-4">Stock Reorder Alerts</h2>
           <div className="flex flex-col gap-3">
             {stockAlerts.map((alert, i) => (
-              <div key={i} className={`rounded-xl p-4 ${
-                alert.level === 'critical' ? 'bg-red-50' : 'bg-yellow-50'
-              }`}>
+              <div key={i} className={`rounded-xl p-4 ${alert.level === 'critical' ? 'bg-red-50' : 'bg-yellow-50'
+                }`}>
                 <div className="flex items-center gap-2 mb-2.5">
-                  <span className={`text-base leading-none ${
-                    alert.level === 'critical' ? 'text-red-500' : 'text-yellow-500'
-                  }`}>⚠</span>
+                  <span className={`text-base leading-none ${alert.level === 'critical' ? 'text-red-500' : 'text-yellow-500'
+                    }`}>⚠</span>
                   <span className="text-sm font-semibold text-gray-800">{alert.name}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex-1 h-2 bg-white/70 rounded-full overflow-hidden">
-                    <div className={`h-full rounded-full ${
-                      alert.level === 'critical' ? 'bg-red-500' : 'bg-yellow-400'
-                    }`} style={{ width: `${alert.pct}%` }} />
+                    <div className={`h-full rounded-full ${alert.level === 'critical' ? 'bg-red-500' : 'bg-yellow-400'
+                      }`} style={{ width: `${alert.pct}%` }} />
                   </div>
-                  <span className={`text-xs font-semibold min-w-[2.5rem] text-right ${
-                    alert.level === 'critical' ? 'text-red-600' : 'text-yellow-700'
-                  }`}>{alert.pct}%</span>
+                  <span className={`text-xs font-semibold min-w-[2.5rem] text-right ${alert.level === 'critical' ? 'text-red-600' : 'text-yellow-700'
+                    }`}>{alert.pct}%</span>
                 </div>
                 {alert.note && (
                   <p className="text-xs mt-2 font-medium text-red-500">{alert.note}</p>
@@ -843,7 +831,7 @@ const PurchaseTab = () => {
       </div>
 
       {/* Vendor Performance Table */}
-      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 mb-5">
+      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 mb-3">
         <h2 className="text-sm font-semibold text-gray-800 mb-3">Vendor Performance</h2>
         <div className="flex items-center justify-between mb-4">
           <div className="relative w-64">
@@ -857,7 +845,7 @@ const PurchaseTab = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Vendor','Material','Orders','Spend (MTD)','Rating','Lead Time','On Time','Status'].map(h => (
+                {['Vendor', 'Material', 'Orders', 'Spend (MTD)', 'Rating', 'Lead Time', 'On Time', 'Status'].map(h => (
                   <th key={h} className="text-left text-xs text-gray-400 font-medium pb-3 pr-4 last:pr-0">{h}</th>
                 ))}
               </tr>
@@ -903,7 +891,7 @@ const PurchaseTab = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Po Number','Vendor','Material','Quantity','Status','Date'].map(h => (
+                {['Po Number', 'Vendor', 'Material', 'Quantity', 'Status', 'Date'].map(h => (
                   <th key={h} className="text-left text-xs text-gray-400 font-medium pb-3 pr-4 last:pr-0">{h}</th>
                 ))}
               </tr>
@@ -916,11 +904,10 @@ const PurchaseTab = () => {
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.material}</td>
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.qty}</td>
                   <td className="py-3 pr-4">
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                      o.status === 'Approved' ? 'text-sky-500 bg-sky-50'
-                      : o.status === 'Received' ? 'text-emerald-600 bg-emerald-50'
-                      : 'text-pink-500 bg-pink-50'
-                    }`}>{o.status}</span>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${o.status === 'Approved' ? 'text-sky-500 bg-sky-50'
+                        : o.status === 'Received' ? 'text-emerald-600 bg-emerald-50'
+                          : 'text-pink-500 bg-pink-50'
+                      }`}>{o.status}</span>
                   </td>
                   <td className="py-3 text-sm text-gray-500">{o.date}</td>
                 </tr>
@@ -946,12 +933,12 @@ const ProductionTab = () => {
   return (
     <>
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
         {productionCards.map((card, i) => <MetricCard key={i} {...card} />)}
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-3">
 
         {/* Production Output Area Chart */}
         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -965,7 +952,7 @@ const ProductionTab = () => {
               </button>
               {prodDropOpen && (
                 <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 w-36 overflow-hidden">
-                  {[['7D','Last 7 days'],['1M','Last 1 month']].map(([key, lbl]) => (
+                  {[['7D', 'Last 7 days'], ['1M', 'Last 1 month']].map(([key, lbl]) => (
                     <button key={key} onClick={() => { setProdRange(key); setProdDropOpen(false); }}
                       className={`w-full text-left px-3 py-2 text-xs transition-colors ${prodRange === key ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-gray-600 hover:bg-gray-50'}`}>
                       {lbl}
@@ -979,25 +966,25 @@ const ProductionTab = () => {
             <AreaChart data={trendData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <defs>
                 <linearGradient id="outputGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#38bdf8" stopOpacity={0.35} />
+                  <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.35} />
                   <stop offset="95%" stopColor="#38bdf8" stopOpacity={0.02} />
                 </linearGradient>
                 <linearGradient id="wastageGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#22c55e" stopOpacity={0.3} />
+                  <stop offset="5%" stopColor="#ec4899" stopOpacity={0.3} />
                   <stop offset="95%" stopColor="#22c55e" stopOpacity={0.02} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
               <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0,20,40,60,80,100]} />
+              <YAxis tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false} domain={[0, 110]} ticks={[0, 20, 40, 60, 80, 100]} />
               <Tooltip content={<CustomTooltip />} />
-              <Area type="monotone" dataKey="output"  name="Output"  stroke="#38bdf8" fill="url(#outputGrad)"  strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
-              <Area type="monotone" dataKey="wastage" name="Wastage" stroke="#22c55e" fill="url(#wastageGrad)" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+              <Area type="monotone" dataKey="output" name="Output" stroke="#7c3aed" fill="url(#outputGrad)" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+              <Area type="monotone" dataKey="wastage" name="Wastage" stroke="#ec4899" fill="url(#wastageGrad)" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
             </AreaChart>
           </ResponsiveContainer>
-          <div className="flex items-center gap-4 mt-2">
-            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-400">Output</span>
-            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-emerald-500">Wastage</span>
+          <div className="flex items-center gap-3 mt-2">
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-violet-500">Output</span>
+            <span className="px-3 py-1 rounded-full text-xs font-medium text-white bg-pink-400">Wastage</span>
           </div>
         </div>
 
@@ -1035,7 +1022,7 @@ const ProductionTab = () => {
       </div>
 
       {/* Production Summary + Shift Performance */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3">
 
         {/* Production Summary */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -1060,9 +1047,9 @@ const ProductionTab = () => {
           {/* 2x2 stats */}
           <div className="grid grid-cols-2 gap-3">
             {[
-              { label: 'Completed',     value: '4,180' },
-              { label: 'Remaining',     value: '1,020' },
-              { label: 'Rejected',      value: '96'    },
+              { label: 'Completed', value: '4,180' },
+              { label: 'Remaining', value: '1,020' },
+              { label: 'Rejected', value: '96' },
               { label: 'Quality Score', value: '97.8%' },
             ].map((item, i) => (
               <div key={i} className="border border-gray-100 rounded-xl p-4">
@@ -1076,7 +1063,7 @@ const ProductionTab = () => {
         {/* Shift Performance */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
           <h2 className="text-sm font-semibold text-gray-800 mb-4">Shift Performance</h2>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3">
             {shifts.map((shift, i) => {
               const pct = Math.round((shift.produced / shift.target) * 100);
               return (
@@ -1118,7 +1105,7 @@ const ProductionTab = () => {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['Order','Customer','Quantity','Revenue'].map(h => (
+                {['Order', 'Customer', 'Quantity', 'Revenue'].map(h => (
                   <th key={h} className="text-left text-xs text-gray-400 font-medium pb-3 pr-4 last:pr-0">{h}</th>
                 ))}
               </tr>
@@ -1130,11 +1117,10 @@ const ProductionTab = () => {
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.customer}</td>
                   <td className="py-3 pr-4 text-sm text-gray-600">{o.qty}</td>
                   <td className="py-3">
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                      o.status === 'Shipped'        ? 'text-emerald-600 bg-emerald-50'
-                      : o.status === 'In Production' ? 'text-orange-500 bg-orange-50'
-                      : 'text-red-500 bg-red-50'
-                    }`}>{o.status}</span>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${o.status === 'Shipped' ? 'text-emerald-600 bg-emerald-50'
+                        : o.status === 'In Production' ? 'text-orange-500 bg-orange-50'
+                          : 'text-red-500 bg-red-50'
+                      }`}>{o.status}</span>
                   </td>
                 </tr>
               ))}
@@ -1152,28 +1138,28 @@ const MachineTab = () => {
   const total = machineStatusItems.reduce((s, m) => s + m.count, 0);
 
   const statusBadgeClass = {
-    'Running':     'text-emerald-600 bg-emerald-50',
+    'Running': 'text-emerald-600 bg-emerald-50',
     'Maintenance': 'text-blue-600 bg-blue-50',
-    'Idle':        'text-gray-500 bg-gray-100',
-    'Offline':     'text-red-500 bg-red-50',
+    'Idle': 'text-gray-500 bg-gray-100',
+    'Offline': 'text-red-500 bg-red-50',
   };
 
   return (
     <>
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
         {machineKPICards.map((card, i) => <MetricCard key={i} {...card} />)}
       </div>
 
       {/* Machine Status + Machine Utilization */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
 
         {/* Machine Status */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-          <h2 className="text-sm font-semibold text-gray-800 mb-5">Machine Status</h2>
+          <h2 className="text-sm font-semibold text-gray-800 mb-3">Machine Status</h2>
 
           {/* 2×2 count grid */}
-          <div className="grid grid-cols-2 gap-6 mb-7">
+          <div className="grid grid-cols-2 gap-3 mb-3">
             {machineStatusItems.map((s, i) => (
               <div key={i}>
                 <p className={`text-4xl font-bold mb-1.5 ${s.textColor}`}>{s.count}</p>
@@ -1198,8 +1184,8 @@ const MachineTab = () => {
 
         {/* Machine Utilization */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-          <h2 className="text-sm font-semibold text-gray-800 mb-5">Machine Utilization</h2>
-          <div className="flex flex-col gap-4">
+          <h2 className="text-sm font-semibold text-gray-800 mb-3">Machine Utilization</h2>
+          <div className="flex flex-col gap-3">
             {machineUtilization.map((m, i) => (
               <div key={i} className="flex items-center gap-3">
                 <span className="text-sm text-gray-700 flex-1 min-w-0 truncate">{m.name}</span>
@@ -1226,12 +1212,12 @@ const MachineTab = () => {
 const QualityTab = () => (
   <>
     {/* KPI Cards */}
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
       {qualityCards.map((card, i) => <MetricCard key={i} {...card} />)}
     </div>
 
     {/* Quality Score Trend + Quality Summary */}
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
 
       {/* Quality Score Trend */}
       <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -1289,54 +1275,66 @@ const DashboardPage = () => {
 
 
   return (
-    <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#f8f9fb]">
-      <div className="p-6 max-w-screen-2xl mx-auto">
+    <div className="flex-1 flex flex-col bg-[#f4f7f9] overflow-hidden">
+      <div className="flex-shrink-0 p-1.5 pb-0 z-10">
+        <div className="max-w-screen-2xl mx-auto space-y-1.5">
 
-        {/* Page Header */}
-        <div className="flex items-start justify-between mb-5">
-          <div>
-            <h1 className="text-xl font-bold text-gray-800">Manufacturing ERP Dashboard</h1>
-            <p className="text-xs text-gray-400 mt-0.5">
-              Monitor Production, Machines, Inventory, Sales, Purchase And Plant Performance.
-            </p>
+          {/* Page Header Section */}
+          <div className="bg-white rounded-[16px] border border-gray-100 px-5 py-2 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-[22px] font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] inline-block leading-tight">
+                  ERP Dashboard
+                </h1>
+                <p className="text-[11px] text-gray-400 mt-0.5">
+                  Monitor Production, Machines, Inventory, Sales, Purchase And Plant Performance.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 flex-shrink-0">
+                <span className="text-[11px] font-medium text-gray-400">Last Updated {lastUpdated}</span>
+                <button className="w-8 h-8 rounded-lg border border-gray-100 bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                  <RefreshCw className="w-4 h-4" strokeWidth={2} />
+                </button>
+                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-gray-700 text-[12px] font-bold hover:bg-gray-50 transition-colors shadow-sm">
+                  <Download className="w-3.5 h-3.5" strokeWidth={2} />
+                  Export
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <span className="text-xs text-gray-400">Last Updated {lastUpdated}</span>
-            <button className="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center text-gray-500 hover:text-gray-700 transition-colors">
-              <RefreshCw className="w-4 h-4" strokeWidth={1.8} />
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-blue-200 text-blue-600 text-sm font-medium hover:bg-blue-50 transition-colors shadow-sm">
-              <Download className="w-4 h-4" strokeWidth={1.8} />
-              Export
-            </button>
+
+          {/* Tabs Section */}
+          <div className="bg-white rounded-[20px] border border-gray-100 px-3 py-1.5 shadow-sm">
+            <div className="flex items-center gap-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-1.5 rounded-full text-[12px] font-bold transition-all ${activeTab === tab ? 'bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white shadow-md' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto custom-scrollbar p-1.5">
+        <div className="max-w-screen-2xl mx-auto space-y-1.5">
+          {/* Main Content Area */}
+          <div className="pt-1">
+            {/* Tab Content */}
+            {activeTab === 'Overview' && <OverviewTab />}
+            {activeTab === 'Sales' && <SalesTab />}
+            {activeTab === 'Purchase' && <PurchaseTab />}
+            {activeTab === 'Production' && <ProductionTab />}
+            {activeTab === 'Machine' && <MachineTab />}
+            {activeTab === 'Quality' && <QualityTab />}
           </div>
         </div>
-
-        {/* Tabs */}
-        <div className="flex items-center gap-1 mb-5">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                activeTab === tab
-                  ? 'bg-[#3a6878] text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Tab Content */}
-        {activeTab === 'Overview'    && <OverviewTab />}
-        {activeTab === 'Sales'       && <SalesTab />}
-        {activeTab === 'Purchase'    && <PurchaseTab />}
-        {activeTab === 'Production'  && <ProductionTab />}
-        {activeTab === 'Machine'     && <MachineTab />}
-        {activeTab === 'Quality'     && <QualityTab />}
-
       </div>
     </div>
   );

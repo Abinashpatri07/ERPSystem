@@ -22,9 +22,41 @@ import {
   ArrowRightLeft
 } from 'lucide-react';
 
+const mockQuotes = [
+  {
+    id: 1,
+    date: '25/06/2026',
+    quoteNo: 'QT-00001',
+    customerName: 'CLIMAMAX PVT LTD',
+    boxSpec: '5-Ply',
+    quantity: '2,500',
+    amount: '53,900.00',
+  },
+  {
+    id: 2,
+    date: '20/06/2026',
+    quoteNo: 'QT-00002',
+    customerName: 'NEXUS TECHNOLOGIES',
+    boxSpec: '3-Ply',
+    quantity: '1,000',
+    amount: '12,500.00',
+  },
+  {
+    id: 3,
+    date: '15/06/2026',
+    quoteNo: 'QT-00003',
+    customerName: 'APEX INDUSTRIES',
+    boxSpec: '5-Ply',
+    quantity: '3,200',
+    amount: '68,400.00',
+  }
+];
+
 const QuoteDetailPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const activeQuote = mockQuotes.find(q => q.id.toString() === id) || mockQuotes[0];
 
   const tabs = [
     { name: 'Quotes', path: '/sales/quotes' },
@@ -137,47 +169,31 @@ const QuoteDetailPage = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3">
-              {/* Selected Quote Card */}
-              <div className="bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md transition-all shadow-sm border border-transparent mb-2.5">
-                <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">QT-00002</span>
-                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
-                </div>
-                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  CLIMAMAX PVT LTD
-                </h3>
-                <div className="text-right">
-                  <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
-                </div>
-              </div>
-
-              {/* Inactive Card 1 */}
-              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
-                <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">QT-00003</span>
-                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
-                </div>
-                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  NEXUS TECHNOLOGIES
-                </h3>
-                <div className="text-right">
-                  <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
-                </div>
-              </div>
-
-              {/* Inactive Card 2 */}
-              <div className="bg-white rounded-2xl px-3 py-2 cursor-pointer hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent transition-all shadow-sm border border-gray-100 mb-2.5">
-                <div className="flex justify-between items-center mb-0.5">
-                  <span className="text-[12px] font-medium text-[#374151]">QT-00004</span>
-                  <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
-                </div>
-                <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  APEX INDUSTRIES
-                </h3>
-                <div className="text-right">
-                  <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>
-                </div>
-              </div>
+              {mockQuotes.map((quote) => {
+                const isActive = id === quote.id.toString() || (!id && quote.id === 1);
+                return (
+                  <div 
+                    key={quote.id}
+                    onClick={() => navigate(`/sales/quotes/${quote.id}`)}
+                    className={`rounded-2xl px-3 py-2 cursor-pointer transition-all shadow-sm mb-2.5 ${
+                      isActive 
+                        ? 'bg-gradient-to-br from-[#ffede1] via-[#fae8f8] to-[#efdfff] border border-transparent hover:shadow-md' 
+                        : 'bg-white hover:shadow-md hover:bg-gradient-to-br hover:from-[#ffede1] hover:via-[#fae8f8] hover:to-[#efdfff] hover:border-transparent border border-gray-100'
+                    }`}
+                  >
+                    <div className="flex justify-between items-center mb-0.5">
+                      <span className="text-[12px] font-medium text-[#374151]">{quote.quoteNo}</span>
+                      <span className="text-[9px] text-gray-400 font-medium tracking-wide">{quote.date}</span>
+                    </div>
+                    <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
+                      {quote.customerName}
+                    </h3>
+                    <div className="text-right">
+                      <span className="text-[14px] font-bold text-[#111827]">₹{quote.amount}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -187,7 +203,7 @@ const QuoteDetailPage = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-6 py-2.5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center space-x-3">
                 <h2 className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#ff7a59] via-[#d54a88] to-[#402de8] bg-clip-text text-transparent inline-block w-fit">
-                  {id && id !== 'new' ? (isNaN(id) ? id : `QT-${id.toString().padStart(5, '0')}`) : 'QT-00002'}
+                  {id === 'new' ? 'New Quote' : activeQuote.quoteNo}
                 </h2>
                 <span className="bg-[#ffe8e8] text-[#ff6b6b] text-[10px] font-bold px-2 py-0.5 rounded-full">
                   Unpaid
@@ -227,10 +243,10 @@ const QuoteDetailPage = () => {
                     <div className="p-4 flex-1">
                       <div className="flex items-center mb-3">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#ff7a59] via-[#d54a88] to-[#402de8] text-white flex items-center justify-center text-sm font-bold shadow-sm mr-3 flex-shrink-0">
-                          CC
+                          {activeQuote.customerName.substring(0, 2).toUpperCase()}
                         </div>
                         <div>
-                          <h4 className="text-[13px] font-bold text-gray-900">Climamax Controls Pvt Ltd</h4>
+                          <h4 className="text-[13px] font-bold text-gray-900">{activeQuote.customerName}</h4>
                         </div>
                       </div>
                       <div className="space-y-1.5">

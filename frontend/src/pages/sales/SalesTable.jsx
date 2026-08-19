@@ -5,31 +5,31 @@ const mockSalesOrders = [
   {
     id: 1,
     date: '25/06/2026',
-    salesOrderNo: 'SL-000001',
-    referenceNo: 'QT-000001',
-    customerName: 'CLIMAMAX CONTROLS PRIVATE LIMITED',
+    salesOrderNo: 'SL-00001',
+    referenceNo: 'QT-00001',
+    customerName: 'CLIMAMAX PVT LTD',
     orderStatus: 'Accepted',
-    payment: '2,34,654',
+    payment: '53,900',
     packed: '...',
   },
   {
     id: 2,
-    date: '03/07/2026',
-    salesOrderNo: 'SL-000023',
-    referenceNo: 'QT-000023',
-    customerName: 'ABC PACKAGING PRIVATE LIMITED',
+    date: '20/06/2026',
+    salesOrderNo: 'SL-00002',
+    referenceNo: 'QT-00002',
+    customerName: 'NEXUS TECHNOLOGIES',
     orderStatus: 'Accepted',
-    payment: '3,42,180',
+    payment: '12,500',
     packed: '...',
   },
   {
     id: 3,
-    date: '08/07/2026',
-    salesOrderNo: 'SL-000024',
-    referenceNo: 'QT-000024',
-    customerName: 'SUNRISE PRIVATE LIMITED',
-    orderStatus: 'Accepted',
-    payment: '2,15,600',
+    date: '15/06/2026',
+    salesOrderNo: 'SL-00003',
+    referenceNo: 'QT-00003',
+    customerName: 'APEX INDUSTRIES',
+    orderStatus: 'Draft',
+    payment: '68,400',
     packed: '...',
   }
 ];
@@ -42,16 +42,16 @@ const SalesTable = () => {
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-            <th className="py-4 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+            <th className="py-4 pl-8 pr-6 font-bold text-[#6b778c] w-16 text-center">
               <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
             </th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Date</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a] whitespace-nowrap">Sales Order#</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Reference#</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Customer Name</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Order Status</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Payment</th>
-            <th className="py-4 pr-8 pl-6 font-semibold text-[#1a233a] text-center">Packed</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Date</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Sales Order#</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Reference#</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Customer Name</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Order Status</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Payment</th>
+            <th className="py-4 pr-8 pl-6 font-bold text-[#6b778c] text-center">Packed</th>
           </tr>
         </thead>
         <tbody>

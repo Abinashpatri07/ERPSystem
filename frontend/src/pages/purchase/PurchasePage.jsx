@@ -7,73 +7,139 @@ const tabs = ['Expenses', 'Procurement', 'Purchase Order', 'Bills', 'Payment'];
 const orders = [
   {
     id: 'PO-00001',
-    date: '30/06/2026',
+    date: '25/06/2026',
     purchaseOrder: 'PO-00001',
-    reference: '',
-    vendorName: 'CLIMAMAX',
+    reference: 'REF-101',
+    vendorName: 'CENTURY PULP & PAPER',
     status: 'DRAFT',
     received: '---',
     billed: '---',
-    amount: '₹53,900.00',
+    amount: '₹45,000.00',
   },
+  {
+    id: 'PO-00002',
+    date: '20/06/2026',
+    purchaseOrder: 'PO-00002',
+    reference: 'REF-102',
+    vendorName: 'GLOBAL SUPPLIES INC',
+    status: 'CONFIRMED',
+    received: '---',
+    billed: '---',
+    amount: '₹12,500.00',
+  },
+  {
+    id: 'PO-00003',
+    date: '15/06/2026',
+    purchaseOrder: 'PO-00003',
+    reference: 'REF-103',
+    vendorName: 'TECHHARDWARE LTD',
+    status: 'RECEIVED',
+    received: 'Full',
+    billed: '---',
+    amount: '₹0.00',
+  }
 ];
 
 const procurements = [
   {
-    id: 'PR-2031',
-    date: '02 Aug 2026',
-    prNo: 'PR-2031',
-    vendorName: 'Sai Paper Mills',
+    id: 'PR-00001',
+    date: '25/06/2026',
+    prNo: 'PR-00001',
+    vendorName: 'CENTURY PULP & PAPER',
     material: 'Kraft Paper',
     quantity: '5,000 Kg',
-    amount: '₹5,00,000',
+    amount: '₹45,000.00',
   },
   {
-    id: 'PR-2030',
-    date: '30 Jul 2026',
-    prNo: 'PR-2030',
-    vendorName: 'Metro Corrugators',
+    id: 'PR-00002',
+    date: '20/06/2026',
+    prNo: 'PR-00002',
+    vendorName: 'GLOBAL SUPPLIES INC',
     material: 'Corrugated Sheet',
     quantity: '2,500 Kg',
-    amount: '₹1,84,200',
+    amount: '₹12,500.00',
   },
   {
-    id: 'PR-2029',
-    date: '28 Jul 2026',
-    prNo: 'PR-2029',
-    vendorName: 'Anand Kraft Suppliers',
+    id: 'PR-00003',
+    date: '15/06/2026',
+    prNo: 'PR-00003',
+    vendorName: 'TECHHARDWARE LTD',
     material: 'Duplex Board',
     quantity: '1,200 Kg',
-    amount: '₹76,450',
-  },
+    amount: '₹0.00',
+  }
 ];
 
 const expenses = [
   {
     id: 'EXP-00001',
-    date: '30/06/2026',
+    date: '25/06/2026',
     expensesAccount: 'Job Costing',
-    reference: '',
-    vendorName: 'CLIMAMAX',
+    reference: 'EXP-101',
+    vendorName: 'CENTURY PULP & PAPER',
     paidThrough: 'Undeposited Funds',
-    customerName: 'CLIMAMAX CONTROLS PRIVATE LIMITED',
-    status: 'Non-Billable',
-    amount: '₹4,67,254.00',
+    customerName: 'CENTURY PULP & PAPER',
+    status: 'Billable',
+    amount: '₹45,000.00',
   },
+  {
+    id: 'EXP-00002',
+    date: '20/06/2026',
+    expensesAccount: 'Logistics',
+    reference: 'EXP-102',
+    vendorName: 'GLOBAL SUPPLIES INC',
+    paidThrough: 'Petty Cash',
+    customerName: 'GLOBAL SUPPLIES INC',
+    status: 'Non-Billable',
+    amount: '₹12,500.00',
+  },
+  {
+    id: 'EXP-00003',
+    date: '15/06/2026',
+    expensesAccount: 'IT Supplies',
+    reference: 'EXP-103',
+    vendorName: 'TECHHARDWARE LTD',
+    paidThrough: 'Bank Transfer',
+    customerName: 'TECHHARDWARE LTD',
+    status: 'Billable',
+    amount: '₹0.00',
+  }
 ];
 
 const bills = [
   {
     id: 'BILL-00001',
-    date: '30/06/2026',
-    billNo: '8645',
-    reference: '8688322738',
-    vendorName: 'CLIMAMAX',
+    date: '25/06/2026',
+    billNo: 'B-101',
+    reference: 'REF-101',
+    vendorName: 'CENTURY PULP & PAPER',
     status: 'Partially Paid',
-    dueDate: '10/06/2026',
-    amount: '₹5,999.00',
-    balanceDue: '1,000.00',
+    dueDate: '25/07/2026',
+    amount: '₹45,000.00',
+    balanceDue: '₹20,000.00',
   },
+  {
+    id: 'BILL-00002',
+    date: '20/06/2026',
+    billNo: 'B-102',
+    reference: 'REF-102',
+    vendorName: 'GLOBAL SUPPLIES INC',
+    status: 'Paid',
+    dueDate: '20/07/2026',
+    amount: '₹12,500.00',
+    balanceDue: '₹0.00',
+  },
+  {
+    id: 'BILL-00003',
+    date: '15/06/2026',
+    billNo: 'B-103',
+    reference: 'REF-103',
+    vendorName: 'TECHHARDWARE LTD',
+    status: 'Draft',
+    dueDate: '15/07/2026',
+    amount: '₹0.00',
+    balanceDue: '₹0.00',
+  }
 ];
 
 const statusColors = {
@@ -154,7 +220,7 @@ const PurchasePage = () => {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-[#f8f9fc] border-b border-gray-100 text-[13px]">
-                <th className="py-4 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+                <th className="py-2.5 pl-4 pr-3 font-bold text-[#6b778c] w-16 text-center">
                   <input
                     type="checkbox"
                     className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
@@ -163,50 +229,50 @@ const PurchasePage = () => {
                 </th>
                 {activeTab === 'Expenses' && (
                   <>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Expenses Account</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference#</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Paid Through</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Customer Name</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Status</th>
-                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Date</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Expenses Account</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Reference#</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Paid Through</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Customer Name</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Status</th>
+                    <th className="py-2.5 pr-3 font-bold text-[#6b778c] whitespace-nowrap text-left">Amount</th>
                   </>
                 )}
                 {activeTab === 'Bills' && (
                   <>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Bill#</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference Number</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Balance Due</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Due Date</th>
-                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Date</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Bill#</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Reference Number</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Amount</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Balance Due</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Due Date</th>
+                    <th className="py-2.5 pr-3 font-bold text-[#6b778c] whitespace-nowrap text-left">
                       <div className="flex items-center gap-1">Status <ChevronDown className="w-3.5 h-3.5" /></div>
                     </th>
                   </>
                 )}
                 {activeTab === 'Procurement' && (
                   <>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">PR No</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Material</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Quantity</th>
-                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Date</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">PR No</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Material</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Quantity</th>
+                    <th className="py-2.5 pr-3 font-bold text-[#6b778c] whitespace-nowrap text-left">Amount</th>
                   </>
                 )}
                 {activeTab !== 'Expenses' && activeTab !== 'Bills' && activeTab !== 'Procurement' && (
                   <>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Date</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Purchase Order</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Reference#</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Vendor Name</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Status</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Received</th>
-                    <th className="py-4 px-6 font-medium text-gray-400 whitespace-nowrap text-left">Billed</th>
-                    <th className="py-4 pr-6 font-medium text-gray-400 whitespace-nowrap text-left">Amount</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Date</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Purchase Order</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Reference#</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Vendor Name</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Status</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Received</th>
+                    <th className="py-2.5 px-2 font-bold text-[#6b778c] whitespace-nowrap text-left">Billed</th>
+                    <th className="py-2.5 pr-3 font-bold text-[#6b778c] whitespace-nowrap text-left">Amount</th>
                   </>
                 )}
               </tr>
@@ -220,7 +286,7 @@ const PurchasePage = () => {
                     className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px] cursor-pointer
                         ${selectedRows.includes(expense.id) ? 'bg-blue-50' : 'bg-white'}`}
                   >
-                    <td className="py-4 pl-8 pr-6 text-center" onClick={e => e.stopPropagation()}>
+                    <td className="py-2.5 pl-4 pr-3 text-center" onClick={e => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         checked={selectedRows.includes(expense.id)}
@@ -228,18 +294,18 @@ const PurchasePage = () => {
                         className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
                       />
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{expense.date}</td>
-                    <td className="py-4 px-6">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{expense.date}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap">
                       <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {expense.expensesAccount}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.reference || ''}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.vendorName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.paidThrough}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.customerName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{expense.status}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{expense.amount}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{expense.reference || ''}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{expense.vendorName}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{expense.paidThrough}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{expense.customerName}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{expense.status}</td>
+                    <td className="py-2.5 pr-3 text-[#1a233a] font-medium whitespace-nowrap text-left">{expense.amount}</td>
                   </tr>
                 ))
               ) : activeTab === 'Bills' ? (
@@ -250,7 +316,7 @@ const PurchasePage = () => {
                     className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px] cursor-pointer
                         ${selectedRows.includes(bill.id) ? 'bg-blue-50' : 'bg-white'}`}
                   >
-                    <td className="py-4 pl-8 pr-6 text-center" onClick={e => e.stopPropagation()}>
+                    <td className="py-2.5 pl-4 pr-3 text-center" onClick={e => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         checked={selectedRows.includes(bill.id)}
@@ -258,19 +324,19 @@ const PurchasePage = () => {
                         className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
                       />
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{bill.date}</td>
-                    <td className="py-4 px-6">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{bill.date}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap">
                       <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {bill.billNo}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{bill.reference}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium uppercase">{bill.vendorName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{bill.amount}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{bill.balanceDue}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{bill.dueDate}</td>
-                    <td className="py-4 pr-6 text-left">
-                      <span className="bg-[#ffe8e8] text-[#ff6b6b] px-3 py-1 rounded-full text-[11px] font-medium">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{bill.reference}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium uppercase whitespace-nowrap">{bill.vendorName}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{bill.amount}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{bill.balanceDue}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap text-left">{bill.dueDate}</td>
+                    <td className="py-2.5 pr-3 text-left whitespace-nowrap">
+                      <span className="bg-[#ffe8e8] text-[#ff6b6b] px-3 py-1 rounded-full text-[11px] font-medium whitespace-nowrap">
                         {bill.status}
                       </span>
                     </td>
@@ -284,7 +350,7 @@ const PurchasePage = () => {
                     className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px] cursor-pointer
                         ${selectedRows.includes(pr.id) ? 'bg-blue-50' : 'bg-white'}`}
                   >
-                    <td className="py-4 pl-8 pr-6 text-center" onClick={e => e.stopPropagation()}>
+                    <td className="py-2.5 pl-4 pr-3 text-center" onClick={e => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         checked={selectedRows.includes(pr.id)}
@@ -292,16 +358,16 @@ const PurchasePage = () => {
                         className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
                       />
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{pr.date}</td>
-                    <td className="py-4 px-6">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{pr.date}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap">
                       <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {pr.prNo}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{pr.vendorName}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium">{pr.material}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{pr.quantity}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-medium text-left">{pr.amount}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{pr.vendorName}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{pr.material}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap text-left">{pr.quantity}</td>
+                    <td className="py-2.5 pr-3 text-[#1a233a] font-medium text-left">{pr.amount}</td>
                   </tr>
                 ))
               ) : (
@@ -312,7 +378,7 @@ const PurchasePage = () => {
                     className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors text-[13px] cursor-pointer
                         ${selectedRows.includes(order.id) ? 'bg-blue-50' : 'bg-white'}`}
                   >
-                    <td className="py-4 pl-8 pr-6 text-center" onClick={e => e.stopPropagation()}>
+                    <td className="py-2.5 pl-4 pr-3 text-center" onClick={e => e.stopPropagation()}>
                       <input
                         type="checkbox"
                         checked={selectedRows.includes(order.id)}
@@ -320,22 +386,22 @@ const PurchasePage = () => {
                         className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer"
                       />
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium whitespace-nowrap">{order.date}</td>
-                    <td className="py-4 px-6">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium whitespace-nowrap">{order.date}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap">
                       <span className="text-blue-500 hover:underline cursor-pointer font-medium text-left">
                         {order.purchaseOrder}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.reference || ''}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.vendorName}</td>
-                    <td className="py-4 px-6 text-left">
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{order.reference || ''}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{order.vendorName}</td>
+                    <td className="py-2.5 px-2 text-left">
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium ${statusColors[order.status] || 'bg-gray-100 text-gray-600'}`}>
                         {order.status}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.received}</td>
-                    <td className="py-4 px-6 text-[#1a233a] font-medium text-left">{order.billed}</td>
-                    <td className="py-4 pr-6 text-[#1a233a] font-medium whitespace-nowrap text-left">{order.amount}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{order.received}</td>
+                    <td className="py-2.5 px-2 text-[#1a233a] font-medium text-left whitespace-nowrap">{order.billed}</td>
+                    <td className="py-2.5 pr-3 text-[#1a233a] font-medium whitespace-nowrap text-left">{order.amount}</td>
                   </tr>
                 ))
               )}

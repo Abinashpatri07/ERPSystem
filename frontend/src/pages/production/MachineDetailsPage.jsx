@@ -32,7 +32,7 @@ const MachineDetailsPage = () => {
 
   return (
     <div className="flex h-full bg-[#f4f7f9] p-1.5 gap-1.5 overflow-hidden">
-      
+
       {/* ── Left Sidebar (List) ── */}
       <div className="w-full lg:w-[260px] shrink-0 flex flex-col bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-3 pb-2">
@@ -106,13 +106,13 @@ const MachineDetailsPage = () => {
               Active
             </span>
           </div>
-          
+
         </div>
       </div>
 
       {/* ── Right Area (Details) ── */}
       <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden bg-transparent">
-        
+
         {/* Top Header Card */}
         <div className="bg-white shrink-0 border border-gray-100 rounded-[20px] shadow-sm mb-1">
           <div className="px-3 lg:px-4 p-3">
@@ -185,7 +185,7 @@ const MachineDetailsPage = () => {
 
         {/* Bottom Content Card */}
         <div className="bg-white flex-1 flex flex-col overflow-hidden border border-gray-100 rounded-[20px] shadow-sm">
-          
+
           {/* Tabs */}
           <div className="flex gap-6 px-3 lg:px-4 pt-3 shrink-0 border-b border-gray-100">
             {['Overview', 'Utilization', 'Maintenance', 'Document'].map((tab) => (
@@ -209,184 +209,184 @@ const MachineDetailsPage = () => {
           <div className="flex-1 overflow-y-auto p-3 lg:p-4 bg-[#f8fafc] rounded-b-[20px]">
             {activeTab === 'Overview' && (
               <div className="space-y-6 max-w-7xl mx-auto">
-            
 
-            
-            {/* 1. Machine Details */}
-            <div className="bg-white rounded-[12px] p-6 mb-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
-                  <Box className="w-4 h-4 text-white" />
-                </div>
-                <h2 className="text-[16px] font-bold text-[#111827]">Machine Details</h2>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-x-12 gap-y-5">
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Machine Code</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">MC-001</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Machine Name</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">AD 1228_5C</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Machine Category</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">Corrugation Machinery</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Machine Type</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">Corrugator</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Brand</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">BHS</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Model</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">BHS-009541</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Serial Number</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">SN-789456</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Manufacturing Date</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">02 Jan 2019</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Vendor / Supplier</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">BHS Service Pvt Ltd</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Purchase Date</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">20 Jan 2019</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Purchase Price</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">₹48,50,000</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Warranty Period</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">24 Month (Expire 14Feb)</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Installation Date</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">14 Feb 2019</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Location</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">Plant A, Line A</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Department</span>
-                  <span className="text-[13px] font-semibold text-[#111827]">Corrugation</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[13px] text-gray-500">Machine Status <span className="text-red-500">*</span></span>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-4.5 bg-[#16a34a] rounded-full p-[2px] flex items-center shadow-inner relative cursor-pointer transition-colors">
-                      <div className="w-3.5 h-3.5 bg-white rounded-full shadow-sm absolute right-[2px]"></div>
+
+
+                {/* 1. Machine Details */}
+                <div className="bg-white rounded-[12px] p-6 mb-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                      <Box className="w-4 h-4 text-white" />
                     </div>
-                    <span className="text-[13px] font-semibold text-[#111827]">Active</span>
+                    <h2 className="text-[16px] font-bold text-[#111827]">Machine Details</h2>
                   </div>
-                </div>
-              </div>
-              
-              <div className="mt-5">
-                <span className="text-[13px] text-gray-500 block mb-2">Description</span>
-                <div className="bg-[#f9fafb] border border-gray-100 rounded-[12px] p-4">
-                  <p className="text-[13px] text-gray-600 leading-relaxed">
-                    High-speed corrugator unit installed for core paper board production. Operates on 3-shift cycle supporting Line A daily output target of 6,000 boxes.
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            {/* 2. Technical Specification */}
-            <div className="bg-white rounded-[12px] p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
-                  <Package className="w-4 h-4 text-white" />
-                </div>
-                <h2 className="text-[16px] font-bold text-[#111827]">Technical specification</h2>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-4 auto-rows-fr">
-                {/* Speed */}
-                <div className="bg-yellow-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 shrink-0">
-                    <Gauge className="w-5 h-5" />
+                  <div className="grid grid-cols-2 gap-x-12 gap-y-5">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Machine Code</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">MC-001</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Machine Name</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">AD 1228_5C</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Machine Category</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">Corrugation Machinery</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Machine Type</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">Corrugator</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Brand</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">BHS</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Model</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">BHS-009541</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Serial Number</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">SN-789456</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Manufacturing Date</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">02 Jan 2019</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Vendor / Supplier</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">BHS Service Pvt Ltd</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Purchase Date</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">20 Jan 2019</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Purchase Price</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">₹48,50,000</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Warranty Period</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">24 Month (Expire 14Feb)</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Installation Date</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">14 Feb 2019</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Location</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">Plant A, Line A</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Department</span>
+                      <span className="text-[13px] font-semibold text-[#111827]">Corrugation</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] text-gray-500">Machine Status <span className="text-red-500">*</span></span>
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-4.5 bg-[#16a34a] rounded-full p-[2px] flex items-center shadow-inner relative cursor-pointer transition-colors">
+                          <div className="w-3.5 h-3.5 bg-white rounded-full shadow-sm absolute right-[2px]"></div>
+                        </div>
+                        <span className="text-[13px] font-semibold text-[#111827]">Active</span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">Speed</div>
-                    <div className="text-[15px] font-bold text-[#111827]">180 RPM</div>
-                  </div>
-                </div>
-                
-                {/* Voltage */}
-                <div className="bg-purple-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 shrink-0">
-                    <Zap className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">Voltage</div>
-                    <div className="text-[15px] font-bold text-[#111827]">415 V</div>
-                  </div>
-                </div>
-                
-                {/* Capacity */}
-                <div className="bg-blue-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                    <Layers className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">Capacity</div>
-                    <div className="text-[15px] font-bold text-[#111827]">6,000 Boxes/day</div>
-                  </div>
-                </div>
-                
-                {/* Power */}
-                <div className="bg-pink-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 shrink-0">
-                    <Power className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">power</div>
-                    <div className="text-[15px] font-bold text-[#111827]">45 KW</div>
-                  </div>
-                </div>
-                
-                {/* Weight */}
-                <div className="bg-green-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
-                    <Weight className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">Weight</div>
-                    <div className="text-[15px] font-bold text-[#111827]">6,200 Kg</div>
-                  </div>
-                </div>
-                
-                {/* Dimensions */}
-                <div className="bg-cyan-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
-                  <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 shrink-0">
-                    <Ruler className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-gray-500 mb-0.5">Dimensions (L × W × H)</div>
-                    <div className="text-[15px] font-bold text-[#111827]">12.5m × 2.8m × 3.2m</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      )}
 
-      
+                  <div className="mt-5">
+                    <span className="text-[13px] text-gray-500 block mb-2">Description</span>
+                    <div className="bg-[#f9fafb] border border-gray-100 rounded-[12px] p-4">
+                      <p className="text-[13px] text-gray-600 leading-relaxed">
+                        High-speed corrugator unit installed for core paper board production. Operates on 3-shift cycle supporting Line A daily output target of 6,000 boxes.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Technical Specification */}
+                <div className="bg-white rounded-[12px] p-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                      <Package className="w-4 h-4 text-white" />
+                    </div>
+                    <h2 className="text-[16px] font-bold text-[#111827]">Technical specification</h2>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 auto-rows-fr">
+                    {/* Speed */}
+                    <div className="bg-yellow-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 shrink-0">
+                        <Gauge className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">Speed</div>
+                        <div className="text-[15px] font-bold text-[#111827]">180 RPM</div>
+                      </div>
+                    </div>
+
+                    {/* Voltage */}
+                    <div className="bg-purple-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 shrink-0">
+                        <Zap className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">Voltage</div>
+                        <div className="text-[15px] font-bold text-[#111827]">415 V</div>
+                      </div>
+                    </div>
+
+                    {/* Capacity */}
+                    <div className="bg-blue-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                        <Layers className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">Capacity</div>
+                        <div className="text-[15px] font-bold text-[#111827]">6,000 Boxes/day</div>
+                      </div>
+                    </div>
+
+                    {/* Power */}
+                    <div className="bg-pink-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 shrink-0">
+                        <Power className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">power</div>
+                        <div className="text-[15px] font-bold text-[#111827]">45 KW</div>
+                      </div>
+                    </div>
+
+                    {/* Weight */}
+                    <div className="bg-green-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0">
+                        <Weight className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">Weight</div>
+                        <div className="text-[15px] font-bold text-[#111827]">6,200 Kg</div>
+                      </div>
+                    </div>
+
+                    {/* Dimensions */}
+                    <div className="bg-cyan-50 rounded-[12px] p-4 flex items-center gap-4 h-full">
+                      <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 shrink-0">
+                        <Ruler className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-gray-500 mb-0.5">Dimensions (L × W × H)</div>
+                        <div className="text-[15px] font-bold text-[#111827]">12.5m × 2.8m × 3.2m</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
             {activeTab === 'Maintenance' && (
               <div className="space-y-6 max-w-7xl mx-auto">
-                
+
                 {/* Top Row: Maintenance & Last Maintenance */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
                   {/* Maintenance Info */}
@@ -406,7 +406,7 @@ const MachineDetailsPage = () => {
                       <span className="text-[13px] text-gray-500">Note</span><span className="text-[13px] font-bold text-[#111827]">Monthly repair</span>
                     </div>
                   </div>
-                  
+
                   {/* Last Maintenance */}
                   <div className="flex flex-col lg:col-span-7">
                     <div className="flex items-center gap-3 mb-4 shrink-0">
@@ -444,7 +444,7 @@ const MachineDetailsPage = () => {
                       <div><div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[11px] font-bold px-3 py-1 rounded-full">Active</div></div>
                     </div>
                   </div>
-                  
+
                   {/* Upcoming Maintenance */}
                   <div className="flex flex-col lg:col-span-7">
                     <div className="flex items-center gap-3 mb-4 shrink-0">
@@ -457,13 +457,13 @@ const MachineDetailsPage = () => {
                       <div className="grid grid-cols-[auto_1fr] xl:grid-cols-[auto_1fr_auto_1fr] gap-x-6 gap-y-3 items-center">
                         <span className="text-[13px] text-gray-500">Next Maintenance Date</span>
                         <span className="text-[13px] font-bold text-red-500">15/07/2026</span>
-                        
+
                         <span className="text-[13px] text-gray-500">Priority</span>
                         <div><span className="inline-block bg-orange-50 text-orange-600 text-[11px] font-bold px-3 py-1 rounded-full border border-orange-100">Medium</span></div>
-                        
+
                         <span className="text-[13px] text-gray-500">Estimated Duration</span>
                         <span className="text-[13px] font-bold text-[#111827]">4.0 Hrs</span>
-                        
+
                         <span className="text-[13px] text-gray-500">Maintenance Type</span>
                         <span className="text-[13px] font-bold text-[#111827]">Preventive</span>
                       </div>
@@ -477,98 +477,98 @@ const MachineDetailsPage = () => {
 
                 {/* Frequency Section */}
                 <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
-                        <Calendar className="w-4 h-4 text-white" />
-                      </div>
-                      <h2 className="text-[17px] font-bold text-[#111827]">Frequency</h2>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                      <Calendar className="w-4 h-4 text-white" />
                     </div>
-                    
-                    <div className="p-1">
-                      <div className="grid grid-cols-4 gap-4 bg-white border border-gray-100 rounded-[12px] p-4 shadow-sm">
-                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
-                          <div className="text-[11px] text-gray-500 mb-1">Maintenance frequency</div>
-                          <div className="text-[15px] font-bold text-[#111827]">Montly</div>
-                        </div>
-                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
-                          <div className="text-[11px] text-gray-500 mb-1">Next Cycle Due In</div>
-                          <div className="inline-block bg-orange-100 text-orange-600 text-[13px] font-bold px-2 py-0.5 rounded-[6px]">21 Days</div>
-                        </div>
-                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
-                          <div className="text-[11px] text-gray-500 mb-1">Average Duration</div>
-                          <div className="text-[15px] font-bold text-[#111827]">4.0 Hrs</div>
-                        </div>
-                        <div className="bg-[#f8fafc] p-3 rounded-[10px]">
-                          <div className="text-[11px] text-gray-500 mb-1">Cycle</div>
-                          <div className="text-[15px] font-bold text-[#111827]">Every 30 Days</div>
-                        </div>
+                    <h2 className="text-[17px] font-bold text-[#111827]">Frequency</h2>
+                  </div>
+
+                  <div className="p-1">
+                    <div className="grid grid-cols-4 gap-4 bg-white border border-gray-100 rounded-[12px] p-4 shadow-sm">
+                      <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                        <div className="text-[11px] text-gray-500 mb-1">Maintenance frequency</div>
+                        <div className="text-[15px] font-bold text-[#111827]">Montly</div>
+                      </div>
+                      <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                        <div className="text-[11px] text-gray-500 mb-1">Next Cycle Due In</div>
+                        <div className="inline-block bg-orange-100 text-orange-600 text-[13px] font-bold px-2 py-0.5 rounded-[6px]">21 Days</div>
+                      </div>
+                      <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                        <div className="text-[11px] text-gray-500 mb-1">Average Duration</div>
+                        <div className="text-[15px] font-bold text-[#111827]">4.0 Hrs</div>
+                      </div>
+                      <div className="bg-[#f8fafc] p-3 rounded-[10px]">
+                        <div className="text-[11px] text-gray-500 mb-1">Cycle</div>
+                        <div className="text-[15px] font-bold text-[#111827]">Every 30 Days</div>
                       </div>
                     </div>
+                  </div>
                 </div>
 
                 {/* Maintenance History Table */}
                 <div className="pb-6">
-                   <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
-                        <FileText className="w-4 h-4 text-white" />
-                      </div>
-                      <h2 className="text-[17px] font-bold text-[#111827]">Maintenance History</h2>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#ff3b30] to-[#b82db8] flex items-center justify-center shadow-sm">
+                      <FileText className="w-4 h-4 text-white" />
                     </div>
-                    
-                    <div className="bg-white rounded-[12px] shadow-sm border border-gray-100 overflow-hidden">
-                       <table className="w-full text-left">
-                         <thead>
-                           <tr className="border-b border-gray-100 bg-gray-50/50">
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Date</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Maintenance ID</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Type</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500">Description</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Technician</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Cost</th>
-                             <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Status</th>
-                           </tr>
-                         </thead>
-                         <tbody>
-                           <tr className="border-b border-gray-100">
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/06/2026</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0048</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Preventive</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Oil replacement,lubrication, inspection</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Rajesh Kumar</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹18,500</td>
-                             <td className="py-2.5 px-4 whitespace-nowrap">
-                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
-                             </td>
-                           </tr>
-                           <tr className="border-b border-gray-100">
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">12/05/2026</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0035</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Routine</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Mechanical & electrical inspection</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Amit Verma</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹12,800</td>
-                             <td className="py-2.5 px-4 whitespace-nowrap">
-                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
-                             </td>
-                           </tr>
-                           <tr>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/04/2026</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0022</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Corrective</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Sensor replacement</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Ramesh Yadav</td>
-                             <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹8,500</td>
-                             <td className="py-2.5 px-4 whitespace-nowrap">
-                               <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
-                             </td>
-                           </tr>
-                         </tbody>
-                       </table>
-                    </div>
+                    <h2 className="text-[17px] font-bold text-[#111827]">Maintenance History</h2>
+                  </div>
+
+                  <div className="bg-white rounded-[12px] shadow-sm border border-gray-100 overflow-hidden">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="border-b border-gray-100 bg-gray-50/50">
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Date</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Maintenance ID</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Type</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500">Description</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Technician</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Cost</th>
+                          <th className="py-2.5 px-4 text-[11px] font-medium text-gray-500 whitespace-nowrap">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/06/2026</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0048</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Preventive</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Oil replacement,lubrication, inspection</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Rajesh Kumar</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹18,500</td>
+                          <td className="py-2.5 px-4 whitespace-nowrap">
+                            <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                          </td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">12/05/2026</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0035</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Routine</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Mechanical & electrical inspection</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Amit Verma</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹12,800</td>
+                          <td className="py-2.5 px-4 whitespace-nowrap">
+                            <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">10/04/2026</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">MT-2026-0022</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Corrective</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 w-[250px]">Sensor replacement</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">Ramesh Yadav</td>
+                          <td className="py-2.5 px-4 text-[12px] text-gray-800 whitespace-nowrap">₹8,500</td>
+                          <td className="py-2.5 px-4 whitespace-nowrap">
+                            <div className="inline-flex bg-[#dcfce7] text-[#16a34a] text-[10px] font-bold px-2 py-0.5 rounded-full">Completed</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             )}
-            
+
             {activeTab !== 'Overview' && activeTab !== 'Maintenance' && (
 
               <div className="flex items-center justify-center h-full text-gray-400 font-medium">

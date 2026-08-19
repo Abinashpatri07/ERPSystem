@@ -28,16 +28,16 @@ const InventoryControlTable = () => {
             <th className="py-2 pl-4 pr-2 w-10">
               <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
             </th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Date</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Reason</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap min-w-[300px]">Description</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Status</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Reference Number</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Type</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Created By</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Created Time</th>
-            <th className="py-2 px-4 font-medium text-gray-500 whitespace-nowrap">Last Modified By</th>
-            <th className="py-2 pr-4 pl-4 font-medium text-gray-500 whitespace-nowrap">Last Modified Time</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Date</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Reason</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap min-w-[300px]">Description</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Status</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Reference Number</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Type</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Created By</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Created Time</th>
+            <th className="py-2 px-4 font-bold text-[#6b778c] whitespace-nowrap">Last Modified By</th>
+            <th className="py-2 pr-4 pl-4 font-bold text-[#6b778c] whitespace-nowrap">Last Modified Time</th>
           </tr>
         </thead>
         <tbody>

@@ -14,7 +14,7 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-              <th className="py-3 pl-6 pr-4 font-semibold text-[#1a233a] w-16 text-center">
+              <th className="py-3 pl-6 pr-4 font-bold text-[#6b778c] w-16 text-center">
                 <input 
                   type="checkbox" 
                   className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 cursor-pointer" 
@@ -22,13 +22,13 @@ const CustomerTable = ({ customers, selectedIds, onToggleSelectAll, onToggleSele
                   onChange={onToggleSelectAll}
                 />
               </th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">Name</th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">GST</th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">Primary Contact</th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">Email</th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">Phone</th>
-              <th className="py-4 px-4 font-semibold text-[#1a233a] whitespace-nowrap">Receivable</th>
-              <th className="py-4 pr-6 pl-4 font-semibold text-[#1a233a] whitespace-nowrap">
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">Name</th>
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">GST</th>
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">Primary Contact</th>
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">Email</th>
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">Phone</th>
+              <th className="py-4 px-4 font-bold text-[#6b778c] whitespace-nowrap">Receivable</th>
+              <th className="py-4 pr-6 pl-4 font-bold text-[#6b778c] whitespace-nowrap">
                 <div className="flex items-center gap-1 cursor-pointer">
                   Status <ChevronDown className="w-3.5 h-3.5" />
                 </div>

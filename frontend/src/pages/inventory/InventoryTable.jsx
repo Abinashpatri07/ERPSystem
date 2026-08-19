@@ -46,13 +46,13 @@ const InventoryTable = () => {
         <thead>
           <tr className="bg-[#f4f6f8] border-b border-gray-200 text-[13px]">
             <th className="py-4 pl-8 pr-2 w-10"></th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Item Name</th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Available Full</th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Full Weight</th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Available Partial</th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Partial Weight</th>
-            <th className="py-4 px-6 font-medium text-gray-500 whitespace-nowrap">Available Weight</th>
-            <th className="py-4 pr-8 pl-6 font-medium text-gray-500 whitespace-nowrap">Value</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Item Name</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Available Full</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Full Weight</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Available Partial</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Partial Weight</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c] whitespace-nowrap">Available Weight</th>
+            <th className="py-4 pr-8 pl-6 font-bold text-[#6b778c] whitespace-nowrap">Value</th>
           </tr>
         </thead>
         <tbody>
@@ -92,11 +92,11 @@ const InventoryTable = () => {
                         <table className="w-full text-left">
                           <thead>
                             <tr className="bg-[#f9fafb] text-[12px] border-b border-gray-100">
-                              <th className="py-3 px-6 font-medium text-gray-500 w-[20%]">Plant</th>
-                              <th className="py-3 px-6 font-medium text-gray-500 w-[20%]">Available Full</th>
-                              <th className="py-3 px-6 font-medium text-gray-500 w-[20%]">Available Partial</th>
-                              <th className="py-3 px-6 font-medium text-gray-500 w-[20%]">Available Weight</th>
-                              <th className="py-3 px-6 font-medium text-gray-500 w-[20%]">Value</th>
+                              <th className="py-3 px-6 font-bold text-[#6b778c] w-[20%]">Plant</th>
+                              <th className="py-3 px-6 font-bold text-[#6b778c] w-[20%]">Available Full</th>
+                              <th className="py-3 px-6 font-bold text-[#6b778c] w-[20%]">Available Partial</th>
+                              <th className="py-3 px-6 font-bold text-[#6b778c] w-[20%]">Available Weight</th>
+                              <th className="py-3 px-6 font-bold text-[#6b778c] w-[20%]">Value</th>
                             </tr>
                           </thead>
                           <tbody>

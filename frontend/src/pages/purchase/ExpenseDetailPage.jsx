@@ -112,7 +112,7 @@ const ExpenseDetailPage = () => {
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">25/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  CLIMAMAX CONTROLS PRIVATE LIMITED
+                  CENTURY PULP & PAPER
                 </h3>
                 <div className="text-right">
                   <span className="text-[14px] font-bold text-[#111827]">₹53,900.00</span>
@@ -126,7 +126,7 @@ const ExpenseDetailPage = () => {
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">20/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  NEXUS TECHNOLOGIES
+                  GLOBAL SUPPLIES INC
                 </h3>
                 <div className="text-right">
                   <span className="text-[14px] font-bold text-[#111827]">₹12,500.00</span>
@@ -140,7 +140,7 @@ const ExpenseDetailPage = () => {
                   <span className="text-[9px] text-gray-400 font-medium tracking-wide">15/06/2026</span>
                 </div>
                 <h3 className="text-[11px] font-bold text-[#111827] mb-1 uppercase leading-snug truncate">
-                  APEX INDUSTRIES
+                  TECHHARDWARE LTD
                 </h3>
                 <div className="text-right">
                   <span className="text-[14px] font-bold text-[#111827]">₹0.00</span>

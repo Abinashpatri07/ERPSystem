@@ -8,22 +8,32 @@ const VendorsPage = () => {
   const vendors = [
     {
       id: 1,
-      name: 'Climamax',
+      name: 'Century',
       gst: '29BGBBB2222B2Z2',
-      primaryContact: 'Sarah Jenkins',
-      companyName: 'Climamax Controls',
-      email: 'ramesh.clima@gmail.com',
-      phone: '+91 7465925396',
-      payables: '₹0.00'
+      primaryContact: 'P. Verma',
+      companyName: 'CENTURY PULP & PAPER',
+      email: 'p.verma@centurypulp.com',
+      phone: '+91 8456293569',
+      payables: '₹45,000.00'
     },
     {
       id: 2,
-      name: 'Sunrise',
+      name: 'Global',
       gst: '21AAECS5678F1Z2',
-      primaryContact: 'Nilesh Rise',
-      companyName: 'Century Pulp & Paper',
-      email: 'nilesh.rise@gmail.com',
-      phone: '+91 8456293569',
+      primaryContact: 'John Doe',
+      companyName: 'GLOBAL SUPPLIES INC',
+      email: 'contact@globalsupplies.com',
+      phone: '+91 9876543210',
+      payables: '₹12,500.00'
+    },
+    {
+      id: 3,
+      name: 'Techhardware',
+      gst: '07BGBBB2222B2Z2',
+      primaryContact: 'Rahul Sharma',
+      companyName: 'TECHHARDWARE LTD',
+      email: 'sales@techhardware.com',
+      phone: '+91 7654321098',
       payables: '₹0.00'
     }
   ];
@@ -57,16 +67,16 @@ const VendorsPage = () => {
           <table className="w-full text-left border-collapse whitespace-nowrap">
             <thead>
               <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-                <th className="py-3 pl-4 pr-3 font-semibold text-gray-500 w-12 text-center">
+                <th className="py-3 pl-4 pr-3 font-bold text-[#6b778c] w-12 text-center">
                   <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
                 </th>
-                <th className="py-4 px-3 font-semibold text-gray-500">Name</th>
-                <th className="py-4 px-3 font-semibold text-gray-500">GST</th>
-                <th className="py-4 px-3 font-semibold text-gray-500">Primary Contact</th>
-                <th className="py-4 px-3 font-semibold text-gray-500">Company Name</th>
-                <th className="py-4 px-3 font-semibold text-gray-500">E-Mail Address</th>
-                <th className="py-4 px-3 font-semibold text-gray-500">Phone No</th>
-                <th className="py-4 pr-4 pl-3 font-semibold text-gray-500">Payables(BCY)</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">Name</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">GST</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">Primary Contact</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">Company Name</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">E-Mail Address</th>
+                <th className="py-4 px-3 font-bold text-[#6b778c]">Phone No</th>
+                <th className="py-4 pr-4 pl-3 font-bold text-[#6b778c]">Payables(BCY)</th>
               </tr>
             </thead>
             <tbody>

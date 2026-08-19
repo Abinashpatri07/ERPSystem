@@ -5,11 +5,29 @@ const mockQuotes = [
   {
     id: 1,
     date: '25/06/2026',
-    quoteNo: 'QT-000001',
-    customerName: 'CLIMAMAX CONTROLS PRIVATE LIMITED',
-    boxSpec: 'NS',
-    quantity: '5,000',
-    amount: '2,34,654',
+    quoteNo: 'QT-00001',
+    customerName: 'CLIMAMAX PVT LTD',
+    boxSpec: '5-Ply',
+    quantity: '2,500',
+    amount: '53,900',
+  },
+  {
+    id: 2,
+    date: '20/06/2026',
+    quoteNo: 'QT-00002',
+    customerName: 'NEXUS TECHNOLOGIES',
+    boxSpec: '3-Ply',
+    quantity: '1,000',
+    amount: '12,500',
+  },
+  {
+    id: 3,
+    date: '15/06/2026',
+    quoteNo: 'QT-00003',
+    customerName: 'APEX INDUSTRIES',
+    boxSpec: '5-Ply',
+    quantity: '3,200',
+    amount: '68,400',
   }
 ];
 
@@ -21,15 +39,15 @@ const QuotesTable = () => {
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-[#f4f6f8] border-b border-gray-200 text-sm">
-            <th className="py-4 pl-8 pr-6 font-semibold text-[#1a233a] w-16 text-center">
+            <th className="py-4 pl-8 pr-6 font-bold text-[#6b778c] w-16 text-center">
               <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 w-3.5 h-3.5" />
             </th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Date</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Quote Number</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Customer Name</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Box Spec</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Quantity</th>
-            <th className="py-4 px-6 font-semibold text-[#1a233a]">Amount</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Date</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Quote Number</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Customer Name</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Box Spec</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Quantity</th>
+            <th className="py-4 px-6 font-bold text-[#6b778c]">Amount</th>
           </tr>
         </thead>
         <tbody>
