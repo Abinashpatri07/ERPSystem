@@ -98,7 +98,7 @@ const MachineDetailsPage = () => {
               <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
             </div>
             <h3 className="text-[11px] font-semibold text-[#111827] mb-1 truncate">
-              Bobst Die Cutting Machine
+              Heidelberg Offset Printer
             </h3>
             <span className="inline-block px-2 py-[2px] bg-[#e6fce5] text-[#16a34a] text-[9px] font-bold rounded-full leading-none uppercase">
               Active
@@ -112,7 +112,7 @@ const MachineDetailsPage = () => {
               <span className="text-[9px] text-gray-400 font-medium">25/06/2026</span>
             </div>
             <h3 className="text-[11px] font-semibold text-[#111827] mb-1 truncate">
-              Bobst Die Cutting Machine
+              Polar Guillotine Cutter
             </h3>
             <span className="inline-flex items-center gap-1 px-2 py-[3px] bg-orange-50 text-[#ea580c] text-[10px] font-bold rounded-full leading-none">
               <span className="w-1.5 h-1.5 rounded-full bg-[#ea580c]"></span>
